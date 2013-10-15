@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>百度地图数据采集</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="all" />
+    <meta name="author" content="MSN: qq1713173@hotmail.com" />
+    <script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/public2.js" charset="gb2312"></script>
+    <script type="text/javascript" src="/javascripts/WebCalendar.js"></script>
+    <link href="/stylesheets/wrapper01.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      #datalist {border-collapse:collapse;border:1px solid #BED0E2;}
+      #datalist th{text-align:center;font-family:Verdana;padding: 5px 15px 3px 15px;letter-spacing: 12px;background-color: #45719C;font-size: 14px;color: white;font-weight: normal;text-decoration: none;border:1px solid white;}
+      #datalist td {color: #757575;font-family:Verdana;padding: 5px 8px 5px 8px;letter-spacing: 1px;font-size: 9pt;border:1px solid #D9E3EE;}
+      #datalist a {color: #2853FF;text-decoration: none;}
+      #datalist a:hover {color: #FD352B;text-decoration: none;}
+      .nav{
+        background:url(http://www.51hejia.com/images/zhuangxiu805/iconav.png) left center no-repeat;
+        line-height:27px;
+        color:#666666;
+        padding-left:15px;
+        margin:10px 12px 0 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="L_wrapper"></div>
+    <div id="R_wrapper">
+      <div class="nav"><strong></strong><%= location -%></div>
+      <div id="container">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end -%>
+        <fieldset id="查询:" class="">
+          <legend>查询:</legend>
+          <% form_tag "baidu_map" ,:method =>:get  do %>
+            城市: <%= text_field_tag "city", params[:city] %>
+            区域: <%= text_field_tag "area", params[:area] %> * Exp: 浦东新区
+            关键字:<%= text_field_tag "keywords", params[:keywords] %>
+            <input type="button" value="查询" name="f_sub" onclick="formSubmit()" >
+          <% end -%>
+        </fieldset>
+        <%= link_to "导出为EXCEL" , :action => :to_excel, :city=> params[:city], :area => params[:area], :keywords => params[:keywords] if params[:city] && params[:keywords] %>
+        <fieldset id="结果:" style="margin-top:20px">
+          <legend>结果: 共<%=@results.size%>条 显示前100条 完整内容请导出excel查看</legend>
+            <%= render :partial => 'table',:locals => {:results => @results[0..100] } %>
+        </fieldset>
+      </div>
+    </div>
+    <iframe width="0" height="0" name="hideiframe" id="hideiframe"></iframe>
+    <script type="text/javascript">
+      function formSubmit(){
+        var key = $('#keywords').val();
+        var city = $('#city').val();
+        var flg = true;
+        var msg = ""
+        if(city == '' || city.length == 0){
+          msg = '请输入城市! Exp:上海';
+          flg = false; 
+        }else {
+          if(key == '' || key.length == 0){
+            msg = '请输入关键字';
+            flg = false; 
+          }
+        }
+        if(flg){
+          $('form input[type=button]').attr('disabled', true);
+          $('form').submit();
+        }else{
+          alert(msg);
+          return flg;
+        }
+      }
+    </script>
+  </body>
+</html>
+

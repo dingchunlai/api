@@ -1,0 +1,51 @@
+      <table width="180" border="0" align="center" cellpadding="0" cellspacing="0" class="mar_10">
+  <tr>
+    <td width="62">所属区域：</td>
+    <td width="118">
+        <select name="price1" id="select2" onchange='changedistrict1(this.value)' class="list_sel1">
+        <option value='0'>不限</option>
+        <%cities = get_area_without_number(params[:city])%>
+        <%cities.each do |c|%>
+			<option value='<%=c.TAGID%>' <%if params[:district].to_i == c.TAGID%>selected<%end%>><%=c.TAGNAME%></option>
+  				<%end%>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>主打价位：</td>
+    <td>
+        <select name="price1" id="select2" onchange='changeprice1(this.value)' class="list_sel1">
+        <option value='0'>不限</option>
+        <% diff_city_price_tag(params[:city]).each do |k, v| %>
+			<option value='<%=k%>' <%if params[:price].to_i == k%>selected<%end%>><%=v%></option>
+  				<%end%>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>装修方式：</td>
+    <td>
+      <select name="medel1" id="select5" onchange='changemodel1(this.value)' class="list_sel1">
+          <% models_sort = params[:city].to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+          <option value='0'>不限</option>
+          <% models_sort.sort.each do |k, v| -%>
+          	<option value='<%=k%>' <%if params[:model].to_i == k%>selected<%end%>><%=v%></option>
+          <%end -%>                  
+        </select>     
+    </td>
+  </tr>
+  <tr>
+    <td>装修风格：</td>
+    <td>
+        <select name="style1" id="select4" onchange='changestyle1(this.value)' class="list_sel1">
+          <option value='0'>不限</option>
+          <% STYLES.sort.each do |k, v| -%>
+          	<option value='<%=k%>' <%if params[:style].to_i == k%>selected<%end%>><%=v%></option>
+          <%end -%>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="text" name="keyword2" id="keywordid2" class="list_input1" value="<%=params[:keyword]%>"/>&nbsp;&nbsp;<input type="image" src="http://js.51hejia.com/img/zxdpimg/list_11.jpg" align="absmiddle" onclick="gen_search_url()"/></td>
+  </tr>
+</table>

@@ -1,0 +1,85 @@
+<h2 class="koubei" id="chromemenu1">
+    <span class="n1">口碑排行榜
+    
+
+</span><span class="n2">单项分</span></h2>
+    <div class="rbox6 margin10">
+    <div class="tabtitle1">
+          <ul>
+            <li onmouseover="HoverLi(22,0,5);" id="nav-220">服务</li>
+            <li onmouseover="HoverLi(22,1,5);" id="nav-221">施工</li>
+            <li onmouseover="HoverLi(22,2,5);" id="nav-222">性价比</li>
+            <li onmouseover="HoverLi(22,3,5);" id="nav-223">设计</li>
+            <li onmouseover="HoverLi(22,4,5);" id="nav-224">人气</li>
+          </ul>
+        </div>
+        <div id="tab-panel-220">
+      <div class="derankbox3">
+            <ul class="ntui">
+            <%tuijian = getfirm(244265)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(244265)%>" target="_blank" title="<%=tuijian.name_zh%>"><%=get_firm_name_abbr2(tuijian)%></a></span><span class="n2"><%=tuijian.service_praise.to_f%></span></li>
+            
+            <%get_new_order_companys(4).each do |firm|%>
+            <%if firm.id != 244265%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%=firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.service_praise.to_f%></span></li>
+            <%end%>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-221" style="display:none;">
+      <div class="derankbox3">
+            <ul class="ntui">
+            <%tuijian = getfirm(255659)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(255659)%>" target="_blank" title="<%=tuijian.name_zh%>"><%=get_firm_name_abbr2(tuijian)%></a></span><span class="n2"><%=tuijian.construction_praise.to_f%></span></li>
+            <%get_new_order_companys(3).each do |firm|%>
+            	<%if firm.id != 255659%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%=firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.construction_praise.to_f%></span></li>
+              	<%end%>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-222" style="display:none;">
+      <div class="derankbox3">
+            <ul class="ntui1">
+            <%tuijian = getfirm(252287)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(252287)%>" target="_blank" title="<%=tuijian.name_zh%>"><%=get_firm_name_abbr2(tuijian)%></a></span><span class="n2"><%=tuijian.budget_praise.to_f%></span></li>
+            <%tuijian = getfirm(252294)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(252294)%>" target="_blank" title="<%=tuijian.name_zh%>"><%=get_firm_name_abbr2(tuijian)%></a></span><span class="n2"><%=tuijian.budget_praise.to_f%></span></li>
+            <%get_new_order_companys(5).each do |firm|%>
+            <%if firm.id != 252287 && firm.id != 252294%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%=firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%="0".to_f%></span></li>
+            <%end%>  
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-223" style="display:none;">
+      <div class="derankbox3">
+            <ul class="ntui">
+            <%tuijian = getfirm(227745)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(244265)%>" target="_blank" title="<%=tuijian.name_zh%>"><%=get_firm_name_abbr2(tuijian)%></a></span><span class="n2"><%=tuijian.service_praise.to_f%></span></li>
+            <%get_new_order_companys(2).each do |firm|%>
+            <%if tuijian.id != firm.id%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%=firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.design_praise.to_f%></span></li>
+            <%end%>  
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-224" style="display:none;">
+      <div class="derankbox3">
+            <ul>
+            <%get_new_order_companys(6).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%=firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%= firm.pv_count %></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+    <script language="javascript">
+    HoverLi(22,<%=rand(4)%>,5);
+    </script>

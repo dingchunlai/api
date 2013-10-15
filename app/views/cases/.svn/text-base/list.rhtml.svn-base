@@ -1,0 +1,32 @@
+<div id="casepic" class="clearfix">
+    <%= render :partial => "decoshare/case_left"%>
+  <div class="fuckright">
+    <div class="sdtt margin10">
+    <h4>共有<b><%=@caselist.total_entries%></b>套<%= render :partial => "cases/tag"%>图片</h4>
+    <div class="fenye">
+    <%p = params[:page].to_i%>
+    第 <%if p==0%>1<%else%><%=p%><%end%> 页  
+    <a href="<%if !@caselist.previous_page.nil?%><%=@feiyong  ||= 0%>.<%=@fengge ||= 0%>.<%=@yongtu ||= 0%>.<%=@huxing ||= 0%>.<%= @caselist.previous_page%>.html<%else%><%=@feiyong  ||= 0%>.<%=@fengge ||= 0%>.<%=@yongtu ||= 0%>.<%=@huxing ||= 0%>.1.html<%end%>"><<上一页</a>  
+    <a href="<%if !@caselist.next_page.nil?%><%=@feiyong  ||= 0%>.<%=@fengge ||= 0%>.<%=@yongtu ||= 0%>.<%=@huxing ||= 0%>.<%= @caselist.next_page%>.html<%else%><%=@feiyong  ||= 0%>.<%=@fengge ||= 0%>.<%=@yongtu ||= 0%>.<%=@huxing ||= 0%>.<%= @caselist.current_page%>.html<%end%>">下一页>></a>
+    </div>
+    </div>
+    <div class="fuckcaselist clearfix">
+      <ul>
+      <%@caselist.each do |c| %>
+      	<%des = Case.get_photo_photo(c.ID)%>
+      	<%if !c.COMPANYID.nil? && c.COMPANYID.to_i!=0%>
+      		<%pathurl = gen_firm_city_case_detail(c.COMPANYID,c.ID)%>
+      	<%else%>
+      		<%pathurl =nil%>
+      	<%end%>
+        <li><a href="<%if pathurl.nil?%>/anli/<%=c.ID%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=c.NAME%>"><img src="http://image.51hejia.com/files/hekea/case_img/tn/<%=c.ID%>.jpg" alt="<%=c.NAME%>" onerror="javascript:this.src='<%if des.size>0%>http://image.51hejia.com/files/hekea/case_img/<%=des[0].filepath%><%else%>http://www.51hejia.com/api/images/none.gif<%end%>'"/></a><a href="<%if pathurl.nil?%>/anli/<%=c.ID%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=c.NAME%>"><%=truncate(c.NAME,12)%></a></li>
+      <%end%>
+      </ul>
+    </div>
+    <div class="pagination margin10">
+<ul>
+<%= will_paginate @caselist,:prev_label=> "上一页",:next_label=> "下一页" %>
+</ul>
+</div>
+  </div>
+</div>

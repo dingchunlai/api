@@ -1,0 +1,25 @@
+<div class="zxdpn_wyly">
+<h3>网友留言</h3>
+	<ul>
+		<% @remarks.each do |remark| %>
+		<% 
+		remark_firm = getfirm remark.resource_id
+		remark_city = remark_firm.city.to_i == 11910 ? remark_firm.city : remark_firm.district
+		%>
+		<li>
+		<h4>和家网<%= CITIES[remark_city.to_i] %>网友（<%= remark.user_name %>）<% if remark.is_essence.to_i == 1 %><img src="http://js.51hejia.com/img/zxdpimg/best.gif" alt="精华"/><% end %></h4>
+		<p><%= h remark.content %></p>
+		<div class="zxdpn_rjdz">
+		<% unless remark.other_id.blank? %>
+	  	<% if remark.decoration_diary && remark.decoration_diary.status.to_i == 1 %>
+	    	我的装修日记地址：<br/><a href="<%= genration_diary_path(remark.other_id) %>" target="_blank"><%= genration_diary_path(remark.other_id) %></a>
+	  	<% end %>
+	  <% end %>
+	  </div>
+		<div class="zxdpn_lysj"><%= remark.created_at.to_s(:db) %></div>
+		</li>
+		<% end %>
+	</ul>
+<%=will_paginate_remote(@remarks, :update=>'remark_div', :params => "&id=#{@firm.id}", :url=>"/embed/remark_page" ,:inner_window => 0,:outer_window => 0)%>
+</div>
+		

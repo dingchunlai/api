@@ -1,0 +1,412 @@
+<script>
+function showmenu(tag,evt){
+ var light=document.getElementById(tag);
+        var _event = evt ? evt : event; 
+	light.style.left=_event.clientX+document.body.scrollLeft+"px";
+	light.style.top=_event.clientY+document.body.scrollTop+"px";
+        light.style.display='block';
+ }
+function hidemenu(tag){
+ var light=document.getElementById(tag);
+ light.style.display='none';
+}
+</script>
+<%@company = @decofirm%>
+<%if !@company.nil?%>
+<%@company_id = @company.id%>
+<%end%>
+<%= javascript_include_tag :defaults %>
+<script>
+function sf(){document.f.q.focus();}
+window.gbar={};(function(){var g=window.gbar,j,k;function l(a){var d=window.encodeURIComponent&&(document.forms[0].q||"").value;if(d)a.href=a.href.replace(/([?&])q=[^&]*|$/,function(h,f){return(f||"&")+"q="+encodeURIComponent(d)})}g.qs=l;function m(a,d,h,f,b,c){var i=document.getElementById(a),e=i.style;if(i){e.left=f?"auto":d+"px";e.right=f?d+"px":"auto";e.top=h+"px";e.visibility=k?"hidden":"visible";if(b){e.width=b+"px";e.height=c+"px"}else{m(j,d,h,f,i.offsetWidth,i.offsetHeight);k=k?"":a}}}g.tg=function(a){a=a||window.event;var d=0,h,f=window.navExtra,b,c=a.target||a.srcElement;a.cancelBubble=true;if(c.className!="gb3")c=c.parentNode;if(!j){b=document.createElement(Array.every||window.createPopup?"iframe":"div");b.frameBorder="0";b.src="#";j=c.parentNode.appendChild(b).id="gbs";document.onclick=g.close}a=c.getAttribute("aria-owns")||"gbi";b=c.offsetWidth;var i=c.offsetTop>20?46:24,e;do d+=c.offsetLeft||-150;while(c=c.offsetParent);if(a=="gbi")for(b=document.getElementById(a);f&&(h=f.pop());)b.insertBefore(h,b.firstChild).className="gb2";else e=d=(document.documentElement.clientWidth||document.body.clientWidth)-d-b;k!=a&&g.close();m(a,d,i,e)};g.close=function(){k&&m(k,0,0)}})();
+</script>
+<div <%if controller.controller_name == 'cases' && controller.action_name == 'show'%>class="ipath"<%else%>class="nav"<%end%>><strong>您的位置：</strong><%= location %></div>
+<div id="casepic" class="clearfix">
+  <div id="titbox">
+  <span class="spanleft">
+  <%if @caseprve.nil?%>
+     <%pathurl = gen_firm_city_case_detail(201804,237725)%>
+  <a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="蓝白黄 色彩装修阳光简约婚房"><< 蓝白黄 色彩装修阳光简约婚房</a>
+  <%else%>
+  	<%if @caseprve[0].nil?%>
+  		<%pathurl = gen_firm_city_case_detail(201804,237725)%>
+  		<a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="蓝白黄 色彩装修阳光简约婚房"><< 蓝白黄 色彩装修阳光简约婚房</a>
+  	<%else%>
+  		<%pathurl = gen_firm_city_case_detail(@caseprve[0].COMPANYID,@caseprve[0].ID)%>
+  		<a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=@caseprve[0].NAME%>">
+			<< <%=@caseprve[0].NAME%>
+		</a>
+  	<%end%>
+  <%end%>
+  </span>
+    <h2><%=@newcase.NAME%></h2>
+    <span class="spanright">
+    <%if @casenext.nil?%>
+    	<%pathurl = gen_firm_city_case_detail(201804,237725)%>
+	  <a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="蓝白黄 色彩装修阳光简约婚房"> 蓝白黄 色彩装修阳光简约婚房 >></a>
+	  <%else%>
+	  	<%if @casenext[0].nil?%>
+	  		<%pathurl = gen_firm_city_case_detail(201804,237725)%>
+	  		<a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="蓝白黄 色彩装修阳光简约婚房"> 蓝白黄 色彩装修阳光简约婚房 >></a>
+	  	<%else%>
+	  		<%pathurl = gen_firm_city_case_detail(@casenext[0].COMPANYID,@casenext[0].ID)%>
+	  		<a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=@casenext[0].NAME%>">
+				<%=@casenext[0].NAME%> >>
+			</a>
+	  	<%end%>
+	  <%end%>
+    </span></div>
+  <%= render :partial => "decoshare/case_left"%>
+  <div id="centerbox">
+    <script language="javascript">
+    function killErrors() {
+      return true;
+    }
+    window.onerror = killErrors;
+  </script>
+    <script type="text/javascript" src="http://js.51hejia.com/js/imgplayer2.js?20091015"></script>
+    <!-- 等比缩放图片 -->
+    <script type="text/javascript">
+  var flag=false;
+  function DrawImage(ImgD){
+    var image=new Image();
+    var iwidth = 499; //定义允许宽度，当宽度大于这个值时等比例缩小
+    var iheight = 700; //定义允许高度，当高度大于这个值时等比例缩小
+    image.src=ImgD.src;
+    if(image.width>0 && image.height>0){
+      flag=true;
+      if(image.width/image.height>= iwidth/iheight){
+        if(image.width>iwidth){
+          ImgD.width=iwidth;
+          ImgD.height=(image.height*iwidth)/image.width;
+        }else{
+          ImgD.width=image.width;
+          ImgD.height=image.height;
+        }
+      }else{
+        if(image.height>iheight){
+          ImgD.height=iheight;
+          ImgD.width=(image.width*iheight)/image.height;
+        }else{
+          ImgD.width=image.width;
+          ImgD.height=image.height;
+        }
+      }
+    }
+  }
+</script>
+    <div class="articlepic clearfix">
+      <div class="artdesl">
+      <%tagcount = @taglist.size+1%>
+        <ul>
+          <li> 
+          <a href="#" onclick="new Ajax.Updater('uuu','/cases/up', {asynchronous:true, evalScripts:true, parameters:'id='+<%=@newcase.ID%>});"><img alt="顶" src="http://js.51hejia.com/img/caseimages/good.gif" title="顶" /></a></li>
+          <li id="uuu"><%= render :partial => "up"%></li>
+          <li> 
+          <a href="#" onclick="new Ajax.Updater('ddd','/cases/down', {asynchronous:true, evalScripts:true, parameters:'id='+<%=@newcase.ID%>});"><img alt="踩" src="http://js.51hejia.com/img/caseimages/bad.gif" title="踩" /></a>
+          </li>
+          <li id="ddd"><%= render :partial => "down", :object => @newcase %></li>
+          <li id="save_case">
+         	<%if user_logged_in? %>
+      		<a href="#" onclick="new Ajax.Updater('collection', '/collections/add', {asynchronous:true, evalScripts:true, parameters:'obj_id=<%=@newcase.ID%>&obj_type=2&obj_name=<%=@newcase.NAME%>&url= http://z.51hejia.com/anli/<%=@newcase.ID%>&photo_url=<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=@newcase.ID%>.jpg'});"><img alt="收藏本套案例" src="http://js.51hejia.com/img/caseimages/save.gif" title="收藏本套案例" /></a>
+	      	<%else%>
+	      	<a href="#" onclick="Divopop('Login');"><img alt="收藏本套案例" src="http://js.51hejia.com/img/caseimages/save.gif" title="收藏本套案例" /></a>
+	      	<%end%>
+          	
+         <!-- <%#= render :partial => "shoucang_button", :object => @fav_info%>-->
+          </li>
+          <li> <a href="/anli/down_case/<%=@newcase.ID%>" target="_blank"> <img src="http://js.51hejia.com/img/caseimages/download.gif" alt="下载本套案例" title="下载本套案例" width="11" height="15" /> </a> </li>
+        </ul>
+      </div>
+      <script type="text/javascript" src="http://js.51hejia.com/js/chrome.js"></script>
+      <div class="destag" id="chromemenu1">
+        <!--<a href="//tuku/down_case/" target="_blank">下载</a>：-->
+        <ul>
+          <li><a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/<%=@newcase.ID%>" >全部(<%=@decophoto.size%>)</a></li>
+          <%if @taglist.size>0%>
+	          <% 0.upto(@taglist.size - 1) do |i| %>
+		          <%if i<=3%>
+		          	<li><a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/<%=@newcase.ID%>/<%=@taglist[i].id%>"><%=@taglist[i].name%>(<%=@taglist[i]["count(t.photo_id)"]%>)</a></li>
+		          <%end%>
+	          <%end%>
+          <%end%>
+          <li><a href="#" rel="dropmenu2">更多>></a></li>
+        </ul>
+      </div>
+      <div id="dropmenu2" class="dropmenudiv3"> 
+      	  <%if @taglist.size>0%>
+	          <% 0.upto(@taglist.size - 1) do |i| %>
+		          <%if i>3%>
+		          	<li><a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/<%=@newcase.ID%>/<%=@taglist[i].id%>"><%=@taglist[i].name%>(<%=@taglist[i]["count(t.photo_id)"]%>)</a></li>
+		          <%end%>
+	          <%end%>
+          <%end%>
+      </div>
+      <script type="text/javascript">
+          cssdropdown.startchrome("chromemenu1")
+        </script>
+      <div class="artdesr">
+        <input type="hidden" id="imageUrl" value="<%=IMAGE_URL%>/files/hekea/case_img/20090429/img200904291240983028093.jpg"/>
+        <a href="http://tuku.51hejia.com/zhuangxiu!screen/tuku-<%= @newcase.ID%>" target="_blank" title="全屏"> <img src="http://www.51hejia.com/images/photo/des08.gif" alt="全屏" border="0"> </a> </div>
+      <div class="pic">
+        <div class="top"></div>
+        <div class="mai">
+          <div class="up"><a onclick="ss.previous();googleStat();" title="上一张"></a></div>
+          <p align="center" id="bigpic"> <img src="<%if @decophoto.size>0%><%=IMAGE_URL%>/files/hekea/case_img/<%=@decophoto[0].filepath%><%else%><%=IMAGE_URL%>/files/hekea/case_img/20091118/img200911181258552290.jpg<%end%>" id="ss_img"
+                   style="filter:blendTrans(Duration=1);" onload="javascript:DrawImage(this)"/></p>
+          <div class="down"><a onclick="ss.next();googleStat();" title="下一张"></a></div>
+          <div class="info" id="tt"></div>
+        </div>
+        <div class="bottom">
+          <div class="bpinlun">案例简介</div>
+          <div class="autonum">
+            <input type="text" value="5" size="2">
+          </div>
+          <div class="picbutton1" id="autoPlayImg">
+            <!-- 播放 begin -->
+            <div id="Play" onclick="ss.play(); document.getElementById('Pause').style.display='block'; this.style.display='none';" onmousemove="this.style.color='#ffc900';" onmouseout="this.style.color='#dfdfdf';" style="display:none;"></div>
+            <!-- 播放 end -->
+            <!-- 暂停 begin -->
+            <div id="Pause" onclick="ss.pause(); document.getElementById('Play').style.display='block'; this.style.display='none';" onmousemove="this.style.color='#ffc900';" onmouseout="this.style.color='#dfdfdf';"></div>
+            <!-- 暂停 end -->
+          </div>
+          <div class="brenqi">上传者：<b title="995658052@qq.com">美图美家</b>&nbsp;|&nbsp;人气：<%= @newcase.VIEWCOUNT %></div>
+        </div>
+      </div>
+      <div id="piclist" style="display:none">
+        <input type="hidden" id="decoSize" value="<%=@decophoto.size%>"/>
+				<%if @decophoto.size>0%>
+					<% 0.upto(@decophoto.size - 1) do |i| %>
+					<input type="hidden" id="decoUrl<%= i %>" value=" <%=IMAGE_URL%>/files/hekea/case_img/<%=@decophoto[i].filepath%>"/>
+		            <input type="hidden" id="title<%= i %>" value="<%=@decophoto[i].description%>"/>
+		            <a href=" <%=IMAGE_URL%>/files/hekea/case_img/<%=@decophoto[i].filepath%>" rel="lyteshow[heavens]">
+		            </a>
+					<%end%>
+				<%end%>
+				<input type="hidden" id="decoSelSize" value="<%=@decophoto.size%>">
+      </div>
+      <script type="text/javascript" language="javascript">
+        //内容部分
+        ss = new slideshow("ss");ss.prefetch = 1;ss.sizelmt = true;ss.repeat = true;
+        ss.textid='con';
+        var decoSize=document.getElementById("decoSize");
+        var tagSize=document.getElementById("tagSize");
+        if(tagSize!=null){
+          var str='<a href="#" onclick="checkAllSubmit();">全部</a>('+decoSize.value+')&nbsp;&nbsp;';
+          for(i=0;i<tagSize.value;i++){
+            var tagId=document.getElementById("tagId"+i);
+            var tagName=document.getElementById("tagName"+i);
+            var tagCount=document.getElementById("tagCount"+i);
+            str+='<input type="hidden" id="tagId'+i+'" value="'+tagId.value+'">';
+            str+='<a href="#" onclick="showDeco('+i+',#<Case:0xb5905550>)">'+tagName.value+'</a>('+tagCount.value+')&nbsp;&nbsp;';
+          }
+        }
+        if(decoSize!=null){
+          for(j=0;j<decoSize.value;j++){
+            var decoUrl=document.getElementById("decoUrl"+j);
+            var title=document.getElementById("title"+j);
+            s = new slide();
+            s.src = decoUrl.value;
+            s.title = title.value;
+            s.link = decoUrl.value;
+            s.text = str;
+            ss.add_slide(s);
+          }
+        }
+        for(var i=0;i<ss.slides.length;i++){s = ss.slides[i];s.target = "_blank";}
+        //--><!]]>
+        ss.pre_update_hook = function(){
+          sid = ss.current;
+          title = ss.slides[sid].title;
+          linkurl = ss.slides[sid].link;
+          totals = ss.slides.length;
+          scon = ss.slides[sid].con;
+          tempid = parseInt(sid) + 1;
+
+
+      document.getElementById("tt").innerHTML = title;
+
+
+    //document.getElementById("con").innerHTML = scon;
+  }
+  if(document.images){ss.image = document.images.ss_img;ss.update();ss.play();}
+
+  if(ss.slides.length>22){
+    document.getElementById("Main").style.height = "575px";
+    document.getElementById("Main").style.background = "url(http://i3.sinaimg.cn/dy/deco/2008/0509/yocc080509img/news_hdtj_080408_001_575.jpg)";
+    document.getElementById("xghd").style.borderBottom = "none";
+  }
+  try{
+    setTimeout("getTukuTag(481933,'case')",1000);
+  }catch(e){}
+
+      </script>
+      <div class="ptext"><%=@newcase.INTRODUCE%></div>
+      <div class="clear"></div>
+    </div>
+    <script language="javascript">
+<!--
+//图片滚动列表
+var Speed_1 = 10; //速度(毫秒)
+var Space_1 = 20; //每次移动(px)
+var PageWidth_1 = 116 * 3; //翻页宽度
+var interval_1 = 7000; //翻页间隔
+var fill_1 = 0; //整体移位
+var MoveLock_1 = false;
+var MoveTimeObj_1;
+var MoveWay_1="right";
+var Comp_1 = 0;
+var AutoPlayObj_1=null;
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay_1(){clearInterval(AutoPlayObj_1);AutoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',interval_1)}
+function ISL_GoUp_1(){if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="left";MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);}
+function ISL_StopUp_1(){if(MoveWay_1 == "right"){return};clearInterval(MoveTimeObj_1);if((GetObj('ISL_Cont_1').scrollLeft-fill_1)%PageWidth_1!=0){Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1);CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrUp_1(){if(GetObj('ISL_Cont_1').scrollLeft<=0){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft+GetObj('List1_1').offsetWidth}
+GetObj('ISL_Cont_1').scrollLeft-=Space_1}
+function ISL_GoDown_1(){clearInterval(MoveTimeObj_1);if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="right";ISL_ScrDown_1();MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1)}
+function ISL_StopDown_1(){if(MoveWay_1 == "left"){return};clearInterval(MoveTimeObj_1);if(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0){Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollLeft%PageWidth_1+fill_1;CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrDown_1(){if(GetObj('ISL_Cont_1').scrollLeft>=GetObj('List1_1').scrollWidth){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft-GetObj('List1_1').scrollWidth}
+GetObj('ISL_Cont_1').scrollLeft+=Space_1}
+function CompScr_1(){if(Comp_1==0){MoveLock_1=false;return}
+var num,TempSpeed=Speed_1,TempSpace=Space_1;if(Math.abs(Comp_1)<PageWidth_1/2){TempSpace=Math.round(Math.abs(Comp_1/Space_1));if(TempSpace<1){TempSpace=1}}
+if(Comp_1<0){if(Comp_1<-TempSpace){Comp_1+=TempSpace;num=TempSpace}else{num=-Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollLeft-=num;setTimeout('CompScr_1()',TempSpeed)}else{if(Comp_1>TempSpace){Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollLeft+=num;setTimeout('CompScr_1()',TempSpeed)}}
+function picrun_ini(){
+GetObj("List2_1").innerHTML=GetObj("List1_1").innerHTML;
+GetObj('ISL_Cont_1').scrollLeft=fill_1>=0?fill_1:GetObj('List1_1').scrollWidth-Math.abs(fill_1);
+GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(AutoPlayObj_1)}
+GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+AutoPlay_1();
+}
+//展示滚动图片结束
+//-->
+</script>
+    <div class="aboutpic clearfix">
+      <h3>相关案例</h3>
+      <A onmouseup="ISL_StopUp_1()" class="LeftBotton" onmousedown="ISL_GoUp_1()" onmouseout="ISL_StopUp_1()" href="javascript:void(0);" target="_self"></A>
+      <div class="pcont" id="ISL_Cont_1">
+        <div class="ScrCont">
+          <div id="List1_1">
+            <!-- piclist begin -->
+             <% results = query_hot_image2(@case_id) %>
+             <%results.each do |image|%>
+             	<%if !image.COMPANYID.nil?%>
+      				<%pathurl = gen_firm_city_case_detail(image.COMPANYID,image.ID)%>
+      			<%end%>
+            	<A class="pl" href="<%if pathurl.nil?%>/anli/<%=image.ID%><%else%><%=pathurl%><%end%>" target="_blank"><img height="72" alt="<%=image.NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=image.ID%>.jpg"><%=image.NAME%></a>
+            <%end%>
+            <!-- piclist end -->
+          </div>
+          <div id="List2_1"></DIV>
+        </div>
+      </div>
+      <A onmouseup="ISL_StopDown_1()" class="RightBotton" onmousedown="ISL_GoDown_1()" onmouseout="ISL_StopDown_1()" href="javascript:void(0);" target="_self"></A> </div>
+    <SCRIPT type=text/javascript>
+<!--
+picrun_ini()
+//-->
+</SCRIPT>
+    <div id="piccomment">
+      <div class="conbox01">
+        <h3>网友评论</h3>
+      </div>
+      <div class="contit01">
+       <iframe src="http://wb.51hejia.com/rest/reply?aid=1&tid=5&eid=<%=@newcase.ID%>&tp=all" frameborder="0" width="100%" height="350px"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="rightside">
+    <div class="rightbox">
+      <h3>案例信息</h3>
+      <div class="righttext01">
+      <%if !@designermodel.nil?%>
+        <dl class="clearfix">
+          <dt><img src="http://d.51hejia.com/files/designer/<%=@designermodel.PICURL%>" /></dt>
+          <dd>设计师：<%=@designermodel.DESNAME%></dd>
+          <dd>设计费：<%if @designermodel.to_s=="1"%>免费
+                        <%elsif  @designermodel.DESFEE.to_s=="2"%>20-50元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="3"%>50-80元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="4"%>80-120元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="5"%>120-200元/平
+                          <%elsif  @designermodel.DESFEE.to_s=="6"%>200元以上/平
+                        <%else%>
+                        <%=@designermodel.DESFEE%>
+                        <%end%></dd>
+          <dd>擅长风格：<% if @designermodel.DESSTYLE =~/\d/ -%>
+				          <%= (@designermodel.DESSTYLE.split(',').inject("") { |i,s|  i << "#{@style[s.strip]} "}.strip) unless @designermodel.DESSTYLE.blank?%>
+						  <% else -%>
+					      <% @designermodel.DESSTYLE -%>
+						  <% end -%></dd>
+        </dl>
+      <%end%>
+        <ul>
+          <li>关键字：
+          <% tagpic = Case.gecasetag(@newcase.ID)%>
+			<%for tag in tagpic%>
+          	<a href="/zhuangxiuanli" target="_blank" title="<%=tag.TAGNAME%>"><%=tag.TAGNAME%></a>
+        	<%end%>
+          </li>
+        </ul>
+        <dl class="clearfix dl01">
+          <dt>
+          		<%if !@decofirm.nil?%><a href="/firms-<%=@decofirm.id%>" target="_blank">
+            	<%if @decofirm.name_abbr.to_s=='装饰公司'%><%=truncate(@decofirm.name_zh,11)%><%else%><%=truncate(@decofirm.name_abbr,11)%><%end%></a> 
+            	<%end%>
+            	<span id="phone"><a href="javascript:void(0)" onclick="insertphone()" class="dianhua">查看电话</a>
+            	<%if !@decofirm.nil?%>
+	            	<script>
+	            		function insertphone(){
+	            			document.getElementById('phone').innerHTML = "<%=@decofirm.telephone%>";
+	            		}
+	            	</script>
+            	<%end%>
+            <script type="text/javascript">
+cssdropdown.startchrome("phone")
+</script>
+            </span></dt>
+            <div id="lightmenu" class="white_content">
+      			<div class="close"><span><%if !@decofirm.nil?%><%=@decofirm.telephone%><%end%></span><a href="javascript:void(0)" onclick="hidemenu('lightmenu')"></a></div>
+		  	</div>
+          <%if !@decofirm.nil?%>
+          <dd><a href="<%=gen_firm_city_designers(@decofirm.id)%>" target="_blank" title="设计师">设计师</a>(<%=@decofirm.designers_count.to_i%>)</dd>
+          <dd><a href="<%=gen_firm_city_photos(@decofirm.id)%>" target="_blank" title="施工照片">施工照片</a>(<%=@decofirm.photos_count.to_i%>)</dd>
+          <dd><a href="/gs-<%=@decofirm.id%>" target="_blank" title="装修点评">装修点评</a>(<%=@decofirm.comments_count.to_i%>)</dd>
+          <dd><a href="<%=gen_firm_city_promotion(@decofirm.id)%>" target="_blank" title="优惠信息">优惠信息</a></dd>
+          <%end%>
+        </dl>
+      </div>
+    </div>
+    <%if !@decofirm.nil?%>
+    <div class="rightbox">
+    <% cs = DecoFirm.getcase_company(@decofirm.id)%>
+      <h3><span><a href="/cases/company/<%=@decofirm.id%>" target="_blank" title="更多">更多>></a></span>该公司其他案例</h3>
+      <div class="righttext02">
+        <ul class="clearfix">
+          <% cs.each do |c| %>
+          	<%des = Case.get_photo_photo(c.ID)%>
+          	<%if !c.COMPANYID.nil?%>
+      			<%pathurl = gen_firm_city_case_detail(c.COMPANYID,c.ID)%>
+      		<%end%>
+          	<li><a href="<%if pathurl.nil?%>/anli/<%=c.ID%><%else%><%=pathurl%><%end%>" target="_blank"><img alt="<%=c.NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=c.ID%>.jpg" onerror="javascript:this.src='<%if des.size>0%><%=IMAGE_URL%>/files/hekea/case_img/<%=des[0].filepath%><%else%>http://www.51hejia.com/api/images/none.gif<%end%>'"/></a></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    <%end%>
+    <div class="rightbox">
+      <h3>热门优惠信息</h3>
+      <div class="righttext03">
+        <ul>
+          <% parse_xml(54005, ["title", "url"], 8).each do |p| -%>
+          
+						<li><%= link_to p["title"].chars[0,15], p["url"], :title =>p["title"] , :target => "_blank" -%></li>
+						<% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+	</div>

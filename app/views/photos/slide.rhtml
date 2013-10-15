@@ -1,0 +1,250 @@
+<% content_for :head do -%>
+<script type="text/javascript" src="http://js.51hejia.com/js/imgplayer1.js"></script>
+<script type="text/javascript" src="http://js.51hejia.com/js/prototype1.js"></script>
+<script type="text/javascript" src="http://js.51hejia.com/js/scriptaculous.js?load=effects,builder.js"></script>
+<script type="text/javascript" src="http://js.51hejia.com/js/lightbox.js"></script>
+<% end -%>
+
+<!-- 等比缩放图片 -->
+<script type="text/javascript">
+var flag=false;
+function DrawImage(ImgD){
+	var image=new Image();
+	var iwidth = 431; //定义允许宽度，当宽度大于这个值时等比例缩小
+	var iheight = 325; //定义允许高度，当高度大于这个值时等比例缩小
+	image.src=ImgD.src;
+	if(image.width>0 && image.height>0){
+		flag=true;
+		if(image.width/image.height>= iwidth/iheight){
+			if(image.width>iwidth){
+				ImgD.width=iwidth;
+					ImgD.height=(image.height*iwidth)/image.width;
+				}else{
+				ImgD.width=image.width;
+				ImgD.height=image.height;
+			}
+		}else{
+			if(image.height>iheight){
+				ImgD.height=iheight;
+				ImgD.width=(image.width*iheight)/image.height;
+			}else{
+				ImgD.width=image.width;
+				ImgD.height=image.height;
+			}
+		}
+	}
+}
+</script>
+		
+		<div class="artleft1">
+		<a class="up" href="" onmousedown="ISL_GoUp_1();" onmouseup="ISL_StopUp_1()" onmouseout="ISL_StopUp_1()" onclick="return false;">向上</a>
+        <div class="box" id="ISL_Cont_1" style="height:570px;overflow:hidden;zoom:1;">
+		<div class="ScrCont">
+        <div id="List1_1">
+				<% @photos.each do |photo| -%>
+					<%= link_to image_tag(photo.image.url(:medium), :alt => photo.title), photo.image.url, :title => photo.title, :rel => "lightbox[plants]" %>
+				<% end -%>
+        </div>
+        </div>
+        </div>
+		<a class="down" href="" onmousedown="ISL_GoDown_1();" onmouseup="ISL_StopDown_1()" onmouseout="ISL_StopDown_1()" onclick="return false;">向下</a>
+		</div>
+        <script language="javascript" type="text/javascript">
+
+
+//图片滚动列表 mengjia 070927
+var intval = 8000 //间隔(毫秒)
+var Speed_1 = 10; //速度(毫秒)
+var Space_1 = 20; //每次移动(px)
+var PageWidth_1 = parseInt(document.getElementById('ISL_Cont_1').style.height) - 12 //翻页宽度
+
+var fill_1 = 0; //整体移位
+var MoveLock_1 = false;
+var MoveTimeObj_1;
+var MoveWay_1="right";
+var Comp_1 = 0;
+var AutoPlayObj_1=null;innerHTML=GetObj("List1_1").innerHTML;GetObj('ISL_Cont_1').scrollTop=fill_1>=0?fill_1:GetObj('List1_1').scrollHeight-Math.abs(fill_1);GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(AutoPlayObj_1)}
+GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+AutoPlay_1();
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay_1(){clearInterval(AutoPlayObj_1);AutoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',intval)}
+function ISL_GoUp_1(){if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="left";MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);}
+function ISL_StopUp_1(){if(MoveWay_1 == "right"){return};clearInterval(MoveTimeObj_1);if((GetObj('ISL_Cont_1').scrollTop-fill_1)%PageWidth_1!=0){Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollTop%PageWidth_1);CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrUp_1(){if(GetObj('ISL_Cont_1').scrollTop<=0){GetObj('ISL_Cont_1').scrollTop=GetObj('ISL_Cont_1').scrollTop+GetObj('List1_1').offsetheight}
+GetObj('ISL_Cont_1').scrollTop-=Space_1}
+function ISL_GoDown_1(){clearInterval(MoveTimeObj_1);if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="right";ISL_ScrDown_1();MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1)}
+function ISL_StopDown_1(){if(MoveWay_1 == "left"){return};clearInterval(MoveTimeObj_1);if(GetObj('ISL_Cont_1').scrollTop%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0){Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollTop%PageWidth_1+fill_1;CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrDown_1(){if(GetObj('ISL_Cont_1').scrollTop>=GetObj('List1_1').scrollHeight){GetObj('ISL_Cont_1').scrollTop=GetObj('ISL_Cont_1').scrollTop-GetObj('List1_1').scrollHeight}
+GetObj('ISL_Cont_1').scrollTop+=Space_1}
+function CompScr_1(){if(Comp_1==0){MoveLock_1=false;return}
+var num,TempSpeed=Speed_1,TempSpace=Space_1;if(Math.abs(Comp_1)<PageWidth_1/2){TempSpace=Math.round(Math.abs(Comp_1/Space_1));if(TempSpace<1){TempSpace=1}}
+if(Comp_1<0){if(Comp_1<-TempSpace){Comp_1+=TempSpace;num=TempSpace}else{num=-Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollTop-=num;setTimeout('CompScr_1()',TempSpeed)}else{if(Comp_1>TempSpace){Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollTop+=num;setTimeout('CompScr_1()',TempSpeed)}}	
+</script>
+		<div class="artcenter">
+			<h1><%= @firm.name_zh %></h1>
+			<div class="back">
+		<a id="aPause" href="#" class="goonplay" onclick="ss.play(); document.getElementById('Pause').style.display='block'; document.getElementById('Play').style.display='none'; this.style.display='none'; document.getElementById('aPlay').style.display='block';" style="display:none;">
+		手动播放
+		</a> 
+		<a id="aPlay" href="#" class="goonplay" onclick="ss.play(); document.getElementById('Pause').style.display='block'; document.getElementById('Play').style.display='none'; this.style.display='none'; document.getElementById('aPause').style.display='block';" >
+		循环播放
+		</a>
+		<%= link_to "返回店铺", firm_path(@firm) %></div>
+			<div class="picbox">
+<div class="picboxtop"></div>
+<div class="picboxbody">
+	    <div class="picleft"><p><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','http://d.51hejia.com/images/tuku/det878/picleft_bt1.gif',1)" onclick="ss.previous();googleStat();"><img src="http://d.51hejia.com/images/tuku/det878/picleft_bt.gif" alt="上一张" name="Image4" width="15" height="242" border="0"></a></p></div>
+		<div class="bigpic" id="bigpic">
+		<p><img src="http://d.51hejia.com/images/tuku/det878/pic01.gif" width="499" height="394" onload="javascript:DrawImage(this)" id="ss_img" style="filter:blendTrans(Duration=1);"></p>
+		</div>
+
+		<div class="picright"><p><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image5','','http://d.51hejia.com/images/tuku/det878/picright_bt1.gif',1)" onclick="ss.next();googleStat();"><img src="http://d.51hejia.com/images/tuku/det878/picright_bt.gif" alt="下一张" name="Image5" width="16" height="242" border="0"></a></p></div>
+	  </div>
+<div class="picboxbottom"></div>
+<div class="playbox">
+	    <div class="autonum"><input type="text" value="2" size="2">
+	    </div>
+		<div class="picbutton1" id="autoPlayImg">
+		<!-- 播放 begin -->
+			<div id="Play" onclick="ss.play(); document.getElementById('Pause').style.display='block'; this.style.display='none';" onmousemove="this.style.color='#ffc900';" onmouseout="this.style.color='#dfdfdf';" style="display:none;"></div>
+			<!-- 播放 end -->
+			<!-- 暂停 begin -->
+			<div id="Pause" onclick="ss.pause(); document.getElementById('Play').style.display='block'; this.style.display='none';" onmousemove="this.style.color='#ffc900';" onmouseout="this.style.color='#dfdfdf';"></div>
+			<!-- 暂停 end -->
+		</div>
+		<ul>
+		  <li><img src="http://d.51hejia.com/images/tuku/det878/bt01.gif"></li>
+		  <li><a onclick="ss.previous();googleStat();"><img src="http://d.51hejia.com/images/tuku/det878/bt02.gif"></a></li>
+		  <li><a onclick="ss.next();googleStat();"><img src="http://d.51hejia.com/images/tuku/det878/bt03.gif"></a></li>
+		  <li><img src="http://d.51hejia.com/images/tuku/det878/bt04.gif"></li>
+		</ul>
+		<div class="fullsc">
+				
+				<input type="hidden" id="decoSize" value="<%= @photos.size -%>"/>
+					
+						<%= hidden_field_tag "", @photos[0].image.url, :id => "decoUrl0" %>
+			            <input type="hidden" id="title0" value=""/>
+			            <!--<a href="http://tuku.51hejia.com/zhuangxiu!screen/tuku-251609" target="_blank" title=""></a>-->
+							<img src="http://d.51hejia.com/images/tuku/det878/big.gif" border="0">
+						
+		</div>
+		<div class="piclist" id="piclist" style="display:none">
+				<input type="hidden" id="decoSize" value="<%= @photos.size -%>"/>
+				<% @photos.each_with_index do |photo, index| %>
+					<%= hidden_field_tag "", photo.image.url, :id => "decoUrl#{index}" %>
+					<%= hidden_field_tag "", "", :id => "title#{index}" %>
+					<%= link_to "", photo.image.url, :rel => "lyteshow[heavens]" %>
+				<% end %>
+					
+				<input type="hidden" id="decoSelSize" value="<%= @photos.size -%>">
+		</div>
+				<input type="hidden" id="tagSize" value="5"/>
+				
+					
+						<input type="hidden" id="tagId0" value="2"/>
+						<input type="hidden" id="tagName0" value="客厅"/>
+						<input type="hidden" id="tagCount0" value="1"/>
+					
+						<input type="hidden" id="tagId1" value="95"/>
+						<input type="hidden" id="tagName1" value="餐厅"/>
+						<input type="hidden" id="tagCount1" value="1"/>
+					
+						<input type="hidden" id="tagId2" value="202"/>
+						<input type="hidden" id="tagName2" value="过道"/>
+						<input type="hidden" id="tagCount2" value="1"/>
+					
+						<input type="hidden" id="tagId3" value="241"/>
+						<input type="hidden" id="tagName3" value="卫生间"/>
+						<input type="hidden" id="tagCount3" value="1"/>
+					
+						<input type="hidden" id="tagId4" value="272"/>
+						<input type="hidden" id="tagName4" value="其他"/>
+						<input type="hidden" id="tagCount4" value="5"/>
+					
+				
+<script type="text/javascript" language="javascript">
+//内容部分
+ss = new slideshow("ss");ss.prefetch = 1;ss.sizelmt = true;ss.repeat = true;
+ss.textid='con';
+var decoSize=document.getElementById("decoSize");
+var tagSize=document.getElementById("tagSize");
+if(tagSize!=null){
+	var str='标签：<a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/251609" >全部</a>('+decoSize.value+')&nbsp;&nbsp;';
+	for(i=0;i<tagSize.value;i++){
+		var s="";
+		var tagId=document.getElementById("tagId"+i);
+		var tagName=document.getElementById("tagName"+i);
+		var tagCount=document.getElementById("tagCount"+i);
+		str+='<input type="hidden" id="tagId'+i+'" value="'+tagId.value+'">';
+		str+='<a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/251609/'+tagId.value+'" target="_blank">'+tagName.value+'</a>('+tagCount.value+')&nbsp;&nbsp;';
+		//str+=''+tagName.value+'('+tagCount.value+')&nbsp;&nbsp;';
+	}
+}
+if(decoSize!=null){
+	for(j=0;j<decoSize.value;j++){
+		var decoUrl=document.getElementById("decoUrl"+j);
+		var title=document.getElementById("title"+j);
+		s = new slide();
+		s.src = decoUrl.value;
+		s.title = title.value;
+		s.link = decoUrl.value;
+		s.text = str;
+		ss.add_slide(s);
+	}
+}
+for(var i=0;i<ss.slides.length;i++){s = ss.slides[i];s.target = "_blank";}
+//--><!]]>
+ss.pre_update_hook = function(){
+	sid = ss.current;
+	title = ss.slides[sid].title;
+	linkurl = ss.slides[sid].link;
+	totals = ss.slides.length;
+	//scon = ss.slides[sid].con;
+	tempid = parseInt(sid) + 1;
+	//document.getElementById("tt").innerHTML = '<a href="'+linkurl+'" target="_blank">'+title+'</a>';
+	//document.getElementById("con").innerHTML = scon;
+}
+if(document.images){ss.image = document.images.ss_img;ss.update();ss.play();}
+
+if(ss.slides.length>22){
+	document.getElementById("Main").style.height = "575px";
+	document.getElementById("Main").style.background = "url(http://i3.sinaimg.cn/dy/deco/2008/0509/yocc080509img/news_hdtj_080408_001_575.jpg)";
+	document.getElementById("xghd").style.borderBottom = "none";
+}
+try{
+setTimeout("getTukuTag(245625,'case')",1000);
+}catch(e){}
+</script>
+<!-- 播放器初始化 begin -->
+
+<!-- 播放器初始化 end -->
+
+	  </div>
+	  
+</div>
+		</div>
+<%@company = @firm%>
+<%= render :partial => "share/deco_filter_seo" %>
+		<div class="side">
+			<div class="h6"><%= @firm.name_zh -%></div>
+			<div class="buildinginfo">
+				<%= image_tag(@firm.logo.url(:thumb)) %>
+				<!--<img src="http://www.51hejia.com/images/zhuangxiu805/pic006.jpg" class="img1" alt="" />-->
+				<p>总店区域：<%= districts_hash[@firm.district.to_s] -%><br /><span class="up">综合分：<%= @firm.total_score -%></span></p>
+			</div>
+			<div class="scontent">
+				地址：<%= @firm.address -%><br />
+				电话：<%= @firm.telephone -%>
+			</div>
+			<div class="h6">经典点评</div>
+			<ul class="textlist">
+				<%DecoReview.getgoodreviews().each do |re|%>
+				<li><a href="/dianping/show/<%=re.id%>" target="_blank"><%=re.title%></a></li>
+				<%end%>
+			</ul>
+			<%= render :partial => "share/deco_filter_seo_left" %>
+		</div>

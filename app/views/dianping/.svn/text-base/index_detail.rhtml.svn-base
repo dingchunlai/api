@@ -1,0 +1,175 @@
+<script src="http://js.51hejia.com/js/prototype.js" type="text/javascript"></script> 
+  <div class="left-side">
+      
+      <div class="box">
+        <div class="tit">
+        排行榜
+        </div>
+        <ul class="box1">
+        	<li><a href="/zhuangxiugongsi/0.0.0.3.0.1.html" target="_blank">口碑排行榜</a></li>
+        	<li><a href="/zhuangxiugongsi/0.0.0.8.0.1.html" target="_blank">案例排行榜</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.4.0.1.html" target="_blank">设计排行榜</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.6.0.1.html" target="_blank">施工排行榜</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.7.0.1.html" target="_blank">服务排行榜</a></li>
+        </ul>
+      </div>
+      
+      <div class="box">
+        <div class="tit">
+        主打价位
+        </div>
+        <ul class="box2">
+        	<li><a href="/zhuangxiugongsi/0.0.0.0.1.1.html" target="_blank">4万以下</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.0.2.1.html" target="_blank">8万以下</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.0.3.1.html" target="_blank">8-20万</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.0.4.1.html" target="_blank">20-100万</a></li>
+            <li><a href="/zhuangxiugongsi/0.0.0.0.5.1.html" target="_blank">100万以上</a></li>
+        </ul>
+      </div>
+      
+       <div class="box">
+        <div class="tit">
+        装修方式
+        </div>
+        <ul class="box2">
+        	<li><a href="/zhuangxiugongsi/0.1.0.0.0.1.html" target="_blank">清包</a></li>
+            <li><a href="/zhuangxiugongsi/0.2.0.0.0.1.html" target="_blank">半包</a></li>
+            <li><a href="/zhuangxiugongsi/0.3.0.0.0.1.html" target="_blank">全包</a></li>
+            <li><a href="/zhuangxiugongsi/0.4.0.0.0.1.html" target="_blank">设计</a></li>
+        </ul>
+      </div>
+      
+      <div class="box">
+        <div class="tit">
+        装修区域
+        </div>
+        <ul class="box2">
+        <% DISTRICTS.sort.each do |k, v| %>
+		<li><a href = "/zhuangxiugongsi/<%=k%>.0.0.0.0.1.html" target="_blank"><%=v%></a></li>
+		<% end %>
+        </ul>
+      </div>
+      
+      <div class="box">
+        <div class="tit tit2">
+        <a href="/zhuangxiugongsi/0.0.0.3.0.1.html" target="_blank">当前信用最佳</a><br/>
+		<a href="/zhuangxiugongsi/0.0.0.3.0.1.html" target="_blank">TOP100装修公司</a>
+        </div>
+        <ul class="box3">
+        <%getseokoubeicompany.each do |c|%>
+			<li><a href="/firms/<%=c.id%>" target="_blank" title="<%=c.name_zh%>"><%=c.name_abbr%></a></li>
+		<% end %>
+        </ul>
+      </div>
+
+      
+  </div>
+  <div class="middle">
+    		<div class="title clearfix middle-title">
+           <a href="/dianping" <%if @type == '0'%>class="now"<%end%> >最新点评</a>
+           <a href="/dianping/1/5" <%if @type == '5'%>class="now"<%end%>>精华点评</a>
+           <a href="/dianping/1/1" <%if @type == '1'%>class="now"<%end%>>4万以下</a>
+           <a href="/dianping/1/2" <%if @type == '2'%>class="now"<%end%>>8万以下</a>
+           <a href="/dianping/1/3" <%if @type == '3'%>class="now"<%end%>>8-20万</a>
+           <a href="/dianping/1/4" <%if @type == '4'%>class="now"<%end%>>20-100万</a>
+            </div>
+            
+            <ul class="complist">
+            	<%= render :partial => "share/deco_filter_commont_index" %> 
+            </ul>
+ 			<div class="page">
+				<%= will_paginate @commonts ,:prev_label=> '上一页',:next_label=> '下一页'%>
+			</div>
+  </div>
+  
+  <div class="right-side">
+
+	<div class="box">
+    	<div class="tit">
+        	网站公告 
+        </div>
+        <ul>
+			<% parse_xml(53999, ["title", "url", "image-url"], 4).each do |p| -%>
+			<li>
+				<%= link_to p['title'], p["url"], :title => p["title"], :target => "_blank" -%>
+				
+			</li>
+			<% end %> 
+        </ul>
+    </div>
+
+    <div class="box">
+    	<div class="tit">
+        	促销活动
+        </div>
+        <ul class="list2">
+        	<%index = 0%>
+        	<%getseoevents.each do |event|%>
+        		<%if index < 5%>
+        		<li><a href="/events/<%=event.id%>" target="_blank"><%=event.title%></a><%if event.starts_at%><p>开始时间：<%=event.starts_at.strftime("%Y-%m-%d")%></p><%end%></li>
+				<%end%>
+			<%index = index + 1%>
+			<%end%>		
+        </ul>
+    </div>
+  
+    <div class="box">
+    	<div class="tit">
+        	可参观样板房
+        </div>
+        <ul class="list2">
+        	<%getseoworksites.each do |fc|%>
+        	<li>
+        		<%if fc.PROVINCE2%>
+        		<span class="sp1"><%=districts_hash[fc.PROVINCE2.to_s]%></span>
+        		<%end%>
+        		<span class="sp2"><a href="/firms/<%=fc.COMPANYID%>/worksites" target="_blank"><%=fc.NAME.chars[0,5]%></a></span>
+        		<span class="sp3"><%=fc.MONEY%></span>
+        	</li>
+        	<%end%>
+        </ul>
+        
+    </div>
+  	<div class="box">
+    	<div class="tit">
+        	人物·观点
+        </div>
+        <ul class="list3">
+    		<% parse_xml(54049, ["title", "url", "image-url"], 10).each do |p| -%>
+			<li>
+				<%= link_to p['title'], p["url"], :title => p["title"], :target => "_blank" -%>
+			</li>
+			<% end %>
+        </ul>
+    </div>
+    
+    <div class="box">
+    	<div class="tit">
+        	经典点评
+        </div>
+        <ul>
+				<%getgoodreviews().each do |re|%>
+				<li><a href="/dianping/show/<%=re.id%>" target="_blank"><%=h re.title.chars[0,15]%></a></li>
+				<%end%>
+        </ul>
+    </div>
+    
+    <div class="box">
+    	<div class="tit">
+        	装修案例
+        </div>
+        <ul>
+        	<%gettopnewcase.each do |c|%>
+        	<li><a href="/anli/<%=c.ID%>"><%=h c.NAME.chars[0,15]%></a></li>
+			<%end%>
+        </ul>
+    </div>
+    
+   
+    
+    
+  
+  </div>
+  
+  </div>
+

@@ -1,0 +1,69 @@
+<link href="http://js.51hejia.com/css/zxdpcss.css?201008021419" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://js2.51hejia.com/js/firmSearch.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#date").change(function(){
+			$("#search_from").submit();
+		});
+	});
+</script>
+<input type='hidden' name='city' id='cityid' value='<%=params[:city].to_i%>'>
+<input type='hidden' name='district' id='districtid' value='<%=params[:district].to_i%>'>
+<input type='hidden' name='style' id='styleid' value='<%=params[:style].to_i%>'>
+<input type='hidden' name='model' id='modelid' value='<%=params[:model].to_i%>'>
+<input type='hidden' name='price' id='priceid' value='<%=params[:price].to_i %>'>
+<input type='hidden' name='order' id='orderid' value='<%= params[:order].to_i %>'>
+<input type='hidden' name='hcase' id='hcaseid' value='<%=params[:hcase].to_i%>'>
+<input type='hidden' name='hcommont' id='hcommontid' value='<%=params[:hcommont].to_i%>'>
+<input type='hidden' name='isProduct' id='isProduct' value='<%=IS_PRODUCT.to_i%>'>
+<div class="list_width960 clearfix">
+    <div class="list_width210 f_l" >
+	  <div class="list_diary clearfix" id="X2" style="display:block">
+	  <%= render :partial => "decoshare/search_gongsi2" %>
+	</div>
+	<div>
+		<!-- 快捷搜索 -->
+		<%= render :partial => "share/quick_search" %>
+	</div>
+</div>
+<div class="list_width739 f_r">
+ 
+	<div class="list_r_t">
+		<div class="list_r_tr f_l list_r list_ztdh">装修点评 -> <%=@city_name%>站 -> <strong>优惠券列表</strong></li></div>
+    </div>
+	<div class="yhqlist_r_li">
+		<form action="/coupon" method="get" id="search_from">
+        <div class="yhqlist_r_search f_l">公司：<input name="firm" id="firm" id= type="text" value="<%=@firm%>" /> 标题：<input name="title" id="title" type="text" value="<%=@title%>"/> <input name="" class="yhqlist_search_btn" type="submit" value=" " />
+        </div>
+        <div class="yhqlist_r_paix f_r">排序：<select style="vertical-align:middle;" id="date" name="date">
+	        <option value=''>请选择</option>
+			<option value='1' <%= 'selected' if @date.to_i == 1 %> >前三天</option>
+			<option value='2' <%= 'selected' if @date.to_i == 2 %> >前一周</option>
+			<option value='3' <%= 'selected' if @date.to_i == 3 %> >前一个月</option>
+			<option value='4' <%= 'selected' if @date.to_i == 4 %> >前三个月</option>
+        </select></div>
+		</form>
+		<ul>
+		<% if !@coupons.nil?%>
+		<% @coupons.each do |coupon| %>
+			<li class="clearfix">
+				<div class="yhqlist_r_img f_l"><a href="<%=gen_firm_city_event(coupon.firms[0].id,coupon.id)%>" target="_blank"><img src="<%=coupon.banner%>" alt="<%= h coupon.title %>" /></a></div>
+				<div class="yhqlist_r_txt f_r">
+                	<div class="yhqlist_r_youh"><span>发布时间：<%=coupon.created_at.strftime('%Y-%m-%d')%></span><strong>优惠信息：</strong><a href="<%=gen_firm_city_event(coupon.firms[0].id,coupon.id)%>" title="<%= h coupon.title %>" target="_blank"><%= h truncate(coupon.title,25,'')%></a></div>
+                    <div class="yhqlist_r_info">
+                    	<h4><%= h coupon.firms[0].name_abbr%>&nbsp;</h4><span class="stars">口碑：<span style="font-size:14px;font-weight:bold;color:red;"><%= coupon.firms[0].praise%></span></span>
+                        <address><span>有效期至：<%= h coupon.ends_at %></span>公司地址：<%=h coupon.firms[0].address%></address>
+                        <a href="<%=generate_firm_path(coupon.firms[0].id)%>" target="_blank" title="<%= h coupon.firms[0].name_abbr%>"></a>
+                    </div>
+                </div>
+			</li>
+		<% end %>
+		</ul>
+		</div>
+		<div class="clearfix">
+          <div class="pagination"><%= will_paginate @coupons%></div>
+        </div>
+		<% end %>
+</div>	
+</div>

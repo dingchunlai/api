@@ -1,0 +1,153 @@
+<!-- 添加栏目Div -->
+<div id="popDivSaveColumn" style="display:none;">
+  <form action="/admin/save_column" method="post">
+    <table class="tb tb2 nobdb">
+      <tbody>
+        <tr>
+          <th class="partition" colspan="15">添加栏目</th>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" class="td27">栏目名称:</td>
+        </tr>
+        <tr class="noborder">
+          <td align="left" class="vtop rowform">
+            <input class="required" name="column[name]" size="50">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" class="td27">栏目组:</td>
+        </tr>
+        <tr class="noborder">
+          <td align="left" class="vtop rowform">
+            <% groups = PublishColumnGroup.find(:all, :conditions => ["editor_id = ? and is_del = ?", session[:editor_id], false]) %>
+            <select name="column[group_id]">
+              <% for result in groups %>
+                <option value="<%= result.id %>"><%= result.name %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="tb tb2 nobdb">
+      <tbody>
+        <tr>
+          <td align="left" class="td27">描述:</td>
+        </tr>
+        <tr>
+          <td align="left" class="td27">
+            <span class="vtop">
+              <textarea class="tarea" id="rulesnew2" name="column[description]" rows="5" cols="80"></textarea>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" value="添加" class="btn" >
+  </form>
+</div>
+<!-- end -->
+
+<!-- 添加栏目组Div -->
+<div id="popDivSaveGroup" style="display:none;">
+  <form action="/admin/save_group" method="post">
+    <table class="tb tb2 nobdb">
+      <tbody>
+        <tr>
+          <th class="partition" colspan="15">添加栏目组</th>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" class="td27">栏目组名称:</td>
+        </tr>
+        <tr class="noborder">
+          <td align="left" class="vtop rowform">
+            <input class="required" name="group[name]" size="50">
+            <input name="group[editor_id]" size="50" value="<%= session[:editor_id] %>" type="hidden">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" value="添加" class="btn" >
+  </form>
+</div>
+<!-- end -->
+<!-- 添加文章Div -->
+<div id="popDivSaveContent" style="display:none;">
+  <form action="/admin/save_content" method="post" enctype="multipart/form-data">
+    <table class="tb tb2 nobdb">
+      <tbody>
+        <tr>
+          <th class="partition" colspan="15">添加文章</th>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" class="td27">标题：<input name="content[title]" size="50"></td>
+          <input name="content[publish_column_id]" value="<%= @column_id %>" type="hidden">
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" align="left" class="td27">URL：<input name="content[url]" size="50"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" align="left" class="td27">
+            发布时间：
+            <input name="content[publish_time]" onfocus="new Calendar().show(this);" size="10" value="<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>"/>
+            &nbsp;失效时间：
+            <input name="content[expire_time]" onfocus="new Calendar().show(this);" size="10" value="<%= Time.mktime(2030).strftime("%Y-%m-%d %H:%M:%S") %>" />
+          </td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" align="left" class="td27">
+            创建时间：
+            <input name="content[entity_created_at]" onfocus="new Calendar().show(this);" size="10" value="<%= Time.now.strftime("%Y-%m-%d") %>" />
+            &nbsp;优先级：
+            <select name="content[order_id]">
+              <% 0.upto(20) do |i| %>
+                <option value="<%= i %>" ><%= i %></option>
+              <% end %>
+          </select></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" align="left" class="td27">
+            样式：
+            <input name="content[text_style_id]" value="0" type="radio" checked>无样式
+            <input name="content[text_style_id]" value="1" type="radio" >加粗
+            <input name="content[text_style_id]" value="2" type="radio" >加红
+            <input name="content[text_style_id]" value="3" type="radio" >加粗加红
+          </td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" align="left" class="td27">选择图片：</td>
+        </tr>
+        <tr class="noborder">
+          <td align="left" class="vtop rowform">
+          <input type="file" name="publish_upload[uploaded_data]" id="publish_upload_uploaded_data" size="50" ></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" align="left" class="td27">
+            产品推广&nbsp;原价：
+            <input name="content[price_ago]" type="text" id="price_ago" size="15" />
+            &nbsp;现价：
+          <input name="content[price_now]" type="text" id="price_now" size="15" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="tb tb2 nobdb">
+      <tbody>
+        <tr>
+          <td align="left" class="td27">描述:</td>
+        </tr>
+        <tr>
+          <td align="left" class="td27">
+            <span class="vtop">
+              <textarea class="tarea" name="content[description]" rows="3" cols="80"></textarea>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" class="td27">专家类型:<input name="content[person_style]" size="20"></td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" value="添加" class="btn" >
+  </form>
+</div>
+<!-- end -->

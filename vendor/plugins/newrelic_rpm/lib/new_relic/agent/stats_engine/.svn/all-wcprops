@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/stats_engine
+END
+samplers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/stats_engine/samplers.rb
+END
+transactions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/stats_engine/transactions.rb
+END
+metric_stats.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/stats_engine/metric_stats.rb
+END

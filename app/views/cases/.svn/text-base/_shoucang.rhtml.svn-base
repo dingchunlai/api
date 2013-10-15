@@ -1,0 +1,19 @@
+<%if !@fav_cases.nil?%>
+<% case_ids = @fav_cases[0].split(",") if @fav_cases[0] %>
+<% case_names = @fav_cases[1].split(",") if @fav_cases[1] %>
+<% image_urls = @fav_cases[2].split(",") if @fav_cases[2] %>
+
+<%if @fav_cases.size>0%>
+	<% 0.upto(@fav_cases.size - 1) do |i| %>
+		<%if !@fav_cases[i].nil?&&case_ids[i].to_i!=0%>
+			<% casesmodel= Case.get_case_by_id(case_ids[i].to_i)%>
+				<%if !casesmodel.COMPANYID.nil?%>
+	      			<%pathurl = gen_firm_city_case_detail(casesmodel.COMPANYID,casesmodel.ID)%>
+	      		<%end%>
+			<%if !case_ids.nil?&&case_ids[i].to_i!=0%>
+				<li><a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=case_names[i]%>"><img src="<%=image_urls[i]%>" alt="<%=case_names[i]%>" /></a><a href="<%=case_ids[i]%>" target="_blank" title="<%=case_names[i]%>"><%=h case_names[i].chars[0,10]%></a></li>
+			<%end%>
+		<%end%>
+	<%end%>
+<%end%>
+<%end%>

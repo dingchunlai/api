@@ -1,0 +1,87 @@
+<script>
+  $(document).ready(function(){
+    $("#promoted_from").submit(function(){
+      $("#promoted_submit").attr("disabled","disabled").val("正在查询...");
+      $.ajax({
+        url: "/promoted_firms/search",
+        type: 'GET',
+        dataType: 'html',
+        data: $(this).serialize(),
+        success: function(data) {
+          $("#promoted_submit").removeAttr("disabled").val("搜索");
+          $("#firms_div").html(data).show();
+        }
+      });
+      return false;
+    });
+	
+  });
+</script>
+
+<form action="" id="promoted_from">
+  <input type="hidden" name="promoted[city]" value="<%= @city %>"/>
+  <ul><li>排序种类：
+      <select name="promoted[order_class]" id="">
+        <option value='-1'>不限</option>
+        <% COMPANY_SORT_ORDERS.sort.each do |k , v| %>
+          <option value='<%= k %>' ><%= v[1] %></option>
+        <% end %>
+      </select>
+      &nbsp;&nbsp;&nbsp;是否例外：
+	是<input name="promoted[except]" type="radio" value='1'/>
+	否<input name="promoted[except]" type="radio" value='0' checked="true"/>
+      <em>注：例外是指除了指定推荐位无此公司，其它推荐位全部有此公司</em>
+    </li>
+    <li>
+      <%cities = get_area_without_number(@city)%>
+	所属区域：
+      <select name="promoted[district]" id="">
+        <option value='0'>请选择</option>
+        <option value='-1'>不限</option>
+        <%cities.each do |c|%>
+          <option value='<%=c.TAGID%>'><%=c.TAGNAME%></option>
+        <%end%>
+      </select>
+	  装修方式：
+      <select name="promoted[model]" id="">
+        <option value='0'>请选择</option>
+        <option value='-1'>不限</option>
+        <% models = Marshal.load(Marshal.dump(DecoFirm::MODELS))%>
+        <% models.delete(models.index("装修监理"))%>
+        <% models.sort.each do |k , v| %>
+          <option value='<%= k %>' ><%= v %></option>
+        <% end %>
+      </select>
+	装修风格：
+      <select name="promoted[style]" id="">
+        <option value='0'>请选择</option>
+        <option value='-1'>不限</option>
+        <% STYLES.sort.each do |k , v| %>
+          <option value='<%= k %>' ><%= v %></option>
+        <% end %>
+      </select>
+	装修价位：
+      <select name="promoted[price]" id="">
+        <option value='0'>请选择</option>
+        <option value='-1'>不限</option>
+        <% diff_city_price_tag(@city).each do |k, v| -%>
+          <option value='<%= k %>' ><%= v %></option>
+        <% end %>
+      </select><br/>
+    </li>
+    <li><%= "="*40 %></li>
+    <li>&nbsp;&nbsp;&nbsp;是否工装：
+	是<input name="promoted[category]" type="radio" value='1'/>
+	否<input name="promoted[category]" type="radio" value='0' checked="true"/>
+      <em>注：工装是单独立出来的，如果选了工装，那其他都无效</em></li>
+    <li><%= "="*40 %></li>
+    <li>&nbsp;&nbsp;&nbsp;是否别墅：
+	是<input name="promoted[villa]" type="radio" value='1'/>
+	否<input name="promoted[villa]" type="radio" value='0' checked="true"/>
+      <em>注：别墅是单独立出来的，如果选了别墅，那其他都无效</em></li>
+    <li><%= "="*40 %></li>
+    <li>&nbsp;&nbsp;&nbsp;公司ID：
+      <input name="promoted[firm_id]" type="text" value=''/>
+      <em>注：如果是已公司ID为作搜索数据的话，那其他都无效</em></li></ul>
+  <input type="submit" id="promoted_submit" value="搜索"/>
+</form>

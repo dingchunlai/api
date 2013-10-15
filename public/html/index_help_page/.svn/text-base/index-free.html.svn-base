@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帮助中心首页 &gt; 免费预约-和家网装修点评</title>
+<meta name="keywords" content="上海装修日记，上海装修故事，上海装修点评，上海装修案例">
+<meta name="description" CONTENT="和家网汇集shanghai网友亲身装修经历，记录最真实的完整装修故事。装修日记，包括完成装修过程和配套的装修案例图片与装修施工图，让您不在现场也身临其境。">
+<link href="http://js.51hejia.com/css/2010/header.css?10031527" rel="stylesheet" type="text/css" />
+<link href="http://js.51hejia.com/css/zxdpcss.css?20101117 " rel="stylesheet" type="text/css" />
+<script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+</head>
+<style type="text/css">
+.zxdphelp_daoh{height:24px;line-height:24px;margin-bottom:5px;text-indent:10px;}
+.zxdphelp_daoh a,.zxdphelp_daoh a:hover{color:#333;}
+
+.zxdphelp_l{width:194px;}
+.zxdphelp_l h3{height:89px;background:url(http://img3.51hejia.com/img/zxdpimg/zxdphelpbg01.jpg) no-repeat;font-size:0;line-height:0;text-indent:-999px;overflow:hidden;}
+.zxdphelp_l li{height:38px;line-height:38px;font-size:14px;font-weight:bold;color:#333;background:url(http://img3.51hejia.com/img/zxdpimg/zxdphelpbg01.jpg) 0 -89px no-repeat;text-indent:35px;cursor:pointer;}
+.zxdphelp_l .zxdphelp_cur{color:#a00118;}
+
+.zxdphelp_r{width:756px;}
+.zxdphelp_cont h3{height:35px;line-height:17px;text-indent:45px;color:#333;background:url(http://img3.51hejia.com/img/zxdpimg/zxdphelpbg02.jpg) no-repeat;}
+.zxdphelp_txt{padding:0 10px;}
+.zxdphelp_txt a{ color:#a00118;}
+.zxdphelp_txt p{font-size:14px;line-height:26px;text-indent:2em;color:#666;}
+.zxdphelp_img{margin:10px 0 30px 0; text-align:center;}
+
+.zxdphelp_tab a{ color:#333333; height:36px; width:190px; display:block;}
+</style>
+<body>
+<!--small_header_code-->
+
+<div class="header_n">
+  <div class="header_menu f_l">
+    <ul>
+      <li class="header_sy"><a href="http://www.51hejia.com/" target="_blank">和家首页</a></li>
+      <script type="text/javascript" src="http://js.51hejia.com/js/chrome.js"></script>
+      <li><a href="http://z.51hejia.com/" target="_blank" class="f_l"><strong>找装修公司</strong></a>
+        <div class="header_city"><span id="city"> <a rel="dropmenu0">[城市<small>&#9660;</small>]</a>
+
+          <div id="dropmenu0" class="header_citydiv"><a href="http://z.shanghai.51hejia.com/" target="_blank" >上海</a><a href="http://z.suzhou.51hejia.com/" target="_blank" >苏州</a><a href="http://z.wuxi.51hejia.com/" target="_blank" >无锡</a><a href="http://z.ningbo.51hejia.com/" target="_blank" >宁波</a><a href="http://z.hangzhou.51hejia.com/" target="_blank" >杭州</a></div>
+          <script type="text/javascript">
+              cssdropdown.startchrome("city")
+            </script>
+          </span></div>
+      </li>
+      <li><a href="http://b.51hejia.com/" target="_blank"><strong>品牌中心</strong></a></li>
+
+      <li><a href="http://www.51hejia.com/jushang/" target="_blank"><strong>家居时尚</strong></a></li>
+      <li><a href="http://tuku.51hejia.com/" target="_blank"><strong>图片</strong></a></li>
+      <li><a href="http://wb.51hejia.com/" target="_blank"><strong>问答</strong></a></li>
+    </ul>
+  </div>
+  <div class="header_login f_r">
+    <ul>
+
+      <li><a href="http://z.shanghai.51hejia.com/zhuangxiugongsi" target="_blank">网友评论千家装修公司</a></li>
+      <li>
+        <script type="text/javascript" src="http://js.51hejia.com/js/login_area.js?20100203"></script>
+        <iframe name="hideiframe_loginout" width="0" height="0" id="hideiframe_loginout" style="display: none;"></iframe>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div class="header_nav margin10"> <a href="http://d.51hejia.com/">装修资讯</a>|<a href="http://www.51hejia.com/bieshu/" target="_blank">别墅</a>|<a href="http://youqituliao.51hejia.com" target="_blank">油漆涂料</a>|<a href="http://diban.51hejia.com" target="_blank">地板</a>|<a href="http://weiyu.51hejia.com" target="_blank">卫浴洁具</a>|<a href="http://chugui.51hejia.com" target="_blank">橱柜</a>|<a href="http://chufangdianqi.51hejia.com" target="_blank">厨房电器</a>|<a href="http://www.51hejia.com/cizhuan/" target="_blank">瓷砖</a>|<a href="http://www.51hejia.com/jiajuchanpin/" target="_blank">家具</a>|<a href="http://www.51hejia.com/zhaomingpindao/" target="_blank">灯具</a>|<a href="http://www.51hejia.com/buyi/" target="_blank">布艺</a>|<a href="http://www.51hejia.com/jiadian/" target="_blank">家电</a>|<a href="http://www.51hejia.com/kongtiao/" target="_blank">中央空调</a>|<a href="http://www.51hejia.com/cainuan/" target="_blank">采暖</a>|<a href="http://www.51hejia.com/shuichuli/" target="_blank">水处理</a>|<a href="http://www.51hejia.com/xinwen/" target="_blank">行业新闻</a>|<a href="http://bbs.51hejia.com/" target="_blank">俱乐部</a>|<a href="http://www.51hejia.com/zq/" target="_blank">专区</a> </div>
+
+<!--end_small_header_code-->
+<div id="Login" style="display:none;border:0"> <a href="#guanbi" title="关闭" class="Divopop-nonenei"><img src="http://js.51hejia.com/css/newback/images/x.png" alt="关闭" /></a>
+  <iframe id="dengluiframe" style="width:222px;height:224px;border:0;overflow:hidden" frameborder="0" scrolling="No"></iframe>
+  <script type="text/javascript">
+    function denglula()
+    {
+      var time = Math.random();
+      document.getElementById('dengluiframe').src='http://member.51hejia.com/member/userlogin?forward=' + location.href;
+    }
+  </script>
+  <script type="text/javascript" src="http://js.51hejia.com/js/2010/login_n.js?10031527"></script>
+</div>
+<!--header_code-->
+<script type="text/JavaScript">
+            function selectyusuan(cid){
+              if(cid == '12301'){
+                var tarr = new Array();
+
+        tarr[0] = '6万以下';
+
+        tarr[1] = '6-10万';
+
+        tarr[2] = '10-15万';
+
+        tarr[5] = '15-30万';
+
+        tarr[3] = '30万以上';
+
+    }else{
+      var tarr = new Array();
+
+        tarr[0] = '8万以下';
+
+        tarr[1] = '8-15万';
+
+        tarr[2] = '15-30万';
+
+        tarr[3] = '30万-100万';
+
+        tarr[4] = '100万以上';
+
+    }
+    var sel = document.getElementById('money1003');
+    var ops = sel.options;
+    for(var i = 0;i < 5;i++){
+      ops[i+1].text = tarr[i];
+    }
+  }
+  function changetitle(titleid){
+    document.getElementById('sy').className = '';
+    document.getElementById('gs').className = '';
+    document.getElementById('zxgs').className = '';
+    document.getElementById('tp').className = '';
+
+      document.getElementById('top').className = '';
+
+    document.getElementById('coupon').className = '';
+    document.getElementById(titleid).className = 'list_nav_cur';
+  }
+
+
+
+  function seachfirm(){
+    var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+    var city = document.getElementById("cityid1003").options[cityindex].value;
+    var moneyindex = document.getElementById("money1003").options.selectedIndex;
+    var money = document.getElementById("money1003").options[moneyindex].value;
+    var key = document.getElementById("keyword1103").value;
+
+    var url = gen_city_domain_firm() +'/zhuangxiugongsi/gsl-';
+    url = url + city + '-0/';
+    url = url + '0-0-0-';
+    url = url + money + '-0-0/';
+    if(key.length > 0)
+      url = url + '?keyword='+key;
+    location.href = encodeURI(url);
+  }
+
+  function seachcase(){
+    var fengge = document.getElementById('fengge1003').value;
+    var huxing = document.getElementById('huxing1003').value;
+    var key = document.getElementById('nameid1003').value;
+    var url = "/zhuangxiuanli/0."+fengge+".0."+huxing+".1.html";
+    if(key.length > 0)
+      url = url + '?name='+key;
+    location.href = encodeURI(url);
+  }
+
+  function seachgushi(){
+    var stage = document.getElementById("stage").value;
+    var room = document.getElementById("room").value;
+    var key = document.getElementById('zhuangxiugushiname').value;
+    if(key.length > 0){
+
+    }else{
+      key=0;
+    }
+
+    var url = "/zhuangxiugushi/0-0-0-"+ stage + "-" + room +"-1-"+key+"-1-2";
+    location.href = encodeURI(url);
+  }
+
+  function show11() {
+    if (document.getElementById("adcode").value=="装修公司")
+    {
+      document.getElementById("Layer1").style.display="";
+      document.getElementById("Layer2").style.display="none";
+      document.getElementById("Layer3").style.display="none";
+    }
+    else if (document.getElementById("adcode").value=="装修案例") {
+      document.getElementById("Layer1").style.display="none";
+      document.getElementById("Layer2").style.display="";
+      document.getElementById("Layer3").style.display="none";
+    }
+    else if (document.getElementById("adcode").value=="装修日记") {
+      document.getElementById("Layer1").style.display="none";
+      document.getElementById("Layer2").style.display="none";
+      document.getElementById("Layer3").style.display="";
+    }
+
+  }
+
+  function gen_city_domain_firm(){
+
+      var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+      var city = document.getElementById("cityid1003").options[cityindex].value;
+      if(city == '11910')
+        return "http://z.shanghai.51hejia.com";
+      else if (city == '12117')
+        return "http://z.suzhou.51hejia.com";
+      else if (city == '12122')
+        return "http://z.nanjing.51hejia.com";
+      else if (city == '12301')
+        return "http://z.ningbo.51hejia.com";
+      else if (city == '12306')
+        return "http://z.hangzhou.51hejia.com";
+      else if (city == '12118')
+        return "http://z.wuxi.51hejia.com";
+      else
+        return "http://z.51hejia.com";
+
+  }
+          </script>
+<!--end_header_code-->
+
+<div class="width960">
+	<div class="zxdphelp_daoh"><a href="#" target="_blank">首页</a> &gt; <a href="#" target="_blank">帮助中心首页</a> &gt;  免费预约</div>
+</div>
+
+<div class="width960 margin10 clearfix">
+	<div class="zxdphelp_l f_l">
+    	<h3>帮助中心</h3>
+
+        <div class="zxdphelp_tab">
+        <ul>
+        	<li><a href="index-find.html" target="_self">找公司</a></li>
+          	<li class="zxdphelp_cur">免费预约</li>
+            <li><a href="index-impression.html" target="_self">发表印象</a></li>
+            <li><a href="index-visit.html" target="_self">参观工地</a></li>
+            <li><a href="index-case.html" target="_self">欣赏案例</a></li>
+			<li><a href="index-view.html" target="_self">查看日记</a></li>
+            <li><a href="http://api.51hejia.com/html/index_help_page/help0609.html#" target="_blank">发表日记</a></li>
+          <li><a href="index-comments.html" target="_self">发布点评</a></li>
+            <li><a href="index-interactive.html" target="_self">评论互动</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="zxdphelp_r f_r">
+    	<div class="zxdphelp_cont">
+        	<h3>免费预约</h3>
+
+            <div class="zxdphelp_txt">
+            	<p>在装潢公司工作室页面，用户可以通过在线报名参加各个商家的免费预约量房、免费预约参观在建工地活动。</p><br />
+                <div class="zxdphelp_img"><img src="http://img3.51hejia.com/img/zxdpimg/new2011-help-img/free.jpg" /></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--stags_code-->
+<div class="stags_n clearfix">
+  <script type="text/javascript">
+    function sf(){document.f.q.focus();}
+    window.gbara={};(function(){var g=window.gbara,j,k;function l(a){var d=window.encodeURIComponent&&(document.forms[0].q||"").value;if(d)a.href=a.href.replace(/([?&])q=[^&]*|$/,function(h,f){return(f||"&")+"q="+encodeURIComponent(d)})}g.qs=l;function m(a,d,h,f,b,c){var i=document.getElementById(a),e=i.style;if(i){e.left=f?"auto":d+"px";e.right=f?d+"px":"auto";e.top=h+"px";e.visibility=k?"hidden":"visible";if(b){e.width=b+"px";e.height=c+"px"}else{m(j,d,h,f,i.offsetWidth,i.offsetHeight);k=k?"":a}}}g.tg=function(a){a=a||window.event;var d=0,h,f=window.navExtra,b,c=a.target||a.srcElement;a.cancelBubble=true;if(c.className!="gb3")c=c.parentNode;if(!j){b=document.createElement(Array.every||window.createPopup?"iframe":"div");b.frameBorder="0";b.src="#";j=c.parentNode.appendChild(b).id="gbsa";document.onclick=g.close}a=c.getAttribute("aria-owns")||"gbia";b=c.offsetWidth;var i=c.offsetTop>20?46:24,e;do d+=c.offsetLeft||-380;while(c=c.offsetParent);if(a=="gbia")for(b=document.getElementById(a);f&&(h=f.pop());)b.insertBefore(h,b.firstChild).className="gb2";else e=d=(document.documentElement.clientWidth||document.body.clientWidth)-d-b;k!=a&&g.close();m(a,d,i,e)};g.close=function(){k&&m(k,0,0)}})();
+  </script>
+  <a href="http://www.51hejia.com/">和家首页</a> | <a href="http://z.51hejia.com/">装修点评</a> | <a href="http://b.51hejia.com/">品牌中心</a> | <a href="http://www.51hejia.com/jushang/">家居时尚</a> | <a href="http://tuku.51hejia.com/">图片</a> | <a href="http://wb.51hejia.com/">问答</a> | <a href="http://d.51hejia.com/">装修资讯</a> | <a href="http://www.51hejia.com/xinwen/">新闻</a> | <a href="http://www.51hejia.com/youqituliao/">涂料</a> | <a href="http://www.51hejia.com/diban/">地板</a> | <a href="http://www.51hejia.com/chuguipindao/">橱柜</a> | <a href="http://www.51hejia.com/weiyupindao/">洁具</a> | <a href="http://www.51hejia.com/jiadian/">家电</a> | <a href="http://www.51hejia.com/keting/">客厅</a> | <a href="http://www.51hejia.com/woshi/">卧室</a> | <a href="http://www.51hejia.com/gongyu/">公寓</a> | <a href="http://www.51hejia.com/bieshu/">别墅</a> | <a href="http://bbs.51hejia.com/">俱乐部</a> | <a onclick="this.blur();gbara.tg(event);return !1" class="snl" style="cursor:pointer;"><u>更多</u><small>&#9660;</small></a>
+
+  <div id="gbia"> <a href="http://zt.51hejia.com/" target="_blank" class="gb2">专题</a> <a href="http://prod.51hejia.com/" target="_blank" class="gb2">建材</a> <a href="http://deco.51hejia.com/" target="_blank" class="gb2 snl">饰品</a><a href="http://www.51hejia.com/zq/" target="_blank" class="gb2">专区</a> <a href="http://www.51hejia.com/cizhuan/" target="_blank" class="gb2">瓷砖</a> <a href="http://www.51hejia.com/buyi/" target="_blank" class="gb2 snl">布艺</a><a href="http://www.51hejia.com/jiajuchanpin/" target="_blank" class="gb2">家具</a> <a href="http://www.51hejia.com/zhaomingpindao/" target="_blank" class="gb2">灯具</a> <a href="http://www.51hejia.com/cainuan/" target="_blank" class="gb2 snl">采暖</a><a href="http://www.51hejia.com/kongtiao/" target="_blank" class="gb2">中央空调</a> <a href="http://www.51hejia.com/shuichuli/" target="_blank" class="gb2">水处理</a> <a href="http://www.51hejia.com/chufang/" target="_blank" class="gb2 snl">厨房</a><a href="http://www.51hejia.com/weiyu/" target="_blank" class="gb2">卫浴</a> <a href="http://www.51hejia.com/shufang/" target="_blank" class="gb2">书房</a> <a href="http://www.51hejia.com/huayuanshenghuo/" target="_blank" class="gb2 snl">花园</a><a href="http://www.51hejia.com/beijingqiang/" target="_blank" class="gb2">背景墙</a> <a href="http://www.51hejia.com/ertongfang/" target="_blank" class="gb2">儿童房</a> <a href="http://www.51hejia.com/ertongfang/" target="_blank" class="gb2 snl">小户型</a><a href="http://www.51hejia.com/ershoufang/" target="_blank" class="gb2">二手房</a> <a href="http://www.51hejia.com/chaojizhufu/" target="_blank" class="gb2">主妇</a> <a href="http://www.51hejia.com/bieshu/" target="_blank" class="gb2 snl">别墅</a></div>
+
+</div>
+<!--end_stags_code-->
+<!--footer_code-->
+<div class="sfooter">
+  <div>
+    <table style="margin:0 auto;clear:both" cellspacing="0" cellpadding="0" width="900"
+           border="0">
+      <tbody>
+        <tr>
+          <td style="text-align:center;margin:0 auto"><span class="sabout"><a href="http://www.51hejia.com/aboutus/about.html"
+                                                                              target="_blank">关于我们</a> | <a
+                                                                              href="http://www.51hejia.com/aboutus/contactus.html"
+                                                                              target="_blank">联系我们</a> | <a
+                                                                              href="#top" onclick="Divopop('Login');return true;"
+                                                                              >会员登陆</a> | <a
+                                                                              href="http://www.51hejia.com/aboutus/priv.html"
+                                                                              target="_blank">版权声明</a> | <a href="http://www.51hejia.com/link/link/index.htm"
+                                                                              target="_blank">友情链接</a> | <a href="http://www.51hejia.com/siteindex/"
+                                                                              target="_blank">网站地图</a></span><br />
+
+            <div class="citypath1">
+              <ul>
+                <li class="title">区域城市家居装修指南：</li>
+                <li><a href="http://shanghai.51hejia.com/">上海</a>&nbsp;|</li>
+                <li><a href="http://suzhou.51hejia.com/">苏州</a>&nbsp;|</li>
+                <li><a href="http://wuxi.51hejia.com/">无锡</a>&nbsp;|</li>
+
+                <li><a href="http://ningbo.51hejia.com/">宁波</a>&nbsp;|</li>
+                <li><a href="http://hangzhou.51hejia.com/">杭州</a>&nbsp;|</li>
+              </ul>
+              <div style="clear:both"></div>
+            </div>
+            <span class="font_link_s2"> <a href='http://www.51hejia.com/siteindex/' target='_blank'>全站索引</a> -> <a href='http://www.51hejia.com/siteindex/letter/A.html' target='_blank'>A</a> <a href='http://www.51hejia.com/siteindex/letter/B.html' target='_blank'>B</a> <a href='http://www.51hejia.com/siteindex/letter/C.html' target='_blank'>C</a> <a href='http://www.51hejia.com/siteindex/letter/D.html' target='_blank'>D</a> <a href='http://www.51hejia.com/siteindex/letter/E.html' target='_blank'>E</a> <a href='http://www.51hejia.com/siteindex/letter/F.html' target='_blank'>F</a> <a href='http://www.51hejia.com/siteindex/letter/G.html' target='_blank'>G</a> <a href='http://www.51hejia.com/siteindex/letter/H.html' target='_blank'>H</a> <a href='http://www.51hejia.com/siteindex/letter/I.html' target='_blank'>I</a> <a href='http://www.51hejia.com/siteindex/letter/J.html' target='_blank'>J</a> <a href='http://www.51hejia.com/siteindex/letter/K.html' target='_blank'>K</a> <a href='http://www.51hejia.com/siteindex/letter/L.html' target='_blank'>L</a> <a href='http://www.51hejia.com/siteindex/letter/M.html' target='_blank'>M</a> <a href='http://www.51hejia.com/siteindex/letter/N.html' target='_blank'>N</a> <a href='http://www.51hejia.com/siteindex/letter/O.html' target='_blank'>O</a> <a href='http://www.51hejia.com/siteindex/letter/P.html' target='_blank'>P</a> <a href='http://www.51hejia.com/siteindex/letter/Q.html' target='_blank'>Q</a> <a href='http://www.51hejia.com/siteindex/letter/R.html' target='_blank'>R</a> <a href='http://www.51hejia.com/siteindex/letter/S.html' target='_blank'>S</a> <a href='http://www.51hejia.com/siteindex/letter/T.html' target='_blank'>T</a> <a href='http://www.51hejia.com/siteindex/letter/U.html' target='_blank'>U</a> <a href='http://www.51hejia.com/siteindex/letter/V.html' target='_blank'>V</a> <a href='http://www.51hejia.com/siteindex/letter/W.html' target='_blank'>W</a> <a href='http://www.51hejia.com/siteindex/letter/X.html' target='_blank'>X</a> <a href='http://www.51hejia.com/siteindex/letter/Y.html' target='_blank'>Y</a> <a href='http://www.51hejia.com/siteindex/letter/Z.html' target='_blank'>Z</a> </span> <br />
+
+            <span class="font_link_s2">Copyright&copy;2005-2009 Hejia Net (shanghai) Information Technology Co. Ltd. All rights reserved <br />
+            <a href="http://www.51hejia.com">和家网</a>(上海)信息技术有限公司 版权所有 <br />
+            违法及不良信息举报&nbsp;<a
+                href="mailto:webmaster@51hejia.com">webmaster@51hejia.com</a>&nbsp;沪ICP备<a
+                href="http://www.miibeian.gov.cn/"
+                target="_blank">06009042</a>号</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--end_footer_code-->
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= article_page_title %></title>
+    <meta name="keywords" content="<%= @article.KEYWORD1 %>;<%= @article.TITLE %>"/>
+    <meta name="description" content="<%= @article.SUMMARY.gsub("\"","'") rescue @article.TITLE %>"/>
+    <link href="http://js.51hejia.com/css/header914.css?99173" rel="stylesheet" type="text/css" />
+    <link href="http://js.51hejia.com/css/zhuangxiu1023-2.css?20100919" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://d.51hejia.com/js/adv20090721.js"></script>
+  </head>
+  <body>
+    <div class="all clearfix">
+      <%= render_shared_header %>
+
+      <div style="width:960px; margin:5px auto 5px auto;">
+        <%=adspace("#{@article_type}-文章终端页-通栏1")%>	      	
+      </div>
+
+      <script type="text/javascript">
+        function setFocus2(p,y,o,m){selectLayer2(p,y,o,m);}
+        function selectLayer2(p,y,o,m){
+          for (var i=0;i<document.getElementById(y).getElementsByTagName(p).length;){document.getElementById(o+i).style.display="none";
+            i++;}document.getElementById(o+m).style.display="block";}
+        function daohang(m){for(var z=0;z<9;)
+          {document.getElementById(z+1).style.background='';document.getElementById(z+1).style.color='#4a4a4a';z++;};if(m!=6)
+          {document.getElementById(m).style.backgroundImage='url(http://www.51hejia.com/images/zhuangxiu1023/btn_bg.gif)';
+          }else {document.getElementById(m).style.backgroundImage='url(http://www.51hejia.com/images/zhuangxiu1023/btn2_bg.gif)';};
+          document.getElementById(m).style.color='#fff';}
+      </script>
+
+      <%=render :partial => 'shared/dianxing_menu' if @article_type == '典型'%>
+
+      <div class="f2" id="f2">
+        <div class="mapsite">
+          <p><%= article_navigation %></p>
+        </div>
+        <div class="f2_content">
+          <%= yield %>
+          <%= render :partial => "shared/recommend" %>
+          <%= render :partial => "shared/comment" %>
+          <div class="box1 clearfix">
+            <% results = parse_xml_data("http://api.51hejia.com/rest/build/xml/54212.xml", ["title", "url", "image-url"], 21) %>
+            <h3><a>本周精彩推荐</a></h3>
+            <ul class="list1">
+              <% if results[0] %>
+                <a href="<%= results[0]["url"] %>" target="_blank"><img src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>"/></a>
+              <% end %>
+              <% if results[8] %>
+                <% 3.upto(8) do |i| %>
+                  <li><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= truncate_u(results[i]["title"], 16) %></a></li>
+                <% end %>
+              <% end %>
+            </ul>
+            <ul class="list1 list2">
+              <% if results[1] %>
+                <a href="<%= results[1]["url"] %>" target="_blank"><img src="<%= results[1]["image-url"] %>" alt="<%= results[1]["title"] %>"/></a>
+              <% end %>
+              <% if results[14] %>
+                <% 9.upto(14) do |i| %>
+                  <li><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= truncate_u(results[i]["title"], 15) %></a></li>
+                <% end %>
+              <% end %>
+            </ul>
+            <ul class="list1 list3">
+              <% if results[2] %>
+                <a href="<%= results[2]["url"] %>" target="_blank"><img src="<%= results[2]["image-url"] %>" alt="<%= results[2]["title"] %>"/></a>
+              <% end %>
+              <% if results[20] %>
+                <% 15.upto(20) do |i| %>
+                  <li><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= truncate_u(results[i]["title"], 15) %></a></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="box1 clearfix">
+            <% results = parse_xml_data("http://api.51hejia.com/rest/build/xml/54214.xml", ["title", "url", "image-url", "price_ago", "price_now"], 6) %>
+            <h3><a>精华推荐</a></h3>
+            <ul class="list4">
+              <% results.each do |r| %>
+                <li>
+                  <p class="title"><a href="<%= r["price_now"] %>" target="_blank"><%= r["price_ago"] %></a></p>
+                  <a href="<%= r["url"] %>" target="_blank"><img src="<%= r["image-url"] %>" alt="<%= r["title"] %>"/></a>
+                  <p><a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><%= truncate_u(r["title"], 16) %></a></p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <%= render :partial => "/shared/article_company"%>
+				</div><%= render :partial => "shared/sidebar/common" -%>
+
+      </div><!--f2-->
+      <div class=" clear clearfix">
+      </div>
+    <%= render_shared_footer %>
+    <script type="text/javascript">
+      function func_key(){document.onkeydown = function(ev) {var ev=window.event||ev;
+          if (ev.keyCode==37&&document.getElementById("previous_page")){var previous_url=document.getElementById("previous_page").href;
+            location.href=previous_url;}else if (ev.keyCode==39&&document.getElementById("next_page")) {
+            var next_url=document.getElementById("next_page").href;location.href = next_url;}}}
+    </script>
+    <script type="text/javascript">
+      setTimeout("func_key()",1000);
+      function newopen(){var next_url = document.getElementById("next_page").href;location.href = next_url;}
+      <%if params[:page] != 'all'%>
+      //点图片往后翻页
+      function next_img(){
+        var img_num = 0;var imgs = document.getElementsByTagName("img")
+        for(var i=0;i<imgs.length;i++){
+          if(imgs[i].src.indexOf("UserFiles") != -1 || imgs[i].src.indexOf("/images/binary") != -1){
+            imgs[i].style.cursor = "pointer";imgs[i].alt = "点击图片看下一页";imgs[i].title = "点击图片看下一页";imgs[i].onclick = newopen;img_num=1;}}
+        if(img_num>0&&document.getElementById("next_page")){var next_url = document.getElementById("next_page").href
+          document.getElementById("n_page").innerHTML="<a href=\""+next_url+"\">点击图片，进入下一页</a>"}}
+      next_img();
+      <%end%>
+    </script>
+    <%= yield :html_body_end  %>
+  </body>
+</html>

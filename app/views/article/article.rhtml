@@ -1,0 +1,38 @@
+<div class="textarea">
+  <h3 class="text_title"><%= @article.TITLE %></h3>
+  <p class="text_title2"><%= @article.CREATETIME.strftime("%Y-%m-%d %H:%M") %>&nbsp;&nbsp;&nbsp;作者：<%= @article.AUTHOR %>&nbsp;&nbsp;&nbsp;来源：<%= @article.SOURCE %></p>
+  <p class="text_title3">
+    <span style="float:right"><%=read_mode_button%></span>
+    关键字：<%= keywords_html(@article.KEYWORD1, @article.ID) %>
+  </p>
+  <p class="previous" id="n_page"></p>
+  <div class="pic">
+    <div class="intextarea">
+      <%if @article.insert_summary.to_i == 1%>
+        <p class="text_title4"><strong>导语：</strong><%= @article.SUMMARY %></p>
+      <%end%>
+      <%=@article_page %>
+      <div style="padding:5px;font-size:14px;color:red;">
+        <%=@article.statement%>
+      </div>
+    </div>
+    <div class="next clearfix">
+      <% if @tui_jian_gong_si %>
+        <span class="f_l">擅长这种风格的装修公司推荐：<a onclick="_gaq.push(['_trackEvent',  '资讯终端页公司链接', '点击', '<%=get_firm_name_abbr2(@tui_jian_gong_si)%>', 1]);" href="<%=gen_firm_link_address(@tui_jian_gong_si)%>" target="_blank"><%=get_firm_name_abbr2(@tui_jian_gong_si)%></a></span>
+      <% end %>
+      <% if @next_article %>
+        <span class="f_r">下一篇：<a title="下一篇文章" href="<%= article_link(@next_article.ID, @next_article.CREATETIME, @next_article.FIRSTCATEGORY) %>"><%= @next_article.TITLE %></a></span>
+      <% end %>
+    </div>
+    <div class="f2page_menu">
+      <%if params[:page] != 'all'%>
+        <%= link_to '上一页', { :page => @pages.current.previous.to_i }, :id => "previous_page" if @pages.current.previous %>
+        <%= pagination_links(@pages, :window_size => 4) %>
+        <%= link_to '下一页', { :page => @pages.current.next.to_i }, :id => "next_page" if @pages.current.next%>
+      <%end%>
+      <%=read_mode_button%>
+    </div>
+  </div>
+</div>
+
+<%= render :partial => "shared/under_article_paginate" %>

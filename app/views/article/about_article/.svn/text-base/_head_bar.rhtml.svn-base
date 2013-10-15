@@ -1,0 +1,18 @@
+<%
+if @article
+  @tag_id = @article.SECONDCATEGORY
+end
+%>
+<div class="menu">
+  <ul>
+    <li <%= get_current_by_tag_id(0, @tag_id) %>><a href="http://www.51hejia.com/jushang/" title="居尚首页">居尚首页</a></li>
+    <li <%= get_current_by_tag_id(12428, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12428" title="新品">新品</a></li>
+    <li <%= get_current_by_tag_id(12421, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12421" title="海外">海外</a></li>
+    <li <%= get_current_by_tag_id(12425, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12425" title="设计">设计</a></li>
+    <li <%= get_current_by_tag_id(12419, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12419" title="风格美家">风格美家</a></li>
+    <li <%= get_current_by_tag_id(12418, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12418" title="装饰搭配">装饰搭配</a></li>
+    <li <%= get_current_by_tag_id(12420, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12420" title="贴心买手">贴心买手</a></li>
+    <li <%= get_current_by_tag_id(12431, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12431" title="名人家居">名人家居</a></li>
+    <li <%= get_current_by_tag_id(12429, @tag_id) %>><a href="http://www.51hejia.com/jushang/articleList/s-12429" title="家居风水">家居风水</a></li>
+  </ul>
+</div>

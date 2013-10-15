@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <title>发布系统后台管理</title>
+
+    <link rel="stylesheet" type="text/css" href="http://www.51hejia.com/api/css/admincp.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.51hejia.com/api/css/style_min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.51hejia.com/api/css/tooltips.css"/>
+    <script src="http://js.51hejia.com/javascripts/WebCalendar.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="http://js.51hejia.com/javascripts/prototype.js"></script>
+    <script type="text/javascript" src="http://js.51hejia.com/javascripts/scriptaculous.js?load=effects"></script>
+    <script type="text/javascript" src="http://js.51hejia.com/javascripts/modalbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://js.51hejia.com/css/api/modalbox.css"/>
+    <script type="text/javascript">
+      function checkAll(name){
+        var el = document.getElementsByTagName('input');
+        var len = el.length;
+        for(var i = 0; i<len; i++){
+          if((el[i].type == "checkbox") && (el[i].name == name)){
+            el[i].checked = true;
+          }
+        }
+      }
+      function clearAll(name){
+        var el = document.getElementsByTagName('input');
+        var len = el.length;
+        for(var i = 0; i<len; i++){
+          if((el[i].type == "checkbox") && (el[i].name == name)){
+            el[i].checked = false;
+          }
+        }
+      }
+      function checkBox(name){
+        var boxes = document.getElementsByName(name);
+        var check = false;
+        for(var i = 0; i < boxes.length; i++){
+          if(boxes[i].checked){
+            check = true;
+          }
+        }
+        return check
+      }
+      function form_submit(name,form_id,action_url){
+        var form = document.getElementById(form_id);
+        if(checkBox(name)){
+          form.action = action_url;
+          form.submit();
+        } else {
+          alert("一个也没选！");
+          return false;
+        }
+      }
+    </script>
+    <style type="text/css" >
+      a:hover {
+        background:#C0C0C0;
+        text-decoration:none;
+        color:#0066CC;
+      }
+      a.tooltipa span {
+        display:none;
+        padding:2px 3px;
+        margin-top:20px;
+      }
+      a.tooltipa:hover span{
+        display:inline;
+        position:absolute;
+        background:#C0C0C0;
+        border:1px solid #cccccc;
+        color:#0066CC;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

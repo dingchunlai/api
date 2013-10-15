@@ -1,0 +1,95 @@
+
+<%	
+	firm = getfirm(@specialid)
+	firm_city = firm.city.to_i == 11910 ? firm.city : firm.district
+%>
+<div class="searchList margin6">
+		<div class="casett3">
+          <h2 class="n1"><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></h2>
+          <p id="pinfen<%=@findex%>">
+          <%if params[:order].to_i == 2%>
+          	<span><a href="#" rel="dropmenu<%=@sindex%>"><%=firm.design_praise.to_f%></a></span>
+          <%else%>
+          	<a href="#" rel="dropmenu<%=@sindex%>"><%=firm.design_praise.to_f%></a>
+          <%end%>
+          
+          
+          <%if params[:order].to_i == 3%>
+          <span><a href="#" rel="dropmenu<%=@sindex+1%>"><%=firm.construction_praise.to_f%></a></span>
+          <%else%>
+          <a href="#" rel="dropmenu<%=@sindex+1%>"><%=firm.construction_praise.to_f%></a>
+          <%end%>
+
+          
+          <%if params[:order].to_i == 4%>
+          <span><a href="#" rel="dropmenu<%=@sindex+2%>"><%=firm.service_praise.to_f%></a></span>
+          <%else%>
+          <a href="#" rel="dropmenu<%=@sindex+2%>"><%=firm.service_praise.to_f%></a>
+          <%end%>
+
+          
+          <%if params[:order].to_i == 5%>
+          <span><a href="#" rel="dropmenu<%=@sindex+3%>"><%="0".to_f%></a></p></span>
+          <%else%>
+          <a href="#" rel="dropmenu<%=@sindex+3%>"><%="0".to_f%></a></p>
+          <%end%>
+
+          
+          <div id="dropmenu<%=@sindex%>" class="dpf">设计分：<%=firm.design_praise.to_f%></div>
+          <div id="dropmenu<%=@sindex+1%>" class="dpf">施工分：<%=firm.construction_praise.to_f%></div>
+          <div id="dropmenu<%=@sindex+2%>" class="dpf">服务分：<%=firm.service_praise.to_f%></div>
+          <div id="dropmenu<%=@sindex+3%>" class="dpf">性价比分：<%#="0".to_f%></div>
+          <script type="text/javascript">
+			cssdropdown.startchrome("pinfen<%=@findex%>")
+		  </script>
+          <div class="clear"></div>
+        </div>	
+        <dl>
+		<dd>
+        <div class="searchinfo">
+          <ul>
+            <li>地址：<%if firm.address%><%=firm.address.chars[0,25]%><%end%>&nbsp;&nbsp;
+            <span id="teleid<%=firm.id%>"><a class="dianhua" href="javascript:void(0)" onclick="document.getElementById('teleid<%=firm.id%>').innerHTML = '<%=firm.telephone%>'">查看电话</a>
+            <div id="lightmenu" class="white_content">
+      		<div class="close"><span>021-12345678</span><a href="javascript:void(0)" onclick="hidemenu('lightmenu')">×</a>
+      		</div>
+		  </div></span></li>
+            <li>主打价位<a href="#"><b><%= firm.price ? diff_city_price_tag_value(firm_city, firm.price) : '暂无信息' %></b></a></li>
+            <li>装修方式
+	            <a href="#"><b><%= firm.model ? MODELS[firm.model.to_i] : '暂无信息' %></b></a>
+            </li>
+            <li>装修风格
+		            <a href="#"><b><%= firm.style ? STYLES[firm.style.to_i] : '暂无信息' %></b></a>
+            </li>
+          </ul>
+          <%youhui = get_company_new_coupon(firm.id)%>
+          <%if youhui && youhui.id%>
+          <p><strong><span><a href="/events/<%=youhui.id%>" target="_blank">优惠券</a></span>：</strong><a href="/events/<%=youhui.id%>" target="_blank"><%=youhui.title%></a></p>
+          <%end%>
+        </div>
+        <div class="xpinfen">
+        <ul class="star-rating">
+<li class="current-rating" style="width:<%=get_star_length(firm.star)%>px;"></li>
+<li><a href="#" title="1 star out of 5" class="one-star">1</a></li>
+<li><a href="#" title="2 stars out of 5" class="two-stars">2</a></li>
+<li><a href="#" title="3 stars out of 5" class="three-stars">3</a></li>
+<li><a href="#" title="4 stars out of 5" class="four-stars">4</a></li>
+<li><a href="#" title="5 stars out of 5" class="five-stars">5</a></li>
+</ul>
+<%=firm.comments_count.to_i%>封点评
+        </div>
+  <p class="fn"><span class="ireview">
+  <a href="#n">浏览量(<%= firm.pv_count %>)</a>
+  <%if firm.cases_count.to_i > 0 %>
+  <a href="/cases/company/<%=firm.id%>" target="_blank">案例图片(<%=firm.cases_count.to_i%>)</a>
+  <%end%>
+  <%if firm.photos_count.to_i > 0 %>
+  <a href="/firms/<%=firm.id%>/photos" target="_blank">施工图片(<%=firm.photos_count.to_i%>)</a>
+  <%end%>
+  <%if firm.designers_count.to_i > 0 && DecoFirm.get_designer_by_compay(firm.id).size > 0 %>
+	<a href="/designers/show?id=<%=firm.id%>" target="_blank">设计师(<%=firm.designers_count.to_i%>)</a>
+  <%end%>	
+  </span></p>
+</dd>
+</dl> 
+</div>

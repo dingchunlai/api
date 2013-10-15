@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip
+END
+iostream.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/iostream.rb
+END
+thumbnail.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/thumbnail.rb
+END
+storage.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/storage.rb
+END
+upfile.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/upfile.rb
+END
+matchers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/matchers.rb
+END
+attachment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/attachment.rb
+END
+geometry.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/geometry.rb
+END
+callback_compatability.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/callback_compatability.rb
+END
+processor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/paperclip/lib/paperclip/processor.rb
+END

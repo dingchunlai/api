@@ -1,0 +1,6 @@
+	<div class="map margin10">
+		<%= @map.to_html %>
+		<div class="box" style="width: 209px; height: 209px; overflow: hidden; position: relative;">
+			<%= @map.div %>
+		</div>
+	</div>

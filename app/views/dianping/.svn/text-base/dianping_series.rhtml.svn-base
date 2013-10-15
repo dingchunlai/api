@@ -1,0 +1,186 @@
+  <div class="ipath"><strong>您的位置：</strong><a href="#">装修案例点评</a> > <a href="#">装修案例</a> > <span>设计带动施工</span>
+  </div>
+  <div class="ileft">
+    <h1 class="t1">本案例信息</h1>
+    <div class="lbox">
+      <ul class="li1">
+        <li>所属小区：<span><%=@review.area%></span></li>
+        <li>所属房型：<span>
+        <%ROOM.sort.each do |k|%>
+			<%if @review.room.to_s==k[0].to_s%><%=k[1]%><%end%>
+		<%end%>
+        </span></li>
+        <li>装修预算：<span>
+			<% PRICE.sort.each do |k| %>
+				<%if @review.price.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+		</span></li>
+        <li>装修风格：<span>
+        <% STYLES.sort.each do |k| %>
+			<%if @review.style.to_s==k[0].to_s%><%=k[1]%><%end%>
+		<% end %>
+        </span></li>
+        <li>装修方式：<span>
+			<% MODELS.sort.each do |k| %>
+				<%if @review.method.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+		</span></li>
+        <%if !@company.nil?%><li class="nl">装修公司：<span><%=@company.name_zh%></span></li><%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <h1 class="t2">本案例点评列表<span><a href="/dianping/dianping_list" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+      <ul class="li2">
+      <%@mylist.each do |m|%>
+        <li class="nl"><a href="/dianping-<%=m.id%>" title="<%=h m.title%>" target="_blank"><%=h m.title%></a><br /><%=m.udate.strftime("%Y-%m-%d")%> 回应 <%=m.response_num.to_i%> 鲜花 <%=m.flower_num.to_i%></li>
+      <%end%>
+      </ul>
+    </div>
+    <%if !@company.nil?%>
+    <% companycase = DecoReview.get_review_by_company_id(@company.id)%>
+    <div class="rboxbot"></div>
+    <h1 class="t2">该公司更多案例<span><%if !@company.nil?%>&nbsp;&nbsp;<a href="/dianping/companycomment/<%=@company.id%>/1/1">更多>></a></a><%end%></span></h1>
+    <div class="lbox">
+      <ul class="li2">
+      <%companycase.each do |m|%>
+        <li class="nl"><a href="/dianping-<%=m.id%>" title="<%=h m.title%>" target="_blank"><%=h m.title%></a><br /><%=m.udate.strftime("%Y-%m-%d")%> 回应 <%=m.response_num.to_i%> 鲜花 <%=m.flower_num.to_i%></li>
+      <%end%>
+      </ul>
+    </div>
+    <%end%>
+    <div class="rboxbot"></div>
+    <h1 class="t3">人气装修案例<span><a href="/dianping" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+    <%renqi=get_zhuangxiu_case%>
+      <ul class="li3">
+      <% renqi.each do |r|%>
+        <li><a href="/dianping-<%=r.id%>" title="<%=h r.title%>" target="_blank"><%=h r.title%></a></li>
+      <%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <%decofirms = get_new_order_companys(1)%>
+    <h1 class="t4">装修公司排行<span><a href="/zhuangxiugongsi" target="_blank">更多>></a></span></h1>
+    <div class="lbox1">
+      <div class="derankt"><span class="n1">排名</span><span class="n2">商户</span><span class="n3">综合口碑</span></div>
+      <div class="clear"></div>
+      <div class="derankbox debg1">
+            <ul>
+            <%decofirms.each do |k|%>
+              <li><span class="n1"><a href="/firms-<%=k.id%>" target="_blank" title="<%=k.name_zh%>"><%=get_firm_name_abbr2(k)%></a></span><span class="n2"><%=k.praise%></span></li>
+            <%end%>
+            </ul>
+      </div>
+    </div>
+    <div class="rboxbot"></div>
+  </div>
+  <div class="iright">
+    <div class="sdtt margin10"><h1>案例点评</h1><span><%if user_logged_in? %><a href="#" onclick="javascript:window.open('/dianping/newdp');"><strong>续写新案例</strong><%else%><a href="#" onclick="javascript:window.open('/dianping/newdp');"><strong>撰写新案例</strong><%end%></a></span></div>
+    
+    
+    <%@result.each do |r|%>
+    <div class="lmainbox margin10">
+      <div class="casett1">
+          <h1><a href="/dianping-<%=r.id%>" target="_blank"><%=h r.title%></a></h1>
+          <ul>
+            <li>
+            	<%if r.design_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.budget_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.construction_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.service_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            </li>
+            <li>设计：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.design_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+			</span></li>
+            <li>预算：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.budget_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+            <li>施工：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.construction_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+            <li>服务：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.service_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+          </ul>
+          <div class="clear"></div>
+      </div>
+        <div class="caseinfo1">
+          <h3>案例类别：<span><%BOLG.sort.each do |k|%><%if r.review_type2.to_s==k[0].to_s%><%=k[1]%><%end%><%end%></span>  昵称：<span><%=r.username%></span></h3>
+          <div class="info"><a class="hy">回应(<%=r.response_num.to_i%>)</a>|<span id="floidfirst_<%=r.id%>"><a  onclick="new Ajax.Updater('floidfirst_<%=r.id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=r.id%>});" class="xh">鲜花(<%=r.flower_num.to_i%>)</a></span><!--|<a href="#" class="ll">浏览次数(20)</a>--></div>
+        </div>
+        
+        <div class="casedes">
+        	<%=h r.content.gsub(/<.*?>/, '').chars[0,150]%>[<a href="/dianping-<%=r.id%>" target="_blank">详情</a>]
+        </div>
+        <div class="rate1">
+          <ul>
+            <li>
+            	<%if r.design_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.budget_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.construction_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.service_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            </li>
+            <li>设计：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.design_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+			</span></li>
+            <li>预算：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.budget_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+            <li>施工：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.construction_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+            <li>服务：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.service_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+          </ul>
+          <p><%=r.udate.strftime("%Y-%m-%d-%H:%m:%S")%></p>
+        </div>
+    <!--</div>-->
+    </div>
+    <%end%>
+    <div class="pagination margin10">
+<ul>
+<%= will_paginate @result,:prev_label=> "上一页",:next_label=> "下一页" %>
+</ul>
+</div>
+	<div class="huiyinbox">
+	<%if @rids.to_s!=""%>
+      <%decoreply = DecoReply.getreplybyids(@rids,1)%>
+      <%replycount = DecoReply.getreplybyidscount(@rids,1)%>
+    <%end%>
+      <h3><span class="n1">看完这案例有何感觉？已有<strong><%if @rids.to_s!=""%><%=replycount.to_i%><%else%>0<%end%></strong>人回应</span><!--<span class="n2"><a href="#" target="_blank"><strong>查看全部>></strong></a></span>--></h3>
+      <%if @rids.to_s!=""%>
+      <%decoreply.each do |rs|%>
+      <div class="huibox">
+      	<%if rs.userurl %>
+        	<img src="<%=rs.userurl%>" width="34" height="34" />
+        <%else%>
+			<img src="http://member.51hejia.com/images/headimg/default.gif" width=26 heigh=26/>	
+		<%end%>
+        <h4><span class="n1"><%=rs.username%></span><span class="n2"><%=rs.udate.strftime("%Y年-%m-%d")%></span></h4>
+        <p><%=rs.content%></p>
+      </div>
+      <%end%>
+      <%end%>
+    </div>
+    </div>
+    
+  </div>
+  <div class="clear"></div>

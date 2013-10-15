@@ -1,0 +1,68 @@
+<%= render :partial => "hidden_div_column" %>
+<div id="bg" class="bg" style="display:none;"></div>
+<div class="container">
+  <%= render :partial => "admin_head_list" %>
+  <% if flash[:msg] %><p style="color: red; height: 15px;background-color:navajoWhite;margin-bottom:-8px;padding:3px;"><%= flash[:msg] %></p><% end %>
+  <form action="/admin/publish_case" method="post" id="publish_index">
+    <table class="tb tb2 " id="image_preview">
+      <tr class="partition"><th colspan="17" class="partition">共搜到<strong>&nbsp;<%= @total %>&nbsp;</strong>套图</th></tr>
+      <tr class="header">
+        <th>选择</th>
+        <th>图片</th>
+        <th>标题</th>
+        <th>描述</th>
+        <th>时间</th>
+      </tr>
+      <% unless @results.nil? %>
+        <% for result in @results %>
+          <tr class="hover">
+            <td class="td25"><input type="checkbox" name="publish_index[]" value="<%= result.ID %>" class="checkbox" id="publish_index"></td>
+            <td>
+              <a href="#" target="_blank">
+                <% image_url = result.TYPE_ID == 5 ? "http://image.51hejia.com#{result.MAINPHOTO}" : "http://image.51hejia.com/files/hekea/case_img/tn/#{result.ID}.jpg" %>
+                <img src="<%= image_url %>" height="50" width="50">
+              </a>
+            </td>
+            <td><a href="http://tuku.51hejia.com/zhuangxiu/tuku-<%= result.ID %>" target="_blank">
+                <%= strip_tags(result.NAME) %>
+            </a></td>
+            <td>
+              <% unless result.INTRODUCE.nil? %>
+                <%= strip_tags(result.INTRODUCE) %>
+              <% end %>
+            </td>
+            <td><%= result.CREATEDATE.strftime("%Y-%m-%d") if result.CREATEDATE %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td colspan="17">
+          <div class="cuspages right">
+            <div class="pages"><em>总数：<%= @total %></em>
+              <% unless @results.nil? %>
+                <%= link_to '<', { :page => @pages.current.previous.to_i, :keyword => @keyword, :start_time => @start_time,
+                  :end_time => @end_time, :search_type => @search_type } if @pages.current.previous %>
+                <strong><%= pagination_links(@pages, :params => { :keyword => @keyword, :start_time => @start_time,
+                    :end_time => @end_time, :search_type => @search_type }, :window_size => 9) %></strong>
+                <%= link_to '>', { :page => @pages.current.next.to_i, :keyword => @keyword, :start_time => @start_time,
+                  :end_time => @end_time, :search_type => @search_type } if @pages.current.next%>
+              <% end %>
+            </div>
+          </div>
+          <div class="fixsel">
+            <span>栏目</span>
+            <select name="column_id">
+              <option selected value="">你的栏目列表</option>
+              <% for result in query_columns %>
+                <option value="<%= result.id %>"><%= result.name %></option>
+              <% end %>
+            </select>
+            <input type="button" value="全选" onclick="checkAll('publish_index[]')" class="btn" />
+            <input type="button" value="反选" onclick="clearAll('publish_index[]')" class="btn" />
+            <input type="button" class="btn" value="预发布" onclick="form_submit('publish_index[]','publish_index','/admin/publish_case')"/>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

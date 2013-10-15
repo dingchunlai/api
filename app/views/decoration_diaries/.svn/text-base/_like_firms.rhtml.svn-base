@@ -1,0 +1,24 @@
+<% like_firms = get_like_firms(@diary.deco_firm)%>
+<div class="list_l_t">
+          <h3>也许这些商家同样适合您</h3>
+        </div>
+        <div class="list_l_sjtj">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="66"><label>名称</label></td>
+              <td width="33"><label>设计</label></td>
+              <td width="33"><label>施工</label></td>
+              <td width="33"><label>服务</label></td>
+              <td><label>案例</label></td>
+            </tr>
+			<% like_firms.each do |firm|%>
+			 <tr>
+              <td><span><a href="<%=gen_firm_city_path(firm.id)%>" title="<%=firm.name_abbr%>" target="_blank"><%=truncate(firm.name_abbr,4,'')%></a></span></td>
+              <td><%=firm.design_praise %></td>
+              <td><%=firm.construction_praise %></td>
+              <td><%=firm.service_praise %></td>
+              <td><a href="<%=gen_firm_city_path(firm.id)%>" title="<%=firm.name_abbr%>" target="_blank">查看</a></td>
+            </tr>
+			<% end %>
+          </table>
+        </div>

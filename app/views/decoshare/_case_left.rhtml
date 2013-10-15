@@ -1,0 +1,47 @@
+<div id="leftside">
+    <div class="alpicbg"><h2>缩小搜索范围</h2></div>
+    <h3>设计风格</h3>
+    <ul class="clearfix">
+	  <li><a href="/zhuangxiuanli/0.xiandaijianyue.0.0.1.html" <%if @fengge.to_s=='xiandaijianyue'%>style=" color:black"<%end%>>现代简约</a> </li>
+	  <li><a href="/zhuangxiuanli/0.zhongshi.0.0.1.html" <%if @fengge.to_s=='zhongshi'%>style=" color:black"<%end%>>中式风格</a>  </li>
+	  <li><a href="/zhuangxiuanli/0.oumei.0.0.1.html" <%if @fengge.to_s=='oumei'%>style=" color:black"<%end%>>欧/美式</a>  </li>
+	  <li><a href="/zhuangxiuanli/0.hunda.0.0.1.html" <%if @fengge.to_s=='hunda'%>style=" color:black"<%end%>>混搭</a>  </li>
+	  <li><a href="/zhuangxiuanli/0.dizhonghai.0.0.1.html" <%if @fengge.to_s=='dizhonghai'%>style=" color:black"<%end%>>地中海</a>  </li>
+	  <li><a href="/zhuangxiuanli/0.tianyuan.0.0.1.html" <%if @fengge.to_s=='tianyuan'%>style=" color:black"<%end%>>田园风格</a>  </li>
+	  <li><a href="/zhuangxiuanli/0.qita.0.0.1.html" <%if @fengge.to_s=='qita'%>style=" color:black"<%end%>>其他</a> </li>
+    </ul>
+    <h3>装修户型</h3>
+    <ul class="clearfix">
+      <li><a href="/zhuangxiuanli/0.0.0.xiaohu.1.html" <%if @huxing.to_s=='xiaohu'%>style=" color:black"<%end%>>小户型装修</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.0.gongyu.1.html" <%if @huxing.to_s=='gongyu'%>style=" color:black"<%end%>>公寓装修</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.0.bieshu.1.html" <%if @huxing.to_s=='bieshu'%>style=" color:black"<%end%>>别墅/复式</a></li>
+    </ul>
+    <h3>装修费用</h3>
+    <ul class="clearfix">
+      <li><a href="/zhuangxiuanli/8.0.0.0.1.html" <%if @feiyong.to_s=='8'%>style=" color:black"<%end%>>8万以下</a> </li>
+	  <li><a href="/zhuangxiuanli/8_15.0.0.0.1.html" <%if @feiyong.to_s=='8_15'%>style=" color:black"<%end%>>8-15万</a></li>
+	  <li><a href="/zhuangxiuanli/15_30.0.0.0.1.html" <%if @feiyong.to_s=='15_30'%>style=" color:black"<%end%>>15-30万</a> </li>
+	  <li><a href="/zhuangxiuanli/30.0.0.0.1.html" <%if @feiyong.to_s=='30'%>style=" color:black"<%end%>>30-100万</a></li>
+	  <li><a href="/zhuangxiuanli/100.0.0.0.1.html" <%if @feiyong.to_s=='100'%>style=" color:black"<%end%>>100万以上</a></li>
+    </ul>
+    <h3>装修用途</h3>
+    <ul class="clearfix">
+      <li><a href="/zhuangxiuanli/0.0.jiufang.0.1.html" <%if @yongtu.to_s=='jiufang'%>style=" color:black"<%end%>>旧房改造</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.hunfang.0.1.html" <%if @yongtu.to_s=='hunfang'%>style=" color:black"<%end%>>婚房装修</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.danshen.0.1.html" <%if @yongtu.to_s=='danshen'%>style=" color:black"<%end%>>单身贵族</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.sankou.0.1.html" <%if @yongtu.to_s=='sankou'%>style=" color:black"<%end%>>三口之间</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.laoren.0.1.html" <%if @yongtu.to_s=='laoren'%>style=" color:black"<%end%>>家有老人</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.shejishi.0.1.html" <%if @yongtu.to_s=='shejishi'%>style=" color:black"<%end%>>设计师的家</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.ertong.0.1.html" <%if @yongtu.to_s=='ertong'%>style=" color:black"<%end%>>家有儿童</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.fanxin.0.1.html" <%if @yongtu.to_s=='fanxin'%>style=" color:black"<%end%>>翻新</a> </li>
+	  <li><a href="/zhuangxiuanli/0.0.qita.0.1.html" <%if @yongtu.to_s=='qita'%>style=" color:black"<%end%>>其他</a></li>
+    </ul>
+    <h3>我看过的案例</h3>
+    <ul class="clearfix ul01">
+    	<%= render :partial => "cases/look", :object => @look_cases %>
+    </ul>
+    <h3>我收藏的案例</h3>
+    <ul class="clearfix ul02">
+    	<%= render :partial => "cases/shoucang", :object => @fav_cases %>
+    </ul>
+  </div>

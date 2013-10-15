@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/338/51hejia/repos/api/release/lib
+END
+public_module.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/81/51hejia/repos/api/release/lib/public_module.rb
+END
+authenticated_system.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/lib/authenticated_system.rb
+END
+secure_random.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/81/51hejia/repos/api/release/lib/secure_random.rb
+END
+promoted_companies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/lib/promoted_companies.rb
+END
+ip_address_range.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/lib/ip_address_range.rb
+END
+ip_address.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/81/51hejia/repos/api/release/lib/ip_address.rb
+END
+hodel_3000_compliant_logger.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/lib/hodel_3000_compliant_logger.rb
+END

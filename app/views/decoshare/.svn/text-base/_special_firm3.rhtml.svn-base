@@ -1,0 +1,48 @@
+	
+	<%firm = getfirm(@specialid)%>
+	<li id="li<%=@index%>" class="clearfix list_r_x_dianp" onmousemove="javascript:show0(this.id);" onmouseout="javascript:hide0(this.id);">
+          <ul class="right">
+          <li <%if params[:order].to_i == 2%>class="now"<%end%>><%=firm.design_praise%></li>
+          <li <%if params[:order].to_i == 3%>class="now"<%end%>><%=firm.construction_praise%></li>
+          <li <%if params[:order].to_i == 4%>class="now"<%end%>><%=firm.service_praise%></li>
+          <!-- <li <%if params[:order].to_i == 5%>class="now"<%end%>><%="0"%></li> -->
+
+          </ul>
+
+          <strong><img src='http://js.51hejia.com/img/sdeco/tuitm.gif'>&nbsp;<a href='<%=gen_firm_city_path(firm.id)%>' target='_blank'><%=get_firm_name_abbr2(firm)%></a></strong><span class="star" ><p style=" width:<%=get_star_length(firm.star)%>px;"></p></span><p class="txt"><%=firm.comments_count.to_i%>封点评 &nbsp;&nbsp;<%=firm.verysatisfied.to_i%>人满意 &nbsp;&nbsp;<%= firm.pv_count %>次浏览</p>
+          <p class="clear"><%if firm.address%>地址：<%=firm.address.chars[0,25]%> <%end%></p>
+          <p>
+            主打价位 <strong><%=diff_city_price_tag_value(params[:city] , firm.price.to_i)%></strong>   |   
+            装修方式 <strong><%=MODELS[firm.model.to_i]%></strong>    |	    
+            装修风格 <strong><%=STYLES[firm.style.to_i]%></strong>
+            </p>
+          	  <%commonts = getcompanyreviews(firm.id,1)%>
+          	  <%if commonts.size > 0%>
+              <ul class="bottom-li">
+              	<%coindex = 0%>
+              	<%commonts.each do |commont|%>
+              	<%if coindex < 3%>
+              	<li><span><%if commont.cdate%><%=commont.cdate.strftime('%y-%m-%d')%><%end%></span><a><%=commont.username%>点评：<%=commont.title.chars[0,15]%></a><img src="http://js.51hejia.com/img/zxdpimg/dp_8.jpg" /><%=commont.flower_num.to_i+commont.egg.to_i%>/<img src="http://js.51hejia.com/img/zxdpimg/dp_9.jpg" /><%= commont.dpv %></li>
+              	<%end%>
+                <%coindex = coindex + 1%>
+                <%end%>
+              </ul>
+              <%end%>
+          	  <%youhui = get_company_new_coupon(firm.id)%>  
+              <%if youhui && youhui.id%>
+              <p class="list_r_x_p"><a href="<%=gen_firm_city_event(firm.id,youhui.id)%>" target="_blank">优惠券：<%=youhui.title%></a></p>
+              <%end%>
+              
+              <div id="bottomli<%=@index%>" class="bottom" style="display:none;">
+              	<p><a href="#n">浏览量(<%= firm.pv_count %>)</a>
+              	<%if firm.cases_count.to_i > 0 %>
+              	<a href="<%=gen_firm_city_cases(firm.id)%>" target="_blank">案例图片(<%=firm.cases_count.to_i%>)</a>
+              	<%end%>
+              	<%if firm.photos_count.to_i > 0 %>
+              	<a href="<%=gen_firm_city_photos(firm.id)%>" target="_blank">施工图片(<%=firm.photos_count.to_i%>)</a>
+              	<%end%>
+              	<%if firm.designers_count.to_i > 0 && DecoFirm.get_designer_by_compay(firm.id).size > 0 %>
+              	<a href="<%=gen_firm_city_designers(firm.id)%>" target="_blank">设计师(<%=firm.designers_count.to_i%>)</a></p>
+              	<%end%>
+              </div><a href="<%=gen_firm_city_path(firm.id)%>" title="" class="abox01" target='_blank'></a>
+          </li>

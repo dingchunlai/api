@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= @article.TITLE %>_<%= get_second_tag_name(@article.SECONDCATEGORY) %>_<%= get_first_tag_name(@article.FIRSTCATEGORY) %>_和家装修家居网</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="<%= @article.KEYWORD1 %>;<%= @article.TITLE %>"/>
+    <meta name="descritpion" content="<%= @article.SUMMARY %>"/>
+    <link href=" http://js.51hejia.com/css/header914.css?99170917" rel="stylesheet" type="text/css" />
+<%#*<link href="http://www.51hejia.com/api/css/wenzhang1223.css" rel="stylesheet" type="text/css" />%>
+    <script type="text/javascript" src="http://js.51hejia.com/js/cha.js"></script>
+    <script type="text/javascript" src="http://js.51hejia.com/js/article.js"></script>
+<%#*<script language="javascript" type="text/javascript" src="http://api.51hejia.com/javascripts/editor_link.js"></script>%>
+    <style type="text/css">
+      a{color:#3f3f3f;text-decoration:none;}
+      a:hover {color:#f60; text-decoration:underline}
+      li {list-style:none;line-height:20px;}
+      img{border:0;}
+      p,em,span,form,select,input,option,ol,ul,li,dd,dt,dl,h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+      h3,h4 {font-size:14px;}
+      .hejia {width:303px; float:left; margin-bottom:6px;}
+      .hejiatt {background: url(http://www.51hejia.com/images/shouye1125/hejia_tt.gif) no-repeat left top; height:26px; line-height:26px; text-indent:15px;}
+      .hejiabox {width:295px; float:left; height:108px; padding:0;}
+      .hejiabox .l1 {width:142px;}
+      .hejiabox .l2 {width:113px;}
+      .hejiabox .l3 {width:97px;}
+      .hejiabox .l4 {width:73px;}
+      .hejiabox .bt {background: url(http://www.51hejia.com/images/shouye1125/bt01.gif) no-repeat left top; width:88px; height:29px; line-height:29px; text-align:center; font-size:12px; color:#fff; border:0;}
+      .hejiabox td {font-size:13px;padding:0 5px;}
+      .hejiabox td input {margin-top:3px;}
+      .hejiabox span {color:#f00;}
+    </style>
+    <script language="javascript">
+      function killErrors() {
+        return true;
+      }
+      window.onerror = killErrors;
+    </script>
+  </head>
+  <body>
+    <%- if @first_tag_url == "maichang" -%>
+      <script type="text/javascript">
+        ac_as_id = 41705;
+        ac_click_track_url = "";
+        ac_format = 0;
+        ac_mode = 1;
+        ac_width = 280;
+        ac_height = 210;
+      </script>
+      <script type="text/javascript" src="http://static.acs86.com/g.js">
+      </script>
+    <%- end -%>
+    <%=yield%>
+  </body>
+</html>

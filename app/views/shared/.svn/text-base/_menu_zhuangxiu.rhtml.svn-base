@@ -1,0 +1,66 @@
+<div class="main_menu">
+  <div class="menubg">
+    <ul class="first_menu">
+      <li class="first"><a id="1" href="http://d.51hejia.com/"  onmouseover="javascript:setFocus2('li','U1','x',0);javascript:daohang(1);"   target="_blank"><h1>装修首页</h1></a></li>
+      <li><a id="2" href="http://www.51hejia.com/articleList/s-42158" onmouseover="javascript:setFocus2('li','U1','x',1);javascript:daohang(2);"  target="_blank">装修资讯</a></li>
+      <li><a id="3" class="btn3" href="http://z.51hejia.com/" onmouseover="javascript:setFocus2('li','U1','x',2);javascript:daohang(3);"  target="_blank">找装修公司</a></li>
+      <li><a id="4" onmouseover="javascript:setFocus2('li','U1','x',3);javascript:daohang(4);"  target="_blank">装修材料</a></li>
+      <li><a id="5" href="http://www.51hejia.com/articleList/s-32075" onmouseover="javascript:setFocus2('li','U1','x',4);javascript:daohang(5);" target="_blank">装修宝典</a></li>
+      <li><a id="6" class="btn2" href="http://www.51hejia.com/articleList/s-32689" onmouseover="javascript:setFocus2('li','U1','x',5);javascript:daohang(6);"  target="_blank" >网友装修日记及案例</a></li>
+      <li><a id="7"  href="http://www.51hejia.com/articleList/s-32076" onmouseover="javascript:setFocus2('li','U1','x',6);javascript:daohang(7);"  target="_blank">装修达人</a></li>
+      <li><a id="8"  onmouseover="javascript:setFocus2('li','U1','x',7);javascript:daohang(8);"target="_blank">装修专区</a></li>
+      <li><a id="9" href="http://bbs.51hejia.com/list/484" onmouseover="javascript:setFocus2('li','U1','x',8);javascript:daohang(9);" target="_blank">装修论坛</a></li>
+    </ul>
+    <script type="text/javascript">
+      daohang(1);
+    </script>
+    <ul class="sc_menu" id="U1"  >
+      <li id="x0" style="display:block;" >
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54222.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x1" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54223.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x2" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54224.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+
+        <% end %>
+      </li>
+      <li id="x3" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54225.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x4" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54226.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x5" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54227.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x6" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54228.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x7" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54229.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+      <li id="x8" style="display:none;">
+        <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/54230.xml", ["title", "url", "image-url", "description"], 10) %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

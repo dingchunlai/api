@@ -1,0 +1,10 @@
+<% @firm_case.each do |cases| %>
+  <% case_photo = Case.get_photo_photo(cases.ID) %>
+  <% pathurl = gen_firm_city_case_detail(cases.COMPANYID, cases.ID)%>
+  <li>
+  	<a href="<%if pathurl.nil?%>/anli/<%=cases.ID%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=cases.NAME%>">
+  	<img src="http://d.51hejia.com/files/hekea/case_img/tn/<%=cases.ID%>.jpg" alt="<%=cases.NAME%>" onerror="javascript:this.src='http://www.51hejia.com/api/images/none.gif'"/>
+		</a>
+  	<a href="/gs-<%= cases.COMPANYID %>/cases-<%=cases.ID%>" target="_blank" title = "<%=cases.NAME%>"><%=truncate(cases.NAME,12)%></a>
+  </li>
+<% end %>

@@ -1,0 +1,43 @@
+<%
+def check(ids, id)
+  "checked" if ids.split(",").include?(id.to_s) if ids
+end
+%>
+<!-- 分配栏目组Div -->
+<form action="/admin/assign_group" method="post">
+  <table class="tb tb2 nobdb">
+    <tbody>
+      <tr>
+        <th class="partition" colspan="15">共享栏目组</th>
+        <th class="partition" colspan="15"><%= @group.name %></th>
+      </tr>
+      <tr>
+        <td colspan="2" align="left" class="td27">其他推广编辑:</td>
+      </tr>
+
+      <% @results.in_groups_of(4, false) do |g| %>
+        <tr class="noborder">
+          <% g.each do |r| %>
+            <td align="left" class="vtop rowform">
+              <input name="public_ids[]" size="50" type="checkbox" value="<%= r.editor_id %>" <%= check(@group.public_ids, r.editor_id) %>><%= r.name %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+      <!--tr class="noborder">
+        <td align="left" class="vtop rowform">
+          <input name="public_ids[]" size="50" type="checkbox" value="183" <%= check(@group.public_ids, 183) %>>夏晔
+        </td>
+        <td align="left" class="vtop rowform">
+          <input name="public_ids[]" size="50" type="checkbox" value="181" <%= check(@group.public_ids, 181) %>>周洪涛
+        </td>
+        <td align="left" class="vtop rowform">
+          <input name="public_ids[]" size="50" type="checkbox" value="180" <%= check(@group.public_ids, 180) %>>张嗣琪
+        </td>
+      </tr-->
+    </tbody>
+  </table>
+  <input name="group_id" size="50" value="<%= @group.id %>" type="hidden">
+  <input type="submit" value="共享" class="btn" >
+</form>
+<!-- end -->

@@ -1,0 +1,449 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/680/51hejia/repos/api/release/app/models
+END
+booking_deco.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/models/booking_deco.rb
+END
+hejia_tag_entity_link.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_tag_entity_link.rb
+END
+deco_reply.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_reply.rb
+END
+deco_firm.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_firm.rb
+END
+publish_text_style.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/models/publish_text_style.rb
+END
+case_designer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_designer.rb
+END
+product_vendor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/models/product_vendor.rb
+END
+case_housemodel.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_housemodel.rb
+END
+publish_column_group.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/models/publish_column_group.rb
+END
+publish_content.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/models/publish_content.rb
+END
+hejia_designer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_designer.rb
+END
+photo_photo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/models/photo_photo.rb
+END
+publish_content_keyword.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/app/models/publish_content_keyword.rb
+END
+deco_firm_branch.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_firm_branch.rb
+END
+case_tag.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_tag.rb
+END
+zhuanqu_info.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/models/zhuanqu_info.rb
+END
+radmin_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/models/radmin_user.rb
+END
+api.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/81/51hejia/repos/api/release/app/models/api.rb
+END
+publish_upload.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/models/publish_upload.rb
+END
+ask_zhidao_topic.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/app/models/ask_zhidao_topic.rb
+END
+deco_event.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_event.rb
+END
+deco_quotation.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_quotation.rb
+END
+hejia_article_category.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_article_category.rb
+END
+product.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/81/51hejia/repos/api/release/app/models/product.rb
+END
+baidu_map.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/baidu_map.rb
+END
+product_image.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/product_image.rb
+END
+analog_url.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/analog_url.rb
+END
+deco_photo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_photo.rb
+END
+hejia_article.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_article.rb
+END
+potho_tag.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/potho_tag.rb
+END
+mobile_code_verify.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/models/mobile_code_verify.rb
+END
+article_image.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/article_image.rb
+END
+page_tracker.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/models/page_tracker.rb
+END
+case_factory_company.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_factory_company.rb
+END
+case_material.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_material.rb
+END
+user_collection.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/models/user_collection.rb
+END
+reply.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/81/51hejia/repos/api/release/app/models/reply.rb
+END
+deco_vedio.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_vedio.rb
+END
+zhuanqu_sort.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/models/zhuanqu_sort.rb
+END
+coupon.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/81/51hejia/repos/api/release/app/models/coupon.rb
+END
+webpm.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/81/51hejia/repos/api/release/app/models/webpm.rb
+END
+deco_register.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_register.rb
+END
+publish_column.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/models/publish_column.rb
+END
+hejia_article_article.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_article_article.rb
+END
+hejia_editor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_editor.rb
+END
+deco_review.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_review.rb
+END
+analog_code.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/models/analog_code.rb
+END
+zhuanqu_kw.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/zhuanqu_kw.rb
+END
+hejia_user_role.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_user_role.rb
+END
+deco_worksite.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_worksite.rb
+END
+deco_diary.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/deco_diary.rb
+END
+bbs_topic.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/bbs_topic.rb
+END
+hejia_user_bbs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/680/51hejia/repos/api/release/app/models/hejia_user_bbs.rb
+END
+case_deco.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_deco.rb
+END
+hejia_company.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_company.rb
+END
+ruser_huser.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/models/ruser_huser.rb
+END
+hejia_index_keyword.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_index_keyword.rb
+END
+case_company_info.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_company_info.rb
+END
+analog_code_url.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/models/analog_code_url.rb
+END
+sales_promotion_event.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/models/sales_promotion_event.rb
+END
+photo_photos_tag.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/app/models/photo_photos_tag.rb
+END
+hejia_article_col.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_article_col.rb
+END
+binary.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/81/51hejia/repos/api/release/app/models/binary.rb
+END
+hejia_art_prod_link.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_art_prod_link.rb
+END
+hejia_visit_record.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_visit_record.rb
+END
+hejia_publish_channel.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_publish_channel.rb
+END
+case_company.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/models/case_company.rb
+END
+hejia_role.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_role.rb
+END
+statistic.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/statistic.rb
+END
+picture.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/81/51hejia/repos/api/release/app/models/picture.rb
+END
+hejia_tag.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_tag.rb
+END
+relation.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/81/51hejia/repos/api/release/app/models/relation.rb
+END
+hejia_article_content.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/models/hejia_article_content.rb
+END
+ask_blog_topic.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/models/ask_blog_topic.rb
+END

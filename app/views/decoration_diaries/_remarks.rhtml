@@ -1,0 +1,32 @@
+<% 
+	if @diary.nil?
+		diary_id = @diary_id
+		deco_name = @deco_name
+	else
+		diary_id = @diary.id
+		deco_name =@diary.deco_firm.name_abbr
+	end
+%>
+<div class="gsl_wyly_tit">
+          <h3>网友评论</h3>
+          <span><a href="#" target="_self" title="返回顶部">返回顶部</a></span></div>
+   		<%@remarks.each do |remark|%>
+		<div class="gsl_wyly_txt">
+          <h4>
+            	<div class="f_l"><%= remark.user_name%></div>
+				<% if remark.praise.to_i > 0%>
+				<%=show_remark_star(remark.praise)%>
+				<% end %>
+				<label><%= remark.created_at.strftime('%Y-%m-%d %H:%M:%S')%></label>
+				</h4>
+          <p><%=h remark.content%></p>
+		  <% unless remark.reply.blank? %>
+		  <div class="gsl_wyly_hf">
+            <h5>[<%= deco_name %>]于 <%= remark.reply.created_at.to_s(:db) %>
+              <label>回复</label>
+            </h5>
+            <span><%=h remark.reply.content %></span> </div>
+		<% end %>
+         </div>
+		<% end %>
+<div class="pagination clear"><%=will_paginate_remote(@remarks, :update=>'remarks_div', :params => "&id=#{diary_id}", :url=>"/decoration_diaries/remaks_page")%></div>

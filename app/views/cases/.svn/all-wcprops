@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases
+END
+_shoucang_button.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_shoucang_button.rhtml
+END
+save_case.rjs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/save_case.rjs
+END
+down_case.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/down_case.rhtml
+END
+_look.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_look.rhtml
+END
+_remarks.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_remarks.rhtml
+END
+_up.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_up.rhtml
+END
+_down.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_down.rhtml
+END
+_shoucang.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_shoucang.rhtml
+END
+company.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/company.rhtml
+END
+zHuangCase.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/zHuangCase.rhtml
+END
+_tag.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/_tag.rhtml
+END
+list.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/list.rhtml
+END
+show.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/app/views/cases/show.rhtml
+END

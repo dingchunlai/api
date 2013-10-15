@@ -1,0 +1,17 @@
+<h3 class="zxdpn_p4r_tab clearfix"><label onclick="show_tab('zxdpn_p4r_c','zxdpn_p4r_but','zxdpn_p4r_tabbg',2,1)" class="zxdpn_p4r_tabbg1" id="zxdpn_p4r_but1"><%=CITIES[@city.to_i]%>专题</label><label onclick="show_tab('zxdpn_p4r_c','zxdpn_p4r_but','zxdpn_p4r_tabbg',2,2)" class="zxdpn_p4r_tabbg2" id="zxdpn_p4r_but2">和家专访</label></h3>
+<ul class="zxdpn_p4r_c0" id="zxdpn_p4r_c1">
+		<% @home["专题"].each do |zhuanti|%>
+		<li><a target="_blank" title="<%= zhuanti['title']%>" href="<%= zhuanti['url']%>"><%= zhuanti['title']%></a></li>
+		<% end -%>
+		<% if @city.to_i == 12301 || @city.to_i == 12118 %>
+			<li class="zxdpn_p4r_more"><a target="_blank" title="更多专题" href="/theme">更多>></a></li>
+		<% end %>
+</ul>
+<ul class="zxdpn_p4r_c0" id="zxdpn_p4r_c2">
+	<% @home["专访"].each do |zhuanfang|%>
+		<li><a target="_blank" title="<%= zhuanfang['title']%>" href="<%= zhuanfang['url']%>"><%= zhuanfang['title']%></a></li>
+	<% end -%>
+	<% if @city.to_i == 12301 || @city.to_i == 12118 %>
+			<li class="zxdpn_p4r_more"><a target="_blank" title="更多专访" href="/theme">更多>></a></li>
+	<% end %>
+</ul>

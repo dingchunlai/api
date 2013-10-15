@@ -1,0 +1,47 @@
+<div class="h5">热门排行
+	<span><%= link_to "默认", newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => 0, :order => 0, :model => params[:model] || 0, :style => params[:style] || 0, :district => params[:district] || 0,:price => params[:price] || 0, :page => params[:page] || 1)) %></span>
+</div>
+<ul>
+			<li><a href="/zhuangxiugongsi-0-0-0-0-3-0-1">口碑排行榜</a></li>
+			<li><a href="/zhuangxiugongsi-0-0-0-0-8-0-1">案例排行榜</a></li>
+			<li><a href="/zhuangxiugongsi-0-0-0-0-4-0-1">设计排行榜</a></li>
+			<li><a href="/zhuangxiugongsi-0-0-0-0-6-0-1">施工排行榜</a></li>
+			<li><a href="/zhuangxiugongsi-0-0-0-0-7-0-1">服务排行榜</a></li>
+</ul>
+<div class="h5">主打价位
+	<span><%= link_to "全部", newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => params[:city] || 0, :model => params[:model] || 0, :style => params[:style] || 0, :district => params[:district] || 0, :order => params[:order] || 0,:price => 0, :page => 1)) %></span>
+</div>
+<ul>
+	<% PRICE.sort.each do |k, v| %>
+		<% link_name = params[:price].to_i == k ? "<strong>#{v}</strong>" : v %>
+		<li><%= link_to link_name, newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => params[:city] || 0,:model => nil || 0, :price => k, :style => params[:style] || 0, :district => params[:district] || 0, :order => params[:order] || 0, :page => 1)) %></li>
+	<% end %>
+</ul>
+
+<div class="h5">装修方式
+	<span><%= link_to "全部", newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => params[:city] || 0, :model => nil || 0, :style => params[:style] || 0, :district => params[:district] || 0, :order => params[:order] || 0,:price => params[:price] || 0, :page => 1)) %></span>
+</div>
+<ul>
+	<% MODELS.sort.each do |k, v| %>
+		<% link_name = params[:model].to_i == k ? "<strong>#{v}</strong>" : v %>
+		<li><%= link_to link_name, newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => params[:city] || 0, :model => k, :style => params[:style] || 0, :district => params[:district] || 0, :order => params[:order] || 0,:price => params[:price] || 0, :page => 1)) %></li>
+	<% end %>
+</ul>
+<div class="h5">装修风格
+	<span><%= link_to "全部", newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => params[:city] || 0, :style => 0, :model => params[:model] || 0, :district => params[:district] || 0, :order => params[:order] || 0,:price => params[:price] || 0, :page => 1)) %></span>
+</div>
+<ul>
+	<% STYLES.sort.each do |k, v| %>
+		<% link_name = params[:style].to_i == k ? "<strong>#{v}</strong>" : v %>
+		<li><%= link_to link_name, newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew,:city => params[:city] || 0, :style => k, :model => params[:model] || 0, :district => params[:district] || 0, :order => params[:order] || 0,:price => params[:price] || 0, :page => 1)) %></li>
+	<% end %>
+</ul>
+<div class="h5">公司区域
+	<span><%= link_to "全部", newfirms_filter_path(params.merge(:controller => :firms,:action => :indexnew,:city => params[:city] || 0, :district => 0, :model => params[:model] || 0, :style => params[:style] || 0, :order => params[:order] || 0,:price => params[:price] || 0, :page => 1)) %></span>
+</div>
+<ul>
+	<% DISTRICTS.sort.each do |k, v| %>
+		<% link_name = params[:district].to_i == k ? "<strong>#{v}</strong>" : v %>
+		<li><%= link_to link_name, newfirms_filter_path(params.merge(:controller => :firms, :action => :indexnew, :city => 0, :district => k, :model => params[:model] || 0, :style => params[:style] || 0, :order => params[:order] || 0,:price => params[:price] || 0, :page => 1)) %> </li>
+	<% end %>
+</ul>

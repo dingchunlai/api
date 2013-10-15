@@ -1,0 +1,142 @@
+<h2 class="quyu" id="chromemenu3"><span class="n1">区域排行榜
+</span><span class="n2">综合分</span></h2>
+    <div class="rbox6 margin10">
+      <div class="tabtitle3">
+          <ul>
+            <li onmouseover="HoverLi(24,0,13);" id="nav-240" class="hoveron">静</li>
+            <li onmouseover="HoverLi(24,1,13);" id="nav-241">徐</li>
+            <li onmouseover="HoverLi(24,2,13);" id="nav-242">闵</li>
+            <li onmouseover="HoverLi(24,3,13);" id="nav-243">长</li>
+            <li onmouseover="HoverLi(24,4,13);" id="nav-244">浦</li>
+            <li onmouseover="HoverLi(24,5,13);" id="nav-245">黄</li>
+            <li onmouseover="HoverLi(24,6,13);" id="nav-246">虹</li>
+            <li onmouseover="HoverLi(24,7,13);" id="nav-247">杨</li>
+            <li onmouseover="HoverLi(24,8,13);" id="nav-248">普</li>
+            <li onmouseover="HoverLi(24,9,13);" id="nav-249">卢</li>
+            <li onmouseover="HoverLi(24,10,13);" id="nav-2410">闸</li>
+            <li onmouseover="HoverLi(24,11,13);" id="nav-2411">宝</li>
+            <li onmouseover="HoverLi(24,12,13);" id="nav-2412">郊</li>
+          </ul>
+      </div>
+        <div id="tab-panel-240">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12222).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%>  
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-241" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12228).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-242" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12219).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-243" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12214).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-244" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12212).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-245" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12225).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-246" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12224).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-247" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12220).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-248" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12227).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-249" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12210).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-2410" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12213).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-2411" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district(12217).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-2412" style="display:none;">
+      <div class="derankbox5">
+            <ul>
+            <%get_top_companys_by_district_jiaoqu.each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%=firm.praise%></span></li>
+            <%end%> 
+            </ul>
+      </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <script language="javascript">
+    	HoverLi(24,2,13);
+    </script>

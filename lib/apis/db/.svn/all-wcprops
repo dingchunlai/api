@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db
+END
+create_remarks_migration.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db/create_remarks_migration.rb
+END
+promoted_firms_migration.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db/promoted_firms_migration.rb
+END
+designers_count_migration.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db/designers_count_migration.rb
+END
+remarks_count_migration.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db/remarks_count_migration.rb
+END
+cases_remark_migration.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db/cases_remark_migration.rb
+END
+migration_events_review.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/lib/apis/db/migration_events_review.rb
+END

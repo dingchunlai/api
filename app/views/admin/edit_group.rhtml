@@ -1,0 +1,19 @@
+<form action="/admin/update_group" method="post">
+  <table class="tb tb2 nobdb">
+    <tbody>
+      <tr>
+        <th class="partition" colspan="15">编辑栏目组</th>
+      </tr>
+      <tr>
+        <td colspan="2" align="left" class="td27">栏目组名称:</td>
+      </tr>
+      <tr class="noborder">
+        <td align="left" class="vtop rowform">
+          <input name="group[name]" size="50" value="<%= @group.name %>">
+          <input name="group_id" size="50" value="<%= @group.id %>" type="hidden">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="submit" value="编辑" class="btn" >
+</form>

@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= article_page_title %></title>
+    <meta name="keywords" content="<%= @article.KEYWORD1 %>;<%= @article.TITLE %>"/>
+    <meta name="description" content="<%= @article.SUMMARY.gsub("\"","'") rescue @article.TITLE %>"/>
+    <link href="http://js.51hejia.com/css/header914.css?99173" rel="stylesheet" type="text/css" />
+    <link href="http://js.51hejia.com/css/zhuangxiu1123.css?111" rel="stylesheet" type="text/css" />
+    <link href="http://js.51hejia.com/css/zhuangxiu1123-b.css?123" rel="stylesheet" type="text/css" />
+    <script type='text/javascript' src="http://d.51hejia.com/js/adv20090721.js"></script>
+		<%= javascript_include_tag "http://js.51hejia.com/js/jquery/1.5/jquery.min.js" %>
+		<%= javascript_include_tag "http://js.51hejia.com/js/jquery/plugins/tmpl/1.0.0/jquery.tmpl.min.js" %>
+		
+
+	
+  </head>
+  <body>
+    <div class="all clearfix">
+      <%= render :partial => '/share/public_header' %>
+
+      <div style="width:960px; margin:5px auto 5px auto;">
+        <%=adspace("#{@article_type}-文章终端页-通栏1")%>
+      </div>
+
+      <script type="text/javascript">
+        function setFocus2(p,y,o,m){selectLayer2(p,y,o,m);}
+        function selectLayer2(p,y,o,m){for (var i=0;i<document.getElementById(y).getElementsByTagName(p).length;)
+          {document.getElementById(o+i).style.display="none";i++;}document.getElementById(o+m).style.display="block";}
+        function daohang(m){for(var z=0;z<=9;){
+            document.getElementById(z+1).style.backgroundImage='url(http://www.51hejia.com/images/jiaju1123/btn_bg_bk.gif)';
+            document.getElementById(z+1).style.color='#1a4176';z++;};
+          document.getElementById(m).style.backgroundImage='url(http://www.51hejia.com/images/jiaju1123/btn_bg.gif)';
+          document.getElementById(m).style.color='#fff';}
+      </script>
+      <%= render :partial => "shared/menu_jushang" %>
+      <div class="f2" id="f2">
+        <div class="mapsite clear">
+          <% rrr = parse_xml_data("http://api.51hejia.com/rest/build/xml/54304.xml", ["title", "url", "image-url"]) %>
+          <span><p><% if rrr[1] %><a href="<%= rrr[1]["url"] %>" target="_blank"><%= rrr[1]["title"] %></a><% end %></p><a href="http://www.51hejia.com" target="_blank" class="zx_btn"></a></span>
+          <p class="left"><%= article_navigation %></p>
+        </div>
+        <div class="topbg clearfix">
+          <div class="f2_content">
+
+            <div style="padding:5px;">
+              <%=adspace('居尚-文章终端页-大旗1')%>
+            </div>
+
+            <%= yield %>
+
+            <div class="tuijian clearfix" style='background:url("http://img3.51hejia.com/img/zhuangxiu1023/txtarea_bg.jpg") left top no-repeat;margin-left:8px;padding-top:10px'>
+              <h3><a target="_blank" href="http://www.51hejia.com/jushang/">家居相关文章推荐</a></h3>
+              <ul class="text_list clearfix">
+                <% @same_secondcategory_articles.each do |article|%>
+                  <li><%= link_to article.TITLE , "http://www.51hejia.com/jushang/#{article.CREATETIME.strftime("%Y%m%d")}/#{article.id}"%></li>  <% end -%>
+
+              </ul>
+            </div>
+
+            <div class="tuijian">
+              <ul class="text_list2 clearfix clear">
+                <% results = parse_xml_data("http://api.51hejia.com/rest/build/xml/54308.xml", ["title", "url", "image-url"]) %>
+                <li>
+                  <% if results[0] %>
+                    <a href="<%= results[0]["url"] %>" target="_blank" title="<%= results[0]["title"] %>"><img height="100" width="190" src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>"/></a>
+                    <p><a href="<%= results[0]["url"] %>" target="_blank" title="<%= results[0]["title"] %>"><%= results[0]["title"] %></a></p>
+                  <% end %>
+                </li>
+                <li class="center">
+                  <p><a href="http://www.51hejia.com/jushang/" class="a1" target="_blank"></a></p>
+                  <p class="a2"><a href="http://www.51hejia.com" class="a2" target="_blank"></a></p>
+                </li>
+                <li>
+                  <% if results[1] %>
+                    <a href="<%= results[1]["url"] %>" target="_blank" title="<%= results[1]["title"] %>"><img height="100" width="190" src="<%= results[1]["image-url"] %>" alt="<%= results[1]["title"] %>"/></a>
+                    <p><a href="<%= results[1]["url"] %>" target="_blank" title="<%= results[1]["title"] %>"><%= results[1]["title"] %></a></p>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+
+            <div class="box1 clearfix">
+              <h3><a href="http://www.51hejia.com/jushang/articleList/s-<%= @article.SECONDCATEGORY %>" target="_blank">居尚最新更新</a></h3>
+              <% ee = parse_xml_data("http://api.51hejia.com/rest/build/xml/54309.xml", ["title", "url", "image-url"]) %>
+              <ul class="list1">
+                <% s_second = second_articles(@article.SECONDCATEGORY, 24, false) %>
+                <% if ee[0] %>
+                  <a href="<%= ee[0]["url"] %>" target="_blank"><img src="<%= ee[0]["image-url"] %>" alt="<%= ee[0]["title"] %>"/></a>
+                  <li><a href="<%= ee[0]["url"] %>" title="<%= ee[0]["title"] %>" target="_blank"><%= truncate_u(ee[0]["title"], 10) %></a></li>
+                <% end %>
+                <% if s_second.size >= 6 %>
+                  <% s_second[0..5].each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 10) %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+              <ul class="list1 list2">
+                <% if ee[1] %>
+                  <a href="<%= ee[1]["url"] %>" target="_blank"><img src="<%= ee[1]["image-url"] %>" alt="<%= ee[1]["title"] %>"/></a>
+                  <li><a href="<%= ee[1]["url"] %>" title="<%= ee[1]["title"] %>" target="_blank"><%= truncate_u(ee[1]["title"], 10) %></a></li>
+                <% end %>
+                <% if s_second.size >= 12 %>
+                  <% s_second[6..11].each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 10) %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+              <ul class="list1 list2">
+                <% if ee[2] %>
+                  <a href="<%= ee[2]["url"] %>" target="_blank"><img src="<%= ee[2]["image-url"] %>" alt="<%= ee[2]["title"] %>"/></a>
+                  <li><a href="<%= ee[2]["url"] %>" title="<%= ee[2]["title"] %>" target="_blank"><%= truncate_u(ee[2]["title"], 10) %></a></li>
+                <% end %>
+                <% if s_second.size >= 18 %>
+                  <% s_second[12..17].each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 10) %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+              <ul class="list1 list2">
+                <% if ee[3] %>
+                  <a href="<%= ee[3]["url"] %>" target="_blank"><img src="<%= ee[3]["image-url"] %>" alt="<%= ee[3]["title"] %>"/></a>
+                  <li><a href="<%= ee[3]["url"] %>" title="<%= ee[3]["title"] %>" target="_blank"><%= truncate_u(ee[3]["title"], 10) %></a></li>
+                <% end %>
+                <% if s_second.size >= 24 %>
+                  <% s_second[18..23].each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 10) %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+            <%= render :partial => "shared/comment" %>
+            <div class="box1 clearfix">
+              <h3><a href="http://www.51hejia.com" target="_blank">全站精彩内容</a></h3>
+              <ul class="list4">
+                <% parse_xml_data("http://api.51hejia.com/rest/build/xml/54311.xml", ["title", "url", "image-url"]).each do |e| %>
+                  <li>
+                    <a href="<%= e["url"] %>" target="_blank" title="<%= e["title"] %>"><img height="100" width="190" src="<%= e["image-url"] %>" alt="<%= e["title"] %>"/></a>
+                    <p><a href="<%= e["url"] %>" target="_blank" title="<%= e["title"] %>"><%= e["title"] %></a></p>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="sidelist clearfix">
+            <% if CITIES.keys.include?(@city_id.to_i) && ["zhuangxiu", "jushang","diban"].include?(@first_tag_url) %>
+              <%= render :partial => "/shared/jushang_cases", :locals=>{:page_class=>""}%>
+            <% end %>
+            <div class="ad_3 clearfix">
+              <%=adspace("#{@article_type}-文章终端页-宽幅1")%>
+            </div>
+            <h3 class="title_s">精华文章推荐</h3>
+            <ul class="sidebox_1">
+              <% parse_xml_data("http://api.51hejia.com/rest/build/xml/54327.xml", ["title", "url"],3).each do |a| %>
+                <li><a href="<%= a["url"] %>" target="_blank" title="<%= a["title"] %>"><%= a["title"] %></a></li>
+              <% end %>
+            </ul>
+            <form id="form1" method="post" action="http://tag.51hejia.com/list/search" target="_blank">
+              <input  name="tag_keyword" type="text"/>
+              <a href="#" onclick="document.getElementById('form1').submit()" target="_blank"><img src="http://www.51hejia.com/images/zhuangxiu1023/f2_btn.gif" alt=""/></a>
+            </form>
+            <% if CITIES.keys.include?(@city_id.to_i) %>
+              <%= render :partial => "/shared/tian_diaries", :locals=>{:page_class=>"",:keywords => keywords_in_url(@article.KEYWORD1)}%>
+            <% end %>
+            <ul class="sidebox_3" >
+              <h3>装饰搭配</h3>
+              <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/54306.xml", ["title", "url", "image-url", "description"], 3) %>
+                <li class="clearfix">
+                  <a href="<%= r["url"] %>" target="_blank"><img src="<%= r["image-url"] %>" alt="<%= r["title"] %>"/></a>
+                  <div class="listright">
+                    <a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><h4><%= truncate_u(r["title"], 9) %></h4></a>
+                    <p><%= truncate_u(r["description"], 40, "...") %>[<a href="<%= r["url"] %>" target="_blank">详细</a>]</p>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+
+
+            <ul class="sidebox_5">
+              <h3>专区关键词</h3>
+              <li class="clearfix">
+                <% results = parse_xml_data("http://api.51hejia.com/rest/build/xml/54305.xml", ["title", "url"]) %>
+                <% for result in results %>
+                  <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+                <% end %>
+              </li>
+            </ul>
+            <div id="side">
+              <div class="sidebox_2" id="i0" style="display:block;">
+                <h3> <span><a href="http://www.51hejia.com/jushang/articleList/s-12419" target="_blank">>>更多</a></span>居尚top10</h3>
+                <p class="title clearfix">
+                  <a href="http://deco.51hejia.com/zq/风格美家/" class="now" onmouseover="javascript:setFocus2('div','side','i',0);" target="_blank">美家</a>
+                  <a href="http://deco.51hejia.com/zq/装饰搭配/" onmouseover="javascript:setFocus2('div','side','i',1);" target="_blank">搭配</a>
+                  <a href="http://deco.51hejia.com/zq/海外/" onmouseover="javascript:setFocus2('div','side','i',2);" target="_blank">海外</a>
+                  <a href="http://deco.51hejia.com/zq/设计/" onmouseover="javascript:setFocus2('div','side','i',3);" target="_blank">设计</a>
+                </p>
+                <ul>
+                  <% second_articles(12419, 10).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 16) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="sidebox_2" id="i1" style="display:none;">
+                <h3> <span><a href="http://www.51hejia.com/jushang/articleList/s-12418" target="_blank">>>更多</a></span>居尚top10</h3>
+                <p class="title clearfix">
+                  <a href="http://deco.51hejia.com/zq/风格美家/" onmouseover="javascript:setFocus2('div','side','i',0);" target="_blank">美家</a>
+                  <a href="http://deco.51hejia.com/zq/装饰搭配/" class="now" onmouseover="javascript:setFocus2('div','side','i',1);" target="_blank">搭配</a>
+                  <a href="http://deco.51hejia.com/zq/海外/" onmouseover="javascript:setFocus2('div','side','i',2);" target="_blank">海外</a>
+                  <a href="http://deco.51hejia.com/zq/设计/" onmouseover="javascript:setFocus2('div','side','i',3);" target="_blank">设计</a>
+                </p>
+                <ul>
+                  <% second_articles(12418, 10).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 16) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="sidebox_2" id="i2" style="display:none;">
+                <h3> <span><a href="http://www.51hejia.com/jushang/articleList/s-12421" target="_blank">>>更多</a></span>居尚top10</h3>
+                <p class="title clearfix">
+                  <a href="http://deco.51hejia.com/zq/风格美家/" onmouseover="javascript:setFocus2('div','side','i',0);" target="_blank">美家</a>
+                  <a href="http://deco.51hejia.com/zq/装饰搭配/" onmouseover="javascript:setFocus2('div','side','i',1);" target="_blank">搭配</a>
+                  <a href="http://deco.51hejia.com/zq/海外/" class="now" onmouseover="javascript:setFocus2('div','side','i',2);" target="_blank">海外</a>
+                  <a href="http://deco.51hejia.com/zq/设计/" onmouseover="javascript:setFocus2('div','side','i',3);" target="_blank">设计</a>
+                </p>
+                <ul>
+                  <% second_articles(12421, 10).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 16) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="sidebox_2" id="i3" style="display:none;">
+                <h3> <span><a href="http://www.51hejia.com/jushang/articleList/s-12425" target="_blank">>>更多</a></span>居尚top10</h3>
+                <p class="title clearfix">
+                  <a href="http://deco.51hejia.com/zq/风格美家/" onmouseover="javascript:setFocus2('div','side','i',0);" target="_blank">美家</a>
+                  <a href="http://deco.51hejia.com/zq/装饰搭配/" onmouseover="javascript:setFocus2('div','side','i',1);" target="_blank">搭配</a>
+                  <a href="http://deco.51hejia.com/zq/海外/" onmouseover="javascript:setFocus2('div','side','i',2);" target="_blank">海外</a>
+                  <a href="http://deco.51hejia.com/zq/设计/" class="now" onmouseover="javascript:setFocus2('div','side','i',3);" target="_blank">设计</a>
+                </p>
+                <ul>
+                  <% second_articles(12425, 10).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 16) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <ul class="sidebox_4 clearfix">
+              <h3>美图</h3>
+              <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/54307.xml", ["title", "url", "image-url"], 4) %>
+                <li>
+                  <a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><img src="<%= r["image-url"] %>" alt="<%= r["title"] %>"/></a>
+                  <p><a href="<%= r["url"] %>" target="_blank"><%= truncate_u(r["title"], 9) %></a></p>
+                </li>
+              <% end %>
+            </ul>
+            <div id="side3">
+              <div class="sidebox_2 sidebox_10" id="z0" style="display:block;">
+                <p class="title_2 clearfix">
+                  <a href="http://deco.51hejia.com/zq/设计-创意饰品.html" class="now" onmouseover="javascript:setFocus2('div','side3','z',0);" target="_blank">新品</a>
+                  <a href="http://deco.51hejia.com/zq/贴心买手/" onmouseover="javascript:setFocus2('div','side3','z',1);" target="_blank">导购</a>
+                  <a href="http://deco.51hejia.com/zq/名人家居/" onmouseover="javascript:setFocus2('div','side3','z',2);" target="_blank">名人</a>
+                </p>
+                <ul>
+                  <% second_articles(12428, 4).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 17) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="sidebox_2 sidebox_10" id="z1" style="display:none;">
+                <p class="title_2 clearfix">
+                  <a href="http://deco.51hejia.com/zq/设计-创意饰品.html" onmouseover="javascript:setFocus2('div','side3','z',0);" target="_blank">新品</a>
+                  <a href="http://deco.51hejia.com/zq/贴心买手/"  class="now" onmouseover="javascript:setFocus2('div','side3','z',1);" target="_blank">导购</a>
+                  <a href="http://deco.51hejia.com/zq/名人家居/" onmouseover="javascript:setFocus2('div','side3','z',2);" target="_blank">名人</a>
+                </p>
+                <ul>
+                  <% second_articles(12420, 4).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 17) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="sidebox_2 sidebox_10" id="z2" style="display:none;">
+                <p class="title_2 clearfix">
+                  <a href="http://deco.51hejia.com/zq/设计-创意饰品.html" onmouseover="javascript:setFocus2('div','side3','z',0);" target="_blank">新品</a>
+                  <a href="http://deco.51hejia.com/zq/贴心买手/" onmouseover="javascript:setFocus2('div','side3','z',1);" target="_blank">导购</a>
+                  <a href="http://deco.51hejia.com/zq/名人家居/" class="now" onmouseover="javascript:setFocus2('div','side3','z',2);" target="_blank">名人</a>
+                </p>
+                <ul>
+                  <% second_articles(12431, 4).each do |a| %>
+                    <li><a href="<%= article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY) %>" target="_blank" title="<%= a.TITLE %>"><%= truncate_u(a.TITLE, 17) %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <ul class="sidebox_6 sidebox_8">
+              <h3>图库</h3>
+              <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/230.xml", ["title", "url"])[0..5] %>
+                <li><a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><%= r["title"] %></a></li>
+              <% end %>
+            </ul>
+            <ul class="sidebox_6">
+              <h3>装修公司推荐</h3>
+							<div id="company_wrapper"></div>
+								<script type="text/javascript" charset="utf-8">
+								  $(document).ready(function() {
+											$.ajax({
+											  url: 'http://api2.51hejia.com/api/ajax/companies',
+											  type: 'GET',
+								        dataType: 'jsonp'
+								       });
+								  });
+								</script>
+							
+							<script id="companyTemplate" type="text/x-jquery-tmpl">
+              	{{each companies}}
+                	<li><span class="f_r">${praise}</span><a href="${url}" target="_blank" title="${name_zh}">${name_abbr}</a></li>
+								{{/each}}
+							</script>
+            </ul>
+          </div><!--side -->
+        </div><!--top_bg -->
+      </div><!--f2-->
+      <%= render :partial => '/share/public_footer' %>
+      <script type="text/javascript">
+        function func_key(){document.onkeydown = function(ev) {var ev=window.event||ev;
+            if (ev.keyCode==37&&document.getElementById("previous_page")){var previous_url=document.getElementById("previous_page").href;
+              location.href=previous_url;}else if (ev.keyCode==39&&document.getElementById("next_page")) {
+              var next_url=document.getElementById("next_page").href;location.href = next_url;}}}
+      </script>
+      <script type="text/javascript">
+        setTimeout("func_key()",1000);
+        function newopen(){var next_url = document.getElementById("next_page").href;location.href = next_url;}
+  <%if params[:page] != 'all'%>
+      //点图片往后翻页
+      function next_img(){
+        var img_num = 0;var imgs = document.getElementsByTagName("img")
+        for(var i=0;i<imgs.length;i++){
+          if(imgs[i].src.indexOf("UserFiles") != -1 || imgs[i].src.indexOf("/images/binary") != -1){
+            imgs[i].style.cursor = "pointer";imgs[i].alt = "点击图片看下一页";imgs[i].title = "点击图片看下一页";imgs[i].onclick = newopen;img_num=1;}}
+        if(img_num>0&&document.getElementById("next_page")){var next_url = document.getElementById("next_page").href
+          document.getElementById("n_page").innerHTML="<a href=\""+next_url+"\">点击图片，进入下一页</a>"}}
+      next_img();
+  <%end%>
+      </script>
+  </body>
+</html>

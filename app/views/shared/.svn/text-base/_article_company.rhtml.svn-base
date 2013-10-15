@@ -1,0 +1,54 @@
+<%= javascript_include_tag "http://js.51hejia.com/js/jquery/plugins/tmpl/1.0.0/jquery.tmpl.min.js" %>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+			$.ajax({
+			  url: 'http://api2.51hejia.com/api/ajax/company_and_case',
+			  type: 'GET',
+        dataType: 'jsonp'
+       });
+  });
+</script>
+				
+<script id="companyAndCaseTemplate" type="text/x-jquery-tmpl">
+<div class="f2_bottom">
+  <h3><a href="http://z.51hejia.com/zhuangxiugongsi" target="_blank">装修公司推荐</a></h3>
+  <div class="left">
+		<a href="${company_with_picture.url}" target="_blank"><img src="http://img.51hejia.com/api/${company_with_picture.image_url}" alt="${company_with_picture.title}"/></a>
+     <p><a href="${company_with_picture.url}" target="_blank">${company_with_picture.title}</a></p>
+  </div>
+
+  <ul style="margin-top:20px;width:200px;">
+    {{each companies}}
+      <li><span class="f_r">${praise}</span>
+				<a href="${url}" target="_blank" title="${name_zh}">${name_abbr}</a>
+			</li>
+    {{/each}}
+  </ul>
+
+</div>
+<div class="f2_bottom f2_bottom2" id="f2_bottom">
+  <div id="g0" style="display:block;">
+    <a href="#" class="now" target="_blank">装修公司图片</a>
+    <a href="#" onmouseover="javascript:setFocus2('div','f2_bottom','g',1);" target="_blank">装修公司促销</a>
+    <ul>
+      {{each cases}}
+        <li><a href="${url}" target="_blank" title="${title}">${title}</a></li>
+     {{/each}}
+    </ul>
+  </div>
+  <div id="g1" style="display:none;">
+    <a href="#n" onmouseover="javascript:setFocus2('div','f2_bottom','g',0);" >装修公司图片</a>
+    <a href="#n" class="now" >装修公司促销</a>
+    <ul>
+      {{each events}}
+        <li><a href="${url}" target="_blank" title="${title}">${title}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+</script>
+
+<div id="companyAndCaseTemplate_wrapper">
+	
+</div>

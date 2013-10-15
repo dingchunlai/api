@@ -1,0 +1,3 @@
+class CommonController < ApplicationController
+
+end

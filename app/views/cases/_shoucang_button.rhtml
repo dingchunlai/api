@@ -1,0 +1,2 @@
+<%= link_to_remote(image_tag("http://js.51hejia.com/img/caseimages/save.gif", :size => 17*17, :alt => @fav_info[0], :title => @fav_info[0]),
+  :url => {:action => "save_case", :method => @fav_info[2], :case_id => @newcase.ID, :case_name => @newcase.NAME}) %>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/tasks
+END
+install.rake
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/tasks/install.rake
+END
+all.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/tasks/all.rb
+END
+tests.rake
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/tasks/tests.rake
+END

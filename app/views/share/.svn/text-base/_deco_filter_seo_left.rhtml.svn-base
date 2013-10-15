@@ -1,0 +1,42 @@
+  
+<script language=javascript>    
+function setFocus(n)
+{
+selectLayer(n);
+}
+function selectLayer(n)
+{
+switch(n)
+{
+case 1:
+document.getElementById("m1").style.display="block";
+document.getElementById("m2").style.display="none";
+break;
+case 2:
+document.getElementById("m1").style.display="none";
+document.getElementById("m2").style.display="block";
+
+break;
+}
+}     
+</script>
+ <div class="clear" id="m1" style="display:block;">
+			<div class="h6"><span><a href="/zhuangxiugongsi/0.0.0.3.0.1.html"  target="_blank">更多>></a></span><a href="#" class="now" onMouseOver="javascript:setFocus(1)">口碑</a> | <a href="#"  onmouseover="javascript:setFocus(2)">案例</a> 排行榜 </div>
+            <ul class="hotranklist" style=" height:260px;">
+				排名          商户           综合分
+				<%getseokoubeicompany.each do |c|%>
+	                <li><span><%=c.total_score.to_i%></span><a href="/gs-<%=c.id%>" target="_blank"><%=c.name_zh.chars[0,13]%></a></li>
+                <%end%>
+			</ul>
+        	</div>
+        
+        
+       		<div class="clear" id="m2" style=" display:none">
+        	<div class="h6"><span><a href="/zhuangxiugongsi/0.0.0.8.0.1.html" target="_blank">更多>></a></span><a href="#" onMouseOver="javascript:setFocus(1)">口碑</a> | <a href="#" class="now" onMouseOver="javascript:setFocus(2)">案例</a> 排行榜 </div>
+            <ul class="hotranklist" style=" height:260px;">
+				排名          商户           案例分
+				<%getseocasecompany.each do |c|%>
+	                <li><span><%=c.cases_count.to_i %></span><a href="/gs-<%=c.id%>" target="_blank"><%=c.name_zh.chars[0,13]%></a></li>
+                <%end%>
+			</ul>
+            </div>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/instrumentation/rails
+END
+action_web_service.rb
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/instrumentation/rails/action_web_service.rb
+END
+errors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/instrumentation/rails/errors.rb
+END
+action_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/lib/new_relic/agent/instrumentation/rails/action_controller.rb
+END

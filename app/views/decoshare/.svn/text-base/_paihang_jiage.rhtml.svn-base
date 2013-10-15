@@ -1,0 +1,77 @@
+<h2 class="jiawei" id="chromemenu2"><span class="n1">价位排行榜
+
+</span><span class="n2">性价比</span></h2>
+    <div class="rbox6 margin10">
+      <div class="tabtitle2">
+          <ul>
+          	<li onmouseover="HoverLi(23,0,4);" id="nav-230" class="hoveron">8<br />万以下</li>
+            <li onmouseover="HoverLi(23,1,4);" id="nav-231">8<br /><span>-</span><br />15万</li>
+            <li onmouseover="HoverLi(23,2,4);" id="nav-232">15<br /><span>-</span><br />30万</li>
+            <li onmouseover="HoverLi(23,3,4);" id="nav-233">30<br /><span>-</span><br />100万</li>
+            <!--
+            <li onmouseover="HoverLi(23,4,5);" id="nav-234">100万以上</li>
+            -->
+          </ul>
+      </div>
+        <div id="tab-panel-230">
+      <div class="derankbox4">
+            <ul class="ntui1">
+            <%tuijianprice = getfirm(243245)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(tuijianprice.id)%>" target="_blank" title="<%tuijianprice.name_zh%>"><%=get_firm_name_abbr2(tuijianprice)%></a></span><span class="n2"><%=tuijianprice.budget_praise%></span></li>
+            <%tuijianprice = getfirm(140061)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(tuijianprice.id)%>" target="_blank" title="<%tuijianprice.name_zh%>"><%=get_firm_name_abbr2(tuijianprice)%></a></span><span class="n2"><%=tuijianprice.budget_praise%></span></li>
+            <%get_new_companys_by_price2(1).each do |firm|%>
+            	<%if firm.id != 243245 && firm.id != 140061%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%="0"%></span></li>
+              	<%end%>
+            <%end%>  
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-231" style="display:none;">
+      <div class="derankbox4">
+            <ul class="ntui">
+            <%tuijianprice = getfirm(140077)%>
+            <li><span class="n1"><a href="<%=gen_firm_city_path(tuijianprice.id)%>" target="_blank" title="<%tuijianprice.name_zh%>"><%=get_firm_name_abbr2(tuijianprice)%></a></span><span class="n2"><%=tuijianprice.budget_praise%></span></li>
+            <%get_new_companys_by_price2(2).each do |firm|%>
+            	<%if firm.id != tuijianprice.id%>
+            	<li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%="0"%></span></li>
+            	<%end%>
+            <%end%>  
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-232" style="display:none;">
+      <div class="derankbox4">
+            <ul>
+            <%get_new_companys_by_price2(3).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%="0"%></span></li>
+            <%end%>  
+            </ul>
+      </div>
+      </div>
+      <div id="tab-panel-233" style="display:none;">
+      <div class="derankbox4">
+            <ul>
+            <%get_new_companys_by_price2(4).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%="0"%></span></li>
+            <%end%>  
+            </ul>
+      </div>
+      </div>
+      <!--
+      <div id="tab-panel-234" style="display:none;">
+      <div class="derankbox4">
+            <ul>
+            <%get_new_companys_by_price2(5).each do |firm|%>
+              <li><span class="n1"><a href="<%=gen_firm_path(firm)%>" target="_blank" title="<%firm.name_zh%>"><%=get_firm_name_abbr2(firm)%></a></span><span class="n2"><%="0"%></span></li>
+            <%end%>  
+            </ul>
+      </div>
+      </div>
+      -->
+      <div class="clear"></div>
+    </div> 
+    <script language="javascript">
+    HoverLi(23,<%=rand(2)%>,4);
+    </script>

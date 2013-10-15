@@ -1,0 +1,156 @@
+<div class="wenleft">
+  <div class="wento1">
+    <a name="top"></a>
+    <h4>当前位置：
+      <a href="http://www.51hejia.com/">首页</a> &gt;
+      <% if @article.FIRSTCATEGORY %>
+        <%
+        f_cat = get_first_tag_url(@article.FIRSTCATEGORY)
+        f_url = f_cat == "zhuangxiu" ? "http://d.51hejia.com/" : "http://www.51hejia.com/#{f_cat}/"
+        f_url = "http://b.51hejia.com/" if f_cat == "pinpaiku"
+      %>
+        <a href="<%= f_url %>"><%= get_first_tag_name(@article.FIRSTCATEGORY)%></a> &gt;
+      <% end %>
+      <% if @article.SECONDCATEGORY %>
+        <a href="http://www.51hejia.com/articleList/s-<%= @article.SECONDCATEGORY %>"><%= get_second_tag_name(@article.SECONDCATEGORY) %></a> &gt;
+      <% end %>
+      <%= @article.TITLE %>
+    </h4>
+    <h3><%= @article.TITLE %></h3>
+    <div class="wenxiangx">日期：<%= @article.CREATETIME.strftime("%Y-%m-%d") %>&nbsp;&nbsp;&nbsp;作者：<%= @article.AUTHOR %>&nbsp;&nbsp;&nbsp;来源：<%= @article.SOURCE %> &nbsp;&nbsp;&nbsp;</div>
+    <DIV class=art_size>
+      <DIV class=left>【 字体：<A href="javascript:ContentSize(16,'art_content')">大</A> <A
+          href="javascript:ContentSize(14,'art_content')">中</A> <A
+          href="javascript:ContentSize(12,'art_content')">小</A> 】</DIV>
+      <DIV class=right>
+        <FORM id=shoucang action="http://www.51hejia.com/favorites!add.jhtml" method=post target=_blank>
+          <input type="hidden" id="url1" name="url" value="http://www.51hejia.com/article/a-<%= @article.ID %>.jhtml"/>
+          <input type="hidden" id="type" name="type" value="article"/>
+          <input type="hidden" id="typeId" name="typeId" value="<%= @article.ID %>"/>
+          <input type="hidden" id="readme" name="readme" value="<%= @article.TITLE %>"/>
+        </FORM>
+        <A onclick="Divopop('Login');return false;" HREF="">收藏</A>
+        <A href="javascript:window.print();">打印</A>
+        <a href="#reply">我来说两句</a>
+        <a href="javascript:CText()">复制网址</a>
+      </DIV>
+    </DIV>
+    <div class="attags">
+      <span style="float:right"><%=read_mode_button%></span>
+      关键字：<%= get_html_of_keywords(@article.KEYWORD1, @article.ID) %>
+    </div>
+    <div id="art_content">
+      <%= @article_page %>
+      <div style="padding:5px;font-size:14px;color:red;">
+        <%=@article.statement%>
+      </div>
+    </div>
+    <% if @article.ISPROD.to_i == 1 %>
+      <% pro_hejia_url, pro_name = get_product_hejia_url_product_name(@article.ID, @article.ADDPEOPLE, @page_num) %>
+      <% info, price, image_url = get_product_info(@article.ID, @page_num) %>
+      <% if info != "" %>
+        <div id="art_content">
+          <p style="width:386px;"><strong>如果您对此款产品感兴趣，可以点击</strong><span style="color:#ff6600;"><strong>右侧按钮</strong></span><strong>,提交您的需求，和家网客服人员将在24小时内与您联系，帮你寻找最低报价及购买地址。</strong></p>
+          <a href="<%= pro_hejia_url %>">
+            <img src="http://www.51hejia.com/images/iconcona.gif" border="0" />
+          </a>
+        </div>
+      <% end %>
+    <% end %>
+    <center>
+      <br>
+      <input title="点击复制标题和地址到剪贴版,直接在QQ/MSN/旺旺上粘贴即可." type=button value="点击复制本网址，发给QQ/MSN/旺旺好友共享" name="B3" onclick="javascript:CText();">
+      <br><br>
+      <!--%=render :partial => 'article/ad/lovo_ad'%-->
+    </center>
+
+    <div class="art_page">
+      <div class="pagination">
+        <ul>
+          <%if params[:page] != 'all'%>
+            <li><%= link_to '上一页', { :page => @pages.current.previous.to_i }, :id => "previous_page" if @pages.current.previous %></li>
+            <li><%= pagination_links(@pages, :window_size => 4) %></li>
+            <li><%= link_to '下一页', { :page => @pages.current.next.to_i }, :id => "next_page" if @pages.current.next%></li>
+          <%end%>
+          <li><%=read_mode_button%></li>
+        </ul>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function newopen(){
+        var next_url = document.getElementById("next_page").href
+        location.href = next_url;
+      }
+<%if params[:page] != 'all'%>
+    //点图片往后翻页
+    function next_img(){
+      var imgs = document.getElementsByTagName("img")
+      for(var i=0;i<imgs.length;i++){
+        if(imgs[i].src.indexOf("UserFiles") != -1 || imgs[i].src.indexOf("/images/binary") != -1){
+          imgs[i].style.cursor = "pointer";
+          imgs[i].alt = "点击图片看下一页"
+          imgs[i].title = "点击图片看下一页"
+          imgs[i].onclick = newopen;
+        }
+      }
+    }
+    next_img();
+<%end%>
+    </script>
+    <% if @article.ISPROD.to_i == 1 %>
+      <% if info != "" %>
+        <div class="artbom">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="artbomtb">
+            <tr>
+              <td width="124" class="tb01">
+                <div class="pic">
+                  <dl>
+                    <dl>
+                      <dt>
+                        <a href="<%= pro_hejia_url %>" target="_blank"><%= pro_name %></a>
+                      </dt>
+                      <dd>
+                        <a href="<%= pro_hejia_url %>">
+                          <img src="<%= image_url %>" width="84" height="115" />
+                        </a>
+                      </dd>
+                    </dl>
+                  </dl>
+                </div>
+              </td>
+              <td rowspan="2" valign="top" class="tb02">
+                <%= info %>
+                <div class="artbombt">
+                  <a href="<%= pro_hejia_url %>"><img src="http://www.51hejia.com/images/wenzhang1223/img123.gif" border="0" /></a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="<%= pro_hejia_url %>" target="_blank">陪同砍价</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <%= price %>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="art_function">
+      『收藏到：<a href="#n" onclick="window.open('http://myweb.cn.yahoo.com/popadd.html?url='+encodeURIComponent(document.location.href)+'&title='+encodeURIComponent(document.title), 'Yahoo','scrollbars=yes,width=440,height=440,left=80,top=80,status=yes,resizable=yes');">雅虎收藏夹</a>
+      <a href="#n" onclick="javascript:window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(document.title)+'&iu='+encodeURIComponent(location.href)+'&fr=ien#nw=1','_blank','scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=yes'); void 0">百度搜藏</a>
+      <a href="#n" onclick="window.open('http://del.icio.us/post?url='+encodeURIComponent(document.location.href)+'&title='+encodeURIComponent(document.title)+'&jump=no&partner=delbg')">del.icio.us</a>』
+      『<a href="#top">返回顶部</a>』
+    </div>
+    <div class="topshubiao">小窍门：键盘左右键(← →)可以上下翻页</div>
+    <div class="wxinwenx">相关文章</div>
+    <ul>
+      <% for result in get_about_news(@article.SECONDCATEGORY, @article.FIRSTCATEGORY) %>
+        <li>·<a href="<%= result["url"] %>" title="<%= result["title"] %>" target="_blank"><%= result["title"].chars[0,30] %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="pinglun">
+    <h3>最新评论</h3>
+    <a name="reply"></a>
+    <iframe src="http://wenba.51hejia.com/rest/reply?aid=1&tid=1&eid=<%= @article.ID %>" width="523" height="400" framespacing="0" frameborder="0" scrolling="no"></iframe>
+  </div>
+</div>

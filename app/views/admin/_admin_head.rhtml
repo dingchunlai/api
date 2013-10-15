@@ -1,0 +1,35 @@
+<div class="itemtitle">
+  <h3><a href="/" style="color:#0099CC;">
+      <%= query_ediror_name(session[:editor_id]) %>的栏目组
+  </a></h3>
+  <div class="tishi">
+    <%- groups = PublishColumnGroup.find(:all, :conditions => ["editor_id = ? and is_del = ?", session[:editor_id], false]) -%>
+    <%- public_groups = PublishColumnGroup.find(:all, :conditions => ["public_ids like ? and is_del = ?", session[:editor_id], false]) -%>
+    <select onchange="if(this.value != '') window.open('/admin/show_group?group_id='+this.value, '_self')">
+      <option selected value="">你的栏目组列表</option>
+      <%- for result in groups -%>
+        <option value="<%= result.id %>"><%= result.name %></option>
+      <%- end -%>
+      <% for result in public_groups %>
+        <option value="<%= result.id %>"><%= result.name %> <-- <%= RadminUser.find(result.editor_id).rname rescue "[无此用户]"%>共享</option>
+      <% end %>
+    </select>
+    <select onchange="if(this.value != '') window.open('/admin/publish_list?column_id='+this.value, '_self')">
+      <option selected value="">你的栏目列表</option>
+      <% results = query_columns %>
+      <% if results %>
+        <% for result in results %>
+          <option value="<%= result.id %>"><%= result.name %></option>
+        <% end %>
+      <% end %>
+    </select>
+  </div>
+  <div class="rtnav">
+    <ul>
+      <li><em><a href="/promoted_firms">公司列表推荐位管理</a></em></li>	
+      <li><em><a href="#" onclick="Modalbox.show($('popDivSaveGroup'), { title: this.title, width: 450, height: 400 }); return false;">添加栏目组</a></em></li>
+      <li><em><a href="#" onclick="Modalbox.show($('popDivSaveColumn'), { title: this.title, width: 450, height: 400 }); return false;">添加栏目</a></em></li>
+    </ul>
+  </div>
+</div>
+<%= render :partial => "hidden_search" %>

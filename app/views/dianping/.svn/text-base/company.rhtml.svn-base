@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>室内装修设计,家庭室内装潢,家居装饰图片,家装效果图库-和家网</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<link href="http://js.51hejia.com/css/sdeco.css?156465" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<%= javascript_include_tag :defaults %>
+<div class="inputbox">
+<div class="sub">
+	  <form action="/dianping/company" method="get">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><strong>查找装修公司</strong>
+				省 / 市<select id="citycity" name="citycity" onchange="new Ajax.Updater('select_city_area', '/dianping/select_city_area', {asynchronous:true, evalScripts:true, parameters:'cityid='+this.value})">
+					<option value="">请选择</option>
+					<%@cities.each do |c|%>
+						<option value="<%=c[0]%>" <%if @city.to_s==c[0].to_s%>selected<%end%>><%=c[1]%></option>
+					<%end%>
+					</select>
+			市 / 区<span id="select_city_area">
+					<select id="city_area" name="area">
+						<option value="">请选择</option>
+						<%if !@arealist.nil?%>
+						<%@arealist.each do |a|%>
+							<option value="<%=a[0]%>" <%if @area.to_s==a[0].to_s%>selected<%end%>><%=a[1]%></option>
+						<%end%>
+						<%end%>
+					</select>
+				</span>
+            <input id="name" name="name" type="text" value="<%=@name%>"/>
+            <input type="submit" name="button3" id="button3" value="搜 索" /></td>
+        </tr>
+        <tr>
+          <td class="fontr">查找你需要的装修公司，找到后点击即可添加。如没有您找到您需要的装修公司，点击&ldquo;添加新装修公司&rdquo;按钮</td>
+        </tr>
+        <tr>
+          <td align="center">
+          <script language="JavaScript">
+            function showproductlist(){
+                document.getElementById("productselectlist").style.display = "block";
+	cate();
+            }
+            
+ 
+            function cate(){
+                var proc = document.getElementById("productselectlist");
+                var proc_a = proc.getElementsByTagName("a");
+                for(i = 0;i < proc_a.length; i++) {
+                    proc_a[i].index=i
+                    proc_a[i].onclick = function(){insermy(this)}
+				}
+             }
+            function insermy(o){
+                   var abc = o.innerHTML;
+						window.parent.document.getElementById("selectproductinput").value = abc;
+						
+             } 
+                  
+        </script>
+          <div id="productselectlist">
+          <ol>
+          <%@decofirms.each do |firm|%>
+            <li><a onclick="showproductlist()"><%=firm.name_zh.chars[0,15]%></a></li>
+          <%end%>
+          </ol>
+          </div>
+          </td>
+        </tr>
+      </table>
+      </form>
+      <div class="pagination margin10">
+<ul>
+<%= will_paginate @decofirms,:prev_label=> "上一页",:next_label=> "下一页" %>
+</ul>
+</div>
+<div class="clear"></div>
+      </div>
+      </div>
+</body>
+</html>

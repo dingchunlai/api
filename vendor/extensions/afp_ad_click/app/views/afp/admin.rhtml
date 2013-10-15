@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>和家网 后台管理 广告系统</title>
+    <style type="text/css">
+      .message { color: white; text-align: center; padding: 5px 0; }
+      .success { background-color: green; }
+      .alert { background-color: red; }
+
+      .fieldWithErrors input { border: solid 1px red }
+      .errors p { color: red }
+      .errors li { text-decoration: underline }
+
+      #operations form, #operations .errors { float: left; width: 350px }
+      #operations .errors { overflow: auto; }
+
+      .clear-float { clear: both; }
+
+      legend { color: orange }
+      label { color: blue }
+
+      caption { color: blue; font-size: 2em; font-weight: bolder; }
+      td, th { border-bottom: solid 1px black; border-right: solid 1px black; padding: 2px 3px; }
+    </style>
+  </head>
+  <body>
+    <h1>和家网 - 广告管理后台</h1>
+    <hr />
+    <% if flash[:success] %>
+      <p class="message success"><%= flash[:success] %></p>
+    <% elsif flash[:alert] %>
+      <p class="message alert"><%= flash[:alert] %></p>
+    <% end %>
+    <div id="operations">
+      <h2>操作区</h2>
+      <% form_tag :op => 'clear' do %>
+        <p><%= submit_tag '清除过期广告' %></p>
+      <% end %>
+      <div class='clear-float'></div>
+      <% form_for :afp_ad do |f| %>
+        <fieldset>
+          <%= content_tag :legend, @afp_ad.nil? || @afp_ad.new_record? ? '添加新广告' : '编辑广告' %>
+          <div>
+            <%= content_tag :label, '广告所在页面', :for => 'afp_ad_afp_page_id' %>
+            <%= f.select :afp_page_id, @pages.map { |page| [page.title, page.id] } %>
+          </div>
+          <%
+            [
+              [:ad_id, '广告id'],
+              [:p1, '参数1'],
+              [:p2, '参数2'],
+              [:link, '目标URL地址'],
+              [:max_hits, '最大点击数'],
+              [:floating_rate, '浮动率'],
+              [:started_at, '开始时间'],
+              [:ended_at, '结束时间']
+            ].each do |field, name| %>
+            <div>
+              <%= content_tag :label, name, :for => "afp_ad_#{field}" %>
+              <%= f.text_field field %>
+            </div>
+          <% end %>
+          <div>
+            <%= content_tag :label, '地区限制', :for => 'afp_ad_limited_access_location' %>
+            <%= f.select :limited_access_location, %w[不限制 上海] %>
+          </div>
+          <div>
+            <%= f.hidden_field :id %>
+            <%= submit_tag '提交' %>
+          </div>
+        </fieldset>
+      <% end %>
+      <% if @afp_ad && !@afp_ad.errors.empty? %>
+        <div class="errors">
+        <p>错误信息：</p>
+          <ul>
+            <% @afp_ad.errors.full_messages.each do |(field, message)| %>
+              <li>
+                <%= content_tag :label, field, :for => "afp_ad_#{field}" %>
+                <%= content_tag :span, message %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% form_for :afp_page do |f| %>
+        <fieldset>
+          <legend>添加页面</legend>
+          <%
+            [
+              [:title, '名称'],
+              [:url, 'URL规则']
+            ].each do |field, name|
+          %>
+          <div>
+            <%= content_tag :label, name, :for => "afp_page_#{field}" %>
+            <%= f.text_field field %>
+          </div>
+          <% end %>
+          <div>
+            <%= f.hidden_field :id %>
+            <%= submit_tag '保存' %>
+          </div>
+        </fieldset>
+      <% end %>
+      <% if @afp_page && !@afp_page.errors.empty? %>
+        <div class="errors">
+          <p>错误信息：</p>
+          <ul class="errors">
+            <% @afp_page.errors.full_messages.each do |(field, message)| %>
+              <li>
+                <%= content_tag :label, field, :for => "afp_page_#{field}" %>
+                <%= content_tag :span, message %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="clear-float"></div>
+    </div>
+    <hr />
+    <div>
+      <table>
+        <caption>已添加的广告列表</caption>
+        <% @pages.each do |page| %>
+          <thead>
+            <tr>
+              <th colspan="10">
+                <%= link_to(page.title, url_for(:op => :edit, :ad_page_id => page.id)) %> (<%= page.url %>)
+              </th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th>广告id</th>
+              <th>参数1</th>
+              <th>参数2</th>
+              <th>最大点击数</th>
+              <th>浮动率</th>
+              <th>目标URL地址</th>
+              <th>地区限制</th>
+              <th>开始时间</th>
+              <th>结束时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% page.ads.each do |ad| %>
+              <tr>
+                <%= content_tag :td, ad.ad_id %>
+                <%= content_tag :td, ad.p1 %>
+                <%= content_tag :td, ad.p2 %>
+                <%= content_tag :td, ad.max_hits %>
+                <%= content_tag :td, ad.floating_rate %>
+                <%= content_tag :td, ad.link %>
+                <%= content_tag :td, ad.limited_access_location || '不限制' %>
+                <%= content_tag :td, ad.started_at.to_s(:db) %>
+                <%= content_tag :td, ad.ended_at.to_s(:db) %>
+                <%= content_tag :td, link_to('编辑', url_for(:op => :edit, :ad_id => ad.id)) %>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </body>
+</html>

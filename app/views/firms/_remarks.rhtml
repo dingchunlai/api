@@ -1,0 +1,35 @@
+	<div class="gsl_wyly_tit">
+          <h3>网友留言</h3><label style="font-size:14px; color:#333; font-weight:bold; padding:0 5px; float:left;">(<%=@remarks.total_entries%>条)</label>
+          <span><a href="#" target="_self" title="返回顶部">返回顶部</a></span></div>
+<% @remarks.each do |remark| %>
+	<% 
+		remark_firm = getfirm remark.resource_id
+		remark_city = remark_firm.city.to_i == 11910 ? remark_firm.city : remark_firm.district
+	%>
+	<div class="gsl_wyly_txt">
+	  <h4>
+	    <div class="f_l">和家网<%= CITIES[remark_city.to_i] %>网友（<%= remark.user_name %>）<% if remark.is_essence.to_i == 1 %><img src="http://js.51hejia.com/img/zxdpimg/best.gif" alt="精华"/><% end %></div>
+		<% if remark.praise.to_i > 0 %>
+		<%=show_remark_star(remark.praise)%>
+		<% elsif remark.praise.to_i <= 0 && remark.decoration_diary && remark.decoration_diary.praise.to_i >0 && remark.decoration_diary.created_at > "2010-8-17".to_time %>
+		<%=show_remark_star(remark.decoration_diary.praise)%>
+		<% end %><label><%= remark.created_at.to_s(:db) %></label></h4>
+	  <p><%= h remark.content %></p>
+	  <% unless remark.other_id.blank? %>
+	  	<% if remark.resource && remark.decoration_diary && remark.decoration_diary.status.to_i == 1 %>
+	    	<div class="gsl_wyly_dz"><span>我的装修日记地址：<a href="<%= genration_diary_path(remark.other_id) %>" target="_blank"><%= genration_diary_path(remark.other_id) %></a></span></div>
+	  	<% end %>
+	  <% end %>
+	  <%
+	    unless remark.replies.blank?
+	  %>
+    <div class="gsl_wyly_hf">
+    <h5>[<a href="#" target="_blank"><%= remark_firm.name_abbr %></a>]于 <%= remark.replies.last.created_at.to_s(:db) %>
+      <label>回复</label>
+
+    </h5>
+    <span><%= remark.replies.last.content %></span> </div>
+    <% end %>
+	</div>
+<% end %>
+	<div class="pagination clearfix" style="float:none;"><div style="margin-left:20px; float:left;">第<%=this_total(@per_page,@remarks.current_page,@remarks.total_pages,@remarks.total_entries)%>/<%=@remarks.total_entries%>条</div><%=will_paginate_remote(@remarks, :update=>'remarks_div', :params => "&id=#{@firm.id}", :url=>"/gs-#{@firm.id}/remarks/paginator" )%></div>

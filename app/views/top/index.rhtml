@@ -1,0 +1,250 @@
+<div class="width960">
+  <div class="zxdp_phbtit">该排行榜内容由网友在“和家网-装修点评”平台所发表的真实日记，评论所产生的积分而来</div>
+  <div class="zxdp_phbtxt">
+    <ul class="clearfix">
+      <li>
+        <h3>8万以下TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <!--<td width="38">趋势</td>-->
+            <td width="58">口碑</td>
+          </tr>
+          <% if @promoted_8.size >0 %>
+            <% @promoted_8.each_with_index do |firm,index| %>
+              <tr>
+                <td><strong><%= index + 1 %></strong></td>
+                <td><a href="<%= generate_firm_path(firm[0].id) %>" title="<%= firm[0].name_abbr %>" target="_blank"><%= firm[0].name_abbr %>&nbsp;<img src="http://js.51hejia.com/img/sdeco/tuitm.gif"/></a></td>
+                <!--<td><div class="zxdp_phbbg_no"></div></td>-->
+                <td><%= format("%.1f",firm[0].praise) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <%@firms_top_8.each_with_index do |firm, index| %>
+            <% index += @promoted_8.size %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+              <!--<td><%# if REDIS_DB.GET("top_ten:firms:8万以下：#{firm[1]}:status") == "0" %><div class="zxdp_phbbg_no"></div>
+  <%#elsif REDIS_DB.GET("top_ten:firms:8万以下：#{firm[1]}:status") == "1"%><div class="zxdp_phbbg_up"></div>
+  <%#else%><div class="zxdp_phbbg_down"></div><%#end%></td>-->
+              <td><%= format("%.1f",firm[0]) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li>
+        <h3>8-15万TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <td width="58">口碑</td>
+          </tr>
+          <% if @promoted_8_15.size >0 %>
+            <% @promoted_8_15.each_with_index do |firm,index| %>
+              <tr>
+                <td><strong><%= index + 1 %></strong></td>
+                <td><a href="<%= generate_firm_path(firm[0].id) %>" title="<%= firm[0].name_abbr %>" target="_blank"><%= firm[0].name_abbr %>&nbsp;<img src="http://js.51hejia.com/img/sdeco/tuitm.gif"/></a></td>
+                <td><%= format("%.1f",firm[0].praise) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <%@firms_top_8_15.each_with_index do |firm, index| %>
+            <% index += @promoted_8_15.size %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+              <td><%= format("%.1f",firm[0]) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li>
+        <h3>15万以上TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <td width="58">口碑</td>
+          </tr>
+          <% if @promoted_15.size >0 %>
+            <% @promoted_15.each_with_index do |firm,index| %>
+              <tr>
+                <td><strong><%= index + 1 %></strong></td>
+                <td><a href="<%= generate_firm_path(firm[0].id) %>" title="<%= firm[0].name_abbr %>" target="_blank"><%= firm[0].name_abbr %>&nbsp;<img src="http://js.51hejia.com/img/sdeco/tuitm.gif"/></a></td>
+                <td><%= format("%.1f",firm[0].praise) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <% @firms_top_15.each_with_index do |firm, index| %>
+            <% index += @promoted_15.size %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+              <td><%= format("%.1f",firm[0]) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li class="zxdp_phbhack">
+        <h3>网友关注最多TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <!--<td width="38">趋势</td>-->
+            <td width="58">本周日记</td>
+          </tr>
+          <% @firms_top_attention.each_with_index do |firm, index| %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+              <!--<td><%# if REDIS_DB.GET("top_ten:firms:网友关注最多：#{firm[1]}:status") == "0" %><div class="zxdp_phbbg_no"></div>
+  <%#elsif REDIS_DB.GET("top_ten:firms:网友关注最多：#{firm[1]}:status") == "1"%><div class="zxdp_phbbg_up"></div>
+  <%#else%><div class="zxdp_phbbg_down"></div><%#end%></td>-->
+              <td><%= firm[0] %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li>
+        <h3>上升最快TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <td width="58">口碑</td>
+          </tr>
+          <% @firms_top_rise.each_with_index do |k, index| %>
+            <% firm = DecoFirm.find k["title"] %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm.id) %>" title="<%= firm.name_abbr %>" target="_blank"><%= firm.name_abbr %></a></td>
+              <td><%= format("%.1f",firm.praise) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li>
+        <h3>一周评论最多TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <td width="58">本周评论</td>
+          </tr>
+          <% @firms_top_remarks.each_with_index do |firm, index| %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+              <td><%= firm[0] %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li>
+        <h3>施工排行TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="34">&nbsp;</td>
+            <td width="99"><label>名称</label></td>
+            <td width="58">施工口碑</td>
+          </tr>
+          <% if @promoted_construction.size >0 %>
+            <% @promoted_construction.each_with_index do |firm,index| %>
+              <tr>
+                <td><strong><%= index + 1 %></strong></td>
+                <td><a href="<%= generate_firm_path(firm[0].id) %>" title="<%= firm[0].name_abbr %>" target="_blank"><%= firm[0].name_abbr %>&nbsp;<img src="http://js.51hejia.com/img/sdeco/tuitm.gif"/></a></td>
+                <td><%= format("%.1f",firm[0].praise) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <% @firms_top_construction_praise.each_with_index do |firm, index| %>
+            <% index += @promoted_construction.size %>
+            <tr>
+              <td><strong><%= index + 1 %></strong></td>
+              <td><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+              <td><%= format("%.1f",firm[0]) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </li>
+      <li class="zxdp_phbhack">
+        <h3>地区排行TOP10</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="zxdp_phbbgcolor">
+            <td width="31">&nbsp;</td>
+            <td width="23">&nbsp;</td>
+            <td width="79"><label>名称</label></td>
+            <td width="58">浏览量</td>
+
+          </tr>
+          <tr>
+            <td colspan="5" class="zxdp_phbtd"><script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+              <script type="text/javascript">
+                $(function(){
+                  $(".zxdp_phbcont div:gt(0)").hide();
+                  $(".zxdp_phbtab dd:first").addClass("zxdp_phbactive");
+                  $(".zxdp_phbtab dd").mouseover(
+                  function(){
+                    $(this).addClass("zxdp_phbactive")
+                    .siblings().removeClass("zxdp_phbactive");
+                    $(".zxdp_phbcont div").eq($(this).index())
+                    .siblings().hide().end().show();
+                  }
+                )
+                }
+              )
+              </script>
+              <div class="zxdp_phbposi">
+                <dl class="zxdp_phbtab">
+                  <dd>徐</dd>
+                  <dd>普</dd>
+                  <dd>黄</dd>
+                  <dd>闵</dd>
+                  <dd>静</dd>
+                  <dd>杨</dd>
+                  <dd>长</dd>
+                  <dd>卢</dd>
+                  <dd class="zxdp_phbhack02">
+                    <label>浦东</label>
+                  </dd>
+                </dl>
+                <div class="zxdp_phbcont">
+                  <% num = -1 %>
+                  <% @firms_top_areas.each do |firms| %>
+                    <% num +=1 %>
+                    <div>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <% if @promoted_top_areas[num].size > 0 %>
+                          <% @promoted_top_areas[num].each_with_index do |firm,index| %>
+                            <tr>
+                              <td width="31">&nbsp;</td>
+                              <td width="23"><strong><%= index + 1 %></strong></td>
+                              <td width="79"><a href="<%= generate_firm_path(firm[0].id) %>" title="<%= firm[0].name_abbr %>" target="_blank"><%= firm[0].name_abbr %>&nbsp;<img src="http://js.51hejia.com/img/sdeco/tuitm.gif"/></a></td>
+                              <td width="58"><%= firm[0].pv_count %></td>
+                            </tr>
+                          <% end %>
+                        <% end %>
+                        <% firms.each_with_index do |firm, index| %>
+                          <% index += @promoted_top_areas[num].size %>
+                          <tr>
+                            <td width="31">&nbsp;</td>
+                            <td width="23"><strong><%= index + 1 %></strong></td>
+                            <td width="79"><a href="<%= generate_firm_path(firm[1]) %>" title="<%= REDIS_DB.get "firms:#{firm[1]}:name" %>" target="_blank"><%= (REDIS_DB.get "firms:#{firm[1]}:name") %></a></td>
+                            <td width="58"><%= firm[0]%></td>
+                          </tr>
+                        <% end %>
+                      </table>
+                    </div>
+                  <% end %>
+                </div>
+              </div></td>
+          </tr>
+        </table>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<h1>Listing remarks</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+  </tr>
+
+<% @remarks.each do |remark| %>
+  <tr>
+    <td><%=h remark.content %></td>
+    <td><%= link_to 'Show', remark %></td>
+    <td><%= link_to 'Edit', edit_remark_path(remark) %></td>
+    <td><%= link_to 'Destroy', remark, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New remark', new_remark_path %>

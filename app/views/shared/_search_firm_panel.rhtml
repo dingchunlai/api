@@ -1,0 +1,42 @@
+<% @prices = diff_city_price_tag(@city)%>
+
+<% cities = get_area_without_number(@city)%>
+<h3><span>找装修公司</span></h3>
+<div class="zxdpn_jiaz clearfix"><span>家装</span><label><a href='/gongzhuang' target='_blank'>工 装</a></label></div>
+<ul>
+  <li class="zxdpn_p1l_libg02" onmouseover="cns_li_hover(this,'zxdpn_p1l_libg01')" onmouseout="cns_li_hover(this, 'zxdpn_p1l_libg02')"><span>价格选择</span>
+    <% @prices.each do |k,v| -%>
+      <a href='/zhuangxiugongsi/gsl-<%=@city%>-0/0-0-0-<%=k%>-0-0/' target='_blank'><%=v%></a>
+    <%end -%>
+    <a href="/bieshu" target="_blank">别墅</a>
+  </li>
+  <li class="zxdpn_p1l_libg02" onmouseover="cns_li_hover(this,'zxdpn_p1l_libg01')" onmouseout="cns_li_hover(this, 'zxdpn_p1l_libg02')"><span>按风格选择</span>
+    <% STYLES.sort.each do |k, v| -%>
+      <a href="/zhuangxiugongsi/gsl-<%=@city%>-0/0-<%=k%>-0-0-0-0/" target="_blank"><%=v%></a>
+    <%end -%>
+  </li>
+  <li class="zxdpn_p1l_libg02" onmouseover="cns_li_hover(this,'zxdpn_p1l_libg03')" onmouseout="cns_li_hover(this, 'zxdpn_p1l_libg02')"><span>装修方式选择</span>
+    <% models_sort = @city.to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+    <% models_sort.sort.each do |k,v| -%>
+      <a href="/zhuangxiugongsi/gsl-<%=@city%>-0/<%=k%>-0-0-0-0-0/" target="_blank"><%=v%></a>
+    <%end -%>
+  </li>
+  <li class="zxdpn_p1l_libg02" onmouseover="cns_li_hover(this,'zxdpn_p1l_libg04')" onmouseout="cns_li_hover(this, 'zxdpn_p1l_libg02')"><span>按公司地区选择</span>
+    <% cities.each_with_index do |area, index| -%>
+      <% if area.TAGNAME != '崇明县' && area.TAGNAME != '金山区' && area.TAGNAME != '青浦区' && area.TAGNAME != '松江区' && area.TAGNAME != '闸北区'%>
+        <a href="/zhuangxiugongsi/gsl-<%= @city %>-<%= area.TAGID %>/0-0-0-0-0-0/" target="_blank"><%= area.TAGNAME.chars[0,2] %></a>
+      <%elsif area.TAGNAME == '崇明县' %>
+        <a href="/zhuangxiugongsi/gsl-<%= @city %>-12227/0-0-0-0-0-0/" target="_blank">普陀</a>
+      <%elsif area.TAGNAME == '金山区' %>
+        <a href="/zhuangxiugongsi/gsl-<%= @city %>-12222/0-0-0-0-0-0/" target="_blank">静安</a>
+      <%elsif area.TAGNAME == '青浦区' %>
+        <a href="/zhuangxiugongsi/gsl-<%= @city %>-12225/0-0-0-0-0-0/" target="_blank">黄浦</a>
+      <%end%>
+      <%  if index > 9 %>
+        <a href="/zhuangxiugongsi/" target="_blank">更多</a>
+        <%		break
+      end
+    end
+    -%>
+  </li>
+</ul>

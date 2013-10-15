@@ -1,0 +1,89 @@
+<%@commonts.each do |commont|%> 
+        <li class="clearfix">
+          <div class="memberinfo"> 
+			<%if commont.userurl %>
+				<img src="<%=commont.userurl%>" width=48 heigh=48/>
+			<%else%>
+				<img src="http://member.51hejia.com/images/headimg/default.gif" width=48 heigh=48/>	
+			<%end%>
+			<%if commont.c9 == '1'%>
+          	<span>认证会员</span>
+          	<%end%>
+          </div>
+          <div class="li-right">
+            <div class="about">
+            <%if commont.style %>
+            	<span>装修风格：
+	            <%if commont.style == 1 %>
+		            <a href="/zhuangxiugongsi/0.0.1.0.0.1.html" target="_blank">现代简约</a>
+		        <%elsif commont.style == 2 %>
+		            <a href="/zhuangxiugongsi/0.0.2.0.0.1.html" target="_blank">田园风格</a>
+		        <%elsif commont.style == 3 %>
+		            <a href="/zhuangxiugongsi/0.0.3.0.0.1.html" target="_blank">欧美式</a>
+		        <%elsif commont.style == 4 %>
+		            <a href="/zhuangxiugongsi/0.0.4.0.0.1.html" target="_blank">中式风格</a>
+		        <%elsif commont.style == 5 %>
+		            <a href="/zhuangxiugongsi/0.0.5.0.0.1.html" target="_blank">地中海</a>
+		        <%elsif commont.style == 6 %>
+		            <a href="/zhuangxiugongsi/0.0.6.0.0.1.html" target="_blank">混搭</a>
+		        <%end%>
+            </span>
+            <%end%>
+            <%if commont.method %>
+            <span>
+            	装修方式：
+	            <%if commont.method == 1 %>
+		            <a href="/zhuangxiugongsi/0.1.0.0.0.1.html" target="_blank">清包</a>
+		        <%elsif commont.method == 2 %>
+		            <a href="/zhuangxiugongsi/0.2.0.0.0.1.html" target="_blank">半包</a>
+		        <%elsif commont.method == 3 %>
+		            <a href="/zhuangxiugongsi/0.3.0.0.0.1.html" target="_blank">全包</a>
+		        <%elsif commont.method == 4 %>
+		            <a href="/zhuangxiugongsi/0.4.0.0.0.1.html" target="_blank">设计</a>
+		        <%end%>            	
+            </span>
+            <%end%>
+            <%if commont.price %>
+            <span>装修价位：
+            	<%if commont.price == 1 %>
+		            <a href="/zhuangxiugongsi/0.0.0.0.1.1.html" target="_blank">4万以下</a>
+		        <%elsif commont.price == 2 %>
+		            <a href="/zhuangxiugongsi/0.0.0.0.2.1.html" target="_blank">8万以下</a>
+		        <%elsif commont.price == 3 %>
+		            <a href="/zhuangxiugongsi/0.0.0.0.3.1.html" target="_blank">8-20万</a>
+		        <%elsif commont.price == 4 %>
+		            <a href="/zhuangxiugongsi/0.0.0.0.4.1.html" target="_blank">20-100万</a>
+		        <%elsif commont.price == 5 %>
+		            <a href="/zhuangxiugongsi/0.0.0.0.5.1.html" target="_blank">100万以上</a>
+		        <%end%>
+
+            </span>
+            <%end%>
+            
+              <div class="li-title">
+              	<a href="/firms/<%=commont.company_id%>" target="_blank"><%=get_firm_name_abbr(commont.company_id)%></a>
+              </div>
+            </div>
+            <dl class="point">
+              <dt><%=getstar(commont.complex_score)%></dt>
+              <dt>设计：</dt>
+              <dd><strong><%=commont.design_score%></strong></dd>
+              <dt>预算：</dt>
+              <dd><strong><%=commont.budget_score%></strong></dd>
+              <dt>施工：</dt>
+              <dd><strong><%=commont.construction_score%></strong></dd>
+              <dt>服务：</dt>
+              <dd><strong><%=commont.service_score%></strong></dd>
+            </dl>
+            <div class="compname"><span class="name"><%=commont.username.chars[0,4]%> </span> <%if commont.title%><span>| </span><span class='txt'><a href="/dianping/show/<%=commont.id%>" target="_blank"><%=commont.title.chars[0,6]%></a></span><%end%></div>
+            <div class="description"><%=commont.content.gsub(/<.*?>/, '').chars[0,200]%>……[<a href="/dianping/show/<%=commont.id%>" target="_blank">详情</a>]</div>
+            <div class="li-bottom">
+            <%if commont.cdate%><%=commont.cdate.strftime("%Y-%m-%d")%><%end%>
+            <a href="/dianping/show/<%=commont.id%>" target="_blank">详情</a> | 
+            <span id="floid_<%=commont.id%>"><a href="#n" onclick="new Ajax.Updater('floid_<%=commont.id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=commont.id%>});">鲜花<%if commont.flower_num && commont.flower_num != '0'%><%=commont.flower_num%><%end%></a></span> |
+            <a href="/dianping/show/<%=commont.id%>?replytype=1#aaa" target="_blank">回应<%if commont.response_num && commont.response_num != '0'%><%=commont.response_num%><%end%></a> |
+            <a href="/dianping/show/<%=commont.id%>?replytype=2#aaa" target="_blank">举报</a>
+            </div>
+          </div>
+        </li>
+<%end%>

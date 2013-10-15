@@ -1,0 +1,9 @@
+<%@company = @firm%>
+<%= render :partial => "share/deco_filter_firm" %>
+<div>
+	<%= @firm.service_content %>
+<%= render :partial => "share/deco_filter_seo" %>
+<div class="side">
+<%= render :partial => "share/deco_filter_seo_left" %>
+</div>
+</div>

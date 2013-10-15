@@ -1,0 +1,71 @@
+  <ul class="sidebox_3" >
+    <h3>装修美家推荐</h3>
+    <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/#{@r3id}.xml", ["title", "url", "image-url", "description"], 4) %>
+    <li class="clearfix">
+        <a href="<%= r["url"] %>" target="_blank"><img src="<%= r["image-url"] %>" alt="<%= r["title"] %>"/></a>
+        <div class="listright">
+          <a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><h4><%= r["title"] %></h4></a>
+          <p><%= truncate_u(r["description"], 42, "...") %>[<a href="<%= r["url"] %>" target="_blank">详细</a>]</p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+<div id="side">
+    <div class="sidebox_2" id="z0" style="display:block;">
+    <h3> <span><a href="http://d.51hejia.com/" target="_blank">>>更多</a></span>资讯top5</h3>
+    <p class="title clearfix">
+      <a href="http://d.51hejia.com/" class="now" onmouseover="javascript:setFocus2('div','side','z',0);" target="_blank">装修</a>
+      <a href="http://www.51hejia.com/jushang/" onmouseover="javascript:setFocus2('div','side','z',1);" target="_blank">装饰</a>
+      <a href="http://www.51hejia.com/diban/" onmouseover="javascript:setFocus2('div','side','z',2);" target="_blank">产品</a>
+      <a href="http://www.51hejia.com/xinwen/" onmouseover="javascript:setFocus2('div','side','z',3);" target="_blank">行业</a>
+    </p>
+    <ul>
+      <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/54260.xml", ["title", "url", "image-url"]) %>
+        <li><a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><%= truncate_u(r["title"], 16) %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="sidebox_2" id="z1" style="display:none;">
+    <h3> <span><a href="http://www.51hejia.com/jushang/" target="_blank">>>更多</a></span>资讯top5</h3>
+    <p class="title clearfix">
+      <a href="http://d.51hejia.com/" onmouseover="javascript:setFocus2('div','side','z',0);" target="_blank">装修</a>
+      <a href="http://www.51hejia.com/jushang/" class="now" onmouseover="javascript:setFocus2('div','side','z',1);" target="_blank">装饰</a>
+      <a href="http://www.51hejia.com/diban/" onmouseover="javascript:setFocus2('div','side','z',2);" target="_blank">产品</a>
+      <a href="http://www.51hejia.com/xinwen/" onmouseover="javascript:setFocus2('div','side','z',3);" target="_blank">行业</a>
+    </p>
+    <ul>
+      <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/54272.xml", ["title", "url", "image-url"]) %>
+        <li><a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><%= truncate_u(r["title"], 16) %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="sidebox_2" id="z2" style="display:none;">
+    <h3> <span><a href="http://www.51hejia.com/diban/" target="_blank">>>更多</a></span>资讯top5</h3>
+    <p class="title clearfix">
+      <a href="http://d.51hejia.com/" onmouseover="javascript:setFocus2('div','side','z',0);" target="_blank">装修</a>
+      <a href="http://www.51hejia.com/jushang/" onmouseover="javascript:setFocus2('div','side','z',1);" target="_blank">装饰</a>
+      <a href="http://www.51hejia.com/diban/" class="now" onmouseover="javascript:setFocus2('div','side','z',2);" target="_blank">产品</a>
+      <a href="http://www.51hejia.com/xinwen/" onmouseover="javascript:setFocus2('div','side','z',3);" target="_blank">行业</a>
+    </p>
+    <ul>
+      <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/54262.xml", ["title", "url", "image-url"]) %>
+        <li><a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><%= truncate_u(r["title"], 16) %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="sidebox_2" id="z3" style="display:none;">
+    <h3> <span><a href="http://www.51hejia.com/xinwen/" target="_blank">>>更多</a></span>资讯top5</h3>
+    <p class="title clearfix">
+      <a href="http://d.51hejia.com/" onmouseover="javascript:setFocus2('div','side','z',0);" target="_blank">装修</a>
+      <a href="http://www.51hejia.com/jushang/" onmouseover="javascript:setFocus2('div','side','z',1);" target="_blank">装饰</a>
+      <a href="http://www.51hejia.com/diban/" onmouseover="javascript:setFocus2('div','side','z',2);" target="_blank">产品</a>
+      <a href="http://www.51hejia.com/xinwen/" class="now" onmouseover="javascript:setFocus2('div','side','z',3);" target="_blank">行业</a>
+    </p>
+    <ul>
+      <% for r in parse_xml_data("http://api.51hejia.com/rest/build/xml/54263.xml", ["title", "url", "image-url"]) %>
+        <li><a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><%= truncate_u(r["title"], 16) %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

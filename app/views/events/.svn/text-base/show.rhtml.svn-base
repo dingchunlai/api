@@ -1,0 +1,116 @@
+		<div class="side">
+			<% if @map %>
+			<div class="title">活动地址</div>
+			<div class="lcontent">
+				<%= @map.to_html %>
+				<div class="box" style="width: 217px; height: 115px; overflow: hidden; position: relative;">
+					<%= @map.div %>
+				</div>
+				<!--<img src="http://www.51hejia.com/images/zhuangxiu805/pic010.jpg" alt="" />-->
+			</div>
+			<% end %>
+			<div class="h6">正在报名的活动</div>
+			<ul class="actions">
+				<% @going_events.each do |event| %>
+				<li>
+					<span class="name"><%=h event.title %></span>
+					<%= image_tag(event.banner.url(:thumb)) %>
+					<span><strong>开始日期：</strong><%= event.starts_at.to_s(:date_full) %></span>
+					<span><strong>结束日期：</strong><%= event.ends_at.to_s(:date_full) %></span>
+					<%= link_to "马上报名>>", event_path(event), :class => "ssbtn ml100" %>
+				</li>
+				<% end %>
+			</ul>
+			<div class="box"><img src="http://www.51hejia.com/images/zhuangxiu805/pic011.jpg" alt="" /></div>
+			<div class="h6">活动回顾</div>
+			<ul class="textlist">
+				<% parse_xml(54007, ["title", "url", "image-url"], 4).each do |p| -%>
+				<li>
+					<%= link_to p['title'], p["url"], :title => p["title"], :target => "_blank" -%>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="actioncontent">
+			<div class="title"><%= @event.title %></div>
+			<div class="contents">
+				活动时间：<%= @event.starts_at %>至<%= @event.ends_at %><br />
+				联系方式：<%= @event.contact %><br />
+		    活动地址：<%= @event.city %><%= @event.address %><br />
+				交通路线：<%= @event.traffic %>
+			</div>
+			<div class="actiontitle">活动介绍</div>
+			<div class="contents">
+				<div><%=h @event.summary %></div>
+			</div>
+			<div class="actiontitle">活动流程</div>
+			<div class="contents">
+				<%= @event.prompt %>
+			</div>
+			<%= link_to "我要报名", event_path(@event), :class => "ssbtn ml300" %>
+		</div>
+		<div class="side">
+			<div>
+				<% form_for :register, :url => register_event_path do |f| %>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="quicksignup">
+					<tr>
+						<th>真实姓名：</th>
+						<td><%= f.text_field :name, :size => 20 %></td>
+					</tr>
+					<tr>
+						<th>联系电话：</th>
+						<td><%= f.text_field :phone, :size => 20 %></td>
+					</tr>
+					<tr>
+						<th>邮件订阅：</th>
+						<td><%= f.text_field :email, :size => 20 %></td>
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<td><%= f.check_box :receive_sms %>	接收手机短信通知</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							其他感兴趣的活动 <br />
+							<%= f.check_box :interest_in_material %> 建材
+							<%= f.check_box :interest_in_design %> 装修设计
+							<%= f.check_box :interest_in_furniture %> 家具
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2"><%= submit_tag "快速报名", :class => "qbtn" %></td>
+					</tr>
+				</table>
+				<% end %>
+			</div>
+			<div class="compnum hl14 mt10">报名人员</div>
+			<div class="more"><%= @event.registers_count %>位业主报名</div>
+			<div class="lcontent">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>姓名</th>
+						<th>电话</th>
+						<th>报名时间</th>
+					</tr>
+					<% @registers.each do |register| %>
+					<tr>
+						<td class="hl"><%= register_name(register.name) %></td>
+						<td><%= register.phone[0,3] %>******<%= register.phone[-2,2] %></td>
+						<td><%= register.created_at.to_s(:date_short) %></td>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+			<div class="compnum hl14 mt10">活动预告</div>
+			<ul class="actions">
+				<% @coming_events.each do |event| %>
+				<li>
+					<span class="name"><%=h event.title %></span>
+					<%= image_tag(event.banner.url(:thumb)) %>
+					<span><strong>开始日期：</strong><%= event.starts_at.to_s(:date_full) %></span>
+					<span><strong>结束日期：</strong><%= event.ends_at.to_s(:date_full) %></span>
+					<%= link_to "马上报名>>", event_path(event), :class => "ssbtn ml100" %>
+				</li>
+				<% end %>
+			</ul>
+		</div>

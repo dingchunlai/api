@@ -1,0 +1,98 @@
+10
+
+dir
+728
+http://192.168.0.11:8081/51hejia/repos/api/release
+http://192.168.0.11:8081
+
+
+
+2013-08-20T00:53:20.235106Z
+728
+dingchunlai
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+ee6026de-87bf-49f6-b6b9-4a97e4a78e28
+
+public
+dir
+
+test
+dir
+
+app
+dir
+
+tmp
+dir
+
+log
+dir
+
+Rakefile
+file
+
+
+
+
+2012-10-18T08:04:39.046203Z
+218711434108e5207a59e701528ca864
+2012-10-18T01:52:31.521896Z
+81
+admin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1684
+
+dict
+dir
+
+script
+dir
+
+config
+dir
+
+db
+dir
+
+doc
+dir
+
+lib
+dir
+
+vendor
+dir
+

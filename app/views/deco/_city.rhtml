@@ -1,0 +1,20 @@
+<%if @city.to_i > 0%>
+<%=CITIES[@city.to_i]%>
+<%else%>
+上海
+<%end%>
+
+<script language=javascript>
+	function changecityoption(val){
+		var options = document.getElementById('cityid1003').options;
+		for(var i=0;i<options.length;i++){
+			if(val == options[i].value){
+				options[i].selected = true;
+				return;
+			}
+		}
+	}
+	if(document.getElementById('cityid1003') != null){
+		changecityoption(<%=@city%>);
+	}
+</script>

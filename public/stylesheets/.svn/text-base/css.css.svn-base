@@ -1,0 +1,99 @@
+/* CSS Document */
+
+body{margin:3px 0; font-family:"宋体"; font-size:12px; color:#474747; line-height:18px;}
+html,body { height:100%;} 
+a{color:#474747; text-decoration:none;}
+a:hover {color:#f60; text-decoration:underline}
+li {list-style:none;line-height:20px;}
+img{border:0;}
+p,em,span,form,select,input,option,ol,ul,li,dd,dt,dl,h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+h3,h4 {font-size:14px;}
+.main {width:960px; margin:0 auto;}
+
+
+.menu {background: url(http://www.51hejia.com/images/baoming/menu_bg.gif) no-repeat left top; height:31px; padding-top:5px; font-size:14px; font-weight:bold; width:960px; float:left;}
+.menu ul{margin:0;margin-bottom: 1em; /*margin between menu and rest of content*/padding:0;list-style:none;}
+.menu li{display:inline; padding:0 18px 0 18px; line-height:31px; float:left; background: url(http://www.51hejia.com/images/baoming/dot01.gif) no-repeat right center;}
+.menu a{float:left;color: white;text-decoration:none;letter-spacing: 1px;}
+.menu a:hover{ color:#005ca4; text-decoration:none;}
+.menu #current a{background: url(http://www.51hejia.com/images/baoming/menu_on.gif) no-repeat left bottom; width:94px; text-align:center; color:#005ca4;}
+
+.steps {height:68px; margin:0 auto; width:490px; clear:both}
+.steps ul { float:left;}
+.steps li { line-height:68px; float:left;letter-spacing: 8px; font-size:14px; }
+.steps a {}
+.steps .dot {background: url(http://www.51hejia.com/images/baoming/jian.gif) no-repeat left center; width:19px; height:68px; padding:0 6px 0 11px;}
+.steps .step1a {background: url(http://www.51hejia.com/images/baoming/1a.gif) no-repeat left center; color:#f60; text-indent:40px;}
+.steps .step2b {background: url(http://www.51hejia.com/images/baoming/2b.gif) no-repeat left center; text-indent:40px;}
+.steps .step3b {background: url(http://www.51hejia.com/images/baoming/3b.gif) no-repeat left center; text-indent:40px;}
+.steps .step4b {background: url(http://www.51hejia.com/images/baoming/4b.gif) no-repeat left center; text-indent:40px;}
+
+.leftaa {width:224px; float:left;}
+.right {width:729px; float:right;}
+.right form {border:1px #d7d7d7; border-bottom:0; font-size:12px; color:#3a4245; width:727px; float:left; margin-bottom:20px;}
+.right form span {color:#f00;}
+.right input,.right select { }
+
+.box01 form {border:1px solid #d7d7d7; border-bottom:0; font-size:12px; color:#3a4245; width:958px; float:left; margin-bottom:20px;}
+.box01 form span {color:#f00;}
+
+.left01 {}
+.left01 h3 {background: url(http://www.51hejia.com/images/baoming/h3_01.gif) no-repeat left top; line-height:30px; text-indent:16px; font-size:14px; color:#000; font-weight:normal;}
+.leftbox001 { border:1px solid #d7d7d7;padding:8px 10px 9px 17px;}
+.leftbox001 p { color:#3a3637; line-height:24px;}
+.leftbox001 li {text-align:left; line-height:24px;}
+.leftbox001 li a {color:#3a3637}
+
+.rightbox01 {border:1px solid #d7d7d7; padding:70px 0 70px 40px; width:687px; float:left; margin-bottom:20px;}
+.stepbox {background: url(http://www.51hejia.com/images/baoming/tb_bg.gif) no-repeat left top; width:126px; height:129px; float:left; padding-top:18px; padding-left:13px; padding-right:13px;color:#3a3637}
+.stepbox h4 {color:#025b9f; font-size:14px; text-align:center; padding-bottom:8px;}
+.stepbox p {color:#474747; font-size:14px; line-height:24px;}
+.stepdot {background: url(http://www.51hejia.com/images/baoming/jian.gif) no-repeat 34px center; width:19px; float:left; height:147px; width:94px;}
+.stepdot1 {background: url(http://www.51hejia.com/images/baoming/jian.gif) no-repeat 63px center; width:19px; float:left; height:147px; width:148px;}
+
+.rightbox02 {border:1px solid #d7d7d7; padding:70px 0 70px 100px; width:858px; float:left; margin-bottom:20px;}
+.rightbox03 {border:1px solid #d7d7d7; padding:70px 0 70px 170px; width:557px; float:left; margin-bottom:20px;}
+.rightbox04 {border:1px solid #d7d7d7; padding:70px 0 70px 270px; width:688px; float:left; margin-bottom:20px;}
+.rightbox05 {border:1px solid #d7d7d7; padding:70px 0 70px 270px; width:688px; float:left; margin-bottom:20px;}
+
+.pinglun {float:left;}
+
+.formouter{
+    width:727px; float:left; border-bottom:1px solid #d7d7d7;
+}
+.tijiao{
+    width:727px; clear:left; border-bottom:1px solid #d7d7d7;
+}
+.formleft{
+  width:168px; float:left;
+  letter-spacing: 2px;
+  padding-top: 12px; padding-bottom:9px;
+  background-color:#eff8fd;
+  text-align:right; padding-right:17px;
+}
+.formcenter{
+    float:left; padding-left:13px; padding-top:9px;
+}
+.formright{
+    float:left;
+    letter-spacing: 1px;
+    color: #999999; padding-top: 4px;
+}
+
+
+.reg {width:727px; border:1px solid #265cb6; display:none; background-color:#fff;}
+.reg h3 {color:#fff;background: url(http://www.51hejia.com/images/baoming/login_bg.gif) repeat-x left top; text-indent:15px; line-height:28px; height:28px; position:relative; border-bottom:1px solid #265cb6;}
+.reg h3 span {position:absolute; right:1px; top:4px;}
+.reg h3 span a {cursor:pointer;}
+.reg b {color:#009900; font-weight:normal; font-size:12px; padding-left:10px;}
+.reg h4 {background-color:#cddbf5; line-height:35px; border-bottom:1px solid #9999cd; text-align:center; height:35px; position:relative; color:#0083f5;}
+.reg h4 span {position:absolute; left:14px; top:8px;}
+.reg h4 a {font-weight:bold; text-decoration:none;color:#0083f5;}
+.forms {background-color:#e9eef4; padding:14px; color:#01296e;}
+.forms td {line-height:20px; padding:2px 0;}
+.forms span { color:#676767;}
+.forms input,.forms select {border:1px solid #7f9db9; height:16px; color:#393939; font-size:12px;}
+.forms .check {border:0; }
+.forms .zhuce {background: url(http://www.51hejia.com/images/baoming/login.gif) no-repeat left top; width:70px; line-height:21px; height:21px; border:0; text-align:center; color:#fff; font-weight:bold;}
+
+.notice {padding:10px; border-bottom:1px solid #d7d7d7;}

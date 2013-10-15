@@ -1,0 +1,57 @@
+<%= render :partial => "hidden_div_column" %>
+<div class="container">
+  <%= render :partial => "admin_head" %>
+  <% if flash[:msg] %><p style="color: red; height: 15px;background-color:navajoWhite;margin-bottom:-8px;padding:3px;"><%= flash[:msg] %></p><% end %>
+  <form action="/admin/batch_delete_publish_columns" method="post" id="batch_delete_publish_columns">
+    <table class="tb tb2 ">
+      <tr class="partition"><th colspan="17" >
+          <strong style="font-size:18px;">&nbsp;<%= @group_id.nil? ? "搜索到" : PublishColumnGroup.find(@group_id).name %>&nbsp;</strong>
+      <%= @group_id.nil? ? "" : "共有" %><strong style="font-size:18px;">&nbsp;<%= @total %>&nbsp;</strong>栏目</th></tr>
+      <tr class="header">
+        <th>栏目名</th>
+        <th>描述</th>
+        <th>更新时间</th>
+        <th>操作</th>
+      </tr>
+      <% unless @results.nil? %>
+        <% for result in @results %>
+          <tr class="hover">
+            <td>
+              <%= result.id %> --
+              <span style="color:#2366A8;font-size:15px;"><%= result.name %></span>
+            </td>
+            <td><%= strip_tags(result.description) %></td>
+            <td><%= result.updated_at.strftime("%Y-%m-%d") %></td>
+            <td style="font-size:14px;">
+              <a href="/admin/publish_list?column_id=<%= result.id %>" style="font-size:15px;font-weight:700;">已发布</a>
+              (<div style="width:20px;font-weight:700;display:inline;">
+                <%= PublishContent.count :conditions => "publish_column_id = #{result.id} and is_del = #{false} and is_valid = 2" %>
+              </div>)
+              <a href="/admin/before_publish_list?column_id=<%= result.id %>" style="font-size:15px;font-weight:700;">预发布</a>
+              (<div style="width:20px;font-weight:700;display:inline;">
+                <%= PublishContent.count :conditions => "publish_column_id = #{result.id} and is_del = #{false} and is_valid = 1" %>
+              </div>)
+              <% if result.group.editor_id.to_i == session[:editor_id] %>
+                <%= link_to "编辑", { :action => "edit_column", :column_id => result.id },
+                  { :onclick => "Modalbox.show(this.href, { title: this.title, width: 450, height: 400 }); return false;" } %>
+                <%= link_to "删除", { :action => "destory_column", :column_id => result.id }, :confirm => "确定删除吗？" %>
+              <% end %>
+              <%= link_to "xml", "http://api.51hejia.com/rest/build/xml/#{result.id}.xml", :target => "_blank" %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td colspan="17">
+          <div class="cuspages right">
+            <div class="pages"><em>总数：<%= @total %></em>
+              <%= link_to '<', { :page => @pages.current.previous.to_i, :group_id => @group_id, :keyword => @keyword } if @pages.current.previous %>
+              <strong><%= pagination_links(@pages, :params => { :group_id => @group_id, :keyword => @keyword }, :window_size => 9) %></strong>
+              <%= link_to '>', { :page => @pages.current.next.to_i, :group_id => @group_id, :keyword => @keyword } if @pages.current.next%>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

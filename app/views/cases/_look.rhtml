@@ -1,0 +1,21 @@
+<%if !@look_cases.nil?%>
+<% case_ids = @look_cases[0].split(",") if @look_cases[0] %>
+<% case_names = @look_cases[1].split(",") if @look_cases[1] %>
+<% image_urls = @look_cases[2].split(",") if @look_cases[2] %>
+
+<%if @look_cases.size>0%>
+	<% 0.upto(@look_cases.size - 1) do |i| %>
+		<%if !@look_cases[i].nil?&&case_ids[i].to_i!=0%>
+			<% casesmodel= get_case_by_id_id(case_ids[i].to_i)%>
+			<%if !casesmodel.nil?%>
+				<%if !casesmodel.COMPANYID.nil?&& casesmodel.COMPANYID.to_i!=0%>
+	      			<%pathurl = gen_firm_city_case_detail(casesmodel.COMPANYID,casesmodel.ID)%>
+	      		<%else%>
+	      			<%pathurl =nil%>
+	      		<%end%>
+				<li><a href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>"  title="<%=case_names[i]%>"><%=h case_names[i].chars[0,9]%></a></li>
+			<%end%>
+		<%end%>
+	<%end%>
+<%end%>
+<%end%>

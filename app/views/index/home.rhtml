@@ -1,0 +1,646 @@
+<%
+city_name = TAGURLS[@city.to_i]
+@prices = diff_city_price_tag(@city)
+%>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#gs").removeClass("list_nav_cur");
+    $("#sy").addClass("list_nav_cur");
+    $("#login_form").submit(function() {
+      if($("#user_name").val()== ""||$("#user_name").val().length ==0  ){
+        alert("请输入用户名");
+
+      }else if($("#password").val()== ""||$("#password").val().length ==0 ){
+        alert("请输入密码");
+      }else{
+        $("#login_submit").attr("disabled","disabled");
+        $.ajax({
+          type: "POST",
+          url:"/sessions/user_login",
+          dataType:"script",
+          data: jQuery(this).serialize(),
+          success: function(html){
+            $("#login_submit").removeAttr("disabled");
+            if(html == "error"){
+              alert("用户名或密码错误");
+              $("#password").val("");
+            }else if(html == "freeze"){
+              alert("您的帐户已暂被冻结，如有疑问可直接联系客服人员！");
+              $("#password").val("");
+            }else{
+              location.reload();
+            }
+          }
+        });
+      };
+      return false;
+    });
+    //js获取cookie
+    var acookie=document.cookie.split("; ");
+    sname = 'ind_id'
+    cookie_user = ''
+    for (var i = 0; i < acookie.length; i++) {
+      var arr = acookie[i].split("=");
+      if (sname == arr[0]) {
+        if (arr.length > 1)
+          cookie_user = (unescape(arr[1]));
+      }
+    }
+    if(cookie_user == '' ||cookie_user.length == 0){
+      $("#login_2").css("display","none");
+      $("#login_1").css("display","block");
+    }else{
+      $("#login_1").css("display","none");
+      $("#login_2").css("display","block");
+
+    }
+  });
+</script>
+
+<div class="width960">
+  <div class="zxdp_txtauto2">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="70" align="right" style="color:red;">今日推荐：</td>
+        <td><div style="width:880px; height:20px; overflow:hidden;">
+            <div id="cont_m_6" style="float:left; width: 12345px;">
+              <% parse_xml(INDEX_PROMOTED[TAGURLS[@city.to_i]]['导航下文字链'], ["title", "url", "text_style_id"]).each do |today_recommends| %>
+                <a href="<%= today_recommends["url"] %>" target="_blank"><%= get_style_by_text_style_id(strip_tags(today_recommends["title"]), today_recommends["text_style_id"]) %></a>
+              <% end %>
+            </div>
+          </div></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!--part 1_code-->
+<div class="width960 margin10 clearfix">
+  <div class="zxdpn_p1l zxdpn_p1lhack f_l">
+    <%= render :partial => '/shared/search_firm_panel' %>
+  </div>
+
+  <div class="zxdpn_p1c f_l">
+    <h3><span>网友家居秀</span></h3>
+    <ul class="clearfix">
+      <%
+      @home["网友家居秀"] && @home["网友家居秀"].each_with_index do |_diary,index|
+
+        diary = decoration_diary _diary["title"]
+        unless diary.blank?
+        %>
+          <li><a href="<%= generate_diary_url(diary.id) %>" target="_blank" title="<%=h diary.title%>" class="zxdpn_p1cimg"> <img src="<%= get_diary_master_picture(diary) ? image_full_path(get_diary_master_picture(diary),'150x113',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg' %>" alt="<%=h diary.title%>" /></a>
+            <h4><a href="<%= generate_diary_url(diary.id) %>" target="_blank" title="<%=h diary.title%>"><%=h truncate(diary.title, 12, '') %></a></h4>
+            <span>业主：<a href="<%= generate_diary_url(diary.id) %>" title="<%= diary.user_name %>" target="_blank"><%= diary.user_name %></a></span> <span>装修公司：<a href="<%= gen_firm_city_path(diary.deco_firm_id) %>" title="<%= diary.deco_firm.name_abbr %>" target="_blank"><%=diary.deco_firm.name_abbr%></a></span> <span>投票数：<%= (REDIS_DB.get "diary/show/#{diary.id}/toupiao").to_i %></span> <a href="<%= generate_diary_url(diary.id) %>#a00" title="我要投票" target="_blank" class="zxdpn_vote">我要投票</a> </li>
+        <%
+        end
+      end
+    %>
+    </ul>
+  </div>
+  <div class="zxdpn_p1r f_r">
+    <div class="zxdpn_p1r_help"><a href="/html/index_help_page/help0609.html" target="_blank" title="如何发表日志" class="zxdpn_p1r_rz">如何发表日志</a><a href="/html/index_help_page/<%=city_name%>.html" target="_blank" title="如何选择装修公司" class="zxdpn_p1r_gs">如何选择装修公司</a></div>
+    <div class="zxdpn_p1r_login">
+      <div id="login_1" style="display:none;">
+        <form action="" method="post" name="login_form" id="login_form">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>用户名：</td>
+              <td><input name="user_name" id="user_name" type="text" /></td>
+            </tr>
+            <tr>
+              <td>密&nbsp;&nbsp;码：</td>
+              <td><input name="password" id="password" type="password" /></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input name="login_submit" id="login_submit" type="submit" value="登录" class="zxdpn_plr_dl"/>
+                记住我
+                <input type="checkbox" name="self_login" value="0"  class="zxdpn_plr_fx" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div id="login_2"  style="display:none;">
+        <script type="text/javascript" src="/index/render_home_login"></script>
+      </div>
+    </div>
+    <div class="zxdpn_p1r_tg">
+      <h3><span>通告栏</span></h3>
+      <ul>
+        <li>
+          <% @home["通告栏"] && @home["通告栏"].each do |gonggao| %>
+            <a href="<%= gonggao["url"] %>" target="_blank" title="<%= gonggao["title"] %>"><%= truncate(gonggao["title"], 15, "" )%></a>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--end_part 1_code-->
+<!--ad_code-->
+<div class="width960 margin10 clearfix">
+  <div class="ad f_l">
+    <% if INDEX_AD_MAPPING[city_name]['大旗1'].respond_to?(:each) %>
+      <div id="newsSlider02" class="news_slider f_l">
+        <div class="container">
+          <ul class="slides">
+            <% INDEX_AD_MAPPING[city_name]['大旗1'].each do |id| %>
+              <li>
+                <!-- afp广告代码　　START　============================== -->
+                <script type="text/javascript">//<![CDATA[
+                  ac_as_id = <%= id %>;
+                  ac_format = 0;
+                  ac_mode = 1;
+                  ac_group_id = 1;
+                  ac_server_base_url = "afp.csbew.com/";
+                  //]]></script>
+                <script type="text/javascript" src="http://static.csbew.com/k.js"></script>
+                <!-- afp广告代码　　END　================================ -->
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="validate_Slider"></div>
+      </div>
+    <% else %>
+    <%= render_ad(INDEX_AD_MAPPING[city_name]['大旗1']) %>
+    <% end %>
+  </div>
+  <div class="ad f_r">
+    <script src="http://js2.51hejia.com/js/loopedslider.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('.news_slider').loopedSlider({
+          autoStart: 5000
+        });
+        $('.validate_Slider').loopedSlider({
+          autoStart: 5000
+        });
+      });
+    </script>
+    <% ad_id = INDEX_AD_MAPPING[city_name]['宽幅1'] %>
+    <% if ad_id.respond_to?(:each) %>
+      <div id="newsSlider" class="news_slider f_r">
+        <div class="container">
+          <ul class="slides">
+            <% ad_id.each do |id| %>
+              <li><%= render_ad(id) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <ul class="pagination">
+          <%  ad_id.size.times do |n| %>
+            <li><a href="#"><%= n + 1 %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <%= render_ad(ad_id) %>
+    <% end %>
+  </div>
+</div>
+<!--end_ad_code-->
+<!--part 2_code-->
+<div class="width960 margin10 clearfix">
+  <div class="zxdpn_p2l f_l">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="zxdpn_p2l_sreach">
+      <tr>
+        <td><h3><span>感兴趣的网友日记</span></h3></td>
+        <td align="right"><form id="diary_search" action="" method="get">
+            <input name="" type="button" value="查询" class="zxdpn_p2r_dl" onclick="search_company()"/>
+            地区
+            <select id="area" name="area" size="1">
+              <option value="0">请选择</option>
+              <%
+              areas = get_area_without_number(@city)
+              areas.each do |area|
+              %>
+                <option value="<%= area.TAGID %>"><%= area.TAGNAME %></option>
+              <% end %>
+            </select>
+            户型
+            <select id="room" name="room" size="1">
+              <option value="0">请选择</option>
+              <% ROOM.sort.each do |key, value|%>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            </select>
+            价格
+            <select id="price" name="price" size="1">
+              <option value="0">请选择</option>
+              <% @prices.each do |key, value|%>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            </select>
+            风格
+            <select id="style" name="style" size="1">
+              <option value="0">请选择</option>
+              <% STYLES.sort.each do |key, value|%>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            </select>
+          </form></td>
+      </tr>
+    </table>
+    <script type="text/javascript">
+      function search_company(){
+        var price = document.getElementById('price').options[document.getElementById('price').selectedIndex].value;
+        var room = document.getElementById('room').options[document.getElementById('room').selectedIndex].value;
+        var style = document.getElementById('style').options[document.getElementById('style').selectedIndex].value;
+        var district = document.getElementById('area').options[document.getElementById('area').selectedIndex].value;
+        window.open("/zhuangxiugongsi/gsl-" + <%= @city.to_i %> + "-" + district + "/0-" + style + "-" + "0-" + price + "-0-0", "_blank");
+      }
+    </script>
+    <div class="zxdpn_p2l_anbg01 clearfix">
+      <div class="zxdpn_p2l_anbg02 clearfix">
+        <h4><span>热点案例</span></h4>
+        <%
+        @home["热点案例"] && @home["热点案例"].each_with_index do |diary,index|
+          hot_diary = decoration_diary diary["title"]
+          unless hot_diary.blank?
+          %>
+            <div class="zxdpn_p2l_img01 f_l"><a href="<%= generate_diary_url(hot_diary.id) %>" target="_blank" title="<%= hot_diary.title %>"><img src="<%= get_diary_master_picture(hot_diary) ? image_full_path(get_diary_master_picture(hot_diary),'150x113',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg' %>" alt="<%= hot_diary.title %>" /></a></div>
+            <div class="zxdpn_p2l_text01 f_r">
+              <% hot_firm = getfirm hot_diary.deco_firm_id  %>
+              <h5><span>装修公司：<a href="<%= generate_firm_url(hot_firm.id) %>" title="<%= hot_firm.name_zh %>" target="_blank"><%= hot_firm.name_abbr %></a> <a href="#" title="222" target="_blank" class="zxdpncolor_a00"><%= hot_firm.remark_only_count %></a>人点评
+                  <label><%= hot_firm.pv_count %></label>
+                  人浏览</span><a href="<%= generate_diary_url(hot_diary.id) %>" target="_blank" title="<%= hot_diary.title %>"><%= hot_diary.title %></a></h5>
+              <p>
+                <% unless hot_diary.content.gsub(/<.*?>/, "").blank? %>
+                  <%= truncate(hot_diary.content.gsub(/<.*?>/,""), 99, '...')  %>
+                <% else %>
+                  查看日记详情
+                <% end %>
+              </p>
+              <span class="zxdpn_p2l_yz"><%= hot_diary.created_at.strftime("%Y-%m-%d") %> 业主：<a href="<%= generate_diary_url(hot_diary.id) %>" title="<%= hot_diary.user_name %>" target="_blank"><%= hot_diary.user_name %></a></span> </div>
+          <%
+          end
+        end
+      %>
+      </div>
+      <div class="zxdpn_p2l_new f_l">
+        <h4><span>最新更新</span></h4>
+        <ul>
+          <%
+          @home["最新更新"] && @home["最新更新"].each_with_index do |diaries,index|
+            diary = decoration_diary diaries["title"]
+            unless diary.blank?
+              firm = getfirm diary.deco_firm_id
+            %>
+              <li class="clearfix">
+                <div class="zxdpn_p2l_img02 f_l"> <a href="<%= generate_diary_url(diary.id) %>" target="_blank" title="<%= diary.title %>"> <img src="<%= get_diary_master_picture(diary) ? image_full_path(get_diary_master_picture(diary),'116x87',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg' %>" alt="<%= diary.title %>" /> </a> </div>
+                <div class="zxdpn_p2l_text02 f_r">
+                  <h5> <a href="<%= generate_diary_url(diary.id) %>" target="_blank" title="<%= diary.title %>"><%= diary.title %></a> </h5>
+                  <span><a href="<%= generate_firm_url(firm.id) %>" target="_blank" title="【<%= firm.name_zh %>】">【<%= truncate(firm.name_abbr, 4, '') %>】</a> 业主：<a href="<%= generate_diary_url(diary.id) %>" title="<%= diary.user_name %>" class="zxdpncolor_a01"><%= diary.user_name %></a> </span> <span> 风格：<a href="<%= generate_diary_url(diary.id) %>" title="<%= STYLES[diary.style] %>"><%= STYLES[diary.style] %></a> 价格：<a href="<%= generate_diary_url(diary.id) %>" title="<%= diff_city_price_tag_value(@city, diary.price) %>"><%= diff_city_price_tag_value(@city, diary.price) %></a> </span> </div>
+              </li>
+            <%
+            end
+          end
+        %>
+        </ul>
+      </div>
+      <div class="zxdpn_p2l_more f_r">
+        <h4><span>更多案例</span></h4>
+        <ul>
+          <%
+          @home["更多案例"] && @home["更多案例"].each do |diaries|
+            diary = decoration_diary diaries["title"]
+            unless diary.blank?
+              firm = getfirm diary.deco_firm_id
+            %>
+              <li>
+                <h5>
+                  <label>业主：<a href="<%= generate_diary_url(diary.id) %>" target="_blank" title="<%= diary.user_name %>"><%= diary.user_name %></a></label>
+                  <a href="<%= generate_diary_url(diary.id) %>" target="_blank" title="<%= diary.title %>"><%= truncate(diary.title, 15, '') %></a></h5>
+                <span>公司：<a href="<%= generate_firm_url(firm.id) %>" target="_blank" title="<%= firm.name_zh %>"><%= firm.name_abbr %></a> 风格：<a href="<%= generate_diary_url(diary.id) %>" title="<%= STYLES[diary.style] %>"><%= STYLES[diary.style] %></a> 方式：<a href="<%= generate_diary_url(diary.id) %>"  title="<%= MODELS[diary.model] %>"><%= MODELS[diary.model] %></a></span></li>
+            <%
+            end
+          end
+        %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="zxdpn_p2r f_r">
+    <div class="zxdpn_p2r_top margin10">
+      <h3><span>主打价位排行榜</span></h3>
+      <% if @city.to_i == 12301 %>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            show_tab('zxdpn_p2r_c','zxdpn_p2r_but','zxdpn_p2r_tabbg',6,2)
+          });
+        </script>
+      <% end %>
+      <div class="zxdpn_p2r_tab">
+        <ul class="clearfix">
+          <%
+          price_index = 1
+          @prices = shang_hai_zuixi_price if @city.to_i == 11910
+          city_prices = @city.to_i == 12301 ? @prices.first(6) : @prices.first(4)
+          price_tag_inex =  @city.to_i == 12301 ? 6 : 4
+          city_prices.each do |key, value|
+          %>
+            <li id="zxdpn_p2r_but<%= price_index %>" class="zxdpn_p2r_tabbg2" onClick="show_tab('zxdpn_p2r_c','zxdpn_p2r_but','zxdpn_p2r_tabbg',<%= price_tag_inex %>,<%= price_index %>)"><%= value %></li>
+            <%
+            price_index += 1
+          end
+        %>
+        </ul>
+      </div>
+      <%
+      extra_price_firms = index_extra_price_firms(@city) if @city.to_i != 12306
+      price_index = 1
+      city_prices.each do |key, value|
+        price_firms = index_home_city_price_firms(@city, key, 8)
+        price_promoted = home_same_promoted_firms(city_name, :price, key)
+        price_firms = (price_promoted + price_firms).uniq[0..7] unless price_promoted.blank?
+        if price_firms.size < 8 && @city.to_i == 12306
+          price_firms += find_other_cooperation_firms(@city, :price, key, 8 - price_firms.size)
+        elsif price_firms.size < 8 && @city.to_i != 12306
+          before_count = price_firms.size
+          price_firms += extra_price_firms.slice(0, 8-before_count)
+          extra_price_firms = extra_price_firms - extra_price_firms.slice(0, 8-before_count)
+        end
+      %>
+        <% if price_firms && price_firms.size > 0%>
+          <div id="zxdpn_p2r_c<%= price_index %>" class="zxdpn_p2r_c0">
+            <table border="0" cellspacing="0" cellpadding="0">
+              <% price_firms.each do |firm|%>
+                <tr>
+                  <td width="70"><a href="<%= generate_firm_url(firm.id) %>" target="_blank"><%= firm.name_abbr %></a></td>
+                  <td width="50" align="right"><%= firm.remark_only_count %>评论</td>
+                  <td width="70" align="right"><%= firm.pv_count %>浏览</td>
+                </tr>
+              <% end %>
+              <tr>
+                <td></td>
+                <td></td>
+                <td align="right"><span><a href="/zhuangxiugongsi/gsl-<%= @city.to_i %>-0/0-0-0-<%= key %>-0-0" target="_blank">更多&gt;&gt;</a></span></td>
+              </tr>
+            </table>
+          </div>
+        <% else %>
+          <div id="zxdpn_p2r_c<%= price_index %>" class="zxdpn_p2r_c0">
+            <div style="margin-left:80px;">暂无信息</div>
+          </div>
+        <% end %>
+        <%
+        price_index += 1
+      end
+    %>
+    </div>
+    <div class="zxdpn_p2r_top">
+      <h3><span>装修风格排行榜</span></h3>
+      <div class="zxdpn_p2r_tab">
+        <ul class="clearfix">
+          <%
+          style_index = 1
+          STYLES.sort.first(6).sort.each do |key, value|
+          %>
+            <li id="zxdpn_p2r2_but<%= style_index %>" class="zxdpn_p2r_tabbg2" onClick="show_tab('zxdpn_p2r2_c','zxdpn_p2r2_but','zxdpn_p2r_tabbg',6,<%= style_index %>)"><%= value %></li>
+            <%
+            style_index += 1
+          end
+        %>
+        </ul>
+      </div>
+      <%
+      style_index = 1
+      extra_style_firms = index_extra_style_firms(@city) if @city.to_i != 12306
+      STYLES.sort.first(6).each do |key, value|
+        style_firms = index_home_city_style_firms(@city, key, 8)
+        style_promoted = home_same_promoted_firms(city_name, :style, key)
+        style_firms = (style_promoted + style_firms).uniq[0..7] unless style_promoted.blank?
+        if style_firms.size < 8 && @city.to_i == 12306
+          style_firms += find_other_cooperation_firms(@city, :style, key, 8 - style_firms.size)
+        elsif style_firms.size < 8 && @city.to_i != 12306
+          before_count = style_firms.size
+          style_firms += extra_style_firms.slice(0, 8-before_count)
+          extra_style_firms = extra_style_firms - extra_style_firms.slice(0, 8-before_count)
+        end
+      %>
+        <% if style_firms && style_firms.size > 0 %>
+          <div id="zxdpn_p2r2_c<%= style_index %>" class="zxdpn_p2r_c0">
+            <table border="0" cellspacing="0" cellpadding="0">
+              <% style_firms.each do |firm|%>
+                <tr>
+                  <td width="70"><a href="<%= generate_firm_url(firm.id) %>" target="_blank"><%= firm.name_abbr %></a></td>
+                  <td width="50" align="right"><%= firm.remark_only_count %>评论</td>
+                  <td width="70" align="right"><%= firm.pv_count %>浏览</td>
+                </tr>
+              <% end %>
+              <tr>
+                <td></td>
+                <td></td>
+                <td align="right"><span><a href="/zhuangxiugongsi/gsl-<%= @city.to_i %>-0/0-<%= key %>-0-0-0-0" target="_blank">更多&gt;&gt;</a></span></td>
+              </tr>
+            </table>
+          </div>
+        <% else %>
+          <div id="zxdpn_p2r2_c<%= style_index %>" class="zxdpn_p2r_c0">
+            <div style="margin-left:80px;">暂无信息</div>
+          </div>
+        <% end %>
+        <%
+        style_index += 1
+      end
+    %>
+      <script language='javascript'>
+        show_tab('zxdpn_p2r2_c','zxdpn_p2r2_but','zxdpn_p2r_tabbg',6, 1);
+<% if @city.to_i == 12301 %>
+    show_tab('zxdpn_p2r_c','zxdpn_p2r_but','zxdpn_p2r_tabbg',5,1);
+<% else %>
+    show_tab('zxdpn_p2r_c','zxdpn_p2r_but','zxdpn_p2r_tabbg',4,1);
+<% end %>
+      </script>
+    </div>
+  </div>
+</div>
+</div>
+<!--end_part 2_code-->
+<!--ad_code-->
+<div class="width960 margin10 clearfix">
+  <div class="ad f_l">
+<%#= render_ad(INDEX_AD_MAPPING[city_name]['大旗2']) %>
+    <% if INDEX_AD_MAPPING[city_name]['大旗2'].respond_to?(:each) %>
+      <div id="newsSlider02" class="news_slider f_l">
+        <div class="container">
+          <ul class="slides">
+            <% INDEX_AD_MAPPING[city_name]['大旗2'].each do |id| %>
+              <li>
+                <!-- afp广告代码　　START　============================== -->
+                <script type="text/javascript">//<![CDATA[
+                  ac_as_id = <%= id %>;
+                  ac_format = 0;
+                  ac_mode = 1;
+                  ac_group_id = 1;
+                  ac_server_base_url = "afp.csbew.com/";
+                  //]]></script>
+                <script type="text/javascript" src="http://static.csbew.com/k.js"></script>
+                <!-- afp广告代码　　END　================================ -->
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="validate_Slider"></div>
+      </div>
+    <% else %>
+      <%= render_ad(INDEX_AD_MAPPING[city_name]['大旗2']) %>
+    <% end %>
+  </div>
+  <div class="ad f_r">
+    <% ad_id = INDEX_AD_MAPPING[city_name]['宽幅2'] %>
+    <% if ad_id.respond_to?(:each) %>
+      <div id="newsSlider" class="news_slider">
+        <div class="container">
+          <ul class="slides">
+            <% ad_id.each do |id| %>
+              <li><%= render_ad(id) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <ul class="pagination">
+          <%  ad_id.size.times do |n| %>
+            <li><a href="#"><%= n + 1 %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <%= render_ad(ad_id) %>
+    <% end %>
+  </div>
+</div>
+<!--end_ad_code-->
+<!--part 3_code-->
+<div class="width960 margin10 clearfix">
+  <div class="zxdpn_p3l f_l">
+    <h3>
+      <label><a href="/zhuangxiugongsi/" title="更多" target="_blank">更多&gt;&gt;</a></label>
+      <span>今日最热网友点评</span></h3>
+    <ul>
+      <%
+      city_firms = @home["今日最热点评"] || []
+      city_firms.each do |firm|
+      %>
+        <li class="zxdpn_p3lbg02" onmouseover="cns_li_hover(this,'zxdpn_p3lbg01')" onmouseout="cns_li_hover(this, 'zxdpn_p3lbg02')"> <a href="<%= generate_firm_url(firm.id) %>" title="<%= firm.name_zh %>" target="_blank"></a>
+          <h4><%= firm.name_zh  %></h4>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>服务:
+                <label><%= firm.service_praise %></label>
+                &nbsp;&nbsp;设计:
+                <label><%= firm.design_praise %></label>
+                &nbsp;&nbsp;施工:
+                <label><%= firm.construction_praise %></label></td>
+              <td align="right">日记
+                <label>（<%= firm.decoration_diaries && firm.decoration_diaries.size || 0 %>）</label>
+                评论
+                <label>（<%= firm.remark_only_count %>）</label>
+                浏览
+                <label>（<%= firm.pv_count %>）</label></td>
+            </tr>
+            <tr>
+              <td colspan="2"><span style="float:right;">点击联系</span>地址：<%= truncate(firm.address2, 46, '') %> </td>
+            </tr>
+            <tr>
+              <td colspan="2"><% firm.remarks && firm.remarks.first(3).each do |remark| %>
+                  <span>网友
+                    <label><%= remark.user_name  %></label>
+                    于<%= remark.created_at.strftime("%H:%M") %> 发表：<%= truncate(remark.content, 38, '……') %></span>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </li>
+      <%
+      end
+    %>
+    </ul>
+  </div>
+  <div class="zxdpn_p3r f_r">
+    <div class="zxdpn_p3r_tx margin10">
+      <h3><span>如何挑选装修公司</span></h3>
+      <a href="/html/index_help_page/<%=city_name%>.html" title="如何挑选装修公司" target="_blank">如何挑选装修公司</a></div>
+    <div class="zxdpn_p3r_ry">
+      <h3><span>网友热议日记</span></h3>
+      <ul>
+        <% hot_diarys = @home["网友热议日记"] || [] %>
+        <% hot_diarys.each do |diary| %>
+          <li><span><a href="<%= generate_same_city_diary_url({:firm_id => diary['firm_id'], :diary_id =>  diary['diary_id']}) %>" title="(10)评" target="_blank">
+                <label>(<%= diary_remarks_count(diary['diary_id']) %>)</label>
+                评</a></span><a href="<%= generate_same_city_diary_url({:firm_id => diary['firm_id'], :diary_id =>  diary['diary_id']}) %>" title="<%= diary['diary_title'] %>" target="_blank"><%= truncate(diary['diary_title'], 10, '') %></a></li>
+        <% end %>
+        <li><a href="/zhuangxiugushi" title="更多" target="_blank" class="zxdpn_p3r_more">更多&gt;&gt;</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--end_part 3_code-->
+<!--part 4_code-->
+<div class="width960 margin10 clearfix">
+  <div class="zxdpn_p4l f_l" style="position:relative;">
+    <h3><span>正在进行中的促销活动</span></h3>
+    <a onmouseup="ISL_StopUp_1()" onmousedown="ISL_GoUp_1()" onmouseout="ISL_StopUp_1()" href="javascript:void(0);" target="_self" class="zxdpn_p4l_btn zxdpn_p4l_prev">&lt;&lt;</a>
+    <div id="ISL_Cont_1" class="zxdpn_p4l_c_b">
+      <div class="zxdpn_p4l_c2">
+        <div id="List1_1" class="f_l">
+          <ul>
+            <% tabel_count = @home["优惠券数量"] / 6%>
+            <% firms_coupon = @home["装修优惠券"] || [] %>
+            <% 1.upto(tabel_count) do |count| %>
+              <% sum_count = count * 6%>
+              <li>
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <% firms_coupon[(sum_count - 6 )..(sum_count - 6 + 2)] && firms_coupon[(sum_count - 6 )..(sum_count - 6 + 2)].each do |coupon| %>
+                      <td><a href="<%= coupon['url'] %>" target="_blank"><img src="<%= coupon['image-url'] %>" alt="<%= coupon['title'] %> " /></a><a href="<%= coupon['url'] %>" target="_blank"><%= truncate(coupon['title'], 13, '') %> </a></td>
+                    <% end %>
+                  </tr>
+                  <tr>
+                    <% firms_coupon[((sum_count - 6 + 3))..(sum_count - 1)] && firms_coupon[((sum_count - 6 + 3))..(sum_count - 1)].each do |coupon| %>
+                      <td><a href="<%= coupon['url'] %>" target="_blank"><img src="<%= coupon['image-url'] %>" alt="<%= coupon['title'] %> " /></a><a href="<%= coupon['url'] %>" target="_blank"><%= truncate(coupon['title'], 13, '') %> </a></td>
+                    <% end %>
+                  </tr>
+                </table>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div id="List2_1"></div>
+      </div>
+    </div>
+    <a onmouseup="ISL_StopDown_1()" onmousedown="ISL_GoDown_1()" onmouseout="ISL_StopDown_1()" href="javascript:void(0);" target="_self" class="zxdpn_p4l_btn zxdpn_p4l_next">&gt;&gt;</a>
+    <% if tabel_count.to_i > 1 %>
+      <script type="text/javascript">picrun_ini()</script>
+    <% end %>
+  </div>
+  <div class="zxdpn_p4r f_r">
+    <%= render :partial => 'zhuanti' %>
+  </div>
+</div>
+<!--end_part 4_code-->
+<!--links_code-->
+<div class="width960">
+  <div class="links_hj">
+    <div class="links_bg_hj clearfix">
+      <h3>友情链接</h3>
+      <span></span>
+      <ul class="clear">
+        <li>
+          <% parse_xml(AREA_PROMOTED["首页友情链接"][city_name], ["title", "url"]).each do |result| %>
+            <a href="<%= result["url"] %>" target="_blank" title="<%= result["title"]%>"><%= result["title"] %></a>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--end_links_code-->
+<script type="text/javascript">//<![CDATA[
+ac_as_id = 55687;
+ac_format = 0;
+ac_mode = 1;
+ac_group_id = 1;
+ac_server_base_url = "afp.csbew.com/";
+//]]></script>
+<script type="text/javascript" src="http://static.csbew.com/k.js"></script>

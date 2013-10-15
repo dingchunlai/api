@@ -1,0 +1,175 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+  *{ margin:0; padding:0; font-size:12px;}
+  a{ text-decoration:none;}
+  li{ list-style-type:none;}
+  a:hover{ text-decoration:underline;}
+  .clearfix {zoom:1}
+  .clearfix:after {content: '\20'; display: block; clear: both;}
+
+  .index_dp_top{ height:300px; overflow:hidden; background:url(http://js.51hejia.com/img/homeimg/home_img_topbg.gif) no-repeat;}
+  .index_dp_top h2{ height:41px; font-size:0; line-height:0; text-indent:-999px; overflow:hidden;}
+
+  .index_dp_tab{height:26px; width:275px; overflow:hidden; margin-top:10px;border-bottom:1px solid #ffe6cc;}
+  .index_dp_tab ul{ margin:1px auto;_margin:1px 0 0 72px; width:130px;}
+  .index_dp_tab li{ float:left; width:57px; height:24px; overflow:hidden; line-height:24px; text-align:center;cursor:pointer; border:1px solid #e6e3df; border-bottom:none; margin:0 2px;}
+  .index_dp_tabbg1{background:#fff;}
+  .index_dp_tabbg1{color:#f60; }
+  .index_dp_tabbg2{color:#848484; background:url(http://js.51hejia.com/img/zxdpimg/zxdptopbg.gif) no-repeat;}
+  #index_dp_c2{ display:none;}
+
+  .index_dp_c0 table{ margin:10px 20px;}
+  .index_dp_c0 td{ line-height:24px;}
+  .index_dp_c0 td a{ display:block; width:90px; height:24px; overflow:hidden; color:#482400;}
+  .index_dp_c0 td a:hover{ color:#f60;}
+  .index_dp_c0 td span{ color:#f60;}
+
+  .index_dpc1_tab ul{ margin:10px 0px 10px 15px; background:#fff; border-top:1px solid #e6e3df; border-right:1px solid #e6e3df; width:248px;}
+  .index_dpc1_tab li{ float:left; width:82.4px; height:21px; overflow:hidden; line-height:21px; text-align:center;cursor:pointer;color:#c2ada5; border-left:1px solid #e6e3df; border-bottom:1px solid #e6e3df; margin-left:-1px;_margin-left:0;}
+  .index_dpc1_tab .index_dpc1_tabbg1 {color:#5c1500;background:url(http://js.51hejia.com/img/zxdpimg/zxdptopbg.gif) no-repeat;}
+  .index_dpc1_tab .index_dpc1_tabbg2 {color:#b0a19a;background:#fff;}
+  #index_dpc1_c2,#index_dpc1_c3,#index_dpc1_c4,#index_dpc1_c5,#index_dpc2_c2,#index_dpc2_c3,#index_dpc2_c4,#index_dpc2_c5,#index_dpc2_c6{ display:none;}
+</style>
+<script type="text/javascript" src="http://js.51hejia.com/js/2010/tab.js"></script>
+<%
+city_name = TAGURLS[@user_city_code.to_i]
+city = @user_city_code.to_i
+prices = SHANGHAI_PRICE
+price_array = [1, 2,[3, 4, 5]]
+%>
+<div class="index_dp_top">
+  <h2>装修公司排行榜</h2>
+  <div class="index_dp_tab">
+    <ul>
+      <li id="index_dp_but1" class="index_dp_tabbg1" onClick="show_tab('index_dp_c','index_dp_but','index_dp_tabbg',2,1)">主打价位</li>
+      <li id="index_dp_but2" class="index_dp_tabbg2" onClick="show_tab('index_dp_c','index_dp_but','index_dp_tabbg',2,2)">装修风格</li>
+    </ul>
+  </div>
+  <!--  主打价位排行榜信息    -->
+  <div id="index_dp_c1" class="index_dp_c0">
+    <div class="index_dpc1_tab clearfix">
+      <ul class="clearfix">
+        <!-- 宁波特殊处理 -->
+        <%
+        price_index = 1
+        price_tag_index = 4
+        prices.each do |key, value|
+        %>
+          <li id="index_dpc1_but<%= price_index %>" class="index_dpc1_tabbg<%= price_index %>" onClick="show_tab('index_dpc1_c','index_dpc1_but','index_dpc1_tabbg',<%= price_tag_index %>,<%= price_index %>)" ><%= value %></li>
+          <%
+          price_index += 1
+        end
+      %>
+      </ul>
+    </div>
+    <%
+    price_index = 1
+    prices.each do |key, value|
+      #杭州，无锡，按正常口碑分排序调用
+      #苏州和宁波的是api推广
+      #上海是推荐位加上
+      if city.to_i == 12301 || city.to_i == 12117
+        price_firms = home_same_promoted_firms(city_name, :price, key)[0,5]
+      else
+        is_promoted = @user_city_code.to_i == 11910 ? true : false
+        price_firms = firm_order_at_brands_index(price_array[price_index-1], @user_city_code, is_promoted, 5)
+      end
+    %>
+      <% if price_firms && price_firms.size > 0 %>
+        <div id="index_dpc1_c<%= price_index %>" class="index_dp_c0">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <% price_firms.each do |firm| -%>
+              <tr>
+                <td width="86"><a href="<%= generate_firm_path firm.id %>" target="_blank"><%=get_firm_name_abbr2(firm)%></a></td>
+                <td width="77" align="right"><span><%=firm.remark_only_count %></span>评论</td>
+                <td width="87" align="right"><span><%= firm.pv_count %></span>人浏览</td>
+              </tr>
+            <%end -%>
+            <tr>
+              <td></td>
+              <td></td>
+              <td align="right"><a href="http://z.<%= city_name %>.51hejia.com/companies-00<%= key %>0-0" target="_blank">更多>></a></td>
+            </tr>
+          </table>
+        </div>
+      <% else %>
+        <div id="index_dpc1_c<%= price_index %>" class="index_dp_c0">
+          <div style="margin-left:80px;">暂无信息</div>
+        </div>
+      <% end %>
+      <%
+      price_index += 1
+    end
+  %>
+  </div>
+
+  <!--  装修风格排行榜信息    -->
+  <div id="index_dp_c2" class="index_dp_c0">
+    <div class="index_dpc1_tab clearfix">
+      <ul>
+        <%
+        style_index = 1
+        STYLES.sort.first(6).each do |key, value|
+        %>
+          <li id="index_dpc2_but<%= style_index %>" class="index_dpc1_tabbg<%= style_index %>" onClick="show_tab('index_dpc2_c','index_dpc2_but','index_dpc1_tabbg',6, <%= style_index %>)"  ><%= value %></li>
+          <%
+          style_index += 1
+        end
+      %>
+      </ul>
+    </div>
+
+    <%
+    style_index = 1
+    extra_style_firms = index_extra_5_style_firms(city) if city.to_i ==11910
+    STYLES.sort.first(6).each do |key, value|
+      #取杭州、上海的合作公司,取宁波、无锡、苏州的推广公司
+      if city.to_i == 12301 || city.to_i == 12117 || city.to_i == 12118
+        style_firms = home_same_promoted_firms(city_name, :style, key)[0,5]
+      else
+        style_firms = index_home_city_style_firms(city, key, 5)
+        if style_firms.size < 5 && city.to_i == 12306
+          style_firms += find_other_cooperation_firms(city, :style, key, 5 - style_firms.size)
+        elsif style_firms.size < 5 && city.to_i != 12306
+          before_count = style_firms.size
+          style_firms += extra_style_firms.slice(0, 5-before_count) unless extra_style_firms.blank?
+          extra_style_firms = extra_style_firms - extra_style_firms.slice(0, 5-before_count) unless extra_style_firms.blank?
+        end
+      end
+    %>
+      <% if style_firms && style_firms.size > 0 %>
+        <div id="index_dpc2_c<%= style_index %>" class="zxdpc1_c0">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <% style_firms.each do |firm| -%>
+              <tr>
+                <td width="86"><a href="<%= generate_firm_path firm %>" target="_blank"><%=get_firm_name_abbr2(firm)%></a></td>
+                <td width="77" align="right"><span><%= firm.remark_only_count %></span>评论</td>
+                <td width="87" align="right"><span><%= firm.pv_count %></span>人浏览</td>
+              </tr>
+            <%end -%>
+            <tr>
+              <td></td>
+              <td></td>
+              <td align="right"><a href="http://z.<%= city_name %>.51hejia.com/companies-0<%= key %>00-0" target="_blank">更多>></a></td>
+            </tr>
+          </table>
+        </div>
+      <% else %>
+        <div id="index_dpc2_c<%= style_index %>" class="zxdpc1_c0">
+          <div style="margin-left:80px;">暂无信息</div>
+        </div>
+      <% end %>
+      <%
+      style_index += 1
+    end
+  %>
+  </div>
+</div>
+
+<script language='javascript'>
+  var first_tab = Math.round(Math.random()) + 1,
+  subtab_size = [5, 6][first_tab - 1],
+  subtab = Math.round(Math.random() * (subtab_size - 1)) + 1;
+  show_tab('index_dp_c','index_dp_but','index_dp_tabbg',2, first_tab);
+  show_tab('index_dpc' + first_tab + '_c', 'index_dpc' + first_tab + '_but', 'index_dpc1_tabbg', subtab_size, subtab);
+</script>

@@ -1,0 +1,970 @@
+<% content_for (:head) do %>
+  <script type="text/javascript" src="http://js.51hejia.com/js/jscharts_mb.js"></script>
+  <script type="text/javascript" src="http://js.51hejia.com/js/2010/tab.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+  <%= javascript_include_tag 'jrails'%>
+  <link href="http://js.51hejia.com/css/api/jquery.praise.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="http://js.51hejia.com/js/jquery.lightbox-0.5.min.js?20100713"></script>
+  <link href="http://js.51hejia.com/css/jquery.lightbox-0.5.css?2010" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="http://js.51hejia.com/js/jquery.colorbox-min.js"></script>
+
+
+<% end %>
+
+<% api_javascript 'jquery.praise.js','firms.js' %>
+<% api_stylesheet 'colorbox.css'%>
+<div class="ipath"><strong>您的位置：</strong><a href="/">装修点评</a> > <a href="/zhuangxiugongsi/">装潢公司</a> >  <%= @firm.name_zh %> </div>
+<div class="clear"></div>
+<div class="main clearfix margin10">
+  <!-- start zuoce xinxi  -->
+  <div class="gs_new_l f_l">
+    <!-- daohang start  -->
+    <div class="gsl_tit">
+
+      <span class="f_r"><a href="#n"  onclick="AddFavorite(window.location, document.title);">我要收藏</a></span>
+      <div id="show_key" style="float:right;width:50px;color:red">&nbsp;</div>
+      <span id="firm-big-star" class="set-praise f_r big-star" style="margin:5px 10px 0 0;" data-praise="0"></span>
+
+      <h2><a href="#n" target="_self" title="<%= @firm.name_zh %>"><%= @firm.name_zh %></a></h2>
+
+      <a herf="#" title="综合：<%=@firm.praise%> 施工：<%=@firm.construction_praise%> 设计：<%= @firm.design_praise%> 服务：<%= @firm.service_praise%>" target="_blank"></a>
+        <span style="float:right">| <a href="/html/index_help_page/how_evaluate.html" target="_blank"  title="我要评分">我要评分:</a></span>
+						口碑：<span class="fontstyle"><%=format("%.1f",@firm.praise) %></span>
+    </div>
+
+    <!-- daohang end   -->
+    <!-- start firm info  -->
+    <div class="gsl_txt clearfix">
+      <div class="gsl_txt_l f_l">
+        <ul>
+          <li>访问量：<span><%= @firm.pv_count %> </span></li>
+          <li>日&nbsp;&nbsp;记：<span><%= @diaries && @diaries.total_entries || 0 %></span></li>
+          <li>设计师：<span><%= @firm.designers_count || 0 %></span></li>
+
+        </ul>
+        <span class="gsl_ly">
+
+          <a href="#oranges" >我要留言</a></span> <span class="gsl_rj">
+          <% if current_user %>
+            <a href="http://member.51hejia.com/decoration_diaries/new?firm_id=<%=@firm.id%>" title="发表日记" target="_blank">发表日记</a>
+          <% else %>
+            <a href="#n" title="发表日记" onclick="Divopop('Login');return true;">发表日记</a>
+          <% end %>
+
+        </span>
+        <!-- 生成三个分数  --><% praise = firm_praise(@firm) %>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>施&nbsp;&nbsp;工</td>
+            <td><div class="gsl_hzk" title="施工分：<%=@firm.construction_praise%>">
+                <label class="gsl_hzt" style="width:<%= praise[0].round %>px;"></label>
+                <div class="gsl_hzt_num"><%= three_value(@firm, @firm.construction_praise) %></div>
+              </div></td>
+          </tr>
+          <tr>
+            <td>设&nbsp;&nbsp;计</td>
+            <td><div class="gsl_hzk" title="设计分：<%= @firm.design_praise%>">
+                <label class="gsl_hzt" style="width:<%= praise[1].round %>px;"></label>
+                <div class="gsl_hzt_num"><%= three_value(@firm, @firm.design_praise) %></div>
+              </div></td>
+          </tr>
+          <tr>
+            <td>服&nbsp;&nbsp;务</td>
+            <td><div class="gsl_hzk" title="服务分：<%= @firm.service_praise%>">
+                <label class="gsl_hzt" style="width:<%= praise[2].round %>px;"></label>
+                <div class="gsl_hzt_num"><%= three_value(@firm, @firm.service_praise) %></div>
+              </div></td>
+          </tr>
+        </table>
+      </div>
+      <!-- 得到本公司最新优惠券 --><% coupon = get_company_new_coupon(@firm.id)%>
+      <div class="gsl_txt_c f_l">
+        <ul>
+          <% firm_city = @firm.city == 11910 ? @firm.city : @firm.district %>
+          <li>主打价位：<span><% if @firm.price %><%= diff_city_price_tag_value(firm_city , @firm.price.to_i) %><% else %>暂无信息<% end %></span></li>
+          <li>装修风格：<span><%= @firm.style.to_i != 0 ? STYLES[@firm.style.to_i] : '暂无信息' %></span></li>
+          <li>装修方式：<span><%= @firm.model.to_i != 0 ? MODELS[@firm.model.to_i] : '暂无信息' %></span></li>
+          <li style="overflow:hidden;"><div class="f_l">公司地址：</div><div class="f_l" style="overflow:hidden;width:200px;"><div id="cont_m_6" style="width:123456px;"><span style="padding-left:10px;"><%= @firm.address2.blank? ? '暂无信息' : @firm.address2.gsub(/<.*>/,'') %></span></div></div></li>
+          <script type="text/javascript" src="http://js.51hejia.com/js/txt_auto2.js"></script>
+          </li>
+          <li>营业时间：<span><%= @firm.business_hours.blank? ? '暂无信息' : @firm.business_hours.gsub(/<.*>/,'') %></span></li>
+          <% if @firm.is_cooperation %>
+            <li>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="65" valign="top">联系方式：</td>
+                  <td><span class="gsl_txt_color01"><%if @firm.district == 12301 && @firm.is_cooperation != 1%>0574-27673566<%elsif @firm.district == 12118 && @firm.is_cooperation != 1%>0510-82700070<%else%><%= @firm.telephone.blank? ? '该商家未提供客服电话' : @firm.telephone.gsub(/<.*>/,'').gsub(/，|,/,'<br/>') %><%end%></span></td>
+                </tr>
+              </table>
+            </li>
+          <% end %>
+          <% if coupon %>
+            <li>优惠信息：<span class="gsl_txt_color02"><a href="<%= gen_firm_city_event(@firm.id, coupon.id) %>" target="_blank" title="<%= coupon.title %>"><%= coupon.title %></a></span></li>
+          <% else %>
+            <li>优惠信息：<span class="gsl_txt_color02"><a href="#n">暂无优惠信息</a></span></li>
+          <% end %>
+        </ul>
+
+      </div>
+      <div class="gsl_txt_r f_r">
+        <div><% if @firm.lat && @firm.lng %>
+            <iframe src="http://z.51hejia.com/deco/google_map?lat=<%= @firm.lat %>&lng=<%= @firm.lng %>" width="209" height="209" style="margin-bottom:10px;" marginheight="0" marginwidth="0" frameborder="0">
+            </iframe>
+          <%end%></div>
+        <div><center><a id="3d-map" href="#" target="_blank" data-edushi="{city:'<%= @city_name%>',sitename:'<%= @firm.name_zh%>',address:'<%= @firm.address2%>'}">查看三维地图</a></center></div>
+        <!--<div class="lookmore"><a href="#">查看全图</a> | <a href="#">标注</a></div>-->
+      </div>
+    </div>
+    <!-- end firm info  -->
+    <script type="text/javascript">
+      jQuery(function($){
+        $(function(){
+          var $zhankai = $(".gsl_gsjj_txt #detail");
+          $zhankai.click(function(){
+            if($zhankai.is(".detail_zk")){
+              $(this).removeClass("detail_zk");
+              $(this).addClass("detail_sl");
+              $("span.detail_ck").text("查看全文 >>");
+            }
+            else{
+              $(this).addClass("detail_zk");
+              $(this).removeClass("detail_sl");
+              $("span.detail_ck").text("收起全文 >>");
+            }
+          })
+        })
+      })
+    </script>
+    <!-- start firm jianjie   -->
+    <style type="text/css">
+      .gsl_gsjj_txt{width:684px;overflow:hidden;}
+    </style>
+      <div class="gsl_gsjj clearfix">
+      <h3>公司简介</h3>
+      <div class="gsl_gsjj_txt f_l"  >
+
+        <div id="detail" class="detail_sl">
+          <% unless @firm.detail.blank? %>
+            <%= remove_external_links(whitelist_strip_tags(@firm.detail, :tags => ["a", "A", "script", "style"], :include => false))  %>
+          <% else -%>
+            '本公司暂无信息'
+          <% end -%>
+
+          <% unless @firm.detail.blank? %>
+            <span class="detail_ck">查看全文 &gt;&gt;</span>
+          <% end %>
+        </div>
+      </div>
+      <!--
+      <% if @firm.pictures.count > 0 %>
+                                                    <div class="gsl_rig">
+                                                            <div id="gsl_qy" onmouseover="qiScrollAmount=0" onmouseout="qiScrollAmount=2">
+                                                                    <div id="gsl_tab1" class="firmpic">
+                                                                            <ul>
+        <% @firm.pictures.each_with_index do |picture,i|%>
+                                                                                                        <li><a href="<%= image_full_path(picture,"",i)%>">
+                                                                                                                <img src="<%= image_full_path(picture,'140x120',i)%>" /></a></li>
+        <% end -%>
+                                                                            </ul>
+                                                                    </div>
+                                                            <div id="gsl_tab2"></div>
+                                                    </div>
+                         <div id="gsl_btm"><a id="gsl_up" onclick="up()" href="javascript:;" target="_self">▲</a><a id="gsl_dw" onclick="dw()" href="javascript:;" target="_self">▼</a></div>
+                         <script>
+                         var qoMarquee = document.getElementById("gsl_qy"); //滚动对象
+                         var tab1 = document.getElementById("gsl_tab1");
+                         var tab2 = document.getElementById("gsl_tab2");
+                         var qiLineHeight = 118;//单行高度，像素IE
+                         var qiLineCount = 0; //实际行数
+                         var qiScrollAmount = 2; //每次滚动高度，像素（速度）
+                         var speed1=3000;//每次停留时间
+                         var speed2=1;//滚动速度
+                         tab2.innerHTML=tab1.innerHTML;
+                         var alink=document.getElementById('gsl_btm').getElementsByTagName('a');
+                         for(var i=0;i<alink.length;i++){
+                         alink[i].onfocus=function(){this.blur();}
+                         }
+                         function run() {
+                         if(qoMarquee.scrollTop==99*qiLineHeight){qoMarquee.scrollTop=0;window.setTimeout( "run()", speed2 );}//重置并接着滚动
+                         else{
+                         qoMarquee.scrollTop +=qiScrollAmount;
+                         if ( qoMarquee.scrollTop % qiLineHeight == 0 ) {window.setTimeout("run()", speed1 );}//如果满格等待N秒
+                         else {window.setTimeout( "run()", speed2 );}//正常滚动
+                         }
+                         }
+                         function up(){
+                         qiScrollAmount = 0;
+                         var amount=1;
+                         if(qoMarquee.scrollTop==2*qiLineHeight) qoMarquee.scrollTop=0;
+                         qoMarquee.scrollTop +=amount;
+                         if ( qoMarquee.scrollTop % qiLineHeight == 0 ) {amount=0;window.setTimeout( "qiScrollAmount = 2", speed1 );}
+                         else window.setTimeout( up(), 1 );
+                         }
+                         function dw(){
+                         qiScrollAmount = 0;
+                         var amount=1;
+                         if(qoMarquee.scrollTop==0) qoMarquee.scrollTop=2*qiLineHeight;
+                         qoMarquee.scrollTop -=amount;
+                         if ( qoMarquee.scrollTop % qiLineHeight == 0 ) {amount=0;
+                         window.setTimeout( "qiScrollAmount = 2", speed1 );}
+                         else window.setTimeout( dw(), 1 );
+                         }
+                         window.setTimeout( "run()", speed1 );
+                         </script>
+
+
+                         </div>
+      <%end %>
+      -->
+      <!--END if @firm.picutres.count > 0-->
+    </div>
+    <a name="a01" id="a01"></a>
+    <div class="gsl_tab clearfix">
+      <ul class="clearfix">
+        <li id="gsl_but1" class="gsl_tabbg1" onclick="show_tab('gsl_c', 'gsl_but', 'gsl_tabbg', 4, 1)">装修日记</li>
+        <li id="gsl_but2" class="gsl_tabbg2" onclick="show_tab('gsl_c', 'gsl_but', 'gsl_tabbg', 4, 2)">案例图片</li>
+        <li id="gsl_but3" class="gsl_tabbg2" onclick="show_tab('gsl_c', 'gsl_but', 'gsl_tabbg', 4, 3)">施工图片</li>
+        <li id="gsl_but4" class="gsl_tabbg2" onclick="show_tab('gsl_c', 'gsl_but', 'gsl_tabbg', 4, 4)">设计师</li>
+        <li class="gsl_tab_back"><a href="#" target="_self" title="返回顶部">返回顶部</a></li>
+      </ul>
+    </div>
+
+
+
+    <div id="gsl_c1" class="box gsl_c0">
+      <label class='page_number' style="display:none">5</label>
+      <div class="gsl_c0_page">
+        <span class='paginator'>第 <label class='current_page'><%= @diaries.current_page %> </label> 页 
+          <a class='prev_page' href="/gs-<%= @firm.id %>/diaries/paginator" >&lt;&lt; 上一页</a>
+          <a class='next_page' href="/gs-<%= @firm.id %>/diaries/paginator" >下一页 &gt;&gt;</a>
+        </span>
+        共用<label class='totel_entries'><%= @diaries.total_entries  %></label>套<%= @firm.name_abbr %>的装修日记 </div>
+      <ul class='firm_items'>
+        <%= render :partial => '/firms/diaries' %>
+      </ul>
+    </div>
+
+
+    <!-- start 案例图片信息 -->
+    <div id="gsl_c2" class="box gsl_c0">
+      <label class='page_number' style="display:none">12</label>
+      <div class="gsl_c0_page">
+        <span class='paginator'>第<label class='current_page'> <%= @firm_case.current_page %> </label>页 
+          <a class='prev_page' href="/gs-<%=@firm.id %>/cases/paginator" >&lt;&lt; 上一页</a>
+          <a class='next_page' href="/gs-<%=@firm.id %>/cases/paginator" >下一页 &gt;&gt;</a>
+        </span>
+        	共用<label class='totel_entries'><%= @firm_case.total_entries %></label>套<%= @firm.name_abbr %>的案例图片
+      </div>
+      <ul class="firm_items clearfix">
+        <%= render :partial => '/firms/cases'%>
+      </ul>
+    </div>
+    <!-- end 案例图片信息 -->
+
+
+    <!-- start 施工图片信息 -->
+    <div id="gsl_c3" class="box gsl_c0">
+      <label class='page_number' style="display:none">12</label>
+      <div class="gsl_c0_page">
+        <span class='paginator'>第 <label class='current_page'><%=@photos.current_page %> </label>页 
+          <a class='prev_page' href="/gs-<%=@firm.id %>/photos/paginator" >&lt;&lt; 上一页</a>
+          <a class='next_page' href="/gs-<%=@firm.id %>/photos/paginator" >下一页 &gt;&gt;</a>
+        </span>
+        共用<label class='totel_entries'><%= @photos.total_entries %></label>套<%= @firm.name_abbr %>的施工图片
+      </div>
+      <ul class="firm_items clearfix">
+        <%= render :partial => '/firms/photos' %>
+      </ul>
+    </div>
+    <!-- end 施工图片信息 -->
+
+    <!-- start 设计师 -->
+    <div id="gsl_c4" class="box gsl_c0">
+      <label class='page_number' style="display:none">4</label>
+      <div class="gsl_c0_page">
+        <span class="paginator">第 <label class='current_page'><%=@designers.current_page %> </label>页 
+          <a class='prev_page' href="/gs-<%=@firm.id %>/designers/paginator">&lt;&lt; 上一页</a>
+          <a class='next_page' href="/gs-<%=@firm.id %>/designers/paginator">下一页 &gt;&gt;</a>
+        </span>
+        共用<label class='totel_entries'><%= @designers.total_entries %></label>位<%= @firm.name_abbr %>的设计师</div>
+      <ul class="firm_items">
+        <%= render :partial => '/firms/designers'  %>
+      </ul>
+    </div>
+    <!--  end firm (anli,riji,shejishi,shigong)  -->
+    <!--  在建工地  -->
+    <style type="text/css">
+      .gsl_wyly_tit .pagination span{background:none;display:inline;float:none;font-size:12px;margin:0 10px;padding:0;}
+      .gsl_wyly_tit .pagination a,.gsl_wyly_tit .pagination a:visited,.gsl_wyly_tit .pagination a:hover{background:none;border:none;text-decoration:underline;margin:0 10px;padding:0;color:#333;}
+      .gsl_wyly_tit .pagination a,.gsl_wyly_tit .pagination a:visited{color:#333;text-decoration:none;}
+      .gsl_wyly_tit .pagination a:hover{text-decoration:underline;color:#f60;}
+    </style>
+    <% if @factories.size >0 %>
+      <div class="gsl_wyly" id ="factories_div">
+        <%= render :partial => '/firms/factories'  %>
+      </div>
+    <% end %>
+
+    <!-- start firm remark info -->
+    <div class="gsl_wyly" id="remarks_div">
+      <div class='remarks'>
+        <%= render :partial => '/firms/remarks' %>
+      </div>
+    </div>
+    <!-- end firm remark info -->
+
+    <!-- start submit firm remark  -->
+    <div class="gsl_wyly_lyk">
+      <a href="#a02" id="a02"></a>
+      <a name="oranges"></a>
+      <h3>发表留言</h3>
+      <% unless current_user %>
+        <div id="login">
+          <%= render :partial => "/decoration_diaries/login" %>
+        </div>
+      <% end %>
+      <hr />
+      <% form_for :remark , @remark , :url =>{:action=>"firm_remark_save" ,:controller => "remarks"},:html =>{:id => "firm_remark"} do %>
+        <input type="hidden" name="token" id="token" value="<%= @token %>">
+        <input type='hidden' id="deco_frim_id" name='remark[resource_id]' value='<%=@firm.id %>'>
+        <table width="670" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="gsl_wyly_qy"><textarea id="content" name="remark[content]" cols="" rows=""></textarea>
+            </td>
+          </tr>
+        </table>
+        <div id="simple_remark">
+
+          <% if flash[:error] %>
+            <div style="padding-left:25px;color:red;"><%=flash[:error]%></div>
+          <% else %>
+            <div id="open_mark" ><span style="padding-left:25px;cursor:pointer;text-decoration:underline;color:red;">点击对该公司进行评分</span></div>
+          <% end %>
+          <div style="text-align:center;margin-bottom:10px;" id="remark_button">
+            <% if current_user %>
+              <input type="submit" value="留言提交" id="pt_submit"  class="gsl_wyly_btn"  />
+            <% else %>
+              <input type="button" value="留言提交" class="gsl_wyly_btn" onclick="Divopop('Login');return true;" />
+            <% end %>
+          </div>
+        </div>
+        <div class="pinjbox" style="display:none;">
+          <table width="645" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="200">
+                <div class="clearfix">
+                  <div class="set-praise f_l big-star" data-praise="0"></div>
+                  <input type="hidden" name="remark[praise]" id="mian_praise"/>
+                  <div id="show_key" class="dafenkeys f_l"></div>
+                </div>
+                <dl>
+                  <dt>详细评价<span>（非必填）</span></dt>
+                  <dd class="clearfix">
+                    <div class="f_l"><strong>最满意</strong></div>
+                    <div id="zuimanyi">
+                      <input type="radio" class="col1" name="zuimanyi" value="设计"/>设计
+                      <input type="radio" class="col2" name="zuimanyi" value="施工"/>施工
+                      <input type="radio" class="col3" name="zuimanyi" value="服务"/>服务
+                    </div>
+                  </dd>
+                  <dd class="clearfix">
+                    <div class="f_l"><strong>较满意</strong></div>
+                    <div id="jiaomanyi">
+                      <input type="radio" class="col1" name="jiaomanyi" value="设计"/>设计
+                      <input type="radio" class="col2" name="jiaomanyi" value="施工"/>施工
+                      <input type="radio" class="col3" name="jiaomanyi" value="服务"/>服务
+                    </div>
+                  </dd>
+                  <script type="text/javascript">
+                    jQuery(function($){
+                      var obj = $("input[type='radio']");
+                      obj.each(function(){
+                        $(this).click(function(){
+                          var classid = $(this).attr("class");
+                          var parentobj = $(this).parents("dd").siblings() ;
+                          parentobj.find("input[class="+classid+"]").attr("disabled","true").siblings().removeAttr("disabled");
+                        })
+                      })
+                    })
+                  </script>
+                </dl>
+              </td>
+              <td valign="top" id="is_verify">
+                <input type="hidden" id="youhaoma" name="youhaoma">
+                <input type="hidden" id="this_mobile" name="this_mobile" >
+                <div class="pinjphone">手机号码 <input id="mobile" type="text" class="pinjsjh" />
+                  <input id="code_button" type="button" value="获取验证码" />
+                  验证码 <input name="verify_code" id="verify_code" type="text" class="pinjyzm" /></div>
+                <p class="pinjprompt">注：为保证用户评分真实有效，对装修公司进行评分必须通过手机验证，验证仅为保证真实度，其间不会产生任何费用。验证功能仅对评分有效，网友留言不需此操作。</p>
+              </td>
+            </tr>
+          </table>
+          <div class="dafensub clearfix"><input id="mark_submit" type="button" value="提 交" class="dafenbtn01" /></div>
+          <input type="hidden" id="mark_tj" name="mark_tj">
+        </div>
+
+      <% end %>
+      <script type="text/javascript">
+
+      </script>
+    </div>
+    <!-- end submit firm remark  -->
+  </div>
+  <!-- end zuoce xinxi  -->
+
+  <!-- start youce xinxi  -->
+  <style type="text/css" media="screen">
+    .branch .branch_name{font-weight:bold;font-size:13px;margin:3px 10px 0 10px;height:25px;line-height:25px;}
+    .branch .branch_area{height:auto;line-height:25px;}
+    .branch .branch_tel{margin:0px 10px;height:15px;line-height:15px;}
+    .branch p{
+      margin:0px 10px;line-height:20px;
+    }
+    .branch li{padding-bottom:10px;}
+    .fontstyle{font-size:14px;font-weight:bold;color:red;}
+  </style>
+  <div class="gs_new_r f_r">
+    <!-- 子公司信息 -->
+    <% if @firm.deco_firm_branches.size > 0 %>
+      <div class="gsr_box margin10 branch">
+        <h3><%=h @firm.name_abbr%>公司</h3>
+        <ul>
+          <%  @firm.deco_firm_branches.each do |branche|  %>
+            <li class="clearfix">
+              <div class="branch_name">
+                <%=h branche.name%>
+              </div>
+              <div class="branch_tel">电话: <%=h branche.tel%>	</div>
+
+              <p class="branch_area">
+                区域:
+                <% branche.service_area && YAML.load(branche.service_area).each do |service_area| -%>
+                  <%= HejiaTag.find_name(service_area) %>
+                <%- end -%>
+              </p>
+              <p class="branch_address">
+                地址: 	<%=h branche.address%>
+              </p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end -%>
+
+    <!-- get_city_value and  area_value -->
+    <%
+    city = @firm.city.to_i  == 11910 ? @firm.city : @firm.district
+    city_areas = get_area_without_number(city)
+    prices = diff_city_price_tag(city)
+  %>
+    <!--  page user_full  -->
+    <div class="gsr_search margin10">
+      <h3>商家快速查询</h3>
+      <table width="170" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>所属地区：</td>
+          <td>
+            <select id="area" name="area" size="1">
+              <option value="0">请选择</option>
+              <% city_areas.each do |area| %>
+                <option value="<%= area.TAGID %>"><%= area.TAGNAME %></option>
+              <% end %>
+            </select></td>
+        </tr>
+        <tr>
+          <td>主打价位：</td>
+          <td>
+            <select id="price" name="price" size="1">
+              <option value="0">请选择</option>
+              <% prices.each do |key, value| %>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>装修方式：</td>
+          <td>
+            <select id="model" name="model" size="1">
+              <% models_sort = @firm.city.to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+              <option value="0">请选择</option>
+              <% models_sort.sort.each do |key, value| %>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>装修风格：</td>
+          <td>
+            <select id="style" name="style" size="1">
+              <option value="0">请选择</option>
+              <% STYLES.sort.each do |key, value| %>
+                <option value="<%= key %>"><%= value %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>优惠信息：</td>
+          <td><select id="coupon" name="coupon" size="1">
+              <option value="0">请选择</option>
+              <option value="1">有</option>
+              <option value="2">无</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td height="38" colspan="2" align="center"><input type="button" onclick="search_company()" value="查询" class="gsr_search_btn" /></td>
+        </tr>
+      </table>
+    </div>
+    <script type="text/javascript">
+      function search_company(){
+        var model = document.getElementById('model').options[document.getElementById('model').selectedIndex].value;
+        var price = document.getElementById('price').options[document.getElementById('price').selectedIndex].value;
+        var room = document.getElementById('room').options[document.getElementById('room').selectedIndex].value;
+        var style = document.getElementById('style').options[document.getElementById('style').selectedIndex].value;
+        var coupon = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].value;
+        var district = document.getElementById('area').options[document.getElementById('area').selectedIndex].value;
+        window.open("/zhuangxiugongsi/gsl-" + <%=city %> + "-" + district + "/"+ model + "-" +style + "-" + "0-" + price + "-0-0?is_coupon=" + coupon, "_blank");
+      }
+    </script>
+    <!--ad_code-->
+    <div class="ad margin10"></div>
+    <!--end_ad_code-->
+
+    <div class="gsr_box gsr_box01 margin10">
+      <h3>最近查看商家</h3>
+      <ul>
+        <% unless @browsed_firms.blank?%>
+          <%  @browsed_firms.each do |browsed_firm|  %>
+            <li class="clearfix"><span class="gsr_icon"><a href="/gs-<%= browsed_firm.id %>" target="_blank" title="<%= browsed_firm.name_abbr %>"><%= truncate(browsed_firm.name_abbr, 4, '') %></a></span>
+              口碑：<span class="fontstyle"><%=format("%.1f",browsed_firm.praise) %></span>
+            </li>
+
+
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="gsr_box gsr_box02 margin10">
+      <h3>也许您对这些商家感兴趣</h3>
+      <ul>
+        <%
+        same_city_same_price(city, @firm.price).each do |firm|
+          city = firm.city.to_i  == 11910 ? firm.city : firm.district
+        %>
+          <li>
+            <span class="gsr_icon">
+              <a href="/gs-<%=firm.id %>" target="_blank" title="<%= firm.name_abbr %>" class="gsr_color"><%= truncate(firm.name_abbr, 4, '') %></a>
+              <a href="/gs-<%= firm.id %>" target="_blank"><%= firm.price.to_i != 0 ? diff_city_price_tag_value(city , firm.price.to_i) : '暂无信息' %></a>
+              <% gsr_area = firm.city.to_i == 11910 ?  firm.district : firm.area %>
+              <a href="/gs-<%= firm.id %>" target="_blank"><%= get_district(city).blank? ? '不详' : truncate(get_district(city).TAGNAME, 2, '') %></a>
+            </span>
+            <div> <span>口碑：</span>
+              <span class="fontstyle"><%=format("%.1f",firm.praise) %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!--  start  zhuangxiugongsi chuxiao    -->
+    <div class="gsr_box gsr_box03 margin10">
+      <h3>这些商家正在进行促销</h3>
+      <ul>
+        <% @promoted_event.first(5).each do |event| %>
+          <li><span class="gsr_icon"><a href="<%= generate_firm_url(event['firm_id']) %>" target="_blank" title="<%= event['title'] %>"><%= truncate(event['title'], 15, '...') %></a></span>
+            <div> <span><a href="<%= generate_firm_url(event['firm_id']) %>" target="_blank" title="<%= event['firm_name'] %>" class="gsr_color"><%= truncate(event['firm_name'], 4, '') %></a></span>
+              口碑：<label class="fontstyle"><%=format("%.1f",event.praise) %></label>
+
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <!--  end  zhuangxiugongsi chuxiao    -->
+
+    <!--ad_code-->
+    <div class="ad margin10"></div>
+    <!--end_ad_code-->
+
+    <div class="gsr_box gsr_box04 margin10">
+      <h3>网友最近关注的装修日记</h3>
+      <ul>
+        <% @city_diaries.each do |diary| %>
+          <li>
+            <span class="gsr_icon">
+              <a href="<%= generate_same_city_diary_url({:firm_id => diary['firm_id'], :diary_id => diary['diary_id']}) %>" target="_blank" title="<%= diary['diary_title'] %>" class="gsr_color"><%= truncate(diary['diary_title'], 11, '') %></a>
+            </span>
+            <div>
+              <span>网友：
+                <a href="<%= gen_firm_city_path(diary.firm_id) %>" target="_blank" title="<%= diary.username || '和家网友'  %>">
+                  <%= diary.username || '和家网友'  %>
+                </a>
+              </span>
+              <span class="gsr_b4span">
+                <a href="<%= gen_firm_city_path(diary.firm_id) %>" target="_blank" title="<%= diary['firm_name_abbr'] %>">
+                  <%= truncate(diary['firm_name_abbr'], 4, '') %>
+                </a>
+              </span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+
+  </div>
+  <!-- end youce xinxi  -->
+</div>
+</div>
+<%= increase_deco_firm_pv_image_tag @firm.id %>
+<script type="text/javascript">
+  jQuery(function($) {
+    function initLightBox(id){
+      $(id).lightBox(
+      {
+        imageLoading:'http://img.51hejia.com/lightbox/lightbox-ico-loading.gif',
+        imageBtnPrev:'http://img.51hejia.com/lightbox/lightbox-btn-prev.gif',
+        imageBtnNext:'http://img.51hejia.com/lightbox/lightbox-btn-next.gif',
+        imageBtnClose:'http://img.51hejia.com/lightbox/lightbox-btn-close.gif',
+        imageBlank:'http://img.51hejia.com/lightbox/lightbox-blank.gif',
+        maxImageWidth:500
+      });
+    }
+    initLightBox("#gsl_c3 .firm_items a");
+    for(var i = 1;i < 5;i++){
+      $('#gsl_c'+ i +' .prev_page').click(function(event){
+        event.preventDefault();
+        var box = $(this).parents('.box');
+        var page = parseInt(box.find('.current_page').text());
+        if(page > 1){
+          page--;
+          $.get($(this).attr('href'), {page:page}, function(data){
+            box.find('.firm_items').html(data);
+            box.find('.current_page').text(page);
+            initLightBox("#gsl_c3 .firm_items a");
+          })
+        }
+      })
+
+      $('#gsl_c'+ i +' .next_page').click(function(event){
+        event.preventDefault();
+        var box = $(this).parents('.box');
+        var page = parseInt(box.find('.current_page').text());
+        var total = parseInt(box.find('.totel_entries').text());
+        var page_number = parseInt(box.find('.page_number').text());
+        if(parseInt(total % page_number) == 0){
+          var page_size = parseInt(total / page_number)
+        }else{
+          var page_size = parseInt(total / page_number) + 1
+        }
+        if(page < page_size){
+          page++;
+          $.get($(this).attr('href'), {page:page}, function(data){
+            box.find('.firm_items').html(data);
+            box.find('.current_page').text(page);
+            initLightBox("#gsl_c3 .firm_items a");
+          })
+        }
+      })
+    }
+    $('.gsl_wyly_lyk .prev_page a').click(function(event){
+      event.preventDefault();
+      var current_page = parseInt($('.gsl_wyly_lyk .current_page').text());
+      if(current_page > 1){
+        current_page--;
+        $.get($(this).attr('href'), {page:current_page}, function(data){
+          $('.gsl_wyly .remarks').html(data);
+          $('.gsl_wyly_lyk .current_page').text(current_page);
+        })
+      }
+    })
+    $('.gsl_wyly_lyk .next_page').click(function(event){
+      event.preventDefault();
+      var current_page = parseInt($('.gsl_wyly_lyk .current_page').text());
+      var total_page = parseInt($('.gsl_wyly_lyk .total_entries').text());
+      if(parseInt(total_page % 5) == 0){
+        var page_size = parseInt(total_page / 5)
+      }else{
+        var page_size = parseInt(total_page / 5) +  1
+      }
+      if(current_page < page_size){
+        current_page++;
+        $.get($(this).attr('href'), {page:current_page}, function(data){
+          $('.gsl_wyly .remarks').html(data);
+          $('.gsl_wyly_lyk .current_page').text(current_page);
+        })
+      }
+    })
+
+    $('#login_form').submit(function(){
+      if($('#user_name').val().length <= 0){
+        alert('请输入用户名');
+      }else if($('#password').val().length <= 0){
+        alert('请输入密码');
+      }else{
+        $("#login_submit").attr("disabled","disabled");
+        $.ajax({
+          type: "POST",
+          url: "/sessions/user_login",
+          dataType: "script",
+          data: jQuery(this).serialize(),
+          success: function(data){
+            $('#login_submit').removeAttr("disabled");
+            if(data == 'error'){
+              alert('用户名或密码错误!');
+              $("#password").val("");
+            }else if(data == "freeze"){
+              alert("您的帐户已暂被冻结，如有疑问可直接联系客服人员！");
+              $("#password").val("");
+            }else{
+              $("#login").css("display","none");
+              $("#open_mark").show();
+              $(".gsl_rj").html("<a href='http://member.51hejia.com/member/user_note_list' title='发表日记' target='_blank'>发表日记</a>");
+              $("#remark_button").html("<input type='submit' value='留言提交' id='pt_submit'  class='gsl_wyly_btn'  />");
+              $('#ajaxLoginForm').attr("data-current-user",data);
+            }
+          }
+        })
+      }
+      return false;
+    });
+
+
+
+    $('#pop_login_form').submit(function(){
+      if($('#pop_user_name').val().length <= 0){
+        alert('请输入用户名');
+      }else if($('#pop_password').val().length <= 0){
+        alert('请输入密码');
+      }else{
+        $("#pop_login_submit").attr("disabled","disabled");
+        $.ajax({
+          type: "POST",
+          url: "/sessions/user_login",
+          dataType: "script",
+          data: jQuery(this).serialize(),
+          success: function(data){
+            $('#pop_login_submit').removeAttr("disabled");
+            if(data == 'error'){
+              alert('用户名或密码错误!');
+              $("#pop_password").val("");
+            }else if(data == "freeze"){
+              alert("您的帐户已暂被冻结，如有疑问可直接联系客服人员！");
+              $("#pop_password").val("");
+            }else{
+              $('#ajaxLoginForm').attr("data-current-user","data")
+              $("#login").css("display","none");
+              $(".gsl_rj").html("<a href='http://member.51hejia.com/member/user_note_list' title='发表日记' target='_blank'>发表日记</a>");
+              $("#remark_button").html("<input type='submit' value='留言提交' id='pt_submit'  class='gsl_wyly_btn'  />");
+              //		$.fn.colorbox.close();
+              $.post("/user/verify_mark",
+              {firm_id : $("#deco_frim_id").val()},
+              function(data){
+                if (data.result) {
+                  if(data.is_mobile){
+                    $(".dafentit").show();
+                    $("#pop_youhaoma").val(0);
+                  }else{
+                    $(".dafentit").hide();
+                    $("#pop_youhaoma").val(1);
+                  }
+                  $.fn.colorbox({
+                    inline: true,
+                    href: '#DecoPraisePopDiv',
+                    width: 650,
+                    opacity: 0.2
+                  });
+                }else{
+                  alert("对不起，您6个月只能评分一次");
+                  $.fn.colorbox.close();
+                  return false;
+                }
+              },"json");
+            }
+          }
+        })
+      }
+      return false;
+    });
+
+    $("#firm_remark").submit(function(){
+      if ($("#mark_tj").val() != 1){
+        if ($.trim($("#content").val()).length == 0) {
+          alert("请填写内容后再发表评论");
+          return false;
+        }
+      }
+    });
+    $('#pop_mark_reset').click(function() {
+      $('.small-star p').removeClass("one");
+    });
+    $("#mark_submit").click(function(){
+      if($("#mian_praise").val().length == 0) {
+        alert("请评分");
+        return false;
+      }else if ($("#youhaoma").val().length == 0 || $("#youhaoma").val() != 1) {
+        var verify_code = $("#verify_code").val();
+        if (verify_code.length != 4 || isNaN(verify_code)) {
+          alert("请输入正确的验证码");
+          return false;
+        }
+        $("#mark_submit").attr("disabled","disabled");
+        $.post("/user/verify_mobile_code", {
+          code: verify_code, mobile : $("#mobile").val()
+        }, function(data){
+          if (!data.result) {
+            alert("验证码验证失败");
+            $("#mark_submit").removeAttr("disabled");
+          }else{
+            $("#mark_tj").val(1);
+            $('#firm_remark').submit();
+          }
+        }, "json");
+      }else{
+        $("#mark_tj").val(1);
+        $('#firm_remark').submit();
+      }
+    });
+
+    $("#pop_mark_button").click(function(){
+      if ($("#pop_youhaoma").val().length == 0 || $("#pop_youhaoma").val() != 1) {
+        var verify_code = $("#pop_verify_code").val();
+        if (verify_code.length != 4 || isNaN(verify_code)) {
+          alert("请输入正确的验证码");
+          return false;
+        }
+        $("#pop_mark_button").attr("disabled","disabled");
+        $.post("/user/verify_mobile_code", {
+          code: verify_code, mobile : $("#pop_mobile").val()
+        }, function(data){
+          if (!data.result) {
+            alert("验证码验证失败");
+            $("#pop_mark_button").removeAttr("disabled");
+          }else{
+            $("#pop_mark_tj").val(1);
+            $('#mark_remark').submit();
+          }
+        }, "json");
+      }else{
+        $("#pop_mark_tj").val(1);
+        $('#mark_remark').submit();
+      }
+    });
+		  
+		  
+  });
+  function AddFavorite(sURL, sTitle)
+  {
+    try{
+      window.external.addFavorite(sURL, sTitle);
+    }catch (e){
+      try{
+        window.sidebar.addPanel(sTitle, sURL, "和家网");
+      }catch (e){
+        alert("加入收藏失败，请使用Ctrl+D进行添加");
+      }
+    }
+  }
+</script>
+
+<div class="gsl_yy" id="popDiv" style="display:none;"><form name="regis" action="/firms/register_save" method="post" onsubmit="return isfull();">
+    <div><h4>预约单</h4></div>
+    <table width="80%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right" width="150">姓名：</td>
+        <td><%=text_field("register","name",:size=>"23")%> <span>*</span></td>
+      </tr>
+      <tr>
+        <td align="right" width="150">性别：</td>
+        <td><%=select("register","sex", REGISTERS_SEX.map {|p| [ p[1], p[0]] } , { :prompt => "- 请选择 -" })%> <span>*</span></td>
+      </tr>
+      <tr>
+        <td align="right" width="150">所在城市：</td>
+        <td><%=text_field("register","in_city",:size=>"23")%></td>
+      </tr>
+      <tr>
+        <td align="right" width="150">联系电话：</td>
+        <td><%=text_field("register","phone",:size=>"23")%> <span>*</span></td>
+      </tr>
+      <tr>
+        <td align="right" width="150">E-mail：</td>
+        <td><%=text_field("register","email",:size=>"23")%> <span>*</span></td>
+      </tr>
+      <tr>
+        <td align="right" width="150">希望参观时间：</td>
+        <td><%=select("register","the_time_to_visit", REGISTERS_VISIT_TIME.map {|p| [ p[1], p[0]] } , { :prompt => "- 请选择 -" })%></td>
+      </tr>
+      <tr>
+        <td align="right" width="150" valign="top">备注：</td>
+        <td><%=text_area("register","remark")%></td>
+      </tr>
+      <%= hidden_field("register", "event_id", :id=>"target_id1")%>
+      <tr>
+        <td colspan="2"><div class="gsl_btndiv">
+            <input type="hidden" name="token" id="token" value="<%= @token %>">
+            <input name="" type="submit" value="预约" class="gsl_zjgd_btn f_l" />
+            <input name="" onclick="javascript:closeDiv()" type="button" value="返回商家" class="gsl_zjgd_btn f_r" /></div></td>
+      </tr>
+    </table></form></div>
+<div id="bg" class="bg" style="display:none;"></div>
+<iframe id='popIframe' class='popIframe' frameborder='0' ></iframe>
+
+<iframe name="hideiframe" width="0" height="0"></iframe>
+<script type="text/javascript">
+  function show_advice_div(fatherid){
+    document.getElementById("target_id1").value = fatherid;
+    document.getElementById('popDiv').style.display='block';
+    document.getElementById('popIframe').style.display='block';
+    document.getElementById('bg').style.display='block';
+
+    document.getElementById("is_q_a").value = 3;
+    document.getElementById("tar_type2").value = 2;
+    var adv = document.getElementById("advice_div"),
+    btn = document.getElementById('advice_form_submit');
+    if(btn && btn.disabled) btn.disabled = false;
+
+    document.getElementById("ad_context").focus();
+  }
+
+  function closeDiv(){
+    document.getElementById('popDiv').style.display='none';
+    document.getElementById('bg').style.display='none';
+    document.getElementById('popIframe').style.display='none';
+    document.getElementById("is_q_a").value = 1;
+  }
+  function isfull(){
+    if(document.regis.register_name.value == ""){
+      alert( "姓名不能为空 ");
+      document.regis.register_name.focus();
+      return   false;
+    }
+    if(document.regis.register_sex.value == ""){
+      alert( "请选择性别 ");
+      document.regis.register_sex.focus();
+      return   false;
+    }
+    if(document.regis.register_phone.value == ""){
+      alert( "电话不能为空 ");
+      document.regis.register_phone.focus();
+      return   false;
+    }
+    if(document.regis.register_email.value == ""){
+      alert( "E-mail不能为空 ");
+      document.regis.register_email.focus();
+      return   false;
+    }
+    return true;
+  }
+</script>
+<div style="display:none;" data-current-user="<%= current_user.USERNAME if current_user%>" id="ajaxLoginForm">
+  <%= render :partial => 'mark' %>
+<%#= render :partial => '/shared/ajax_login' %>
+</div>

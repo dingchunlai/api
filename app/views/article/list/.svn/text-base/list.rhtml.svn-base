@@ -1,0 +1,98 @@
+<% if @first_tag_url == "jushang"%>
+  <%= render :partial => '/share/public_header' %>
+  <%= render :partial => 'article/list/jushang' %>
+<% elsif @first_tag_url == "zhuangxiu" %>
+  <%= render :partial => 'share/head_end_zhuangxiu' %>
+<% else %>
+  <%= render :partial => '/share/public_header' %>
+<% end %>
+<div class="main clearfix">
+  <div class="proleft">
+    <div class="wenzhang">
+      <h3>
+        文章列表
+        <div>显示：
+          <% if !@first_tag_url.nil? && @date.nil? %>
+            <a href="/<%= @first_tag_url %>/articleList/<%= @tag_type %>/<%= @tag_id %>/h/1">
+              <img src="http://d.51hejia.com/api/images/liebiao<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+            <a href="/<%= @first_tag_url %>/articleList/<%= @tag_type %>/<%= @tag_id %>/l/1">
+              <img src="http://d.51hejia.com/api/images/chuangkou<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+          <% elsif !@first_tag_url.nil? && !@date.nil? %>
+            <a href="/<%= @first_tag_url %>/articleList/<%= @tag_type %>/<%= @tag_id %>/<%= @date %>/h/1">
+              <img src="http://d.51hejia.com/api/images/liebiao<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+            <a href="/<%= @first_tag_url %>/articleList/<%= @tag_type %>/<%= @tag_id %>/<%= @date %>/l/1">
+              <img src="http://api.51hejia.com/images/chuangkou<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+          <% elsif @first_tag_url.nil? && !@date.nil? %>
+            <a href="/articleList/<%= @tag_type %>/<%= @tag_id %>/<%= @date %>/h/1">
+              <img src="http://d.51hejia.com/api/images/liebiao<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+            <a href="/articleList/<%= @tag_type %>/<%= @tag_id %>/<%= @date %>/l/1">
+              <img src="http://d.51hejia.com/api/images/chuangkou<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+          <% else %>
+            <a href="/articleList/<%= @tag_type %>/<%= @tag_id %>/h/1">
+              <img src="http://d.51hejia.com/api/images/liebiao<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+            <a href="/articleList/<%= @tag_type %>/<%= @tag_id %>/l/1">
+              <img src="http://d.51hejia.com/api/images/chuangkou<%= "t"  if @format=="l" %>.gif" border="0" />
+            </a>
+          <% end %>
+        </div>
+      </h3>
+    </div>
+    <input type="hidden" name="format" value="<%= @format %>" id="format"/>
+    <input type="hidden" name="tag_type" value="<%= @tag_type %>" id="tag_type"/>
+    <input type="hidden" name="first_tag_url" value="<%= @first_tag_url %>" id="first_tag_url"/>
+    <input type="hidden" name="tag_id" value="<%= @tag_id %>" id="tag_id"/>
+    <input type="hidden" name="total_pages" value="<%= @results.total_pages %>" id="total_pages"/>
+    <input type="hidden" name="date" value="<%= @date %>" id="date"/>
+    <div class="neirongchuguizhanshi">
+      <div class="liebiaopro">
+        <div class="liebiaotot" style="float:left;padding-left:10px;padding-top:5px;">共有 <span style="color:#FF0000;"><%= @results.total_entries %></span> 篇文章</div>
+        <% if @results.total_pages != 1 %>
+          <ul>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+                  <%= will_paginate @results, :previous_label => "上一页", :next_label => "下一页", :inner_window => 2  %>
+                </td>
+                <td>
+                  第 <input name="page" type="text" class="checkaa" size="3" id="page1" onkeypress="onKeypress(event)"/> 页
+                </td>
+              </tr>
+            </table>
+          </ul>
+        <% end %>
+      </div>
+      <% if @format == "l" %>
+        <%=render :partial => 'article/list/liebiaodan'%>
+      <% end %>
+      <% if @format == "h" %>
+        <%=render :partial => 'article/list/henglanzhan'%>
+      <% end %>
+      <% if @results.total_pages != 1 %>
+        <div class="liebiaopro">
+          <ul>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+                  <%= will_paginate @results, :previous_label => "上一页", :next_label => "下一页", :inner_window => 2 %>
+                </td>
+                <td>
+                  第 <input name="page" type="text" class="checkaa" size="3" id="page2" onkeypress="onKeypress(event)"/> 页
+                </td>
+              </tr>
+            </table>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%=render :partial => 'article/list/proright'%>
+</div>
+
+<%= render :partial => '/share/public_footer' %>

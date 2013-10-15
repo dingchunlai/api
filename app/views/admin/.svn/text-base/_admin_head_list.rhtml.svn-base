@@ -1,0 +1,44 @@
+<div class="itemtitle">
+  <h3><a href="/" style="color:#0099CC;">
+      <%= query_ediror_name(session[:editor_id]) %>的栏目组
+  </a></h3>
+  <div class="tishi" style="margin-right:3px;">
+    <%- groups = PublishColumnGroup.find(:all, :conditions => ["editor_id = ? and is_del = ?", session[:editor_id], false]) -%>
+    <%- public_groups = PublishColumnGroup.find(:all, :conditions => ["public_ids like ? and is_del = ?", session[:editor_id], false]) -%>
+    <select onchange="if(this.value != '') window.open('/admin/show_group?group_id='+this.value, '_self')">
+      <option selected value="">你的栏目组列表</option>
+      <% for result in groups %>
+        <option value="<%= result.id %>"><%= result.name %></option>
+      <% end %>
+      <% for result in public_groups %>
+        <option value="<%= result.id %>"><%= result.name %> <-- <%= RadminUser.find(result.editor_id).rname rescue "[无此用户]"%>共享</option>
+      <% end %>
+    </select>
+    <select onchange="if(this.value != '') window.open('/admin/publish_list?column_id='+this.value, '_self')">
+      <option selected value="">你的栏目列表</option>
+      <% for result in query_columns %>
+        <option value="<%= result.id %>"><%= result.name %></option>
+      <% end %>
+    </select> 
+  </div>
+  <ul class="tab1">
+    <% if controller.action_name == "publish_list" || controller.action_name == "before_publish_list" %>
+      <li <%= "class=\"current\"" if controller.action_name == "publish_list" %>>
+        <a href="/admin/publish_list?column_id=<%= @column_id %>"><span>已发布</span></a>
+      </li>
+      <li <%= "class=\"current\"" if controller.action_name == "before_publish_list" %>>
+        <a href="/admin/before_publish_list?column_id=<%= @column_id %>"><span>预发布</span></a>
+      </li>
+    <% end %>
+  </ul>
+  <% unless controller.action_name == "search_article_or_case" %>
+    <div class="tishi"><a href="#" onclick="Modalbox.show($('popDivSaveContent'), { title: this.title, width: 500, height: 550 }); return false;">添加文章</a></div>
+  <% end %>
+  <div class="rtnav">
+    <ul>
+      <li><em><a href="#" onclick="Modalbox.show($('popDivSaveGroup'), { title: this.title, width: 450, height: 400 }); return false;">添加栏目组</a></em></li>
+      <li><em><a href="#" onclick="Modalbox.show($('popDivSaveColumn'), { title: this.title, width: 450, height: 400 }); return false;">添加栏目</a></em></li>
+    </ul>
+  </div>
+</div>
+<%= render :partial => "hidden_search" %>

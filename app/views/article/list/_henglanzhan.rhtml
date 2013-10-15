@@ -1,0 +1,13 @@
+<div class="henglanzhan">
+  <% @results.each do |result| %>
+    <% url, image_url = get_article_url_image_url(result.ID, result.FIRSTCATEGORY, result.CREATETIME, result.IMAGENAME) %>
+    <div class="hanlangshi">
+      <a href="<%= url %>" target="_blank" title="<%= result.TITLE %>"><img src="<%= image_url %>" border="0" /></a>
+      <h4>
+        <a href="<%= url %>" target="_blank"><%= result.TITLE %></a><span><%= result.CREATETIME.strftime("%Y-%m-%d") %></span>
+      </h4>
+      <p><%= result.SUMMARY.gsub("&nbsp;", "").chars[0, 70] if !result.SUMMARY.nil? %>...<span><a href="<%= url %>" target="_blank">阅读全文</a></span></p>
+    </div>
+  <% end %>
+</div>
+

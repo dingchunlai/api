@@ -1,0 +1,20 @@
+<div class="zxdpn_l_zxrj">
+	<h3>装修日记</h3>
+	<ul>
+		<% @diaries.each_with_index do |diary,index| %>
+		<li class="clearfix">
+          <div class="zxdpn_l_zxrjimg f_l"><a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank" title="<%= diary.title %>">
+            		<img src="<%= get_diary_master_picture(diary) ? image_full_path(get_diary_master_picture(diary),'',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg' %>" />
+            </a></div>
+          <h4><a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank" title="<%= diary.title %>"><%= truncate(diary.title, 20, '') %></a></h4>
+          <p><a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank" title="<%= diary.title %>"><% unless diary.content.gsub(/<.*?>/, "").blank? %><%= truncate(diary.content.gsub(/<.*?>/, ""), 120, ' ...  [查看日记详情]')  %><% else %>查看日记详情<% end %></a></p>
+          <div class="zxdpn_l_yez">业主：<a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank"><%=  diary.user_name %></a></div>
+          <div class="zxdpn_l_pinj"><strong>业主评价：</strong>
+		  服务<% if diary.service_score.to_i != -1 %><img src="http://js.51hejia.com/img/sdeco/handup.gif" /> <% else %><img src="http://js.51hejia.com/img/sdeco/handdown.gif" /><% end %>
+		  | 装修<% if diary.construction_score.to_i != -1 %><img src="http://js.51hejia.com/img/sdeco/handup.gif" /> <% else %><img src="http://js.51hejia.com/img/sdeco/handdown.gif" /><% end %>
+                  	| 设计<% if diary.design_score.to_i != -1 %><img src="http://js.51hejia.com/img/sdeco/handup.gif" /> <% else %><img src="http://js.51hejia.com/img/sdeco/handdown.gif" /><% end %> </div>
+          <div class="zxdpn_l_shij">发布时间：<span><%= diary.created_at.strftime("%Y-%m-%d") %></span> 查看数：<span><%= diary.pv %></span></div>
+        </li>
+		<% end %>
+	</ul>
+</div>

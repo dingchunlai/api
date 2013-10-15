@@ -1,0 +1,55 @@
+		<dl class="companyname">
+			<dt><%=@company.name_zh%></dt>
+			<dd><strong>总店区域</strong>：<%if @company.district%><%= districts_hash[@company.district.to_s] %><%end%></dd>
+			<dd><strong>综合分：</strong><a href="#" target="_blank"><%if @company.total_score%><%=@company.total_score%><%else%>0<%end%></a></dd>
+			<dd><strong>电话：</strong><%=@company.telephone%></dd>
+		</dl>
+	<div id="title">
+        <table width="99%" border="0" cellspacing="0" cellpadding="0" style="text-align:right;">
+          <tr>
+          
+            <td id="list-title1">用户</td>
+            <td id="list-title2">标题</td>
+            <td id="list-title3">综合</td>
+            <td id="list-title4">设计</td>
+            <td id="list-title5">预算</td>
+            <td id="list-title6">施工</td>
+            <td id="list-title7">服务</td>
+            <td id="list-title8">发布时间</td>
+          </tr>
+        </table>
+ 
+        </div>
+        <ul class="complist2">
+        	<%index = 1%>
+        	<%@commonts.each do |commont|%>
+       		<li <%if index%2==0%>id="bg"<%end%>>
+						<%if commont.userurl %>
+							<img src="<%=commont.userurl%>" width=26 heigh=26/>
+						<%else%>
+							<img src="http://member.51hejia.com/images/headimg/default.gif" width=26 heigh=26/>	
+						<%end%>
+            <span id="sp1"><%=commont.username%></span>
+            <span id="sp2"><a href="/dianping/show/<%=commont.id%>" target="_blank"><%=h commont.title%></a></span>
+            <span id="sp3"><%=commont.complex_score%></span>
+            <span id="sp4"><%=commont.design_score%></span>
+            <span id="sp4"><%=commont.budget_score%></span>
+            <span id="sp4"><%=commont.construction_score%></span>
+            <span id="sp4"><%=commont.service_score%></span>
+            <span id="sp5"><%=commont.cdate.strftime("%Y-%m-%d")%></span>
+            </li>
+            <%index=index+1%>
+            <%end%>
+            
+        </ul>
+ 			<div class="page">
+				<%= will_paginate @commonts ,:prev_label=> '上一页',:next_label=> '下一页'%>
+			</div>
+          <div style="margin:0px;*margin:0px;*margin:0px !important; display:block;">
+         <iframe align="left" frameborder='0'  src="/dianping/new?id=<%=@company.id%>" marginwidth="0" scrolling='no' marginHeight="0" style="border:0px;" width="670px" height="470px">
+        </iframe>
+        
+
+        </div>
+		<h3>&nbsp;</h3>
+	</div>

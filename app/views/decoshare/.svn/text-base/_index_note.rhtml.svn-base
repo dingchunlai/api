@@ -1,0 +1,121 @@
+<ul>         
+            <li class="index_s_li01"><a href="javascript:setFocus3(1);" onMouseOver="javascript:setFocus3(1);" target="_self"><span><%=firms_count_all%></span>家热门公司热推</a></li>
+            <li class="index_s_li02 index_s_li_cur"><a href="#"><span><%=note_count.to_i%></span>个装修经历</a></li>
+            <li class="index_s_li03"><a href="javascript:setFocus3(3);" onMouseOver="javascript:setFocus3(3);" target="_self"><span><%=case_count%></span>多个经典案例</a></li>
+          </ul>
+<script language="JavaScript" type="text/javascript">
+function getCityDomainByCookis(){
+	
+	var cityValue = Get_Cookie("user_city");
+	
+	if(cityValue == "11910"){
+		return "z.shanghai.51hejia.com";
+	}
+	else if(cityValue == "12117"){
+		return "z.suzhou.51hejia.com";
+	}
+	else if(cityValue == "12122"){
+		return "z.nanjing.51hejia.com";
+	}
+	else if(cityValue == "12301"){
+		return "z.ningbo.51hejia.com";
+	}
+	else if(cityValue == "12306"){
+		return "z.hangzhou.51hejia.com";
+	}
+	else if(cityValue == "12118"){
+		return "z.wuxi.51hejia.com";
+	}
+	else{
+		return "z.51hejia.com";
+	}
+}
+
+    
+    function analyseUrlAndSubmit(){
+        var url = "http://" + getCityDomainByCookis() + "/zhuangxiugushi";
+        <%#*var city = document.getElementById("method_p").value;%>
+        var style = document.getElementById("style").value;
+        var price = document.getElementById("price").value;
+        var stage = document.getElementById("stage").value;
+        var room = document.getElementById("room").value;
+        var model = document.getElementById("model").value;
+        var title = document.getElementById("title").value.replace(/(^\s*)/g, "");
+		if(title == ""){
+			title = "0";
+		}
+		0-0-0-0-0-1-0-1-2
+		url += "/" + model + "-" + style + "-" + price + "-" + stage + "-" + room + "-1-" + title + "-1-2";
+                location.href = encodeURI(url);
+    }
+ 
+</script>
+          <div class="index_s_text">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+			    <%#*<input type="hidden" name="method" id="method_p" value="0" />%>
+			    <input type="hidden" name="stage" id="stage" value="0">
+                <td colspan="5">
+                <select name="style" id="style">
+    						<option value='0'>装修风格</option>
+							<% STYLES.sort.each do |k| %>
+								<option value='<%=k[0]%>'><%=k[1]%></option>
+							<% end %>
+                </select>
+                <select name="room" id="room">
+			    	<option value='0'>装修户型</option>
+					<%ROOM.sort.each do |k|%>
+						<option value='<%=k[0]%>'><%=k[1]%></option>
+					<%end%>
+			    </select>
+			    <select name="price" id="price" >
+    							<option value='0'>装修价位</option>
+									<% diff_city_price_tag(params[:city]).each do |k| %>
+										<option value='<%=k[0]%>'><%=k[1]%></option>
+									<% end %>
+                </select>
+
+                  <select name="model" id="model">
+			    	<option value='0'>装修方式</option>
+					<% MODELS.sort.each do |k| %>
+						<option value='<%=k[0]%>'><%=k[1]%></option>
+					<%end%>
+			    </select>
+
+                <input type="text" name="title" id="title" style="width:150px" />
+                  <input type="button" value=" " class="index_tij" onClick="analyseUrlAndSubmit();"/></td>
+              </tr>
+              <tr>
+                <td width="65">装修风格：</td>
+                <td colspan="4" width="570">
+                <% STYLES.sort.each do |k| %>
+								<a href="/zhuangxiugushi/0-<%=k[0]%>-0-0-0-1-0-1-2"target="_blank"><%=k[1]%></a>
+				<% end %>
+                </td>
+              </tr>
+              <tr>
+                <td width="65">装修户型：</td>
+                <td colspan="4">
+                <% ROOM.sort.each do |k| %>
+								<a href="/zhuangxiugushi/0-0-0-0-<%=k[0]%>-1-0-1-2" target="_blank"><%=k[1]%></a>
+				<% end %>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top" width="65">装修价位：</td>
+                <td colspan="4">
+	                <% diff_city_price_tag(params[:city]).each do |k| %>
+									<a href="/zhuangxiugushi/0-0-<%=k[0]%>-0-0-1-0-1-2" target="_blank"><%=k[1]%></a>
+					<% end %>
+                </td>
+              </tr>
+              <tr>
+                <td width="65">装修方式：</td>
+                <td colspan="4">
+                <% MODELS.sort.each do |k| %>
+								<a href="/zhuangxiugushi/<%=k[0]%>-0-0-0-0-1-0-1-2" target="_blank"><%=k[1]%></a>
+				<% end %>
+                </td>
+              </tr>
+            </table>
+          </div>

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries
+END
+_like_diaries.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_like_diaries.rhtml
+END
+_like_firms.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_like_firms.rhtml
+END
+_remarks.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_remarks.rhtml
+END
+_login.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_login.rhtml
+END
+index.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/index.rhtml
+END
+_looked.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_looked.rhtml
+END
+_diary_posts.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_diary_posts.rhtml
+END
+_diary_post_remark_replies.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_diary_post_remark_replies.rhtml
+END
+_diary_post_remarks.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_diary_post_remarks.rhtml
+END
+_other_diaries.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/!svn/ver/81/51hejia/repos/api/release/app/views/decoration_diaries/_other_diaries.rhtml
+END

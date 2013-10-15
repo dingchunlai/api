@@ -1,0 +1,53 @@
+<div id="basic">
+  <div id="popDivSearch" class="test">
+    <table class="tb tb2 nobdb">
+      <tbody>
+        <!----------------------------------search_article_or_case---------------------------------->
+        <form action="/admin/search_article_or_case" method="post" class="required-validate">
+          <tr>
+            <td class="vtop rowform">
+              <span class="td27" style="font-size:16px;">关键词：</span>
+              <input name="keyword" type="text" value="<%= @keyword %>">
+            </td>
+            <td class="vtop rowform">
+              <span class="td27">频道：</span>
+              <select name="search_type">
+                <option value="0">案例</option>
+                <option value="12417">居尚</option>
+                <option value="12394">装修</option>
+              </select>
+            </td>
+            <td class="vtop rowform">
+              <span class="td27">起始日：</span>
+              <input name="start_time" type="text" onfocus="new Calendar().show(this);" size="10" value="<%= Time.mktime(2009).strftime("%Y-%m-%d") %>" class="validate-date"/>
+            </td>
+            <td class="vtop rowform">
+              <span class="td27">终止日：</span>
+              <input name="end_time" type="text" onfocus="new Calendar().show(this);" size="10" value="<%= Time.now.strftime("%Y-%m-%d") %>" class="validate-date"/>
+            </td>
+            <td class="vtop rowform" style="width:100px;">
+              <div class=fixsel>
+                <span class="td27"><input type="submit" value="搜索" ></span>
+              </div>
+            </td>
+          </tr>
+        </form>
+        <!----------------------------------search_column---------------------------------->
+        <form action="/admin/search_column" method="post">
+          <tr>
+            <td class="vtop rowform">
+              <span class="td27" style="font-size:16px;">栏目名：</span>
+              <input name="keyword" type="text" value="<%= @keyword %>">
+            </td>
+            <td class="vtop rowform" style="width:100px;">
+              <div class=fixsel>
+                <span class="td27"><input type="submit" value="搜索栏目" ></span>
+              </div>
+            </td>
+          </tr>
+        </form>
+      </tbody>
+    </table>
+  </div>
+</div>
+

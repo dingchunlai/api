@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/81/51hejia/repos/api/release/test/functional
+END
+admin_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/test/functional/admin_controller_test.rb
+END
+gas_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/test/functional/gas_controller_test.rb
+END
+rest_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/test/functional/rest_controller_test.rb
+END
+top_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/test/functional/top_controller_test.rb
+END
+article_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/81/51hejia/repos/api/release/test/functional/article_controller_test.rb
+END

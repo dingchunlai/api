@@ -1,0 +1,1347 @@
+﻿ {
+	WORD-WRAP: break-word; outline: none
+}
+BODY {
+	BACKGROUND: #fff; TEXT-ALIGN: center
+}
+BODY {
+	FONT: 12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "宋体", sans-serif; COLOR: #555
+}
+html,body {height:100%;}
+TD {
+	FONT: 12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "宋体", sans-serif; COLOR: #555
+}
+INPUT {
+	FONT: 12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "宋体", sans-serif; COLOR: #555
+}
+TEXTAREA {
+	FONT: 12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "宋体", sans-serif; COLOR: #555
+}
+SELECT {
+	FONT: 12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "宋体", sans-serif; COLOR: #555
+}
+BUTTON {
+	FONT: 12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "宋体", sans-serif; COLOR: #555
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+H1 {
+	FONT-SIZE: 12px
+}
+H2 {
+	FONT-SIZE: 12px
+}
+H3 {
+	FONT-SIZE: 12px
+}
+H4 {
+	FONT-SIZE: 12px
+}
+H5 {
+	FONT-SIZE: 12px
+}
+H6 {
+	FONT-SIZE: 12px
+}
+A {
+	COLOR: #2366a8; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+EM {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+CITE {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+TH {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+TABLE {
+	BORDER-COLLAPSE: collapse
+}
+TH {
+	TEXT-ALIGN: left
+}
+LABEL {
+	CURSOR: pointer
+}
+TEXTAREA {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #666 1px solid; PADDING-LEFT: 2px; BACKGROUND: #f9f9f9; PADDING-BOTTOM: 2px; BORDER-LEFT: #666 1px solid; COLOR: #333; PADDING-TOP: 2px; BORDER-BOTTOM: #ccc 1px solid
+}
+INPUT {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #666 1px solid; PADDING-LEFT: 2px; BACKGROUND: #f9f9f9; PADDING-BOTTOM: 2px; BORDER-LEFT: #666 1px solid; COLOR: #333; PADDING-TOP: 2px; BORDER-BOTTOM: #ccc 1px solid
+}
+SELECT {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #666 1px solid; PADDING-LEFT: 2px; BACKGROUND: #f9f9f9; PADDING-BOTTOM: 2px; BORDER-LEFT: #666 1px solid; COLOR: #333; PADDING-TOP: 2px; BORDER-BOTTOM: #ccc 1px solid
+}
+.txt {
+	VERTICAL-ALIGN: middle
+}
+SELECT {
+	VERTICAL-ALIGN: middle
+}
+.txt:hover {
+	BORDER-LEFT-COLOR: #09c; BACKGROUND: #f5f9fd; BORDER-BOTTOM-COLOR: #09c; BORDER-TOP-COLOR: #09c; BORDER-RIGHT-COLOR: #09c
+}
+.txt:unknown {
+	BORDER-LEFT-COLOR: #09c; BACKGROUND: #f5f9fd; BORDER-BOTTOM-COLOR: #09c; BORDER-TOP-COLOR: #09c; BORDER-RIGHT-COLOR: #09c
+}
+TEXTAREA:hover {
+	BORDER-LEFT-COLOR: #09c; BACKGROUND: #f5f9fd; BORDER-BOTTOM-COLOR: #09c; BORDER-TOP-COLOR: #09c; BORDER-RIGHT-COLOR: #09c
+}
+TEXTAREA:unknown {
+	BORDER-LEFT-COLOR: #09c; BACKGROUND: #f5f9fd; BORDER-BOTTOM-COLOR: #09c; BORDER-TOP-COLOR: #09c; BORDER-RIGHT-COLOR: #09c
+}
+.txtnobd {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND: #fff; BORDER-LEFT: #fff 1px solid; CURSOR: pointer; BORDER-BOTTOM: #fff 1px solid
+}
+.radio {
+	BACKGROUND: none transparent scroll repeat 0% 0%; VERTICAL-ALIGN: middle; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.checkbox {
+	BACKGROUND: none transparent scroll repeat 0% 0%; VERTICAL-ALIGN: middle; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.checkbox {
+	HEIGHT: 14px
+}
+.btn {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT-COLOR: #ddd; BACKGROUND: #ddd; BORDER-BOTTOM-COLOR: #666; PADDING-BOTTOM: 1px; MARGIN: 3px 0px; VERTICAL-ALIGN: middle; CURSOR: pointer; COLOR: #000; BORDER-TOP-COLOR: #ddd; PADDING-TOP: 4px; BORDER-RIGHT-COLOR: #666
+}
+.uploadbtn {
+	BORDER-LEFT-COLOR: #999; BORDER-BOTTOM-COLOR: #999; WIDTH: 250px; BORDER-TOP-COLOR: #999; BORDER-RIGHT-COLOR: #999
+}
+H3 {
+	FONT-SIZE: 14px; MARGIN-BOTTOM: 10px; COLOR: #09c
+}
+.spectitle {
+	BORDER-BOTTOM: #f66 1px dashed
+}
+.mainhd {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repx.gif) repeat-x; OVERFLOW: hidden; LINE-HEIGHT: 88px; POSITION: relative; HEIGHT: 90px; TEXT-ALIGN: left
+}
+.logo {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/logo.gif) no-repeat 15px 13px; WIDTH: 135px; TEXT-INDENT: -9999px; HEIGHT: 80px
+}
+.uinfo {
+	Z-INDEX: 4; RIGHT: 20px; LINE-HEIGHT: 32px; POSITION: absolute; TOP: 10px
+}
+.uinfo A {
+	COLOR: #666
+}
+.uinfo EM {
+	FONT-WEIGHT: 700; MARGIN-RIGHT: 5px
+}
+.uinfo EM A {
+	TEXT-DECORATION: underline
+}
+.uinfo P {
+	FLOAT: left
+}
+.btnlink A {
+	DISPLAY: block; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -50px -150px; MARGIN-LEFT: 15px; WIDTH: 63px; HEIGHT: 32px; TEXT-ALIGN: center
+}
+.navbg {
+	Z-INDEX: 1; BACKGROUND: #f7fafd; LEFT: 153px; WIDTH: 6px; POSITION: absolute; TOP: 52px; HEIGHT: 37px
+}
+.nav {
+	Z-INDEX: 2; LEFT: 159px; WIDTH: 100%; POSITION: absolute; TOP: 14px; HEIGHT: 75px
+}
+.nav UL {
+	FONT-SIZE: 14px; Z-INDEX: 4; OVERFLOW: hidden; POSITION: relative
+}
+.nav LI {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat right -115px; FLOAT: left; LINE-HEIGHT: 43px; HEIGHT: 43px
+}
+.nav LI EM {
+	DISPLAY: block
+}
+.nav LI A {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; FONT-WEIGHT: 700; PADDING-BOTTOM: 5px; COLOR: #639bb0; PADDING-TOP: 5px
+}
+.nav LI A:hover {
+	COLOR: #09c; TEXT-DECORATION: none
+}
+.nav LI .diffcolor {
+	COLOR: #f60
+}
+.nav LI.navon {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat; LINE-HEIGHT: 33px
+}
+.nav LI.navon EM {
+	DISPLAY: block; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat right -50px
+}
+.nav LI.navon EM A {
+	DISPLAY: block; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat center bottom; COLOR: #fff
+}
+.nav LI.navon EM A:hover {
+	COLOR: #fff
+}
+.rtnav {
+	float:right;
+}
+.rtnav LI {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat right -123px; FLOAT: left; LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+.rtnav LI EM {
+	DISPLAY: block
+}
+.rtnav LI A {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; FONT-WEIGHT: 700; COLOR: #639bb0; 
+}
+.rtnav LI A:hover {
+	COLOR: #09c; TEXT-DECORATION: none
+}
+.rtnav LI .diffcolor {
+	COLOR: #f60
+}
+.rtnav LI.navon {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat; LINE-HEIGHT: 25px
+}
+.rtnav LI.navon EM {
+	DISPLAY: block; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block.gif) no-repeat right -50px
+}
+.rtnav LI.navon EM A {
+	DISPLAY: block; COLOR: #fff
+}
+.rtnav LI.navon EM A:hover {
+	COLOR: #fff
+}
+.navbd {
+	CLEAR: both; Z-INDEX: 3; BACKGROUND: #09c; OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; TOP: 38px; HEIGHT: 5px
+}
+.currentloca {
+	CLEAR: both; BORDER-LEFT: #b5cfd9 1px solid; HEIGHT: 32px
+}
+.currentloca P {
+	BORDER-TOP: #fff 5px solid; PADDING-LEFT: 10px; BACKGROUND: #f2f9fd; BORDER-LEFT: #fff 1px solid; LINE-HEIGHT: 25px; BORDER-BOTTOM: #fff 2px solid
+}
+.sitemapbtn {
+	RIGHT: 175px; LINE-HEIGHT: 100%; POSITION: absolute; TOP: 50px
+}
+.sitemapbtn SPAN {
+	MARGIN-RIGHT: 3px
+}
+.menutd {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repx_h.gif) #f2f9fd no-repeat right top
+}
+.menu {
+	Z-INDEX: 20; WIDTH: 160px; POSITION: relative
+}
+.menu UL {
+	RIGHT: 5px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repx_h.gif) #f2f9fd no-repeat 5px -20px; WIDTH: 153px; LIST-STYLE-TYPE: none; POSITION: absolute; TOP: 10px
+}
+.menu LI {
+	MARGIN: 0px; OVERFLOW: hidden; HEIGHT: 25px
+}
+.menu LI A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 30px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 15px -43px; PADDING-BOTTOM: 3px; COLOR: #666; PADDING-TOP: 5px
+}
+.menu LI A:hover {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) #eaf4fb no-repeat 15px -43px; COLOR: #2366a8; TEXT-DECORATION: none
+}
+.menu LI A.tabon {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) #deeffa no-repeat 15px -43px; COLOR: #2366a8; TEXT-DECORATION: none
+}
+.menu LI A.tabon:hover {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) #deeffa no-repeat 15px -43px; COLOR: #2366a8; TEXT-DECORATION: none
+}
+.mask {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repx_hb.gif) repeat-x; PADDING-TOP: 9px
+}
+.tab1 {
+	CLEAR: both; MARGIN-BOTTOM: 10px; OVERFLOW: hidden
+}
+.tab1 LI {
+	FONT-WEIGHT: 700; FLOAT: left; MARGIN-RIGHT: 3px; TEXT-ALIGN: center
+}
+.tab1 A {
+	DISPLAY: block; COLOR: #666; LINE-HEIGHT: 26px
+}
+.tab1 A SPAN {
+	PADDING-RIGHT: 7px; DISPLAY: block; PADDING-LEFT: 7px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.tab1 A:hover {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_2.gif) no-repeat 0px -52px; COLOR: #09c; TEXT-DECORATION: none
+}
+.tab1 A:hover SPAN {
+	DISPLAY: block; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_2.gif) no-repeat right -78px
+}
+.tab1 .current {
+	
+}
+.tab1 .current A {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_2.gif) no-repeat 0px 0px; COLOR: #fff
+}
+.tab1 .current A SPAN {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_2.gif) no-repeat right -26px
+}
+.tab1 .current A EM {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 0px -147px; MARGIN-LEFT: 3px; COLOR: #666; MARGIN-RIGHT: -5px
+}
+.tab1 .hasdropmenu {
+	MARGIN-TOP: -1px
+}
+.tab1 .hasdropmenu A EM {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 0px -197px; MARGIN-LEFT: 3px; COLOR: #fff; MARGIN-RIGHT: -5px
+}
+.dropmenu {
+	BORDER-RIGHT: #a6c9d7 3px solid; BORDER-TOP: #a6c9d7 3px solid; MARGIN-TOP: 3px; BACKGROUND: #f2f9fd; FILTER: Alpha(opacity=90); BORDER-LEFT: #a6c9d7 3px solid; BORDER-BOTTOM: #a6c9d7 3px solid; WHITE-SPACE: nowrap; POSITION: absolute; TEXT-ALIGN: left; opacity: 0.9
+}
+.dropmenu1 {
+	BORDER-RIGHT: #a6c9d7 3px solid; BORDER-TOP: #a6c9d7 3px solid; MARGIN-TOP: 3px; BACKGROUND: #f2f9fd; FILTER: Alpha(opacity=90); BORDER-LEFT: #a6c9d7 3px solid; BORDER-BOTTOM: #a6c9d7 3px solid; WHITE-SPACE: nowrap; POSITION: absolute; TEXT-ALIGN: left; opacity: 0.9
+}
+.dropmenu1 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.tab1 .dropmenu A {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; FONT-WEIGHT: 400; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 2px; COLOR: #666! important; PADDING-TOP: 2px
+}
+.tab1 .dropmenu A:hover {
+	BACKGROUND: #deeffa
+}
+.copyright {
+	BORDER-TOP: #ddd 1px dashed; FONT-SIZE: 11px; Z-INDEX: 10; LEFT: 5px; BOTTOM: 3px; LINE-HEIGHT: 150%; PADDING-TOP: 3px; FONT-FAMILY: Tahoma; POSITION: absolute; TEXT-ALIGN: left
+}
+.logintb {
+	MARGIN: 120px auto 0px; WIDTH: 600px; TEXT-ALIGN: left
+}
+.login {
+	PADDING-RIGHT: 30px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_login.gif) no-repeat right 50%; WIDTH: 310px; HEIGHT: 150px
+}
+.login H1 {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/login_title.gif) no-repeat; MARGIN-BOTTOM: 10px; WIDTH: 262px; TEXT-INDENT: -9999px; HEIGHT: 26px
+}
+.login P {
+	LINE-HEIGHT: 150%
+}
+.logintitle {
+	CLEAR: left; FONT-WEIGHT: 700; FONT-SIZE: 14px; FLOAT: left; WIDTH: 60px; COLOR: #666; LINE-HEIGHT: 180%
+}
+.loginform {
+	FONT-SIZE: 14px; FLOAT: left; WIDTH: 160px; LINE-HEIGHT: 180%
+}
+.loginform .txt {
+	MARGIN-TOP: 2px; WIDTH: 160px
+}
+.loginnofloat {
+	CLEAR: both
+}
+.loginnofloat .btn {
+	MARGIN-LEFT: 60px
+}
+.logintips {
+	MARGIN-LEFT: 25px; LINE-HEIGHT: 160%
+}
+.logintips A {
+	MARGIN: 0px 5px; TEXT-DECORATION: underline
+}
+.footer {
+	
+}
+.footer .copyright {
+	MARGIN-TOP: 120px; FONT-SIZE: 12px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: static; TEXT-ALIGN: center; BORDER-BOTTOM-STYLE: none
+}
+.footer P {
+	DISPLAY: inline
+}
+.container {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 20px; PADDING-TOP: 9px; TEXT-ALIGN: left
+}
+.itemtitle {
+	CLEAR: both; MARGIN-BOTTOM: -5px; OVERFLOW: hidden; LINE-HEIGHT: 20px
+}
+.itemtitle H3 {
+	FLOAT: left; MARGIN-RIGHT: 20px
+}
+.itemtitle UL {
+	FLOAT: left; LINE-HEIGHT: 18px
+}
+.itemtitle .tab1 {
+	CLEAR: none
+}
+.itemtitle .tab1 A {
+	LINE-HEIGHT: 20px
+}
+.itemtitle .tab1 A SPAN {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 19px; PADDING-TOP: 1px
+}
+.itemtitle .tab1 A:hover {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_3.gif) #f5f5f5 no-repeat 0px -40px; COLOR: #09c
+}
+.itemtitle .tab1 A:hover SPAN {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_3.gif) no-repeat right -60px
+}
+.itemtitle .tab1 .hasdropmenu A:hover {
+	COLOR: #666
+}
+.itemtitle .tab1 .current A {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_3.gif) no-repeat 0px 0px
+}
+.itemtitle .tab1 .current A SPAN {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_block_3.gif) no-repeat right -20px; COLOR: #fff
+}
+.itemtitle .tab1 .current A:hover SPAN {
+	COLOR: #0099CC
+}
+.itemtitle .tab1 .dropmenu A {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.itemtitle .tab1 .dropmenu A:hover {
+	BACKGROUND: #deeffa
+}
+.stepstat {
+	MARGIN-BOTTOM: 10px
+}
+.stepstat LI {
+	FLOAT: left; COLOR: #ccc; MARGIN-RIGHT: 15px
+}
+.stepstat .current {
+	COLOR: #090
+}
+.infobox {
+	CLEAR: both; PADDING-RIGHT: 30px; BORDER-TOP: #deeffa 4px solid; PADDING-LEFT: 30px; BACKGROUND: #f2f9fd; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 30px; PADDING-TOP: 30px; BORDER-BOTTOM: #deeefa 4px solid; ZOOM: 1; TEXT-ALIGN: center
+}
+.infotitle1 {
+	FONT-WEIGHT: 700; FONT-SIZE: 14px; MARGIN-BOTTOM: 10px; COLOR: #09c
+}
+.infotitle2 {
+	FONT-WEIGHT: 700; FONT-SIZE: 14px; MARGIN-BOTTOM: 10px; COLOR: #090
+}
+.infotitle3 {
+	FONT-WEIGHT: 700; FONT-SIZE: 14px; MARGIN-BOTTOM: 10px; COLOR: #c00
+}
+.cachelist {
+	OVERFLOW: hidden
+}
+.cachelist LI {
+	FLOAT: left; MARGIN-RIGHT: 10px
+}
+.colorbox {
+	CLEAR: both; PADDING-RIGHT: 10px; BORDER-TOP: #deeffa 4px solid; PADDING-LEFT: 10px; BACKGROUND: #f2f9fd; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; BORDER-BOTTOM: #deeffa 4px solid; ZOOM: 1
+}
+.extcredits {
+	MARGIN: -5px 0px 10px
+}
+.extcredits A {
+	BORDER-RIGHT: #b6cfd9 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #b6cfd9 1px solid; PADDING-LEFT: 5px; BACKGROUND: #fff; PADDING-BOTTOM: 2px; BORDER-LEFT: #b6cfd9 1px solid; LINE-HEIGHT: 220%; MARGIN-RIGHT: 5px; PADDING-TOP: 2px; BORDER-BOTTOM: #b6cfd9 1px solid; WHITE-SPACE: nowrap
+}
+.jswizard {
+	MARGIN: 10px 0px
+}
+.jswizard IFRAME {
+	BORDER-RIGHT: #deeffa 1px dashed; BORDER-TOP: #deeffa 1px dashed; BORDER-LEFT: #deeffa 1px dashed; BORDER-BOTTOM: #deeffa 1px dashed
+}
+.fileperms {
+	MARGIN: 15px; LIST-STYLE-TYPE: disc
+}
+.fileperms LI {
+	LINE-HEIGHT: 180%
+}
+.tips {
+	MARGIN-LEFT: 15px; COLOR: #999
+}
+.tips2 {
+	COLOR: #999; WORD-BREAK: break-all; LINE-HEIGHT: 180%
+}
+.tb2 .tipsblock {
+	BACKGROUND: none transparent scroll repeat 0% 0%; MARGIN-BOTTOM: -10px
+}
+.tipsblock UL {
+	MARGIN-BOTTOM: -11px
+}
+.tipsblock LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -340px 6px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 5px; LINE-HEIGHT: 160%; PADDING-TOP: 0px
+}
+.tips A {
+	MARGIN: 0px 3px; COLOR: #666; TEXT-DECORATION: underline
+}
+.tips2 A {
+	MARGIN: 0px 3px; COLOR: #666; TEXT-DECORATION: underline
+}
+.tipsblock A {
+	MARGIN: 0px 3px; COLOR: #666; TEXT-DECORATION: underline
+}
+.tips A:hover {
+	COLOR: #09c
+}
+.tips2 A:hover {
+	COLOR: #09c
+}
+.tipsblock A:hover {
+	COLOR: #09c
+}
+.tb {
+	CLEAR: both; MARGIN-TOP: 8px; WIDTH: 100%
+}
+.tb TH {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.tb TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.tb1 {
+	
+}
+.th11 {
+	FONT-WEIGHT: 700; WIDTH: 60px
+}
+.th12 {
+	FONT-WEIGHT: 700; WIDTH: 60px
+}
+.tb1 .th12 {
+	VERTICAL-ALIGN: top; PADDING-TOP: 7px
+}
+.tb1 .tb2 TH {
+	PADDING-TOP: 0px
+}
+.tb1 .txt {
+	WIDTH: 150px
+}
+.tb1 STRONG {
+	COLOR: #f60; MARGIN-RIGHT: 5px
+}
+.first TD {
+	PADDING-TOP: 13px
+}
+.first .th12 {
+	PADDING-TOP: 15px
+}
+.bdtop TD {
+	BORDER-TOP: #cae4f7 1px dashed
+}
+.bdbot TD {
+	BORDER-BOTTOM: #cae4f7 1px dashed
+}
+.td11 {
+	VERTICAL-ALIGN: top; WIDTH: 350px
+}
+.td11 LI {
+	FLOAT: left; MARGIN: -3px 10px 7px 0px
+}
+.td11 .clear {
+	MARGIN: 0px
+}
+.listtitle {
+	WIDTH: 80px; COLOR: #09c; PADDING-TOP: 6px
+}
+.listtitlelong {
+	WIDTH: 80px; COLOR: #09c; PADDING-TOP: 6px
+}
+.listtitlelong {
+	WIDTH: 100px
+}
+.td11 .txt {
+	WIDTH: 70px
+}
+.td11 .sginput .txt {
+	WIDTH: 150px
+}
+.td12 {
+	
+}
+.td12 LI {
+	FLOAT: left; MARGIN-RIGHT: 10px
+}
+.td12 .radio {
+	MARGIN-TOP: 0px; FLOAT: none
+}
+.td12 LABEL {
+	MARGIN-TOP: 0px; FLOAT: none
+}
+.td12 .txt {
+	WIDTH: 50px
+}
+.checkboxlist {
+	WIDTH: 720px
+}
+.checkboxlist LI {
+	FLOAT: left; WIDTH: 90px; CURSOR: pointer; LINE-HEIGHT: 180%; WHITE-SPACE: nowrap
+}
+.longtxt .txt {
+	WIDTH: 400px
+}
+.tarea {
+	WIDTH: 400px; HEIGHT: 75px;float: left;
+}
+.tb2 {
+	
+}
+.tb2 TR.hover:hover .tips2 {
+	COLOR: #333
+}
+.tb2 TR.hover:hover TD {
+	BACKGROUND: #f2f9fd
+}
+.tdhover TR:hover TD {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.tdhover TR TD:hover {
+	BACKGROUND: #f2f9fd
+}
+.tb2 TD {
+	PADDING-RIGHT: 5px; BORDER-TOP: #deeffb 1px dotted; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.tb2 TH {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; LINE-HEIGHT: 21px; PADDING-TOP: 5px
+}
+.tb2 .txt {
+	WIDTH: 100px; MARGIN-RIGHT: 10px
+}
+.tb2 .txtnobd {
+	WIDTH: 100px; MARGIN-RIGHT: 10px
+}
+.td21 {
+	FONT-WEIGHT: 700; WIDTH: 150px
+}
+.td22 {
+	FONT-WEIGHT: 700; WIDTH: 100px
+}
+.td23 {
+	WIDTH: 100px
+}
+.td24 {
+	WIDTH: 120px
+}
+.td25 {
+	WIDTH: 50px
+}
+.td25 .txt {
+	WIDTH: 40px
+}
+.td26 {
+	
+}
+.td26 .txt {
+	WIDTH: 280px
+}
+.td26 .txtnobd {
+	WIDTH: 280px
+}
+.tb2 .td27 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-WEIGHT: 700; PADDING-BOTTOM: 3px; PADDING-TOP: 10px
+}
+.tb2 .td27:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.td28 .txt {
+	WIDTH: 40px
+}
+.td29 .txt {
+	WIDTH: 200px
+}
+.staton {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -280px -250px; WIDTH: 20px; TEXT-INDENT: -9999px; HEIGHT: 17px
+}
+.statoff {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -250px -347px; TEXT-INDENT: -9999px
+}
+.rowform {
+	OVERFLOW: auto; WIDTH: 306px
+}
+.tb2 .rowform {
+	PADDING-LEFT: 5px
+}
+.rowform .txt {
+	WIDTH: 250px; MARGIN-RIGHT: 10px
+}
+.rowform TEXTAREA {
+	WIDTH: 250px; MARGIN-RIGHT: 10px
+}
+.rowform SELECT {
+	WIDTH: 120px; MARGIN-RIGHT: 10px
+}
+.rowform .radio {
+	MARGIN-TOP: -2px
+}
+.rowform LI {
+	FLOAT: left; MARGIN-RIGHT: 10px; WHITE-SPACE: nowrap
+}
+.rowform .clear {
+	CLEAR: both; FLOAT: none; MARGIN-BOTTOM: 10px
+}
+.rowform .nofloat {
+	CLEAR: both
+}
+.rowform LI {
+	CURSOR: pointer
+}
+.rowform .nofloat LI {
+	FLOAT: none; MARGIN-BOTTOM: 10px; CURSOR: pointer
+}
+.partition {
+	FONT-WEIGHT: 700; COLOR: #09c; LINE-HEIGHT: 21px
+}
+.partition2 {
+	FONT-WEIGHT: 700; COLOR: #09c; LINE-HEIGHT: 21px
+}
+.tb2 .partition {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repx_hc.gif) repeat-x 0px -40px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.dblist {
+	
+}
+.dblist LI {
+	FLOAT: left; MARGIN-BOTTOM: 5px; WIDTH: 168px; CURSOR: pointer; WHITE-SPACE: nowrap; HEIGHT: 20px
+}
+.cfolder {
+	DISPLAY: block; PADDING-LEFT: 50px; FONT-WEIGHT: 700; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -260px -50px; LINE-HEIGHT: 30px
+}
+.ofolder {
+	DISPLAY: block; PADDING-LEFT: 50px; FONT-WEIGHT: 700; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -260px -50px; LINE-HEIGHT: 30px
+}
+.ofolder {
+	BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -260px -100px
+}
+.filenum {
+	MARGIN: 8px 0px 0px 20px
+}
+.files {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 50px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -260px -150px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px
+}
+.del {
+	PADDING-LEFT: 18px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 0px -286px; COLOR: #e8594d
+}
+.edited {
+	PADDING-LEFT: 18px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -100px -386px; COLOR: #e8594d
+}
+.unknown {
+	PADDING-LEFT: 18px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -50px -436px; COLOR: #6189b8
+}
+.correct {
+	PADDING-LEFT: 18px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 0px -486px; COLOR: #70b759
+}
+.crons {
+	WIDTH: 200px
+}
+.crons .txt {
+	MARGIN-BOTTOM: 3px; WIDTH: 150px
+}
+.node {
+	PADDING-LEFT: 55px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -240px -550px
+}
+.board {
+	PADDING-LEFT: 55px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -240px -550px
+}
+.node .txt {
+	WIDTH: 250px
+}
+.lastnode .txt {
+	WIDTH: 250px
+}
+.newnode .txt {
+	WIDTH: 250px
+}
+.parentnode .txt {
+	FONT-WEIGHT: 700; WIDTH: 250px
+}
+.parentboard .txt {
+	FONT-WEIGHT: 700
+}
+.lastnode {
+	PADDING-LEFT: 55px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -240px -600px
+}
+.lastboard {
+	PADDING-LEFT: 55px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -240px -600px
+}
+.childboard {
+	PADDING-LEFT: 110px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -185px -550px
+}
+.lastchildboard {
+	PADDING-LEFT: 110px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -185px -600px
+}
+.boardattr {
+	MARGIN-TOP: -19px; LEFT: 340px; COLOR: #999; POSITION: absolute
+}
+.colorwd {
+	BORDER-LEFT-COLOR: #ccc; FLOAT: left; BORDER-BOTTOM-COLOR: #666; WIDTH: 40px; BORDER-TOP-COLOR: #ccc; HEIGHT: 21px; BORDER-RIGHT-COLOR: #666
+}
+.tb3 {
+	MARGIN-TOP: -15px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.tb3 TH {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 10px
+}
+.tb3 TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 180%; PADDING-TOP: 0px
+}
+.custom {
+	BORDER-RIGHT: #a6c9d7 6px solid; BORDER-TOP: #a6c9d7 6px solid; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_custom.gif) #fff repeat-y right top; OVERFLOW: hidden; BORDER-LEFT: #a6c9d7 6px solid; WIDTH: 900px; BORDER-BOTTOM: #a6c9d7 6px solid; POSITION: relative
+}
+.cmain {
+	MARGIN-RIGHT: 160px
+}
+.cnote {
+	MARGIN: 15px; COLOR: #ccc; LINE-HEIGHT: 20px
+}
+.cnote LI {
+	FLOAT: left; MARGIN-RIGHT: 15px
+}
+.cmlist {
+	CLEAR: left; TABLE-LAYOUT: fixed; MARGIN: 10px 0px 10px 15px; WIDTH: 710px
+}
+.cmblock {
+	MARGIN-BOTTOM: 10px
+}
+.cmblock LI {
+	LINE-HEIGHT: 150%; WHITE-SPACE: nowrap
+}
+.cmlist A {
+	COLOR: #666
+}
+.cmlist H4 {
+	MARGIN-BOTTOM: 3px; COLOR: #09c
+}
+.cside {
+	DISPLAY: inline; FLOAT: right; WIDTH: 151px; MARGIN-RIGHT: 5px; TEXT-ALIGN: left
+}
+.cside H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_custom_t.gif) repeat-x; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-TOP: 6px; BORDER-BOTTOM: #a6c9d7 1px solid; POSITION: relative; HEIGHT: 28px
+}
+.ctitle1 {
+	DISPLAY: block; PADDING-LEFT: 25px; FONT-SIZE: 12px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/btn_add2menu.gif) no-repeat 0px 5px; COLOR: #090; HEIGHT: 28px
+}
+.ctitle1:hover {
+	TEXT-DECORATION: none
+}
+.cadmin {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: 400; FONT-SIZE: 12px; RIGHT: -5px; PADDING-BOTTOM: 0px; COLOR: #666; PADDING-TOP: 10px; POSITION: absolute; TOP: -4px
+}
+.cslist LI {
+	HEIGHT: 1%
+}
+.cslist LI A {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 30px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.cslist LI A:hover {
+	BACKGROUND: #deeffa; TEXT-DECORATION: none
+}
+.cslist LI .pages {
+	MARGIN-LEFT: 27px
+}
+.cslist LI .pages A {
+	PADDING-RIGHT: 5px; DISPLAY: inline; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.cslist LI .pages A:hover {
+	BACKGROUND: #09c
+}
+.cfixbd {
+	FONT-SIZE: 1px; RIGHT: 5px; BACKGROUND: #fff; OVERFLOW: hidden; WIDTH: 151px; BOTTOM: 0px; LINE-HEIGHT: 5px; POSITION: absolute; HEIGHT: 5px
+}
+.tpllist {
+	MARGIN: 10px 15px; LINE-HEIGHT: 180%; LIST-STYLE-TYPE: disc
+}
+.tpllist2 {
+	MARGIN: 5px 25px; LIST-STYLE-TYPE: circle
+}
+.tpllist3 {
+	MARGIN: 0px 25px; LIST-STYLE-TYPE: square
+}
+.userlist {
+	MARGIN: 10px 0px; OVERFLOW: hidden
+}
+.userlist LI {
+	FLOAT: left; MARGIN: 0px 10px 10px 0px; WHITE-SPACE: nowrap
+}
+.unum {
+	CLEAR: both; DISPLAY: block; FONT-WEIGHT: 700; WIDTH: 100%
+}
+.safelist {
+	PADDING-RIGHT: 0px; BORDER-TOP: #deeffa 4px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+.safelist LI {
+	PADDING-LEFT: 20px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat -340px 6px; MARGIN-BOTTOM: 5px; LINE-HEIGHT: 160%
+}
+.safelist P {
+	MARGIN-BOTTOM: 5px
+}
+.safelist .txt {
+	WIDTH: 150px
+}
+.infolist {
+	
+}
+.infolist LI {
+	CLEAR: both; LINE-HEIGHT: 180%
+}
+.infolist EM {
+	FLOAT: left; WIDTH: 120px
+}
+.tb2 .threadopt {
+	BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: #b5cfd9 1px solid
+}
+.threadtitle {
+	PADDING-RIGHT: 10px! important; PADDING-LEFT: 10px! important; PADDING-BOTTOM: 10px! important; PADDING-TOP: 10px! important
+}
+.nowrap LI {
+	FLOAT: left; MARGIN-RIGHT: 5px; WHITE-SPACE: nowrap
+}
+.pages {
+	CLEAR: both; MARGIN: 10px 0px
+}
+.pages EM {
+	BORDER-RIGHT: #e5e5e5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #e5e5e5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN-LEFT: 3px; BORDER-LEFT: #e5e5e5 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #e5e5e5 1px solid; TEXT-DECORATION: none
+}
+.pages A {
+	BORDER-RIGHT: #e5e5e5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #e5e5e5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN-LEFT: 3px; BORDER-LEFT: #e5e5e5 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #e5e5e5 1px solid; TEXT-DECORATION: none
+}
+.pages STRONG {
+	BORDER-RIGHT: #e5e5e5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #e5e5e5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN-LEFT: 3px; BORDER-LEFT: #e5e5e5 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #e5e5e5 1px solid; TEXT-DECORATION: none
+}
+.pages A:hover {
+	BORDER-RIGHT: #09c 1px solid; BORDER-TOP: #09c 1px solid; BACKGROUND: #09c; BORDER-LEFT: #09c 1px solid; COLOR: #fff; BORDER-BOTTOM: #09c 1px solid; TEXT-DECORATION: none
+}
+.pages STRONG {
+	FONT-WEIGHT: 700; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.pages KBD INPUT {
+	MARGIN-LEFT: 5px; VERTICAL-ALIGN: middle; WIDTH: 20px
+}
+.cuspages {
+	MARGIN: 3px 0px; LINE-HEIGHT: 200%
+}
+.cuspages .pages {
+	CLEAR: none; DISPLAY: inline; MARGIN-RIGHT: 10px
+}
+.fixsel SELECT {
+	MARGIN: 3px 5px 3px 0px
+}
+.addtr {
+	PADDING-LEFT: 17px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 0px 0px; COLOR: #f60; LINE-HEIGHT: 25px
+}
+.act {
+	MARGIN: 0px 5px; TEXT-DECORATION: underline
+}
+.addchildboard {
+	PADDING-LEFT: 17px; BACKGROUND: url(http://www.51hejia.com/images/articleadmin/bg_repno.gif) no-repeat 0px -600px; COLOR: #fff; LINE-HEIGHT: 25px
+}
+.addchildboard:hover {
+	COLOR: #f60; TEXT-DECORATION: none
+}
+.switch {
+	COLOR: #09c
+}
+.switch:hover {
+	TEXT-DECORATION: none
+}
+.switch IMG {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 5px
+}
+.lightlink {
+	COLOR: #666; TEXT-DECORATION: underline
+}
+.lightlink2 {
+	COLOR: #666
+}
+.parentlink {
+	COLOR: #09c; TEXT-DECORATION: underline
+}
+.menulink {
+	BACKGROUND: none transparent scroll repeat 0% 0%; TEXT-DECORATION: underline
+}
+.menulink:hover {
+	TEXT-DECORATION: underline! important
+}
+.anno {
+	WIDTH: 200px
+}
+.anno P {
+	MARGIN: 4px 0px
+}
+.anno .txt {
+	MARGIN-LEFT: 3px; WIDTH: 105px
+}
+.difflink {
+	MARGIN: 10px 0px
+}
+.difflink A {
+	MARGIN-LEFT: 10px; COLOR: #666; TEXT-DECORATION: underline
+}
+.devteam {
+	WIDTH: 350px
+}
+.checked {
+	COLOR: #090
+}
+.checked .txt {
+	COLOR: #090
+}
+.lightfont {
+	COLOR: #ccc
+}
+.lightnum {
+	COLOR: #f60
+}
+.error {
+	COLOR: #f00
+}
+.diffcolor2 {
+	COLOR: #090
+}
+.diffcolor3 {
+	COLOR: #09c
+}
+.nomargin {
+	MARGIN: 0px
+}
+.marginleft {
+	MARGIN-LEFT: 20px
+}
+.marginright {
+	MARGIN-RIGHT: 10px
+}
+.margintop {
+	MARGIN-TOP: 10px
+}
+.marginbot {
+	MARGIN-BOTTOM: 10px
+}
+.nobg {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.nobg TD {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.nobg .td27 {
+	PADDING-LEFT: 5px
+}
+.nobdb {
+	BORDER-BOTTOM-STYLE: none
+}
+.nobdt {
+	BORDER-TOP-STYLE: none
+}
+.noborder {
+	BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px
+}
+.noborder TD {
+	BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px
+}
+.noborder TD:hover {
+	COLOR: #000
+}
+.vtop {
+	VERTICAL-ALIGN: top
+}
+.lineheight {
+	LINE-HEIGHT: 150%
+}
+.left {
+	FLOAT: left
+}
+.right {
+	FLOAT: right
+}
+.center {
+	TEXT-ALIGN: center
+}
+.bold {
+	FONT-WEIGHT: 700
+}
+.normal {
+	FONT-WEIGHT: 400
+}
+.clear {
+	CLEAR: both
+}
+.smallfont {
+	FONT-SIZE: 11px
+}
+.smallfont H3 {
+	FONT-SIZE: 12px
+}
+.fixpadding TH {
+	PADDING-LEFT: 5px! important
+}
+.fixpadding TD {
+	PADDING-LEFT: 5px! important
+}
+.news {
+	PADDING-RIGHT: 0px; BORDER-TOP: #deeffa 4px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+#boardnews {
+	PADDING-BOTTOM: 10px
+}
+.diff-deleted {
+	BACKGROUND: #fcc
+}
+.diff-changed {
+	BACKGROUND: #ff9
+}
+.diff-added {
+	BACKGROUND: #cfc
+}
+#calendar_week .dropmenu {
+	MARGIN-TOP: 0px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: relative; TEXT-ALIGN: left; TEXT-DECORATION: underline; BORDER-BOTTOM-STYLE: none
+}
+.calendar_checked {
+	COLOR: #333
+}
+.calendar_checked A:link {
+	COLOR: #333
+}
+.calendar_checked A:visited {
+	COLOR: #333
+}
+.sub {
+	PADDING-LEFT: 25px! important
+}
+.sub .td27 {
+	PADDING-LEFT: 25px! important
+}
+.sub .rowform {
+	PADDING-LEFT: 25px! important; WIDTH: 281px
+}
+.sub .rowform .txt {
+	WIDTH: 225px
+}
+.sub .rowform TEXTAREA {
+	WIDTH: 225px
+}
+.sub SELECT {
+	WIDTH: 231px
+}
+.mt10 {
+	MARGIN-TOP: 10px
+}
+.mt0 {
+	MARGIN-TOP: 0px
+}
+.header {
+	BORDER-TOP: #deeffb 1px dotted; FONT-WEIGHT: 700
+}
+.header TD {
+	BORDER-TOP: #deeffb 1px dotted; FONT-WEIGHT: 700
+}
+.header TH {
+	BORDER-TOP: #deeffb 1px dotted; FONT-WEIGHT: 700
+}
+.smallefont {
+	FONT-SIZE: 11px
+}
+
+
+#popDiv iframe {
+	width: 300px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+.mydiv {
+	background-color: #FFF;
+	border: 1px solid #06F;
+	padding:1px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 12px;
+	font-weight: bold;
+	z-index:99;
+	width: 300px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+.mydiv .title td { padding:3px; background-color:#EFF6FD; line-height:18px; border-bottom:1px solid #06F;}
+.mydiv .guanlian {margin-bottom:7px;}
+.mydiv .guanlian td { padding:3px 9px; line-height:18px;}
+#popDivModifyContent iframe {
+	width: 502px;
+	height:465px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-250px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+#popDivModifyColumn iframe {
+	width: 502px;
+	height:465px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-250px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+#popDivSaveColumn iframe {
+	width: 502px;
+	height:465px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-250px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+#popDivSaveContent iframe {
+	width: 502px;
+	height:465px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-250px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+.mydiv1 {
+	background-color: #FFF;
+	border: 1px solid #06F;
+	padding:1px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 12px;
+	font-weight: bold;
+	z-index:99;
+	width: 500px;
+	left:50%;/*FF IE7*/
+	top:15%;/*FF IE7*/
+	margin-left:-250px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+#popDiv2 iframe {
+	width: 300px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+.mydiv2 {
+	background-color: #FFF;
+	border: 1px solid #06F;
+	padding:1px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 12px;
+	font-weight: bold;
+	z-index:99;
+	width: 300px;
+	left:50%;/*FF IE7*/
+	top:50%;/*FF IE7*/
+	margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
+	margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+	margin-top:0px;
+	position:fixed!important;/*FF IE7*/
+	position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+.mydiv2 .title td { padding:3px; background-color:#EFF6FD; line-height:18px; border-bottom:1px solid #06F;}
+.mydiv2 .guanlian {margin-bottom:7px;}
+.mydiv2 .guanlian td { padding:3px 9px; line-height:18px;}
+.bg {
+background-color: #fff;
+width: 100%;
+height: 100%;
+left:0;
+top:0;/*FF IE7*/
+filter:alpha(opacity=50);/*IE*/
+opacity:0.5;/*FF*/
+z-index:1;
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+} 
+.tishi {float:left; padding-left:20px;}
+.tishi a {cursor:pointer;text-decoration:underline;}
+.tishi a:hover {text-decoration:underline;}
+.citycont {border-bottom:1px solid #06F;}

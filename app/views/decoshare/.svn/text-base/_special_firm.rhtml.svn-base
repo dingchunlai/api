@@ -1,0 +1,108 @@
+	<%
+		firm = getfirm(@specialid)
+		firm_city = firm.city.to_i == 11910 ? firm.city : firm.district
+	%>
+	<%findex = 99%>
+    <div class="lmainbox margin10">
+      <div class="lmainboxb2">
+        <div class="searchList">
+			<dl>
+			  <dd>
+              <div class="casett2">
+          <h2 class="n1"><a href="<%=gen_firm_path(firm)%>" target="_blank"><%=get_firm_name_abbr2(firm)%></a></h2>
+          <p>
+          <%if params[:order].to_i == 0 || params[:order].to_i == 1%>
+          <span><b>综合分：<%=firm.praise%></b></span>
+          <%else%>
+          <span>综合分：<%=firm.praise%></span>
+          <%end%>
+          <%if params[:order].to_i == 2%>
+          <span><b>设计：<%=firm.design_praise%></b></span>
+          <%else%>
+          <span>设计：<%=firm.design_praise%></span>
+          <%end%>
+          <%if params[:order].to_i == 3%>
+          <span><b>施工：<%=firm.construction_praise%></b></span>
+          <%else%>
+          <span>施工：<%=firm.construction_praise%></span>
+          <%end%>
+          <%if params[:order].to_i == 4%>
+          <span><b>服务：<%=firm.service_praise%></b></span>
+          <%else%>
+          <span>服务：<%=firm.service_praise%></span>
+          <%end%>
+          </p>
+          <div class="clear"></div>
+        </div>
+        <div class="searchinfo">
+          <ul>
+            <li>地址：<%if firm.address && firm.address != ''%><%=firm.address.chars[0,25]%><%end%>&nbsp;&nbsp;<span id="tele<%=firm.id%>"><a class="dianhua" href="javascript:void(0)" onclick="document.getElementById('tele<%=firm.id%>').innerHTML = '&nbsp;<%=firm.telephone%>'">查看电话</a>
+            <div id="lightmenu<%=findex%>" class="white_content">
+      		<div class="close"><span><%=firm.telephone%></span><a href="javascript:void(0)" onclick="hidemenu('lightmenu<%=findex%>')"></a></div>
+		  </div></span></li>
+            <li>主打价位
+            	<a href="#n"><%= firm.price ? diff_city_price_tag_value(firm_city, firm.price) : '暂无信息' %></a>
+            </li>
+            <li>装修方式
+            	<a href="#n"><%= firm.model ? MODELS[firm.model.to_i] : '暂无信息' %></a>
+            </li>
+            <li>装修风格   	
+            	<a href="#n"><%= firm.style ? STYLES[firm.style.to_i] : '暂无信息' %></a>
+            </li>
+          </ul>
+          <%youhui = get_company_new_coupon(firm.id)%>
+          <%if youhui && youhui.id%>
+          <p><span>优惠券</span>：<a href="/events/<%=youhui.id%>" target="_blank"><%=youhui.title%></a></p>
+          <%end%>
+        </div>
+        <%if firm.comments_count.to_i > 0%>
+        <%manyidu = firm.verysatisfied * 100 / firm.comments_count%>
+        <div class="bingt">
+        <div id="graph<%=findex%>" class="bingbox">Loading graph...</div>
+        <p>满意度：<%=manyidu%>% 点评数：<%=firm.comments_count%></p>
+<script type="text/javascript">
+	<%if firm.verysatisfied >0 && firm.satisfied>0 && firm.unsatisfied>0%>
+	var myData = new Array(['满意<%=firm.verysatisfied%>', <%=firm.verysatisfied%>], ['一般<%=firm.satisfied%>', <%=firm.satisfied%>], ['不满意<%=firm.unsatisfied%>', <%=firm.unsatisfied%>]);
+	var colors = ['#ffaa6f', '#cd78bb', '#807770'];
+	<%elsif firm.verysatisfied >0 && firm.satisfied > 0%>
+	var myData = new Array(['满意<%=firm.verysatisfied%>', <%=firm.verysatisfied%>], ['一般<%=firm.satisfied%>', <%=firm.satisfied%>]);
+	var colors = ['#ffaa6f', '#cd78bb'];	
+	<%elsif firm.verysatisfied > 0 && firm.unsatisfied > 0%>
+	var myData = new Array(['满意<%=firm.verysatisfied%>', <%=firm.verysatisfied%>], ['不满意<%=firm.unsatisfied%>', <%=firm.unsatisfied%>]);
+	var colors = ['#ffaa6f', '#807770'];	
+	<%elsif firm.verysatisfied > 0%>
+	var myData = new Array(['满意<%=firm.verysatisfied%>', <%=firm.verysatisfied%>]);
+	var colors = ['#ffaa6f'];	
+	<%elsif firm.unsatisfied > 0%>
+	var myData = new Array(['不满意<%=firm.unsatisfied%>', <%=firm.unsatisfied%>]);
+	var colors = ['#807770'];		
+	<%end%>
+	
+	var myChart = new JSChart('graph<%=findex%>', 'pie');
+	myChart.patchMbString();
+	myChart.setFontFamily("宋体");
+	myChart.setPieUnitsFontSize(10);	
+	myChart.setDataArray(myData);
+	myChart.setPieUnitsOffset(1);
+	myChart.setSize(150, 100);
+	myChart.setPieRadius(30);
+	myChart.setTitleFontSize(9);
+	myChart.setTitle('');
+	myChart.colorizePie(colors);
+	myChart.setShowYValues(false);
+	myChart.setTitleColor('#ffffff');
+	myChart.setPieUnitsColor('#900002');
+	myChart.setPieValuesColor('#6A0000');
+	myChart.setPieValuesFontSize(10);
+	myChart.draw();
+</script>
+</div>
+
+	<%end%>
+  <p class="fn"><span class="ireview"><a href="#n">浏览量(<%= firm.pv_count %>)</a><a href="/cases/company/<%=firm.id%>" target="_blank">案例图片(<%=firm.cases_count.to_i%>)</a><a href="/firms/<%=firm.id%>/photos" target="_blank">施工图片(<%=firm.photos_count.to_i%>)</a><a href="/designers/index/<%=firm.id%>" target="_blank">设计师(<%=firm.designers_count.to_i%>)</a><a href="#" target="_blank"></a></span></p>
+</dd>
+</dl> 
+</div>
+
+      </div>
+    </div>

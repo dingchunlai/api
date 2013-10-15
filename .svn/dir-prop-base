@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 15
+.idea
+.project
+
+K 13
+svn:mergeinfo
+V 39
+/51hejia/repos/api/trunk:82-105,120-691
+END

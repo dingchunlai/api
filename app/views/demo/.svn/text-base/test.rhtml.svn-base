@@ -1,0 +1,2 @@
+<p>aaaa</p>
+<%=record_visit_test('192.168.1.12','test_zhaozhuangxiu_key')%>

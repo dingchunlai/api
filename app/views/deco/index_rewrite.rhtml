@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>找装修频道</title>
+</head>
+<link href="http://js.51hejia.com/css/2010/header.css?20100120" rel="stylesheet" type="text/css" />
+<link href="http://js.51hejia.com/css/zxdpcss.css?20100120" rel="stylesheet" type="text/css" />
+<SCRIPT src="http://js.51hejia.com/js/cha.js" type=text/javascript></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="http://d.51hejia.com/js/adv20090721.js"></SCRIPT>
+<body>
+  <%= render :partial => 'shared/internal_analytics' %>
+  <%= Hejia::SharedViews.ga_code 'UA-12518263-2' %>
+<!--small_header-->
+<script type="text/javascript" src="http://js.51hejia.com/js/history.js"></script>
+<script language="javascript">
+	function myhejia(){
+		if (Get_Cookie("ind_id").length > 0)
+			location.href="http://member.51hejia.com/member/userinfo";
+		else
+			Divopop('Login');
+	}
+	function reg(){
+		url = "http://member.51hejia.com/member/reg?forward="+location.href;
+		location.href = url;
+	}
+</script>
+
+
+<div class="list_width960 list_logo_bg clearfix">
+  <div class="list_logo f_l">
+    <h1><a href="http://z.51hejia.com/" target="_blank"><img src="http://js.51hejia.com/img/zxdpimg/list_1.jpg" alt="和家装修点评" border="0" /></a></h1></div>
+</div>
+
+<div class="list_width960 clearfix">
+<div class="jhtop clearfix">
+<div class="f_l jhtop_left"><a href="<%=@cityurl%>" target="_self"><strong>立刻进入和家网<%=@cityname%>>></strong></a></div>
+<div class="f_l jhtop_right"><span><strong>请选择您要访问的城市</strong></span><a href="http://z.shanghai.51hejia.com/" target="_blank">上海</a><a href="http://z.ningbo.51hejia.com/" target="_blank">宁波</a><a href="http://z.hangzhou.51hejia.com/" target="_blank">杭州</a><a href="http://z.suzhou.51hejia.com/" target="_blank">苏州</a><a href="http://z.wuxi.51hejia.com/" target="_blank">无锡</a></div></div>
+</div>
+<div class="list_width960 clearfix">
+<ul class="jhlist clearfix">
+<li><div class="jhlist_pic f_l"><a href="<%=@cityurl%>" target="_blank"><img src="http://js.51hejia.com/img/zxdpimg/shanghai.jpg" alt="和家网上海站" /></a></div>
+<dl class="f_r"><dt><a href="http://z.shanghai.51hejia.com/" target="_blank"><strong>上海站</strong></a></dt><dd><a href="http://z.shanghai.51hejia.com/" target="_blank">上海装修点评</a><a href="http://z.shanghai.51hejia.com/zhuangxiugongsi/" target="_blank">上海装修公司</a><a href="http://z.shanghai.51hejia.com/zhuangxiugushi/" target="_blank">上海装修日记</a><a href="http://z.shanghai.51hejia.com/zhuangxiuanli/" target="_blank">上海装修案例图片</a><a href="http://d.51hejia.com/" target="_blank">上海装修资讯</a></dd></dl></li>
+<li><div class="jhlist_pic f_l"><a href="http://z.ningbo.51hejia.com/" target="_blank"><img src="http://js.51hejia.com/img/zxdpimg/ningbo.jpg" alt="和家网宁波站" /></a></div>
+<dl class="f_r"><dt><a href="http://z.ningbo.51hejia.com/" target="_blank"><strong>宁波站</strong></a></dt><dd><a href="http://z.ningbo.51hejia.com/" target="_blank">宁波装修点评</a><a href="http://z.ningbo.51hejia.com/zhuangxiugongsi/" target="_blank">宁波装修公司</a><a href="http://z.ningbo.51hejia.com/zhuangxiugushi/" target="_blank">宁波装修日记</a><a href="http://z.ningbo.51hejia.com/zhuangxiuanli/" target="_blank">宁波装修案例图片</a><a href="http://d.51hejia.com/" target="_blank">宁波装修资讯</a></dd></dl></li>
+<li><div class="jhlist_pic f_l"><a href="http://z.hangzhou.51hejia.com/" target="_blank"><img src="http://js.51hejia.com/img/zxdpimg/hangzhou.jpg" alt="和家网杭州站" /></a></div>
+<dl class="f_r"><dt><a href="http://z.hangzhou.51hejia.com/" target="_blank"><strong>杭州站</strong></a></dt><dd><a href="http://z.hangzhou.51hejia.com/" target="_blank">杭州装修点评</a><a href="http://z.hangzhou.51hejia.com/zhuangxiugongsi/" target="_blank">杭州装修公司</a><a href="http://z.hangzhou.51hejia.com/zhuangxiugushi/" target="_blank">杭州装修日记</a><a href="http://z.hangzhou.51hejia.com/zhuangxiuanli/" target="_blank">杭州装修案例图片</a><a href="http://d.51hejia.com/" target="_blank">杭州装修资讯</a></dd></dl></li>
+<li><div class="jhlist_pic f_l"><a href="http://z.suzhou.51hejia.com/" target="_blank"><img src="http://js.51hejia.com/img/zxdpimg/suzhou.jpg" alt="和家网苏州站" /></a></div>
+<dl class="f_r"><dt><a href="http://z.suzhou.51hejia.com/" target="_blank"><strong>苏州站</strong></a></dt><dd><a href="http://z.suzhou.51hejia.com/" target="_blank">苏州装修点评</a><a href="http://z.suzhou.51hejia.com/zhuangxiugongsi/" target="_blank">苏州装修公司</a><a href="http://z.suzhou.51hejia.com/zhuangxiugushi/" target="_blank">苏州装修日记</a><a href="http://z.suzhou.51hejia.com/zhuangxiuanli/" target="_blank">苏州装修案例图片</a><a href="http://d.51hejia.com/" target="_blank">苏州装修资讯</a></dd></dl></li>
+<li><div class="jhlist_pic f_l"><a href="http://z.wuxi.51hejia.com/" target="_blank"><img src="http://js.51hejia.com/img/zxdpimg/wuxi.jpg" alt="和家网无锡站" /></a></div>
+<dl class="f_r"><dt><a href="http://z.wuxi.51hejia.com/" target="_blank"><strong>无锡站</strong></a></dt><dd><a href="http://z.wuxi.51hejia.com/" target="_blank">无锡装修点评</a><a href="http://z.wuxi.51hejia.com/zhuangxiugongsi/" target="_blank">无锡装修公司</a><a href="http://z.wuxi.51hejia.com/zhuangxiugushi/" target="_blank">无锡装修日记</a><a href="http://z.wuxi.51hejia.com/zhuangxiuanli/" target="_blank">无锡装修案例图片</a><a href="http://d.51hejia.com/" target="_blank">无锡装修资讯</a></dd></dl></li>
+</ul>
+</div>
+<div class="list_width960 clearfix">
+<div class="list_width739 f_r"><div class="list_r_t jhzx_tit"><h3>网友最新装修日记</h3></div>
+<div class="jhzx_rjdp clearfix"><ul>
+<li><dl class="jhzx_rj">
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54774.xml", ["title", "url", "image-url", "description"], 0,1) %>
+<dt>
+<div class="jhzx_rj_pic">
+<a href="<%=p["url"]%>" target="_blank"><img src="<%=p["image-url"]%>" alt="<%=p["title"]%>" /></a>
+</div>
+<h4><a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a></h4>
+<p><%=h p["description"].chars[0,54]%>...</p>
+</dt>
+<% end -%>
+<dd>
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54773.xml", ["title", "url", "image-url", "description"], 0,2) -%>
+<a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a>
+<%end -%>
+</dd>
+</dl>
+</li>
+
+<li><dl class="jhzx_rj">
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54774.xml", ["title", "url", "image-url", "description"], 1,2) %>
+<dt>
+<div class="jhzx_rj_pic">
+<a href="<%=p["url"]%>" target="_blank"><img src="<%=p["image-url"]%>" alt="<%=p["title"]%>" /></a>
+</div>
+<h4><a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a></h4>
+<p><%=h p["description"].chars[0,54]%>...</p>
+</dt>
+<% end -%>
+<dd>
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54773.xml", ["title", "url", "image-url", "description"], 2,4) -%>
+<a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a>
+<%end -%>
+</dd>
+</dl>
+</li>
+
+<li><dl class="jhzx_rj">
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54774.xml", ["title", "url", "image-url", "description"], 2,3) %>
+<dt>
+<div class="jhzx_rj_pic">
+<a href="<%=p["url"]%>" target="_blank"><img src="<%=p["image-url"]%>" alt="<%=p["title"]%>" /></a>
+</div>
+<h4><a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a></h4>
+<p><%=h p["description"].chars[0,54]%>...</p>
+</dt>
+<% end -%>
+<dd>
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54773.xml", ["title", "url", "image-url", "description"], 4,6) -%>
+<a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a>
+<%end -%>
+</dd>
+</dl>
+</li>
+
+<li><dl class="jhzx_rj">
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54774.xml", ["title", "url", "image-url", "description"], 3,4) %>
+<dt>
+<div class="jhzx_rj_pic">
+<a href="<%=p["url"]%>" target="_blank"><img src="<%=p["image-url"]%>" alt="<%=p["title"]%>" /></a>
+</div>
+<h4><a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a></h4>
+<p><%=p["description"].chars[0,54]%>...</p>
+</dt>
+<% end -%>
+<dd>
+<% for p in parse_xml2("http://api.51hejia.com/rest/build/xml/54773.xml", ["title", "url", "image-url", "description"], 6,8) -%>
+<a href="<%=p["url"]%>" target="_blank"><%=h p["title"]%></a>
+<%end -%>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="list_width210 f_l">
+<div class="list_l_t"><h3>最新装修优惠券</h3></div>
+<div class="list_diary_ed jhzx_yhq clearfix">
+<ul>
+<% parse_xml(54772, ["title", "url", "image-url"], 13).each do |p| -%>
+<li><%= link_to p['title'], p["url"], :title => p["title"], :target => "_blank" -%></li>
+<% end -%>
+</ul>
+<span><a href="#" target="_blank"></a></span></div>
+</div>
+</div>
+
+<div class="list_width960 clearfix">
+<div class="jh_links clearfix">
+<ul><li class="jh_links_left">合作伙伴：</li><li class="jh_links_right" id="tuiguangid"><%=hejia_ext_links('shanghai', '')%><%=hejia_ext_links('hangzhou', '')%><%=hejia_ext_links('ningbo', '')%><%=hejia_ext_links('suzhou', '')%><%=hejia_ext_links('wuxi', '')%></li></ul>
+
+</div>
+</div>
+<%# 这个页面归入到上海的“其它”统计中 %>
+<%= render_shared_footer :tracking_code => '860021-2026110104' %>
+</div>
+<%= yield :html_body_end  %>
+</body>
+</html>

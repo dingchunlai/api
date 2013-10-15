@@ -1,0 +1,103 @@
+<script language="javascript">
+	<%if @message == '1'%>
+		alert("评论成功，审核后显示!");
+	<%end%>
+</script>
+  <%= javascript_include_tag :defaults %>
+  <div class="ipath"><strong>您的位置：</strong><a href="/dianping">装修案例点评</a> > <span>装修案例</span>
+  </div>
+  <div class="ileft">
+    <h1 class="t1">用户信息</h1>
+    <div class="lbox">
+       <p><img src="<%=@headimage%>"  onerror="javascript:this.src='http://member.51hejia.com/images/headimg/default.gif'"/>昵称：<span><%=@name%></span><br />
+<%if !@sex.nil?%>性别：<span><%=@sex%></span><%end%></p>
+	  <div class="clear"></div>
+	  <%r = DecoReview.get_review_by_user_flower_id(@userid)%>
+	  <ul class="li4">
+        <li class="n1">我的鲜花：<%=r[0][:flower].to_i%></li>
+        <li class="n2">我的臭鸡蛋：<%=r[0][:egg].to_i%></li>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <h1 class="t2">案例列表<span><a href="/dianping/dianping_list" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+      <ul class="li2">
+          <%mylist = DecoReview.get_review_by_user_id(@userid)%>
+	      <%mylist.each do |m|%>
+	        <li class="nl"><a href="/dianping-<%=m.id%>" title="<%=m.title%>" target="_blank"><%=m.title%></a><br /><%=m.udate.strftime("%Y-%m-%d")%> 回应 <%if m.response_num.nil?%>0<%else%><%=m.response_num%><%end%> 鲜花 <%if m.flower_num.nil?%>0<%else%><%=m.flower_num%><%end%></li>
+	      <%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <h1 class="t3">其他业主最新案例<span><a href="/dianping" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+      <ul class="li3">
+        <%DecoReview.getgoodreviews().each do |re|%>
+			<li><a href="/dianping-<%=re.id%>" target="_blank"><%=re.title%></a></li>
+		<%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <div class="lbox2">
+
+      
+      
+    </div>
+  </div>
+  <div class="iright">
+    <div class="sdtt margin10"><h1>案例点评</h1><span><!--<a href="#" target="_blank"><strong>撰写新案例</strong></a>--></span></div>
+    <%@result.each do |r|%>
+    <div class="lmainbox margin10">
+      <div class="lmainboxb">
+        <div class="casett">
+          <h1><a href="/dianping-<%=r.id%>" target="_blank"><%=r.title%></a></h1>
+          
+          <span id="floidfirst_<%=r.id%>"><a  onclick="new Ajax.Updater('floidfirst_<%=r.id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=r.id%>});" class="xh">鲜花(<%=r.flower_num.to_i%>)</a></span>
+          <span><a><%=r.cdate.strftime("%Y-%m-%d")%></a> <a  class="hy">回应(<%=r.response_num.to_i%>)</a>|</span>
+          <div class="clear"></div>
+        </div>
+        <div class="casedes">
+        	<%=h r.content.gsub(/<.*?>/, '').chars[0,150]%>[<a href="/dianping-<%=r.id%>" target="_blank">详情</a>]
+        </div>
+        <div class="rate1">
+          <ul>
+            <li>
+            	<%if r.design_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.budget_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.construction_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if r.service_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            </li>
+            <li>设计：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.design_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+			</span></li>
+            <li>预算：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.budget_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+            <li>施工：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.construction_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+            <li>服务：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if r.service_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            </span></li>
+          </ul>
+          <p><%if r.main_id.nil?%><a href="/dianping/continuenew/<%=r.id%>">续写</a><%else%><a href="/dianping/continuenew/<%=r.main_id%>">续写</a><%end%>| <a href="/dianping/editnew/<%=r.id%>">编辑</a> | <a href="/dianping/dianping_delete/<%=r.id%>">删除</a></p>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <%end%>
+    <div class="pagination margin10">
+<ul>
+<%= will_paginate @result,:prev_label=> "上一页",:next_label=> "下一页" %>
+</ul>
+</div>
+  </div>
+  <div class="clear"></div>

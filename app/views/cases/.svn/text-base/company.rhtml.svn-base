@@ -1,0 +1,39 @@
+<%@company = @decofirm%>
+<%@firm_id = @decofirm.id%>
+<%@type="z6"%>
+<%if !@company.nil?%>
+<div class="ipath"><strong>您的位置：</strong><a href="http://z.51hejia.com">找装修频道</a> > <a href="/firms">装潢公司</a> > <a href="/firm-<%=@decofirm.id%>"><%=@decofirm.name_zh%></a> > <span>公司案例</span></div>
+<div class="left2">
+  <div class="youhuixx margin10">
+    <%=render :partial => 'decoshare/firms_daohang'%>
+    <div class="sdtt margin10">
+    <h4>共有<b><%=@caselist.total_entries%></b>套<%=@decofirm.name_zh%>的图片</h4>
+    <%p = params[:page].to_i%>
+    <div class="fenye">第 <%if p==0%>1<%else%><%=p%><%end%> 页  
+    <a href="<%if !@caselist.previous_page.nil?%>/cases/companylist/<%=@decofirm.id%>?page=<%= @caselist.previous_page%><%else%>#<%end%>"><<上一页</a>  
+    <a href="<%if !@caselist.next_page.nil?%>/cases/companylist/<%=@decofirm.id%>?page=<%= @caselist.next_page%><%else%>#<%end%>">下一页>></a>
+    </div>
+    </div>
+    <div class="fuckcaselist1 clearfix">
+      <ul>
+      <%if !@caselist.nil?%>
+		<%for c in @caselist%>
+		<%des = Case.get_photo_photo(c.ID)%>
+		<%pathurl = gen_firm_city_case_detail(@decofirm.id,c.ID)%>
+        <li><a href="<%if pathurl.nil?%>/anli/<%=c.ID%><%else%><%=pathurl%><%end%>" target="_blank" title="<%=c.NAME%>"><img src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=c.ID%>.jpg" alt="<%=c.NAME%>" onerror="javascript:this.src='<%if des.size>0%><%=IMAGE_URL%>/files/hekea/case_img/<%=des[0].filepath%><%else%>http://www.51hejia.com/api/images/none.gif<%end%>'"/></a><a href="/anli/<%=c.ID%>" target="_blank" title="<%=c.NAME%>"><%=truncate(c.NAME,12)%></a></li>
+      	<%end%>
+      <%end%>
+      </ul>
+    </div>
+  </div>
+  <div class="pagination margin10">
+<ul>
+<%= will_paginate @caselist,:prev_label=> "上一页",:next_label=> "下一页" %>
+</ul>
+</div>
+  </div>
+  <%= render :partial => "share/case_photo_right"%>
+  <div class="clear"></div>
+<%@company_id = @company.id%>
+<%end%>
+<%= increase_deco_firm_pv_image_tag @company_id %>

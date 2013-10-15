@@ -1,0 +1,41 @@
+<div id="tab-panel-210">
+            <ul>
+              <li>所属区域：
+                <select name="price1" id="select2" onchange='changedistrict1(this.value)'>
+                    <option value='0'>不限</option>
+                    <%cities = get_area_without_number(params[:city])%>
+                    <%cities.each do |c|%>
+        				<option value='<%=c.TAGID%>' <%if params[:district].to_i == c.TAGID%>selected<%end%>><%=c.TAGNAME%></option>
+      				<%end%>
+                  </select>
+              </li>
+              <li>主打价位：
+                <select name="price1" id="select2" onchange='changeprice1(this.value)'>
+                    <option value='0'>不限</option>
+                    <% PRICE.sort.each do |k, v| %>
+        				<option value='<%=k%>' <%if params[:price].to_i == k%>selected<%end%>><%=v%></option>
+      				<%end%>
+                  </select>
+              </li>
+              <li>装修方式：
+              <select name="medel1" id="select5" onchange='changemodel1(this.value)'>
+                  <option value='0'>不限</option>
+                  <% MODELS.sort.each do |k, v| -%>
+                  	<option value='<%=k%>' <%if params[:model].to_i == k%>selected<%end%>><%=v%></option>
+                  <%end -%>                  
+                </select> 
+              </li>
+              <li>装修风格：
+              <select name="style1" id="select4" onchange='changestyle1(this.value)'>
+                  <option value='0'>不限</option>
+                  <% STYLES.sort.each do |k, v| -%>
+                  	<option value='<%=k%>' <%if params[:style].to_i == k%>selected<%end%>><%=v%></option>
+                  <%end -%>
+                </select>
+                </li>
+              <li>
+                <input type="text" name="keyword2" id="keywordid2" class="txt" value="<%=params[:keyword]%>"/>
+                <input type="button" name="button" id="button" value="搜索" onclick="gen_search_url()"/>
+              </li>
+            </ul>
+</div>

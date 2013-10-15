@@ -1,0 +1,44 @@
+<%@type="z5"%>
+<%= render :partial => "share/deco_filter_firm" %> 
+<%if !@company.nil?%>
+<%@company_id = @company.id%>
+<%end%>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="constructlist">
+			<thead>
+				<tr>
+					<th>所属区域</th>
+					<th>楼盘名称</th>
+					<th>房型</th>
+					<th>装修情况</th>
+					<th>装修风格</th>
+					<th>预算</th>
+					<th>可供参观时间</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%@factories.each do |factory|%>
+				<tr>
+					<td><%if factory.tagc%><%=factory.tagc.TAGNAME%><%end%></td>
+					<td><%=factory.NAME%></td>
+					<td><%=factory.FANGXING%></td>
+					<td>
+					<%if factory.ENDENABLE%>
+						<%if factory.ENDENABLE > Time.now%>
+							<%=factory.CONDITION%>
+						<%else%>
+							已完成
+						<%end%>
+					<%end%>
+					</td>
+					<td><%=factory.STYLE%></td>
+					<td><%=factory.MONEY%></td>
+					<td><%if factory.STARTENABLE%><%=factory.STARTENABLE.strftime("%Y-%m-%d")%><%end%> - <%if factory.ENDENABLE%><%=factory.ENDENABLE.strftime("%Y-%m-%d")%><%end%></td>
+				</tr>
+			<%end%>	
+			</tbody>
+		</table>
+
+		<div class="page" >
+			<%= will_paginate @factories ,:prev_label=> '上一页',:next_label=> '下一页'%>
+		</div>
+	</div>

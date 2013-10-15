@@ -1,0 +1,5 @@
+清理对应key的cached
+<form action="/rest/clear_cached">
+  key：<input type="text" name="key" size="100">
+    <input type="submit" value="clear">
+</form>

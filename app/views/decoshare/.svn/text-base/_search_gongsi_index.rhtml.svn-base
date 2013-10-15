@@ -1,0 +1,95 @@
+		  <ul>
+            <li class="index_s_li01 index_s_li_cur"><a href="#n"><span><%=firms_count_all%></span>家热门公司热推</a></li>
+            <li class="index_s_li02"><a href="javascript:setFocus3(2);" onMouseOver="javascript:setFocus3(2);" target="_self"><span><%=note_count.to_i%></span>个装修经历</a></li>
+            <li class="index_s_li03"><a href="javascript:setFocus3(3);" onMouseOver="javascript:setFocus3(3);" target="_self"><span><%=case_count%></span>多个经典案例</a></li>
+          </ul>
+          <div class="index_s_text">
+          <%if @city_id == 11910%>
+          <%cities = get_object_tags_by_cityvalue_and_tagvalue(@city_id,1)%>
+          <%else%>
+          <%cities = get_area_without_number(@city_id)%>
+          <%end%>
+            <form>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td colspan="5"><select name="area_index" id='area_index_id'>
+                      <option value='0'>所属区域</option>
+                      <%cities.each do |area| -%>
+                      <%if area.TAGID != 12749 -%>
+                      <option value='<%=area.TAGID%>'><%=area.TAGNAME.chars[0,2]%></option>
+                      <%end -%>
+                      <%end -%>
+                    </select>
+                    <select name="price_index" id='price_index_id'>
+                      <option  value='0'>主打价位</option>
+                      <% diff_city_price_tag(@city_id).each do |k,v| -%>
+                      <option value='<%=k%>'><%=v%></option>
+                      <%end -%>
+                    </select>
+                    <select name="model_index" id='model_index_id'>
+                      <option value='0'>装修方式</option>
+                      <%MODELS.sort.each do |k,v| -%>
+                      <option value='<%=k%>'><%=v%></option>
+                      <%end -%>
+                    </select>
+        <select name="style_index" id="style_index_id">
+          <option value='0'>装修风格</option>
+          <% STYLES.sort.each do |k, v| -%>
+          	<option value='<%=k%>'><%=v%></option>
+          <%end -%>
+        </select>
+                    <input type="text" name='keyword_index' id='keyword_index_id' style="width:150px" />
+                    <input type="button" value=" " class="index_tij" onclick='search_gongsi_index()'/></td>
+                </tr>
+                <tr>
+                  <td width="65">主打价位：</td>
+                  <td colspan="4" width="570">
+                  	<%diff_city_price_tag(@city_id).each do |k,v| -%>
+                  		<a href='/zhuangxiugongsi/gsl-<%=@city_id%>-0/0-0-0-<%=k%>-0-0/' target='_blank'><%=v%></a>
+                  	<%end -%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="65">装修方式：</td>
+                  <td colspan="4">
+                  <%MODELS.sort.each do |k,v| -%>
+                  	<a href="/zhuangxiugongsi/gsl-<%=@city_id%>-0/<%=k%>-0-0-0-0-0/" target="_blank"><%=v%></a>
+                  <%end -%>	
+                  </td>
+                </tr>
+         <tr>
+                <td width="65">装修风格：</td>
+                <td colspan="4">
+              <% STYLES.sort.each do |k, v| -%>
+                <a href="/zhuangxiugongsi/gsl-<%=@city_id%>-0/0-<%=k%>-0-0-0-0/" target="_blank"><%=v%></a>
+             <%end -%>
+                </td>
+              </tr>
+                <tr>
+                  <td valign="top" width="65">所属区域：</td>
+                  <td colspan="4">
+                  <%cities.each do |area| -%>
+                  <%if area.TAGID != 12749 -%>
+                  <a href="/zhuangxiugongsi/gsl-<%=@city_id%>-<%=area.TAGID%>/0-0-0-0-0-0/" target="_blank"><%=area.TAGNAME.chars[0,2]%></a>
+                  <%end -%>
+                  <%end -%>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+<script language='javascript'>
+	function search_gongsi_index(){
+		var city = '<%=@city_id%>';
+		var area = document.getElementById('area_index_id').value;
+		var price = document.getElementById('price_index_id').value;
+		var model = document.getElementById('model_index_id').value;
+                var style = document.getElementById('style_index_id').value;
+		var keyword = document.getElementById('keyword_index_id').value;
+		var url = '/zhuangxiugongsi/gsl-'+city+'-'+area+'/'+model+'-'+style+'-0-'+price+'-0-0/';
+		if(keyword.length > 0)
+			url = url + '?keyword='+keyword
+		url = encodeURI(url);
+		location.href = url;
+	}
+</script>

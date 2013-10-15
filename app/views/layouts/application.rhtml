@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <% if controller.controller_name == 'top' %>
+      <title>上海装潢公司排行，上海装修公司排行，上海装饰公司排行，上海家装公司排行-和家网装修上海排行榜</title>
+      <meta name="keywords" content="上海装潢公司排行榜，上海装修公司排行榜，上海装饰公司排行榜，上海家装公司排行榜，上海装修公司推荐，上海装潢公司推荐，上海家装公司推荐，上海装饰公司推荐">
+        <meta name="description" CONTENT="看和家网装修公司排行榜，选上海装修公司。真实装修案例，反映装修现状。各种装修风格和装修效果图，为您装修做借鉴。和家网装修点评:装修公司排行，装修效果图，网友装修日记。还有最新装修促销活动及时把握，让您装修也可以顺时而动。">
+        <% elsif controller.controller_name == 'coupon' %>
+          <title><%= @city_name %>装修公司优惠，<%= @city_name %>装潢公司优惠，<%= @city_name %>家装公司优惠，<%= @city_name %>装饰公司优惠-和家网装修优惠</title>
+          <meta name="keywords" content="<%= @city_name %>装修公司优惠，<%= @city_name %>装潢公司优惠，<%= @city_name %>家装公司优惠，<%= @city_name %>装饰公司优惠">
+            <meta name="description" CONTENT="最新装修促销活动及时把握，让您装修顺时而动。和家网装修点评:装修公司排行，装修效果图，网友装修日记。看网友点评，选<%= @city_name %>装修公司。真实装修案例，反映装修现状。各种装修风格和装修效果图，为您装修做借鉴。">
+            <% else %>
+              <title><%= CITIES[@city.to_i] %>装修,<%= CITIES[@city.to_i] %>装潢,<%= CITIES[@city.to_i] %>家装,<%= CITIES[@city.to_i] %>装饰-和家网<%= CITIES[@city.to_i] %>站</title>
+              <meta name="keywords" content="<%= CITIES[@city.to_i] %>装修,<%= CITIES[@city.to_i] %>装潢,<%= CITIES[@city.to_i] %>家装,<%= CITIES[@city.to_i] %>装饰,<%= CITIES[@city.to_i] %>装修公司,<%= CITIES[@city.to_i] %>装潢公司,<%= CITIES[@city.to_i] %>家装公司,<%= CITIES[@city.to_i] %>装饰公司,装修图片,装修效果图,装修日记">
+                <meta name="description" CONTENT="看和家网网友点评，选<%= CITIES[@city.to_i] %>装修公司。真实装修案例，反映装修现状。各种装修风格和装修效果图，为您装修做借鉴。最新装修促销活动及时把握，让您装修也可以顺时而动。和家网装修点评:装修公司排行，装修效果图，网友装修日记。">
+                <% end %>
+                <link href="http://js1.51hejia.com/css/2010/header.css" rel="stylesheet" type="text/css" />
+                <link href="http://js2.51hejia.com/css/zxdpcss.css?<%= Time.now.strftime('%Y%m%d') %>0625" rel="stylesheet" type="text/css" />
+                <script type="text/javascript" src="http://js1.51hejia.com/js/2010/tab.js"></script>
+                <script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+                <script type="text/javascript" src="http://js2.51hejia.com/js/b_pic.js" ></script>
+                <link href="http://js2.51hejia.com/css/zxdpcss.css?201008031247" rel="stylesheet" type="text/css" />
+                <%= yield(:head)%>
+                </head>
+                <script type="text/javascript">
+                  function cns_li_hover(obj,ClassName){ obj.className=ClassName; }
+                  function seachfirm(){
+                    var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+                    var city = document.getElementById("cityid1003").options[cityindex].value;
+                    var moneyindex = document.getElementById("money1003").options.selectedIndex;
+                    var money = document.getElementById("money1003").options[moneyindex].value;
+                    var key = document.getElementById("keyword1103").value;
+		
+                    var url = gen_city_domain_firm() +'/zhuangxiugongsi/gsl-';
+                    url = url + city + '-0/';
+                    url = url + '0-0-0-';
+                    url = url + money + '-0-0/';
+                    if(key.length > 0)
+                      url = url + '?keyword='+key;
+                    location.href = encodeURI(url);
+                  }
+	
+                  function seachcase(){
+                    var fengge = document.getElementById('fengge1003').value;
+                    var huxing = document.getElementById('huxing1003').value;
+                    var key = document.getElementById('nameid1003').value;
+                    var url = "/zhuangxiuanli/0."+fengge+".0."+huxing+".1.html";
+                    if(key.length > 0)
+                      url = url + '?name='+key;
+                    location.href = encodeURI(url);
+                  }
+	
+                  function seachgushi(){
+                    var stage = document.getElementById("stage").value;
+                    var room = document.getElementById("room").value;
+                    var key = document.getElementById('zhuangxiugushiname').value;
+                    if(key.length > 0){
+			
+                    }else{
+                      key=0;
+                    }
+		
+                    var url = "/zhuangxiugushi/0-0-0-"+ stage + "-" + room +"-1-"+key+"-1-2";
+                    location.href = encodeURI(url);
+                  }
+	
+                  function show11() {
+                    if (document.getElementById("adcode").value=="装修公司")
+                    {
+                      document.getElementById("Layer1").style.display="";
+                      document.getElementById("Layer2").style.display="none";
+                      document.getElementById("Layer3").style.display="none";
+                    }
+                    else if (document.getElementById("adcode").value=="装修案例") {
+                      document.getElementById("Layer1").style.display="none";
+                      document.getElementById("Layer2").style.display="";
+                      document.getElementById("Layer3").style.display="none";
+                    }
+                    else if (document.getElementById("adcode").value=="装修日记") {
+                      document.getElementById("Layer1").style.display="none";
+                      document.getElementById("Layer2").style.display="none";
+                      document.getElementById("Layer3").style.display="";
+                    }
+                  }
+                  function gen_city_domain_firm(){
+<%if IS_PRODUCT.to_i == 1%>
+      var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+      var city = document.getElementById("cityid1003").options[cityindex].value;
+      if(city == '11910')
+        return "http://z.shanghai.51hejia.com";
+      else if (city == '12117')
+        return "http://z.suzhou.51hejia.com";
+      else if (city == '12122')
+        return "http://z.nanjing.51hejia.com";
+      else if (city == '12301')
+        return "http://z.ningbo.51hejia.com";
+      else if (city == '12306')
+        return "http://z.hangzhou.51hejia.com";
+      else if (city == '12118')
+        return "http://z.wuxi.51hejia.com";
+      else
+        return "http://z.51hejia.com";
+<%else%>
+      return '';
+<%end%>
+  }
+                </script>
+                <body>
+                  <!--statistics_code-->
+                  <%= render :partial => 'shared/internal_analytics' %>
+                  <script type="text/javascript">
+                    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+                    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+                  </script>
+                  <script type="text/javascript">
+                    var pageTracker = _gat._getTracker("<%=@city_code%>");
+                    pageTracker._addOrganic("baidu", "kw");
+                    pageTracker._addOrganic("baidu", "word");
+                    pageTracker._addOrganic("soso", "w");
+                    pageTracker._addOrganic("3721", "name");
+                    pageTracker._addOrganic("yodao", "q");
+                    pageTracker._addOrganic("vnet", "kw");
+                    pageTracker._addOrganic("sogou", "query");
+                    pageTracker._trackPageview();
+    
+                    pageTracker = _gat._getTracker("UA-12518263-2");
+                    pageTracker._addOrganic("baidu", "kw");
+                    pageTracker._addOrganic("baidu", "word");
+                    pageTracker._addOrganic("soso", "w");
+                    pageTracker._addOrganic("3721", "name");
+                    pageTracker._addOrganic("yodao", "q");
+                    pageTracker._addOrganic("vnet", "kw");
+                    pageTracker._addOrganic("sogou", "query");
+                    pageTracker._trackPageview();
+
+<% if controller.controller_name == 'firms' && controller.action_name == "show" %>
+    pageTracker._addTrans("51HEJIA-FIRM-<%=@firm.id%>","<%=get_city_name(@firm.city).TAGNAME %>/<%=get_district_name(@firm.district).TAGNAME %>","1","0","0","<%=get_city_name(@firm.city).TAGNAME %>","<%=get_district_name(@firm.district).TAGNAME %>","CHINA");
+    pageTracker._addItem("51HEJIA-FIRM-<%=@firm.id%>","<%=@firm.id%>","<%=@firm.name_zh%>","<%=@firm.name_abbr%>","1","1");
+    pageTracker._trackTrans();
+<% end %>
+                  </script>
+                  <!--end_statistics_code-->
+                  <!--small_header_code-->
+                  <div class="header_n">
+                    <div class="header_menu f_l">
+                      <script type="text/javascript" src="http://js2.51hejia.com/js/chrome.js"></script>
+                      <ul>
+                        <li class="header_sy"><a href="http://www.51hejia.com/" target="_blank">和家首页</a></li>
+                        <li><a href="http://z.51hejia.com/" target="_blank" class="f_l"><strong>找装修公司</strong></a>
+                          <div class="header_city"><span id="city"> <a rel="dropmenu0">[城市<small>&#9660;</small>]</a>
+                              <div id="dropmenu0" class="header_citydiv"><a href="http://z.shanghai.51hejia.com/" target="_blank" >上海</a><a href="http://z.suzhou.51hejia.com/" target="_blank" >苏州</a><a href="http://z.wuxi.51hejia.com/" target="_blank" >无锡</a><a href="http://z.ningbo.51hejia.com/" target="_blank" >宁波</a><a href="http://z.hangzhou.51hejia.com/" target="_blank" >杭州</a></div>
+                              <script type="text/javascript">
+                                cssdropdown.startchrome("city")
+
+
+                              </script>
+                            </span></div>
+                        </li>
+                        <li><a href="http://b.51hejia.com/" target="_blank"><strong>品牌产品</strong></a></li>
+                        <li><a href="http://www.51hejia.com/jushang/" target="_blank"><strong>家居</strong></a></li>
+                        <li><a href="http://tuku.51hejia.com/" target="_blank"><strong>图片</strong></a></li>
+                        <li><a href="http://wb.51hejia.com/" target="_blank"><strong>问答</strong></a></li>
+                      </ul>
+                    </div>
+                    <div class="header_login f_r">
+                      <ul>
+                        <li><a href="http://z.shanghai.51hejia.com/zhuangxiugongsi" target="_blank">网友评论千家装修公司</a></li>
+                        <li>
+                          <script type="text/javascript" src="http://js2.51hejia.com/js/login_area.js?20100203"></script>
+                          <iframe name="hideiframe_loginout" width="0" height="0" id="hideiframe_loginout" style="display: none;"></iframe>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="header_nav clearfix margin10"> <a href="http://d.51hejia.com" target="_blank">装修资讯</a>|<a href="http://youqituliao.51hejia.com" target="_blank">油漆涂料</a>|<a href="http://diban.51hejia.com" target="_blank">地板</a>|<a href="http://weiyu.51hejia.com" target="_blank">卫浴洁具</a>|<a href="http://chugui.51hejia.com" target="_blank">橱柜</a>|<a href="http://chufangdianqi.51hejia.com" target="_blank">厨房电器</a>|<a href="http://www.51hejia.com/cizhuan/" target="_blank">瓷砖</a>|<a href="http://www.51hejia.com/jiajuchanpin/" target="_blank">家具</a>|<a href="http://www.51hejia.com/zhaomingpindao/" target="_blank">灯具</a>|<a href="http://www.51hejia.com/buyi/" target="_blank">布艺</a>|<a href="http://www.51hejia.com/jiadian/" target="_blank">家电</a>|<a href="http://www.51hejia.com/kongtiao/" target="_blank">中央空调</a>|<a href="http://www.51hejia.com/cainuan/" target="_blank">采暖</a>|<a href="http://www.51hejia.com/shuichuli/" target="_blank">水处理</a>|<a href="http://www.51hejia.com/xinwen/" target="_blank">行业新闻</a>|<a href="http://bbs.51hejia.com/" target="_blank">俱乐部</a>|<a href="http://www.51hejia.com/zq/" target="_blank">专区</a></div>
+                  <div id="Login" style="display:none;border:0"> <a href="#guanbi" title="关闭" class="Divopop-nonenei"><img src="http://img3.51hejia.com/css/newback/images/x.png" alt="关闭" /></a>
+                    <iframe id="dengluiframe" style="width:222px;height:224px;border:0;overflow:hidden" frameborder="0" scrolling="No"></iframe>
+                    <script type="text/javascript">
+                      function denglula()
+                      {
+                        var time = Math.random();
+                        document.getElementById('dengluiframe').src='http://member.51hejia.com/member/userlogin?forward=' + location.href;
+                      }
+                    </script>
+                    <script type="text/javascript" src="http://js1.51hejia.com/js/2010/login_n.js"></script>
+                  </div>
+                  <!--end_small_header_code-->
+                  <!--宁波广告下-->
+<%# if @city.to_i == 12301  %>
+<%#*<style type="text/css">%>
+<%#*.specialtype_ad{position:relative;width:960px;}%>
+<%#*.spe_close,.spe_open{position:absolute;top:0;right:0;width:12px;height:12px;line-height:12px;font-size:12px;font-family:"Arial";text-align:center;background:#fff;border:1px solid #ccc;cursor:pointer;}%>
+<%#*.spe_open{display:none;}%>
+<%#*</style>%>
+<%#*<script type="text/javascript">%>
+<%#*$(function(){%>
+<%#*var $ad = $(".spe_ad");%>
+<%#*var $btnclose = $(".spe_close");%>
+<%#*var $btnopen = $(".spe_open");%>
+<%#*function switchImages() {%>
+<%#*$ad.slideUp(1000);%>
+<%#*$btnopen.show();%>
+<%#*$btnclose.hide();%>
+<%#*}%>
+<%#*setTimeout(switchImages, 5000);%>
+<%#*$btnopen.click(function(){%>
+<%#*$ad.slideDown(1000);%>
+<%#*$btnclose.show();%>
+<%#*$btnopen.hide();%>
+<%#*function switchImages02() {%>
+<%#*$ad.slideUp(1000);%>
+<%#*$btnopen.show();%>
+<%#*$btnclose.hide();%>
+<%#*}%>
+<%#*setTimeout(switchImages02, 10000);%>
+<%#*})%>
+<%#*$btnclose.click(function(){%>
+<%#*$ad.slideUp(1000);%>
+<%#*$btnopen.show();%>
+<%#*$btnclose.hide();%>
+<%#*})%>
+
+<%#*})%>
+<%#*</script>%>
+<%#*<!--special-type ad_code-->%>
+<%#*<div class="width960" id="hangzhou_ads">%>
+<%#*<div id="spe_adid" class="specialtype_ad">%>
+<%#*<div class="spe_ad">%>
+<%#*<a href="http://zt.51hejia.com/zhuanti/ningbodtblh/index.html" target="_blank"><img src="http://js.51hejia.com/ditan960_300.jpg" /></a>    	</div>%>
+<%#*<div class="spe_close">x</div>%>
+<%#*<div class="spe_open">+</div>%>
+<%#*</div>%>
+<%#*</div>%>
+<%#*<!--special-type ad_code_end-->%>
+<%# end %>
+<%#装修点评首页%>
+                  <%if controller.controller_name == 'index' && controller.action_name == 'home'%>
+
+                    <%=adspace("装修点评-#{TAGURLS[@city.to_i]}-通栏1", '', '<div class="width960"></div>')%>
+
+                  <%end%>
+                  <%= adspace("#{CITIES[@city.to_i]}站-排行榜首页-通栏1", '', '<div class="width960"></div>') if controller.controller_name == 'top' && @city.to_i == 11910 %>
+                  <%= adspace("#{CITIES[@city.to_i]}站-排行榜首页-通栏1", '', '<div class="width960"></div>') if controller.controller_name == 'coupon' && controller.action_name == 'index' && @city.to_i == 11910 %>
+
+
+                  <!--menu_code-->
+                  <div class="list_width960 list_logo_bg clearfix">
+                    <div class="list_logo f_l">
+                      <h1><a href="http://z.51hejia.com/"><img src="http://img3.51hejia.com/img/zxdpimg/list_1.jpg" alt="和家装修点评" border="0" /></a></h1>
+                      <script type="text/javascript" src="http://js3.51hejia.com/js/chrome.js"></script>
+                      <div class="city"><b id='citid1217'><%= CITIES[@city.to_i] %></b><span id="city010"> <a rel="dropmenu012">[切换城市]</a>
+                          <div id="dropmenu012" class="citydiv"> <a href="http://z.shanghai.51hejia.com/" target="_self" >上海</a> <a href="http://z.suzhou.51hejia.com/" target="_self" >苏州</a> <a href="http://z.ningbo.51hejia.com/" target="_self" >宁波</a> <a href="http://z.hangzhou.51hejia.com/" target="_self" >杭州</a> <a href="http://z.wuxi.51hejia.com/" target="_self" >无锡</a> </div>
+                          <script type="text/javascript">
+                            cssdropdown.startchrome("city010")
+                          </script>
+                        </span> </div>
+                    </div>
+                    <div class="list_logo_r f_r">
+                      <ul class="clearfix">
+                        <li ><a href="#" ><span><%= has_many_hejia_bbs_user_export_number %></span>个专家在线问答</a></li>
+                        <li><a href="#" >发表<span><%= has_many_decoration_diaries_number %></span>个装修日记</a></li>
+                        <li class="border_none"><a href="#" ><span><%= has_many_net_friend_remarks_number %></span>位网友点评<span><%= has_many_deco_firm_number %></span>家装修公司</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="list_width960 list_nav_bg ">
+                    <div class="list_nav">
+                      <ul>
+                        <li><a href="/" id="sy">点评首页</a></li>
+                        <li><a href="/zhuangxiugongsi/" id="gs">装修公司列表</a></li>
+                        <li><a href="/zhuangxiugushi/" id="zxgs">装修日记</a></li>
+                        <li><a href="/zhuangxiuanli/" id="tp">案例图片</a></li>
+                        <% if @city.to_i == 11910 %>
+                          <li><a href="/top/" id="top">排行榜</a></li>
+                        <% end %>
+                        <li><a href="/coupon" id="coupon">优惠劵</a></li>
+                      </ul>
+                    </div>
+                    <div class="list_search">
+                      <div class="list_search_l f_l">
+                        <form name="form1" >
+                          <div class="list_search_s f_l">
+                            <select name="adcode" id="adcode" onChange="show11()">
+                              <option value="装修公司" selected>装修公司</option>
+                              <option value="装修案例">装修案例</option>
+                              <option value="装修日记">装修日记</option>
+                            </select>
+                          </div>
+                          <div id="Layer1" style="display:" class="f_l">
+                            <select name="11" size="1" id="cityid1003" onchange='selectyusuan(this.value);'>
+                              <%CITIES.sort.each do |k,v|%>
+                                <option value="<%=k%>" <%if params[:city].to_i == k%>selected<%end%>><%=v%></option>
+                              <%end%>
+                            </select>
+                            <select name="12" size="1" id="money1003">
+                              <option value='0'>选择预算</option>
+                              <% diff_city_price_tag(@user_city_code).each do |k, v| %>
+                                <option value="<%= k %>" <%if params[:price].to_i == k%>selected<% end %>><%= v %></option>
+                              <% end %>
+                            </select>
+                            <input name="13" type="text" id='keyword1103' value=""/>
+                            <input name="" type="button" value=" " class="list_search_btn" onclick="seachfirm();" />
+                          </div>
+                          <div id="Layer2" style="display:none" class="f_l">
+                            <select name="fengge" id="fengge1003">
+                              <option value="0">装修风格</option>
+                              <option value="xiandaijianyue" <%if params[:fengge] == 'xiandaijianyue'%>selected<%end%>>现代简约</option>
+                              <option value="zhongshi" <%if params[:fengge] == 'zhongshi'%>selected<%end%>>中式风格</option>
+                              <option value="oumei" <%if params[:fengge] == 'oumei'%>selected<%end%>>欧/美式</option>
+                              <option value="hunda" <%if params[:fengge] == 'hunda'%>selected<%end%>>混搭</option>
+                              <option value="dizhonghai" <%if params[:fengge] == 'dizhonghai'%>selected<%end%>>地中海</option>
+                              <option value="tianyuan" <%if params[:fengge] == 'tianyuan'%>selected<%end%>>田园风格</option>
+                              <option value="qita" <%if params[:fengge] == 'qita'%>selected<%end%>>其他</option>
+                            </select>
+                            <select name="huxing" id="huxing1003">
+                              <option value="0">装修户型</option>
+                              <option value="xiaohu" <%if params[:huxing] == 'xiaohu'%>selected<%end%>>小户型装修</option>
+                              <option value="gongyu" <%if params[:huxing] == 'gongyu'%>selected<%end%>>公寓装修</option>
+                              <option value="bieshu" <%if params[:huxing] == 'bieshu'%>selected<%end%>>别墅/复式</option>
+                            </select>
+                            <input name="22" type="text" id="nameid1003" value=""/>
+                            <input name="" type="button" value=" " class="list_search_btn" onclick="seachcase();"/>
+                          </div>
+                          <div id="Layer3" style="display:none" class="f_l">
+                            <select name="room" id="room">
+                              <option value="0">装修房型</option>
+                              <%ROOM.sort.each do |k|%>
+                                <option value='<%=k[0]%>' <%if @room.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+                              <%end%>
+                            </select>
+                            <select name="stage" id="stage">
+                              <option value="0">装修阶段</option>
+                              <%STAGE.sort.each do |k|%>
+                                <option value='<%=k[0]%>' <%if @stage.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+                              <%end%>
+                            </select>
+                            <input name="22" type="text" id="zhuangxiugushiname" value=""/>
+                            <input name="" type="button" value=" " class="list_search_btn" onclick="seachgushi();"/>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="list_search_r f_l">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <% hot_search_arry =  parse_xml(AREA_PROMOTED['热搜公司推广'][TAGURLS[@city.to_i]], ["title", "url", "image-url","description","text-style-id"], nil) %>
+                            <% if @city.to_i == 11910 %>
+                              <td width="90" style="color:red;">热搜公司：<%= link_to get_style_by_text_style_id(hot_search_arry.first['title'],hot_search_arry.first["text-style-id"]), hot_search_arry.first["url"], :title => (hot_search_arry.first["description"] && hot_search_arry.first['description'].chars[0, 25]), :target => "_blank" %></td>
+                              <% hot_search_arry.shift %>
+                            <% else %>
+                              <td width="60" style="color:red;">热搜公司：</td>
+                            <% end %>
+                            <td><% if @city.to_i == 11910 %><div style="width:280px; overflow:hidden;"><%else%><div style="width:300px; overflow:hidden;"><%end%>
+                                <div id="cont_m_5" style="float:left;">
+                                  <%hot_search_arry.each do |p| -%>
+                                    <%= link_to get_style_by_text_style_id(p['title'],p["text-style-id"]), p["url"], :title => (p["description"] && p['description'].chars[0, 25]), :target => "_blank" -%>
+                                  <% end -%>
+                                </div>
+                              </div></td>
+                          </tr>
+                        </table>
+                        <script type="text/javascript" src="http://js.51hejia.com/js/txt_auto.js"></script>
+                      </div>
+                    </div>
+                    <script type="text/JavaScript">
+                      function selectyusuan(cid){
+                        if(cid == '12301'){
+                          var tarr = new Array();
+    		
+                          tarr[0] = '6万以下';
+    		
+                          tarr[1] = '6-10万';
+    		
+                          tarr[2] = '10-15万';
+    		
+                          tarr[3] = '30万-50万';
+    		
+                          tarr[4] = '50万以上';
+    		
+                        }else{
+                          var tarr = new Array();
+    		
+                          tarr[0] = '8万以下';
+    		
+                          tarr[1] = '8-15万';
+    		
+                          tarr[2] = '15-30万';
+    		
+                          tarr[3] = '30万-100万';
+    		
+                          tarr[4] = '100万以上';
+    		    		
+                        }
+                        var sel = document.getElementById('money1003');
+                        var ops = sel.options;
+                        for(var i = 0;i < 5;i++){
+                          ops[i+1].text = tarr[i];
+                        }
+                      }
+                      function changetitle(titleid){
+                        document.getElementById('sy').className = '';
+                        document.getElementById('gs').className = '';
+                        document.getElementById('zxgs').className = '';
+                        document.getElementById('tp').className = '';
+<% if @city.to_i == 11910 %>
+      document.getElementById('top').className = '';
+<% end %>
+    document.getElementById('coupon').className = '';
+    document.getElementById(titleid).className = 'list_nav_cur';
+  }
+<%if controller.controller_name == 'firms'|| (controller.controller_name == 'designers' && controller.action_name == 'show') %>
+    changetitle('gs');
+<% elsif controller.controller_name == 'index'%>
+    changetitle('sy');
+<%elsif controller.controller_name == 'cases'%>
+    changetitle('tp');
+<%elsif controller.controller_name == 'top' %>
+    changetitle('top');
+<%elsif controller.controller_name == 'coupon' %>
+    changetitle('coupon');
+<%end%>
+  function seachfirm(){
+    var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+    var city = document.getElementById("cityid1003").options[cityindex].value;
+    var moneyindex = document.getElementById("money1003").options.selectedIndex;
+    var money = document.getElementById("money1003").options[moneyindex].value;
+    var key = document.getElementById("keyword1103").value;
+		
+    var url = gen_city_domain_firm() +'/zhuangxiugongsi/gsl-';
+    url = url + city + '-0/';
+    url = url + '0-0-0-';
+    url = url + money + '-0-0/';
+    if(key.length > 0)
+      url = url + '?keyword='+key;
+    location.href = encodeURI(url);
+  }
+	
+  function seachcase(){
+    var fengge = document.getElementById('fengge1003').value;
+    var huxing = document.getElementById('huxing1003').value;
+    var key = document.getElementById('nameid1003').value;
+    var url = "/zhuangxiuanli/0."+fengge+".0."+huxing+".1.html";
+    if(key.length > 0)
+      url = url + '?name='+key;
+    location.href = encodeURI(url);
+  }
+	
+  function seachgushi(){
+    var stage = document.getElementById("stage").value;
+    var room = document.getElementById("room").value;
+    var key = document.getElementById('zhuangxiugushiname').value;
+    if(key.length > 0){
+			
+    }else{
+      key=0;
+    }
+		
+    var url = "/zhuangxiugushi/0-0-0-"+ stage + "-" + room +"-1-"+key+"-1-2";
+    location.href = encodeURI(url);
+  }
+	
+  function show11() {
+    if (document.getElementById("adcode").value=="装修公司")
+    {
+      document.getElementById("Layer1").style.display="";
+      document.getElementById("Layer2").style.display="none";
+      document.getElementById("Layer3").style.display="none";
+    }
+    else if (document.getElementById("adcode").value=="装修案例") {
+      document.getElementById("Layer1").style.display="none";
+      document.getElementById("Layer2").style.display="";
+      document.getElementById("Layer3").style.display="none";
+    }
+    else if (document.getElementById("adcode").value=="装修日记") {
+      document.getElementById("Layer1").style.display="none";
+      document.getElementById("Layer2").style.display="none";
+      document.getElementById("Layer3").style.display="";
+    }
+		
+  }
+	
+  function gen_city_domain_firm(){
+		
+    var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+    var city = document.getElementById("cityid1003").options[cityindex].value;
+    if(city == '11910')
+      return "http://z.shanghai.51hejia.com";
+    else if (city == '12117')
+      return "http://z.suzhou.51hejia.com";
+    else if (city == '12122')
+      return "http://z.nanjing.51hejia.com";
+    else if (city == '12301')
+      return "http://z.ningbo.51hejia.com";
+    else if (city == '12306')
+      return "http://z.hangzhou.51hejia.com";
+    else if (city == '12118')
+      return "http://z.wuxi.51hejia.com";
+    else
+      return "http://z.51hejia.com";
+			
+  }
+                    </script>
+                  </div>
+                  <!--end_menu_code-->
+                  <%= yield %>
+                  <!--footer_code-->
+                  <%=
+                  tracking_id = case request.subdomains.join('.')
+                  when 'z.ningbo'
+                    '860021-2026110204'
+                  when 'z.suzhou'
+                    '860021-2026110404'
+                  when 'z.wuxi'
+                    '860021-2026110504'
+                  when 'z.hangzhou'
+                    '860021-2026110304'
+                  else
+                    '860021-2026110104'
+                  end
+                  render_shared_footer :tracking_id => tracking_id
+                %>
+                  <!--end_footer_code-->
+                  <%= yield :html_body_end  %>
+                </body>
+                </html>

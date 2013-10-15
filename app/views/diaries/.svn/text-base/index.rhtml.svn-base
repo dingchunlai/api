@@ -1,0 +1,20 @@
+<%@company = @firm%>
+<%= render :partial => "share/deco_filter_firm" %>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="diary">
+			<thead>
+				<tr>
+					<th width="790">标题</th>
+					<th>业主</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @diaries.each do |diary| %>
+				<tr>
+					<td class="b"><%= link_to diary.title, diary.url, :title => diary.title, :target => "_blank" %></td>
+					<td><%= diary.owner %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<%= will_paginate @diaries %>

@@ -1,0 +1,102 @@
+<% form_for :publish_content, @publish_content , :url => {:controller => "admin", :action => "update_content"}, :html => {:enctype => "multipart/form-data"} , :method => :post do |f| -%>
+  <table class="tb tb2 nobdb">
+    <tbody>
+      <tr>
+        <th class="partition" colspan="15">编辑文章</th>
+      </tr>
+      <tr>
+        <td colspan="2" align="left" class="td27">
+          标题：<%= f.text_field :title, :size => 50 %>
+        </td>
+      </tr>
+      <tr class="noborder">
+        <td colspan="2" align="left" class="td27">
+          URL：<%= f.text_field :url, :size => 50 %>
+        </td>
+      </tr>
+    <script charset="gb2312" type="text/javascript" src="http://js.51hejia.com/javascripts/WebCalendar.js"></script>
+    <tr class="noborder">
+      <td colspan="2" align="left" class="td27">
+        发布时间：
+        <%= f.text_field(:publish_time, :size => 8, :onfocus => "new Calendar().show(this);" ) %>
+        &nbsp;失效时间：
+        <%= f.text_field(:expire_time, :size => 8, :onfocus => "new Calendar().show(this);" ) %>
+      </td>
+    </tr>
+    <tr class="noborder">
+      <td colspan="2" align="left" class="td27">
+        创建时间：
+        <%= f.text_field(:entity_created_at, :size => 8, :onfocus => "new Calendar().show(this);" ) %>
+        &nbsp;优先级：
+        <%= f.select :order_id, 0.upto(36).map{|i|[i,i]} %>
+      </td>
+    </tr>
+    <tr class="noborder">
+      <td colspan="2" align="left" class="td27">
+        样式：
+        <%= f.radio_button :text_style_id, 0 %>无样式
+        <%= f.radio_button :text_style_id, 1 %>加粗
+        <%= f.radio_button :text_style_id, 2 %>加红
+        <%= f.radio_button :text_style_id, 3 %>加粗加红
+      </td>
+    </tr>
+    <tr class="noborder">
+      <td colspan="2" align="left" class="td27">选择图片：</td>
+    </tr>
+    <tr class="noborder">
+      <td align="left" class="vtop rowform">
+        <input type="file" name="publish_upload[uploaded_data]" id="publish_upload_uploaded_data" size="50" />
+      </td>
+    </tr>
+    <tr class="noborder">
+      <td colspan="2" align="left" class="td27">
+        产品推广&nbsp;原价：
+        <%= f.text_field :price_ago, :size => 15 %>
+        &nbsp;现价：
+        <%= f.text_field :price_now, :size => 15 %>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  <table class="tb tb2 nobdb" id="publish_content">
+    <tbody>
+      <tr>
+        <td align="left" class="td27">描述:</td>
+      </tr>
+      <tr>
+        <td align="left" class="td27">
+          <span class="vtop">
+            <%= f.text_area :description, :rows => 3, :cols => 80, :class => "tarea MB_focusable" %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td align="left" class="td27">
+          专家类型:
+          <%= f.text_field :person_style, :size => 17 %>
+          &nbsp;
+          编辑名称:
+          <%= f.text_field :editor_name, :size => 17 %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="width:200px;float:left;">关键词</div>
+          <div>url</div>
+        </td>
+      </tr>
+      <% @pcks.each_with_index do |pck,i| %>
+        <tr name="publish_content_keyword">
+          <td>
+            <input type="hidden" size="20" name="publish_content_keyword[<%= i %>][id]" id="publish_content_keyword_<%= i %>_id" value="<%= pck.id %>" />
+            <div style="width:200px;float:left;"><input type="text" size="20" name="publish_content_keyword[<%= i %>][title]" id="publish_content_keyword_<%= i %>_title" value="<%= pck.title %>" /></div>
+            <div><input type="text" size="20" name="publish_content_keyword[<%= i %>][url]" id="publish_content_keyword_<%= i %>_url" value="<%= pck.url %>" /></div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= hidden_field_tag :content_id, @publish_content.id %>
+  <%= hidden_field_tag :column_id, @publish_content.publish_column_id %>
+  <%= submit_tag "编辑", :class => "btn" %>
+<% end %>

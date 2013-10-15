@@ -1,0 +1,36 @@
+<script>
+  $(document).ready(function(){
+    $(".update_button").click(function(){
+      var patrn=/^[\d,]+$/
+			
+      firms_id = $.trim($(this).siblings(".firms_id").val());
+      promoted_id = $(this).siblings(".promoted_id").val();
+      if (firms_id.length != 0) {
+        if (!patrn.exec(firms_id)) {
+          $(this).siblings(".point").text("只能输入数字和小写逗号");
+          return false;
+        }
+      }
+      $(this).attr("disabled","disabled");
+      var btn = $(this);
+      $.post("/promoted_firms/update",{id : promoted_id , firm_id : firms_id},
+      function(data){
+        btn.siblings(".point").text("修改成功");
+        btn.removeAttr("disabled");
+      },"json");
+    });
+  });
+</script>
+<ul>
+  <% @promoted.each do |promoted| %>
+    <li>
+      <%= promoted_firm_order(promoted)%>
+      <input type="text" id="" class="firms_id" value="<%=promoted.firms_id.join(',') if !promoted.firms_id.nil?%>"/>
+      <input type="button" class="update_button" value="修改"/>
+      <input type="hidden" class="promoted_id" value="<%=promoted.id%>"/>
+      <em class="point"  style="color:red;"></em>
+      <%= DecoFirm.find(:all, :conditions => ["id in (?)",promoted.firms_id]).map(&:name_abbr).join(",") %>
+    </li>
+  <% end %>
+  <li><em style="color:red;">提示：多个公司请用小写逗号隔开</em></li>
+</ul>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/81/51hejia/repos/api/release/app/views/demo
+END
+_analytics.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/app/views/demo/_analytics.rhtml
+END
+view.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/views/demo/view.rhtml
+END
+test.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/app/views/demo/test.rhtml
+END

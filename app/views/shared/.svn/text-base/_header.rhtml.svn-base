@@ -1,0 +1,50 @@
+<link href="http://js.51hejia.com/css/2010/header.css?1232" rel="stylesheet" type="text/css" />
+<!--small_header-->
+<script type="text/javascript">
+  function sf(){document.f.q.focus();}
+  window.gbar={};(function(){var g=window.gbar,j,k;function l(a){var d=window.encodeURIComponent&&(document.forms[0].q||"").value;if(d)a.href=a.href.replace(/([?&])q=[^&]*|$/,function(h,f){return(f||"&")+"q="+encodeURIComponent(d)})}g.qs=l;function m(a,d,h,f,b,c){var i=document.getElementById(a),e=i.style;if(i){e.left=f?"auto":d+"px";e.right=f?d+"px":"auto";e.top=h+"px";e.visibility=k?"hidden":"visible";if(b){e.width=b+"px";e.height=c+"px"}else{m(j,d,h,f,i.offsetWidth,i.offsetHeight);k=k?"":a}}}g.tg=function(a){a=a||window.event;var d=0,h,f=window.navExtra,b,c=a.target||a.srcElement;a.cancelBubble=true;if(c.className!="gb3")c=c.parentNode;if(!j){b=document.createElement(Array.every||window.createPopup?"iframe":"div");b.frameBorder="0";b.src="#";j=c.parentNode.appendChild(b).id="gbs";document.onclick=g.close}a=c.getAttribute("aria-owns")||"gbi";b=c.offsetWidth;var i=c.offsetTop>20?46:24,e;do d+=c.offsetLeft||-150;while(c=c.offsetParent);if(a=="gbi")for(b=document.getElementById(a);f&&(h=f.pop());)b.insertBefore(h,b.firstChild).className="gb2";else e=d=(document.documentElement.clientWidth||document.body.clientWidth)-d-b;k!=a&&g.close();m(a,d,i,e)};g.close=function(){k&&m(k,0,0)}})();
+
+</script>
+<!--small_header_code-->
+<div class="header_n">
+  <div class="header_menu f_l">
+  <script type="text/javascript" src="http://js.51hejia.com/js/chrome.js"></script>
+    <ul>
+      <li class="header_sy"><a href="http://www.51hejia.com/" target="_blank">和家首页</a></li>
+      <li><a href="http://z.51hejia.com/" target="_blank" class="f_l"><strong>装修点评</strong></a><div class="header_city"><span id="city"> <a rel="dropmenu0">[城市<small>&#9660;</small>]</a>
+          <div id="dropmenu0" class="header_citydiv"><a href="http://z.shanghai.51hejia.com/" target="_blank" >上海</a><a href="http://z.suzhou.51hejia.com/" target="_blank" >苏州</a><a href="http://z.wuxi.51hejia.com/" target="_blank" >无锡</a><a href="http://z.ningbo.51hejia.com/" target="_blank" >宁波</a><a href="http://z.hangzhou.51hejia.com/" target="_blank" >杭州</a></div>
+          <script type="text/javascript">
+cssdropdown.startchrome("city")
+</script>
+          </span></div></li>
+      <li><a href="http://b.51hejia.com/" target="_blank"><strong>品牌产品</strong></a></li>
+      <li><a href="http://www.51hejia.com/jushang/" target="_blank"><strong>家居</strong></a></li>
+      <li><a href="http://tuku.51hejia.com/" target="_blank"><strong>图片</strong></a></li>
+      <li><a href="http://wb.51hejia.com/" target="_blank"><strong>问答</strong></a></li>
+    </ul>
+  </div>
+  <div class="header_login f_r">
+    <ul>
+      <li><a href="http://z.shanghai.51hejia.com/zhuangxiugongsi" target="_blank">网友评论千家装修公司</a></li>
+      <li>
+        <script type="text/javascript" src="http://js.51hejia.com/js/login_area.js?20100203"></script>
+        <iframe name="hideiframe_loginout" width="0" height="0" id="hideiframe_loginout" style="display: none;"></iframe>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header_nav clear margin10">
+<a href="http://d.51hejia.com" target="_blank">装修资讯</a>|<a href="http://youqituliao.51hejia.com" target="_blank">油漆涂料</a>|<a href="http://diban.51hejia.com" target="_blank">地板</a>|<a href="http://weiyu.51hejia.com" target="_blank">卫浴洁具</a>|<a href="http://chugui.51hejia.com" target="_blank">橱柜</a>|<a href="http://chufangdianqi.51hejia.com" target="_blank">厨房电器</a>|<a href="http://www.51hejia.com/cizhuan/" target="_blank">瓷砖</a>|<a href="http://www.51hejia.com/jiajuchanpin/" target="_blank">家具</a>|<a href="http://www.51hejia.com/zhaomingpindao/" target="_blank">灯具</a>|<a href="http://www.51hejia.com/buyi/" target="_blank">布艺</a>|<a href="http://www.51hejia.com/jiadian/" target="_blank">家电</a>|<a href="http://www.51hejia.com/kongtiao/" target="_blank">中央空调</a>|<a href="http://www.51hejia.com/cainuan/" target="_blank">采暖</a>|<a href="http://www.51hejia.com/shuichuli/" target="_blank">水处理</a>|<a href="http://www.51hejia.com/xinwen/" target="_blank">行业新闻</a>|<a href="http://bbs.51hejia.com/" target="_blank">俱乐部</a>|<a href="http://www.51hejia.com/zq/" target="_blank">专区</a></div>
+<!--end_small_header_code-->
+<div id="Login" style="display:none;border:0"> <a href="#guanbi" title="关闭" class="Divopop-nonenei"><img src="http://www.51hejia.com/css/newback/images/x.png" alt="关闭" /></a>
+  <iframe id="dengluiframe" style="width:222px;height:224px;border:0;overflow:hidden" frameborder="0" scrolling="No"></iframe>
+  <script type="text/javascript">
+function denglula()
+{
+var time = Math.random();
+document.getElementById('dengluiframe').src='http://member.51hejia.com/member/userlogin?forward=' + location.href;
+}
+</script>
+  <script type="text/javascript" src="http://js.51hejia.com/js/2010/login_n.js"></script>
+</div>
+<!--end_small_header-->

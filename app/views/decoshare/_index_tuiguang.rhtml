@@ -1,0 +1,9 @@
+<div class="header_list clearfix" >
+      <div style='float: left;COLOR:red'>今日推荐：</div>
+      <ul id="cont_m_5">
+      	<% parse_xml(INDEX_PROMOTED[TAGURLS[@index_city_id]]['导航下文字链'], ["title", "url", "image-url"], 8).each do |p| -%>
+      		<li ><%= link_to p['title'], p["url"], :title => p["title"], :target => "_blank" -%></li>
+      	<% end -%>
+     </ul>
+      <script type="text/javascript" src="http://js.51hejia.com/js/txt_auto.js"></script>
+</div>

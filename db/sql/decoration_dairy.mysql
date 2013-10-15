@@ -1,0 +1,131 @@
+
+CREATE TABLE decoration_diaries(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+  title  VARCHAR(255) NOT NULL COMMENT '装修日记标题',
+  content TEXT COMMENT '日记内容 包括图片和文字，自行设置排版',
+  room INTEGER COMMENT '户型',
+  price INTEGER COMMENT '价位',
+  model INTEGER COMMENT '装修方式',
+  style INTEGER COMMENT '装修风格',                
+  status INTEGER DEFAULT 0 COMMENT '日记状态值 0 未审核的; 1 审核过; 2 草稿箱; -1 删除状态',                    
+  created_at DATETIME COMMENT '创建时间',
+  updated_at DATETIME COMMENT '修改时间',
+  user_id INTEGER COMMENT 'BBS账号' REFERENCES HEJIA_USER_BBS(BBSUSERID) ON DELETE SET NULL,
+  deco_firm_id INTEGER COMMENT '公司编号' REFERENCES deco_firms(id) ON DELETE SET NULL,
+  pv INTEGER DEFAULT 0 COMMENT '浏览量; 默认值为 0',
+  is_good TINYINT DEFAULT 0 COMMENT '是否精华 1为精华 0为非精华',
+  design_score INTEGER COMMENT '设计分',
+  construction_score INTEGER COMMENT '施工分',
+  service_score INTEGER COMMENT '服务分',
+  remarks_count INTEGER DEFAULT 0 COMMENT '评论数量',
+  useful_num INTEGER DEFAULT 0 COMMENT '有用',
+  useless_num INTEGER DEFAULT 0 COMMENT '无用',
+  is_verified TINYINT DEFAULT 0 COMMENT '是否验证'
+) ENGINE InnoDB CHARACTER SET utf8;
+CREATE INDEX decoration_diaries_user_id_index ON decoration_diaries(user_id);
+CREATE INDEX decoration_diaries_firm_id_index ON decoration_diaries(deco_firm_id);
+
+
+
+CREATE TABLE pictures(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+    image_url VARCHAR(255) COMMENT '图片地址',
+    item_id INTEGER COMMENT '日记编号;外键' REFERENCES HEJIA_USER_BBS(id) ON DELETE CASCADE,
+    created_at DATETIME COMMENT '创建时间' ,
+    updated_at DATETIME COMMENT '修改时间',
+    space INTEGER COMMENT '局部空间',
+    is_master TINYINT DEFAULT 0 COMMENT '是否主图，默认非主图',
+    image_id VARCHAR(255) COMMENT '生成图片的对象ID',
+    image_md5 VARCHAR(255) COMMENT '生成图片的MD5链接',
+    image_ext VARCHAR(10) COMMENT '图片后缀',
+    item_type VARCHAR(50) COMMENT '模型对象名称',
+    file_name VARCHAR(150) COMMENT '图片原名称'
+)ENGINE InnoDB CHARACTER SET utf8;
+
+
+
+
+CREATE TABLE remarks(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+    user_id INTEGER COMMENT 'BBS账号' REFERENCES HEJIA_USER_BBS(BBSUSERID) ON DELETE SET NULL,
+    ip VARCHAR(255) COMMENT '留言者IP地址',
+    content TEXT COMMENT '回复内容',
+    created_at DATETIME COMMENT '创建时间',
+    updated_at DATETIME COMMENT '修改时间',
+    resource_type VARCHAR(255) COMMENT '对象类型',
+    resource_id INTEGER COMMENT '对象编号',
+    parent_id INTEGER COMMENT '父键编号',
+    other_id INTEGER COMMENT '存贮其他关联对象主键：如日记主键',
+    is_essence tinyint(4) DEFAULT 0 COMMENT '是否精华 1 > 精华 ',
+    is_replied TINYINT(1) DEFAULT 0 COMMENT '是否已经评论过 1 > 被评论过'
+)ENGINE InnoDB CHARACTER SET utf8;
+CREATE INDEX remarks_user_id_index ON remarks(user_id);
+CREATE INDEX remarks_parent_id index ON remarks(parent_id);
+
+
+ALTER TABLE deco_firms ADD COLUMN remarks_count INTEGER DEFAULT 0 COMMENT '评论+回复数量';
+ALTER TABLE deco_firms ADD COLUMN remark_only_count INTEGER DEFAULT 0 COMMENT '评论数量';
+ALTER TABLE deco_events ADD COLUMN remarks_count INTEGER DEFAULT 0 COMMENT '评论回复数';
+
+
+ALTER TABLE deco_firms modify is_cooperation tinyint(4) default 0;
+ALTER TABLE remarks ADD COLUMN is_replied tinyint(1) default 0;
+
+
+CREATE TABLE applicants(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+    activity_name VARCHAR(50) COMMENT '活动名称',
+		gender VARCHAR(2) COMMENT '性别',
+    username VARCHAR(50) COMMENT '报名者名字',
+    tel VARCHAR(30) COMMENT '电话',
+		deco_firm_id INTEGER COMMENT '公司ID',
+		sn VARCHAR(255) COMMENT '备注',
+    created_at DATETIME COMMENT '创建时间',
+    updated_at DATETIME COMMENT '修改时间'
+)ENGINE InnoDB CHARACTER SET utf8;
+
+ALTER TABLE deco_firms ADD COLUMN priority INTEGER COMMENT '优先级';
+
+
+CREATE TABLE deco_firm_branches(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+		name VARCHAR(30) COMMENT '名字',
+    service_area TEXT COMMENT '服务区域',
+		tel VARCHAR(30) COMMENT '电话',
+    address VARCHAR(100) COMMENT '地址',
+    deco_firm_id INTEGER COMMENT '母公司ID',
+    created_at DATETIME COMMENT '创建时间',
+    updated_at DATETIME COMMENT '修改时间'
+)ENGINE InnoDB CHARACTER SET utf8;
+
+ALTER TABLE HEJIA_USER_BBS ADD COLUMN mobile_verified tinyint(1) DEFAULT 0;
+
+ALTER TABLE deco_firms ADD COLUMN praise DECIMAL DEFAULT 0;
+ALTER TABLE deco_firms ADD COLUMN design_praise DECIMAL DEFAULT 0;
+ALTER TABLE deco_firms ADD COLUMN construction_praise DECIMAL DEFAULT 0;
+ALTER TABLE deco_firms ADD COLUMN service_praise DECIMAL DEFAULT 0;
+
+ALTER TABLE decoration_diaries ADD COLUMN praise tinyint(4);
+ALTER TABLE decoration_diaries ADD COLUMN design_praise tinyint(4);
+ALTER TABLE decoration_diaries ADD COLUMN construction_praise tinyint(4);
+ALTER TABLE decoration_diaries ADD COLUMN service_praise tinyint(4);
+
+ALTER TABLE remarks ADD COLUMN praise tinyint(4) DEFAULT 0;
+ALTER TABLE remarks ADD COLUMN design_praise tinyint(4) DEFAULT 0;
+ALTER TABLE remarks ADD COLUMN construction_praise tinyint(4) DEFAULT 0;
+ALTER TABLE remarks ADD COLUMN service_praise tinyint(4) DEFAULT 0;
+
+ALTER TABLE deco_firms MODIFY praise DECIMAL(10,1) default 0;
+ALTER TABLE deco_firms MODIFY design_praise DECIMAL(10,1) default 0;
+ALTER TABLE deco_firms MODIFY construction_praise DECIMAL(10,1) default 0;
+ALTER TABLE deco_firms MODIFY service_praise DECIMAL(10,1) default 0;
+
+ALTER TABLE decoration_diaries ADD COLUMN deal_price int DEFAULT 0;
+
+CREATE TABLE decoration_dairy_post(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+		decoration_dairy_id INTEGER,
+    body TEXT,
+    created_at DATETIME COMMENT '创建时间',
+    updated_at DATETIME COMMENT '修改时间'
+)ENGINE InnoDB CHARACTER SET utf8;

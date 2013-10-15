@@ -1,0 +1,92 @@
+		<div class="principal">
+			<div class="ininfos">
+				<div class="toppic">
+				<script type="text/javascript">
+					var pic_width=360; //图片宽度
+					var pic_height=193; //图片高度
+					var button_pos=4; //按扭位置 1左 2右 3上 4下
+					var stop_time=3000; //图片停留时间(1000为1秒钟)
+					var show_text=0; //是否显示文字标签 1显示 0不显示
+					var txtcolor="000000"; //文字色
+					var bgcolor="DDDDDD"; //背景色
+					var imag=new Array();
+					var link=new Array();
+					var text=new Array();	
+					<% parse_xml(54004, ["title", "url", "image-url"], 6).each_with_index do |p, index| -%>
+					imag[<%= index + 1 -%>]="<%= p['image-url'] %>";
+					link[<%= index + 1 -%>]="<%= p['url'] %>";
+					text[<%= index + 1 -%>]="<%= p['title'] %>";
+					<% end %>
+
+					//可编辑内容结束
+					var swf_height=show_text==1?pic_height+20:pic_height;
+					var pics="", links="", texts="";
+					for(var i=1; i<imag.length; i++){
+						pics=pics+("|"+imag[i]);
+						links=links+("|"+link[i]);
+						texts=texts+("|"+text[i]);
+					}
+					pics=pics.substring(1);
+					links=links.substring(1);
+					texts=texts.substring(1);
+					document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cabversion=6,0,0,0" width="'+ pic_width +'" height="'+ swf_height +'">');
+					document.write('<param name="movie" value="http://www.51hejia.com/images/jiadian/focus.swf">');
+					document.write('<param name="quality" value="high"><param name="wmode" value="opaque">');
+					document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&pic_width='+pic_width+'&pic_height='+pic_height+'&show_text='+show_text+'&txtcolor='+txtcolor+'&bgcolor='+bgcolor+'&button_pos='+button_pos+'&stop_time='+stop_time+'">');
+					document.write('<embed src="http://www.51hejia.com/images/jiadian/focus.swf" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&pic_width='+pic_width+'&pic_height='+pic_height+'&show_text='+show_text+'&txtcolor='+txtcolor+'&bgcolor='+bgcolor+'&button_pos='+button_pos+'&stop_time='+stop_time+'" quality="high" width="'+ pic_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+					document.write('</object>');
+					</script>
+				</div>
+				<div class="hotinfo">
+					<div class="hotinfotitle">装修公司最新促销</div>
+					<ul>
+						<% parse_xml(54005, ["title", "url"], 8).each do |p| -%>
+						<li><%= link_to p["title"], p["url"], :title => p["title"], :target => "_blank" -%></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="newaction"><strong>最新报名活动</strong></div>
+			<ul class="actionlist">
+			 	<% @events.each do |event| %>
+				<li>
+					<div class="actionname"><%= link_to image_tag(event.banner.url(:thumb), :alt => event.title, :vspace => 10), event_path(event), :title => event.title %></div>
+					<div class="actiondescription"><strong><%= link_to event.title, event_path(event), :title => event.title %></strong>
+						<div>活动时间：<%=h event.starts_at %>至<%= event.ends_at %></div>
+						<div>活动地点：<%=h event.address %></div>
+						<div>活动简介：<%=h truncate(strip_tags(event.summary),60) %></div>
+					</div>
+			 		<div class="actiondate">
+						<span><%= countdown_string(event.countdown) %></span> <span>已报名 <em><%= event.registers_count || "0" %></em> 人</span>
+						<%= link_to "我要报名", event_path(event), :title => "我要报名" %>
+					</div>
+			 	</li>
+				<% end %>
+			 </ul>
+			 <div class="page"><%= will_paginate @events %></div>
+		</div>
+		<div class="side">
+		<div class="compnum">上海 <strong><%= firms_count %></strong> 家装修公司</div>
+		<div class="compqsearch">
+			<%= render :partial => "share/deco_filter" %>
+		</div>
+    <div class="h6">设计师案例榜</div>
+			<ul class="hotrank" style=" height:242px;">
+				<li id="today" class="s">
+					<ul class="t">
+						<% parse_xml(54006, ["title", "url"], 10).each do |p| -%>
+						<li><%= link_to p["title"], p["url"], :title => p["title"], :target => "_blank" -%></li>
+						<% end %>
+					</ul>
+				</li>
+			</ul>
+			<div class="h6">往期活动回顾</div>
+			<div class="more"><a href="/events">更多>></a></div>
+			<ul class="oldaction">
+				<% parse_xml(54007, ["title", "url", "image-url"], 4).each do |p| -%>
+				<li>
+					<%= link_to "#{image_tag(p['image-url'], :alt => p['title'])}#{p['title']}", p["url"], :title => p["title"], :target => "_blank" -%>
+				</li>
+				<% end %>
+			</ul>
+		</div>

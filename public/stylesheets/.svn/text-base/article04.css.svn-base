@@ -1,0 +1,740 @@
+
+/*标签样式*/
+html{ overflow-x:hidden;}
+*{margin:0 auto;padding:0;}
+body{margin:0; font-family:"宋体"; font-size:12px; line-height:20px;}
+html,body { height:100%; font-family:"宋体";} 
+a{text-decoration:none;}
+a:hover {color:#f60; text-decoration:underline}
+img{ border:0px;} 
+hr{ height:1px; border:0px solid #ccc;}
+hr.dotline_5{ border:0px dotted #ccc;}
+
+/*浮动样式*/
+.float_left{ float:left;}
+
+/*对联广告*/
+#couplet_right,#couplet_left,#couplet_right_2{ position:absolute; top:-400px;}
+
+/*链接样式*/
+.link_14{ font-size:14px; line-height:26px;}
+.link_action{ color:#FF6600; text-decoration:none; border:1px solid #ccc; padding:2px 5px 0;}
+	.link_action:visited{ color:#FF6600; text-decoration:none;}
+	.link_action:hover{ color:#0033CC; text-decoration:none;}
+.link_red{ color:#F30; text-decoration:none;}
+	.link_red:visited{ color:#F30; text-decoration:none;}
+	.link_red:hover{ color:#F30; text-decoration:underline;}
+.link_map{ color:#03c; text-decoration:none;}
+	.link_map:visited{ color:#03c; text-decoration:none;}
+	.link_map:hover{ color:#F30; text-decoration:underline;}
+.link_blue{ color:#22a; text-decoration:none;}
+	.link_blue:visited{ color:#22a; text-decoration:none;}
+	.link_blue:hover{ color:#f30; text-decoration:underline;}
+.link_song{ font-family:"宋体"}
+
+/*注册快速导航*/
+.reg_nav{ text-align:center; padding:20px 0;}
+.reg_nav a{ background:url(http://www.iresearch.cn/common/images/reg_nav_bg.gif) no-repeat center center; line-height:26px; height:26px; width:120px; display:inline-block; color:#fff; font-weight:bold;}	
+	.reg_nav a:visited{ color:#fff; text-decoration:none;}
+	.reg_nav a:hover{ color:#fff; text-decoration:underline;}
+	
+/*文字样子*/
+.small_gray{ font-size:12px; color:#333;}
+.small_dot{ font-size:12px;}
+.orange{ color:#F30}
+.red{ color:#F30}
+.gray{ color:#666;}
+.orange_sign{ color:#F30; font-family:"宋体";}
+.sign{ font-family:"宋体";}
+
+/*文本框*/
+.flatinput{ border:1px solid #ccc; height:14px; line-height:14px; padding:2px;}
+
+/*广告位*/
+.ad_560_60{ padding:8px 0 6px; float:right;}
+.ad_780_80,.ad_468_80,.ad_300_80{ clear:both; margin-top:6px; height:80px;}
+.ad_220_220{ height:220px; margin-bottom:1px;}
+.ad_780_54{ clear:both; margin-top:6px; height:54px;}
+.ad_780_60,.ad_590_60{ clear:both; margin-top:6px; height:60px;}
+.ad_100_30{ clear:both; margin-top:6px; height:30px;}
+.ad_294_194{ clear:both; margin-top:6px; height:194px;}
+.ad_125_45{ clear:both; margin-top:6px; height:45px;}
+.ad_468_200{ clear:both; margin-top:6px; height:45px;}
+.ad_298_80{ width:298px; height:80px;}
+.ad_470_80{ width:470px; height:80px;}
+
+/*主容器*/
+#artmain,#main_2,#main_3{ width:780px; background:#fff; float:left;}
+.main_left{ float:left;}
+#main_left{ width:0; float:left;}
+.main_right{ float:right;}
+
+/*头部导航*/
+#topnav{ width:780px; background:#F4F4F4; border:0px solid #ccc; border-top:0px;}
+#login{ float:left; padding:3px 0;}
+#search{ float:right; padding:3px 0;}
+
+/*LOGO*/
+#logo{ padding:12px 0 10px 0; float:left;}
+#logo_2{ float:left;}
+	#logo_2 img{ margin:8px 5px 3px 0; }
+
+/*主导航*/
+#first_nav{ clear:both; width:780px; height:31px; background:url(http://www.iresearch.cn/common/images/first_nav_bg.gif) no-repeat left bottom; line-height:100%;}
+	#first_nav table{ height:31px; width:780px; border-collapse:collapse; border:0px; padding:0px; }
+	#first_nav td{ height:22px; width:78px; text-align:center; border:0px; padding:0px; padding-top:8px;}
+		#first_nav td a{color:#000;}
+		#first_nav td a:visited{color:#000;}
+		#first_nav td.choose{ background:url(http://www.iresearch.cn/common/images/first_nav_choose_bg.gif) no-repeat left bottom; font-weight:bold;}
+			#first_nav td.choose a{ color:#000;}
+#second_nav{ width:778px; height:28px; border:1px solid #ccc; border-top:0px; background:#EBF7B1; line-height:100%;}
+	#second_nav .hide{ display:none;}
+	#second_nav div{ margin:0px 10px; padding-top:8px;}
+		#second_nav div a{ padding-bottom:4px;}
+			#second_nav div a:visited{ color:#03c;}
+			#second_nav div a.choose{ background:url(http://www.iresearch.cn/common/images/red_arrow.gif) no-repeat center bottom; color:#f30;}
+			#second_nav div a.choose:visited{ color:#f30;}
+	#second_nav_1,#second_nav_9,#second_nav_11,#second_nav_13{ text-align:right;}
+	#second_nav_79{ text-align:center;}
+	#second_nav_8{ padding-left:380px;}
+	#second_nav_12{ padding-left:180px;}
+
+/*主导航样式二*/
+#lf_nav{ width:780px;}
+	#lf_nav table{ float:left;width:600px; margin-top:10px; border-collapse:collapse; border:0px;}
+	#lf_nav td{ border:0px; vertical-align:middle; text-align:right;}
+
+/*行业标识*/
+#vocation{ width:778px; height:54px; border:1px solid #ccc; border-top:0px;}
+
+/*行业公司人物*/
+.people_photo{ width:135px; height:180px; padding:0px 10px 10px 0;}
+.people_info{ width:100%; vertical-align:middle;}
+#people_intro{ padding:0px 0 20px; overflow:hidden; height:100px;}
+.div_extend_ctrl{ text-align:right; line-height:24px; padding:10px 20px;}
+#team_list{ overflow:hidden; height:300px;}
+	#team_list img{ padding-bottom:5px;}
+
+
+/*内容版块*/
+.mod_left_549,.mod_left_500,.mod_left_545{ clear:left; float:left; margin-top:6px;}
+.mod_left_549{ width:545px; padding:1px; border:1px solid #CCE70B; background:#F9FCFE;} /*内页模块*/
+.mod_left_470{ margin-top:6px; width:470px;}
+.mod_left_298{ margin-top:6px; width:298px; background:#FAFFEF;}
+.mod_left_218{ margin-top:6px; width:218px; background:#FAFFEF;}
+.mod_left_500{ width:500px;}
+.mod_left_545{ width:545px;}
+.mod_left_690{ margin-top:6px; width:690px; background:#FFF;}
+
+.mod_right_224,.mod_right_224_2,.mod_right_268{ clear:right; float:right; margin-top:6px; background:#FAFFEF;}
+.mod_right_224{ width:220px; padding:1px; border:1px solid #CCE70B; display:table;} /*内页模块*/
+.mod_right_224_2{ width:224px; background:#FFF;}
+.mod_right_268{ width:268px;}
+.mod_right_298{ margin-top:6px; width:298px; background:#FAFFEF;}
+.mod_right_470{ margin-top:6px; width:470px; background:#FFF;}
+.mod_right_550{ margin-top:6px; width:550px; background:#FFF;}
+
+.mod_780{ margin-top:6px; width:780px;}
+.mod_350{ width:350px; position:absolute; background:#FAFFEF;}
+
+	/*业界访谈*/
+	.table_interview{ margin:0px;}
+	.table_interview td{ padding:2px; line-height:20px;}
+	
+	/*头条*/
+	.topline,.topline_last,.topline_2,.topline_last_2{ margin:5px 3px; padding-bottom:8px; line-height:20px; border-bottom:1px dotted #CCE70B;}
+	.topline_last{ border-bottom:0px;}
+		.topline .title,.topline_last .title{ text-align:center; font-size:16px; line-height:30px; font-weight:bold; color:red}
+	.topline_2{ margin:5px 0; border-bottom:1px dotted #ccc;}
+	.topline_last_2{ border-bottom:0px;}
+		.topline_2 .topimage,.topline_last_2 .topimage{ float:left; margin:0px 10px 10px 0;}
+		.topline_2 .title,.topline_last_2 .title{ text-align:left; font-size:14px; line-height:30px; font-weight:bold; }
+		.topline_2 .rpt_cover{ float:left; margin:0px 10px 5px 0; width:100px;}
+		.report_info{ clear:both; padding-top:5px; text-align:center;}
+		.report_link{ clear:both; margin-top:10px; height:26px; background:url(http://www.iresearch.cn/common/images/report_link_bg.gif) no-repeat left bottom;}
+		.report_link ul{ margin:0px; padding:0px 0 0 1px; height:26px; list-style:none outside none; }
+		.report_link li{ float:left; padding:8px 10px 0 10px; height:18px; background:url(http://www.iresearch.cn/common/images/report_link_right_bg.gif) no-repeat right bottom; cursor:pointer;}
+		.report_link li img{ margin-right:5px;}
+		.report_link li.choose{ background:url(http://www.iresearch.cn/common/images/report_link_choose_bg.gif) no-repeat right bottom; font-weight:bold; }
+		.report_dir{ padding:0px 10px 10px; border:1px solid #ccc; border-top:0px; height:auto !important; height:500px;}
+	
+	/*列表*/
+	.list,.list_14,.list_stress_14,.list_dotline,.list_dotline_2,.list_noicon,.list_float_14,.list_float,.list_float_2{ margin:0px; padding:0px; list-style:none outside none;}
+	.list{ line-height:22px; }
+		.list li{ padding-left:12px; background:url(http://www.iresearch.cn/common/images/list_icon2.gif) no-repeat -5px 1px;}
+	.list_14,.list_stress_14{ line-height:26px; font-size:14px;}
+		.list_14 li{ padding-left:12px; background:url(http://www.iresearch.cn/common/images/list_icon2.gif) no-repeat -5px 4px;}
+		.list_stress_14 li{ padding-left:12px; background:url(http://www.iresearch.cn/common/images/list_icon2.gif) no-repeat -5px 4px;}
+	.list_float_14{ float:left; margin:5px 5px 5px 2px; line-height:24px; font-size:14px;}
+		.list_float_14 li{ padding-left:20px; background:url(http://www.iresearch.cn/common/images/list_icon2.gif) no-repeat left top;}
+	.list_float,.list_float_2{list-style:outside none none; margin:0px; clear:both;}
+		.list_float li,.list_float_2 li{ float:left; width:30%; padding-left:12px; background:url(http://www.iresearch.cn/common/images/list_icon2.gif) no-repeat -5px 2px;}
+		.list_float_2 li{ width:45%;}
+	.list_dotline,.list_dotline_2{ margin:5px; line-height:22px; }
+		.list_dotline li,.list_dotline_2 li{ padding-left:17px; background:url(http://www.iresearch.cn/common/images/list_icon2.gif) no-repeat left top; border-bottom:1px dotted #ccc;}
+		.list_dotline_2 li{border-bottom:1px dotted #CCE70B;}
+	.list_noicon{ margin:5px;}
+		.list_noicon li{ padding-left:3px}
+		
+	/*内容栏目标题*/
+	.caption_1,.caption_2{ background:url(http://www.iresearch.cn/common/images/caption_bg.gif) repeat-x left bottom; height:24px; line-height:24px; padding-left:5px; font-weight:bold;}
+	.caption_2{ background:url(http://www.iresearch.cn/common/images/caption_bg2.gif) repeat-x left bottom; padding-top:2px;}
+
+	/*此样式在column.css重定义-------------开始-------------*/
+	.caption_left_470{ background:url(http://www.iresearch.cn/common/images/caption_left_470.gif) no-repeat left bottom; padding-left:22px; height:26px; line-height:26px; padding-top:0px; font-weight:bold;}
+		.rss_icon{ margin-top:4px;}
+		.caption_left_470 .rss_icon{ margin-top:8px;}
+		.caption_left_470 .more{ color:#444;}
+			.caption_left_470 .more a{ color:#444;}
+	.caption_left_470_2{ background:url(http://www.iresearch.cn/common/images/caption_left_470.gif) no-repeat left bottom; padding-left:22px; height:26px; line-height:26px; padding-top:0px; font-weight:bold;}
+		.caption_left_470_2 .more{ color:#444;}
+			.caption_left_470_2 .more a{ color:#444;}
+	/*此样式在column.css重定义-------------结束-------------*/
+	.caption_left_500{ background:url(http://www.iresearch.cn/common/images/caption_left_500.gif) no-repeat left bottom; padding-left:22px; height:26px; font-weight:bold;}
+		.caption_left_500 .more{ margin-top:4px; color:#444;}
+			.caption_left_500 .more a{ color:#444;}
+	.caption_left_298,.caption_left_545{ background:url(http://www.iresearch.cn/common/images/caption_left_298.gif) no-repeat left bottom; padding-left:22px; padding-top:4px; height:22px; line-height:22px; font-weight:bold;}
+	.caption_left_545{ background:url(http://www.51hejia.com/images/art080605/caption_left_5454.gif) no-repeat left bottom; position:relative; }
+		.caption_left_545 .more{ margin-top:4px; color:#444;}
+			.caption_left_545 .more a{ color:#444;}
+	/*首页左侧标签切换用*/
+	.caption_left_470_3{ background:url(http://www.iresearch.cn/common/images/caption_left_470_2.gif) no-repeat right bottom; height:26px;} /* 首页今日推荐标签切换 */
+		.caption_left_470_3 ul{ margin:0px; padding:0px; height:26px; width:100%; list-style:none outside none;}
+		.caption_left_470_3 ul li{ float:left; height:26px;}
+		.caption_left_470_3 ul li span{ float:left; display:block; height:22px; line-height:22px; padding:4px 10px 0; cursor:pointer; color:#000;}
+		.caption_left_470_3 ul li.classAfter span{ background:url(http://www.iresearch.cn/common/images/caption_left_470_2_a_bg_2.gif) no-repeat right bottom;}
+		.caption_left_470_3 ul li.classBefore span{ background:url(http://www.iresearch.cn/common/images/caption_left_470_2_a_bg_3.gif) no-repeat -1px bottom;}
+		.caption_left_470_3 ul li.classCurrent{ background:url(http://www.iresearch.cn/common/images/caption_left_470_2_li_bg.gif) no-repeat left bottom;}
+		.caption_left_470_3 ul li.classCurrent span{ padding-right:10px; background:url(http://www.iresearch.cn/common/images/caption_left_470_2_a_bg.gif) no-repeat right bottom; padding-left:22px; font-weight:bold; color:#333;}
+		.caption_left_470_3 ul li.more_4{ float:right; background:none; height:22px; line-height:22px; padding:4px 10px 0;}
+	.caption_left_218{ background:url(http://www.iresearch.cn/common/images/caption_left_218.gif) no-repeat left bottom; padding-left:30px; height:22px; line-height:22px; padding-top:4px; font-weight:bold;}
+
+	.caption_right_298,.caption_right_298_2,.caption_right_298_3,.caption_right_268,.caption_right_268_2,.caption_right_470,.caption_right_550,.caption_right_224,.caption_780,.caption_350{ background:url(http://www.iresearch.cn/common/images/caption_right_298.gif) no-repeat left bottom; padding-left:22px; padding-top:4px; height:22px; line-height:22px; font-weight:bold;}
+	.caption_right_298_2{ background:url(http://www.iresearch.cn/common/images/caption_right_298_2.gif) no-repeat left bottom;}
+	.caption_right_298_3{ background:url(http://www.iresearch.cn/common/images/caption_right_298_3.gif) no-repeat left bottom;}
+	/*首页右侧标签切换用*/
+	.caption_right_298_4{ height:26px; background:url(http://www.iresearch.cn/common/images/caption_right_298_4.gif) no-repeat left bottom;}
+		.caption_right_298_4 ul{ margin:0px; padding:0px; height:26px; width:100%; list-style:none outside none;}
+		.caption_right_298_4 ul li{ float:left; height:26px;}
+		.caption_right_298_4 ul li span{ float:left; display:block; height:22px; line-height:22px; padding:4px 10px 0; cursor:pointer; color:#000;}
+		.caption_right_298_4 ul li.classAfter span{ background:url(http://www.iresearch.cn/common/images/caption_right_298_4_a_bg_2.gif) no-repeat right bottom;}
+		.caption_right_298_4 ul li.classBefore span{ background:url(http://www.iresearch.cn/common/images/caption_right_298_4_a_bg_3.gif) no-repeat -1px bottom;}
+		.caption_right_298_4 ul li.classCurrent{ background:url(http://www.iresearch.cn/common/images/caption_right_298_4_li_bg.gif) no-repeat left bottom;}
+		.caption_right_298_4 ul li.classCurrent span{ padding-right:10px; background:url(http://www.iresearch.cn/common/images/caption_right_298_4_a_bg.gif) no-repeat right bottom; padding-left:22px; font-weight:bold; color:#333;}
+		.caption_right_298_4 ul li.more_4{ float:right; background:none; height:26px; line-height:26px; padding:0 10px;}
+	
+	.caption_right_268{ background:url(http://www.iresearch.cn/common/images/caption_right_268.gif) no-repeat left bottom;}
+	.caption_right_268_2{ background:url(http://www.iresearch.cn/common/images/caption_right_268_2.gif) no-repeat left bottom;}
+		.caption_right_298 .more a,.caption_right_298_2 .more a,.caption_right_298_3 .more a,.caption_right_268 .more a,.caption_right_268_2 .more a{ color:#444;}
+		.caption_right_298 .more a:visited,.caption_right_298_2 .more a:visited,.caption_right_298_3 .more a:visited,.caption_right_268 .more a:visited,.caption_right_268_2 .more a:visited{ color:#444;}
+	.caption_right_470{ background:url(http://www.iresearch.cn/common/images/caption_right_470.gif) no-repeat left bottom;}
+		.caption_right_470 .more{ color:#444;}
+			.caption_right_470 .more a{ color:#444;}
+	.caption_right_224{ background:url(http://www.51hejia.com/images/art080605/caption_right_2244.gif) no-repeat left bottom;}
+	.caption_right_550{ background:url(http://www.iresearch.cn/common/images/caption_right_550.gif) no-repeat left bottom;}
+
+	.caption_780{ background:url(http://www.iresearch.cn/common/images/caption_780.gif) no-repeat left bottom;}
+	.caption_350{ background:url(http://www.iresearch.cn/common/images/caption_350.gif) no-repeat left bottom;}
+
+	.caption_left_name{ background:url(http://www.51hejia.com/images/art080605/caption_left_name_bg4.gif) no-repeat right top; height:22px; padding-right:65px; top:0; left:22px; position:absolute; padding-top:4px;}
+		.caption_left_name a,.caption_left_name a:visited{ color:#03c; float:left}
+	.caption_column{ text-align:right; background:url(http://www.iresearch.cn/common/images/caption_left_column_bg.gif) no-repeat left 6px; line-height:16px;}
+		.column_name{ background:url(http://www.iresearch.cn/common/images/red_arrow_down.gif) no-repeat 5px 4px #FFF; padding-left:15px;}
+			.caption_column a,.caption_column a:visited{ color:#F30;}
+		.content_right_298 .column_name{ background:url(http://www.iresearch.cn/common/images/red_arrow_down.gif) no-repeat 5px 4px #FAFFEF;}
+	.caption_column_2{ background:url(http://www.iresearch.cn/common/images/caption_left_column_bg.gif) no-repeat left 7px; line-height:16px; padding-bottom:2px;}
+		.caption_column_2 .column_name{ background:url(http://www.iresearch.cn/common/images/green_arrow_right.gif) no-repeat -6px -5px #FAFFEF; padding-left:14px; padding-right:5px;}
+			.caption_column_2 .column_name a,.caption_column_2 .column_name a:visited{ color:green;}
+	.caption_column_3{ font-weight:bold; margin-top:10px; background:none;}
+	.caption_column_4{ line-height:16px; padding-bottom:2px; margin:3px 0 2px; }
+		.caption_column_4 .column_name{ background:url(http://www.iresearch.cn/common/images/green_arrow_down.gif) no-repeat 2px 4px #FFF; padding-left:14px; padding-right:5px; font-weight:bold;}
+			.caption_column_4 .column_name a,.caption_column_4 .column_name a:visited{ color:green;}
+	
+		.more,.more_2{ float:right; display:inline; text-align:right; font-weight:normal; padding-right:10px;}
+			.more a,.more a:visited{ color:#333;}
+		.more_2{ padding-right:0px; color:#333;}
+			.more_2 a,.more_2 a:visited{ color:#333;}
+		.more_3{ font-size:12px; color:#999;}
+			.more_3 a,.more_3 a:visited{ color:#333;}
+
+	/*内容主体*/
+	.content_left_470,.content_left_500,.content_left_298,.content_left_545,.content_left_218,.content_right_298,.content_right_298_4,.content_right_268,.content_right_470,.content_right_550,.content_right_224,.content_780,.content_350{ border:1px solid #ccc; border-top:0px; padding:10px; overflow:hidden;}
+
+	.content_left_470{ width:448px; display:table;}
+		.hide{ display:none;}
+	.content_left_500{ width:478px;}
+	.content_left_298{ width:276px;}
+	.content_left_545{ width:523px; float:left; background-color:#f9f8f3;}
+	.content_left_218{ width:196px; display:table;}
+
+	.content_right_298{ width:276px; display:table;}
+	.content_right_298_4{ width:276px;}
+	.content_right_268{ width:246px; display:table;}
+	.content_right_470{ width:448px;}
+	.content_left_470_2{ width:468px; border:1px solid #ccc; border-top:0px; word-wrap:break-word;}
+	.content_right_224{ width:202px;}
+	.content_right_224 img {float:left; padding:3px;}
+	.content_right_550{ width:528px;}
+
+	.content_780{ width:758px; display:table;}
+	.content_350{ width:328px;}
+
+	/*发表评论*/
+	.comment{ text-align:center; margin:0px 0 10px}
+		.comment .caption{ text-align:left; background:url(http://www.iresearch.cn/common/images/zxpl_bg.gif) no-repeat left top; height:24px; line-height:24px; padding-left:22px; font-weight:bold;}
+		.comment textarea{ width:94%; margin:10px 0}
+		.comment_table{ border-collapse:collapse; width:100%; border:0px; background:#fff;}
+		.comment_table td{ border:1px solid #ddd; line-height:24px; vertical-align:middle;}
+		.comment_table th{ border:1px solid #ddd; line-height:24px;}
+		.comment_tr_odd td{ background:#f4f4f4;}
+		.comment_tr_even td{ background:#fff;}
+		.comment_floor{ width:8%; background:#eee;}
+		.comment_auther{ width:12%; background:#eee;}
+		.comment_content{ width:60%; background:#eee;}
+		.comment_time{ width:20%; background:#eee;}
+		
+	/*栏目底部*/
+	.bottom_right_298,.bottom_right_268{ width:276px; border:1px solid #ccc; border-top:0px; padding:3px 10px; background:#f2faca; text-align:center; font-family:"宋体";}
+	.bottom_right_268{ width:246px;}
+	
+/*访问路径*/
+#path,#path_780,#path_545_2{ background:url(http://www.iresearch.cn/common/images/path_500.gif) no-repeat left bottom; padding-left:20px; height:25px; line-height:25px; padding-top:1px; }
+#path_780{ background:url(http://www.iresearch.cn/common/images/path_780.gif) no-repeat left bottom;}
+#path_780_2{ background:url(http://www.iresearch.cn/common/images/path_780.gif) no-repeat left bottom; padding-left:20px; height:25px; line-height:25px; padding-top:6px; }
+/*#path_780_2{ background:url(http://www.iresearch.cn/common/images/path_780.gif) no-repeat left bottom;padding-top:6px;}
+
+/*#path_545{ background:url(http://www.iresearch.cn/common/images/path_545.gif) no-repeat left bottom; padding-left:20px; height:25px; line-height:25px; padding-top:1px; }*/
+#path_545{ height:24px; line-height:24px; padding-left:5px; background:url(http://www.iresearch.cn/common/images/caption_bg.gif) repeat-x left bottom;}
+#path_545_2{ background:url(http://www.51hejia.com/images/art080605/path_5454.gif) no-repeat left bottom;}
+
+/*文章样式*/
+.art_title{ font-size:18px; font-weight:bold; text-align:center; line-height:40px;}
+.topshubiao{ background-color:#E4E4E4;  text-align:center; font-size:12px; color:#FF0000; height:30px; line-height:30px;}
+.art_info{ text-align:center; line-height:20px; padding-left:70px;}
+.art_link{ text-align:center; line-height:26px;}
+.art_content,.art_content_780{ margin-top:10px; padding:0 0 20px 0; font-size:14px; line-height:24px;}
+	.art_content_780{ padding:12px;}
+.art_content p{ padding:5px 0 8px 0;}
+.art_contentImg{text-align: center;
+	width:530px;
+}
+.art_function{ text-align:center; height:20px; line-height:20px; width:523px; float:left;}
+.art_content input {text-align:center;}
+.art_content img {margin:5px auto;display:block}
+
+/*日志样式*/
+.log_title{ font-size:16px; font-weight:bold; padding-top:6px;}
+.log_info{ text-align:right; background:url(http://www.iresearch.cn/common/images/log_info_bg.gif) no-repeat left center; font-family:"宋体";}
+.log_content{ font-size:14px; line-height:24px; word-wrap:break-word; word-break:break-all; overflow-x:hidden;}
+.log_link{ text-align:right; font-family:"宋体"; margin-bottom:6px;}
+	.log_link_icon{ margin-right:5px; margin-bottom:1px;}	
+.log_photo{ float:left; margin-right:10px;}
+	
+	
+/*48小时点击排行*/
+#order_48 { margin:0px;}
+#order_48 td{ vertical-align:top;}
+#order_48 td img{ margin-top:5px;}
+
+/*表格样式*/
+/*会员注册*/
+.regtable{ width:100%; border:0px; border-collapse:collapse;}
+.regtable td{ line-height:30px; height:30px; vertical-align:middle;}
+.regtable td td{ border-bottom:0px}
+.regtable td.td_title{ width:20%; text-align:right; background:#F4F4F4; vertical-align:top; border-bottom:1px solid #fff;}
+.regtable td.td_input{ width:25%; text-align:left; padding-left:6px;}
+.regtable td.td_info{ width:55%; text-align:left;}
+.regtable td.td_last{ border-bottom:1px solid #bbb;}
+.regtable td.td_btn{ text-align:center; border-bottom:0px; border-top:1px solid #bbb;}
+.info_error{ height:26px; line-height:26px; background:#FFE2CE url(http://www.iresearch.cn/common/images/info_error.gif) no-repeat 5px 7px; padding-left:20px; color:#F30; border:1px solid #FF6600;}
+.info_right{ height:26px; line-height:26px; background:url(http://www.iresearch.cn/common/images/info_right.gif) no-repeat left 4px; padding-left:22px; color:#999;}
+.info_choose{ height:26px; line-height:26px; background:#CEE2FF url(http://www.iresearch.cn/common/images/info_choose.gif) no-repeat 5px 7px; padding-left:20px; border:1px solid #0066FF; color:#0066FF;}
+.info_wait{ height:26px; line-height:26px; background:url(http://www.iresearch.cn/common/images/info_wait.gif) no-repeat left 5px; padding-left:20px;}
+
+.std_table{ width:100%; border:0px; border-collapse:collapse;}
+.std_table td,.std_table th{ border:1px solid #ccc; line-height:24px;}
+.std_table th{ font-weight:bold; text-align:center; background:#f4f4f4;}
+.std_table td.lable_td{ text-align:right;}
+.std_table td.input_td{ text-align:left;}
+.std_table td.submit_td{ text-align:center;}
+.std_table td.gray_td{ background:#f4f4f4;}
+.std_table table.noborder{ border:0px; border-collapse:collapse;}
+.std_table table.noborder td{ border:0px;}
+
+/*会员权益*/
+.rightstable{ width:100%; border:0px; border-collapse:collapse; background:#f0f0f0; margin-top:6px;}
+.rightstable td{ line-height:30px; height:30px; text-align:center; vertical-align:middle; border:1px solid #ccc;}
+
+/*幻灯片*/
+.slide_right_298{ border:1px solid #ccc; padding:1px; width:294px; height:194px; overflow:hidden;}
+.slide_right_298 img{ width:294px; height:194px;}
+.slide_right_224{ border:1px solid #ccc; padding:1px; width:220px; float:left;}
+
+/*底部*/
+#bottom{ clear:both; width:750px; padding:20px 15px 15px 15px; background:url(http://www.iresearch.cn/common/images/bottom_bg.gif) no-repeat left top; line-height:24px; text-align:center; margin-top:6px;}
+
+/*提示框*/
+.alert_icon{ margin:20px;}
+
+/*其余样式*/
+.index {font-size: 14px;line-height:24px;}
+
+/*提醒*/
+.txt_alert{ border:1px dotted #06f; background:#DFECFF; padding:5px 10px; line-height:24px;}
+
+/*购物车*/
+.shopping_cart{ font-size:12px; background:url(http://www.iresearch.cn/common/images/checkout.gif) no-repeat left center; padding-left:20px;}
+.shopping_cart a{ color:#333;}
+
+/*报告头条*/
+/*专家头条*/
+.rpt_topline{ clear:both; border-bottom:1px dotted #CCE70B; margin-bottom:10px;}
+.rpt_topline_2{ clear:both;}
+.rpt_topline_table{ width:100%; border-collapse:collapse; border:0px;}
+.rpt_topline_table td{ border:0px;}
+.rpt_topline_photo{ vertical-align:top;}
+.rpt_topline_photo img{ margin-right:10px; margin-bottom:10px; width:100px;}
+.rpt_topline_title{ font-size:14px; font-weight:bold; padding-top:6px;}
+.rpt_topline_info{ text-align:right; background:url(http://www.iresearch.cn/common/images/log_info_bg.gif) no-repeat left center; font-family:"宋体";}
+.rpt_topline_content{ vertical-align:top;}
+
+/*专家头条*/
+.log_topline{ clear:both; border-bottom:1px dotted #CCE70B; margin-bottom:10px;}
+.log_topline_table{ width:100%; border-collapse:collapse; border:0px;}
+.log_topline_table td{ border:0px;}
+.log_topline_photo{ vertical-align:top;}
+.log_topline_photo img{ margin-right:10px; margin-bottom:10px; width:90px; height:120px;}
+.log_topline_title{ font-size:14px; font-weight:bold; padding-top:6px;}
+.log_topline_info{ text-align:right; background:url(http://www.iresearch.cn/common/images/log_info_bg.gif) no-repeat left center; font-family:"宋体";}
+.log_topline_content{ vertical-align:top;}
+.log_topline_digg{ vertical-align:top;}
+
+/*专家排行*/
+.expert_top3{ width:100%; border-collapse:collapse; border:0px; margin:5px 0 10px;}
+	.expert_top3 .expert_photo td{ text-align:center; padding-bottom:10px; border-bottom:1px dotted #b2db11;}
+		.expert_top3 .expert_photo td img{ width:80px;}
+		.expert_top3 td .expert_info{ text-align:left; line-height:18px; padding:0 5px;}
+
+/*友情链接*/
+#friend_link{ clear:both; margin-top:6px; width:100%; border-collapse:collapse; border:1px solid #ccc;}
+#friend_link_caption{ writing-mode:tb-rl; width:14px;  padding:10px 5px; line-height:14px; background:#cce70b;}
+#friend_link_text{ line-height:20px; padding:5px 10px; vertical-align:top}
+#friend_link_img{ padding-left:10px; padding-top:10px; }
+#friend_link_img img{ width:88px; height:31px; margin-right:10px; margin-bottom:10px;}
+
+/*DIGG*/
+.digg{ float:right; width:60px; height:60px; margin:10px 0 10px 10px; background:url(http://www.iresearch.cn/common/images/digg_bg.gif) no-repeat left top;}
+.digg2{ width:60px; height:60px; margin:8px 10px 0 0; background:url(http://www.iresearch.cn/common/images/digg_bg.gif) no-repeat left top;}
+.digg_counter{ width:60px; height:26px; padding-top:10px; text-align:center; font-weight:bold; color:#f30; font-size:16px;}
+.digg_link{ width:60px; height:24px; text-align:center; padding-top:2px; font-size:12px;}
+.digg_link a,.digg_link a:visited,.digg_link a:hover{ font-size:12px; color:#000;}
+
+
+/**/
+.text_14{ font-size:14px;}
+
+/**/
+.expert_photo_list{ width:90px; padding-right:10px; float:left;}
+
+/**/
+#ChargePanel{ border:1px dotted #0066FF; background:#DFECFF; padding:3px 0 10px 0; margin:10px 0 5px; line-height:24px;}
+
+/*专家团*/
+#rank_mode{ clear:both; margin-top:10px; height:26px; background:url(http://www.iresearch.cn/common/images/rank_mode_bg.gif) no-repeat left bottom;}
+	#rank_mode ul{ margin:0px; padding:0px 0 0 1px; height:26px; list-style:none outside none; }
+	#rank_mode li{ float:left; padding:4px 20px 0 20px; height:22px; background:url(http://www.iresearch.cn/common/images/report_link_right_bg.gif) no-repeat right bottom; cursor:pointer;}
+	#rank_mode li img{ margin-right:5px;}
+	#rank_mode li.classCurrent{ background:url(http://www.iresearch.cn/common/images/report_link_choose_bg.gif) no-repeat right bottom; font-weight:bold;}
+	#rank_mode li.more{ float:right; background:none; height:22px; line-height:22px; padding:4px 10px 0;}
+	#rank_mode li.caption{ height:22px; line-height:22px; padding:4px 5px 0 10px;}
+#rank_mode_option{ padding:5px 10px; border:1px solid #ccc; border-top:0px; margin-bottom:10px; text-align:center;}
+.ep_table{ width:100%; border-collapse:collapse; border:1px solid #ccc; margin-bottom:10px;}
+.ep_ranknumber{ text-align:center; border-bottom:1px dotted #cce70b; background:#FAFFEF;}
+.ep_link{ height:26px; line-height:26px; text-align:right; padding-right:10px; border-bottom:1px dotted #cce70b; background:#FAFFEF; }
+.ep_photo{ padding:10px 10px 10px 10px; vertical-align:top; width:90px; }
+.ep_intro{}
+.ep_intro ul.list li{ float:left; width:290px;}
+.top3{ font-weight:bold; color:#f30;}
+	.top3 span{ font-size:18px;}
+.top10{ font-weight:bold; color:#f90;}
+	.top10 span{ font-size:16px;}
+
+/*分页样式*/
+.pages { clear:both; text-align:center; color:#000; cursor:default; font-size:10px; font-family:Tahoma, Verdana; padding:3px 0 3px 0;}
+.pages .count, .pages .number, .pages .arrow { color: #000000; font-size: 10px; background-color: #F7F7F7; border: 1px solid #CCCCCC;}
+.pages .count { font-weight: bold; border-right: none; padding: 2px 10px 1px 10px;}
+.pages .number { font-family: Verdana, Tahoma; font-weight: normal; padding: 2px 10px 1px 10px !important; padding: 2px 10px 2px 10px;}
+.pages .number a, .pages .number span { font-family: Verdana, Tahoma; font-size: 10px;}
+.pages .number span { color: #999999; margin: 0 3px 0 3px;}
+.pages .number a { color: #000000; text-decoration: none;}
+.pages .number a:hover { color: #0000ff; text-decoration: none;}
+/*文章分页*/
+.ContentPages{ float:right; font-size:12px; font-family:"宋体";}
+.ContentPages ul{ margin:0px; padding:0px; list-style:none outside none;}
+.ContentPages li{ float:left; margin-left:5px;}
+.ContentPages li.title{}
+.ContentPages li.current{ font-weight:bold;}
+.ContentPages a{ color:#F30;}
+
+/*文章内主题*/
+.art_topical,.art_topical td{ font-size:12px; padding:20px; margin:20px; border:1px dotted #cce70b; background:#FDFFF5;}
+
+/*覆盖样式*/
+.mod_left_220 a{ color:#000}
+.mod_left_220 a:visited{ color:#333}
+
+.frame>div{ display:none;}
+#fra_artlist_1 .topline_last .title a{ color:#FF3300;}
+#fra_artlist_2,#fra_artlist_3,#fra_artlist_4,#fra_artlist_5,#fra_hot_2{ display:none;}
+#fra_hot_1,#fra_hot_2{ overflow:hidden; height:180px;}
+#fra_ft_1,#fra_ft_2,#fra_ft_3{  height:95px;}
+#fra_ft_2,#fra_ft_3{ display:none;}
+#fra_collistb_1,#fra_collistb_2,#fra_collistb_3,#fra_collistb_4,#fra_collistb_5,#fra_collistb_6{ height:315px;}
+#fra_collistb_2,#fra_collistb_3,#fra_collistb_4,#fra_collistb_5,#fra_collistb_6{ display:none;}
+#fra_collistc_1,#fra_collistc_2,#fra_collistc_3,#fra_collistc_4,#fra_collistc_5{ height:315px;}
+#fra_collistc_2,#fra_collistc_3,#fra_collistc_4,#fra_collistc_5{ display:none;}
+
+#expert_rank{ height:460px; overflow:hidden;}
+#auther_rank{ height:549px; overflow:hidden;}
+#indus_data{ height:155px; overflow:hidden;}
+#report_all{ height:384px; overflow:hidden;}
+
+/**/
+div #jobsearch{ height:110px;}
+#JobKeyWord{ width:210px;}
+.tbl_jobsearch{ width:100%; border:0px; border-collapse:collapse; margin-top:16px;}
+.tbl_jobsearch td{ line-height:30px; height:30px;}
+#fra_job_2,#fra_job_3,#fra_job_4{ display:none;}
+#fra_indusdata_2,#fra_indusdata_3,#fra_indusdata_4,#fra_report_2{ display:none;}
+.rcbody{ padding:10px;}
+
+/*右侧赞助列表补充样式*/
+.atmain{ margin:0 auto; width:960px;}
+.super_left{ float:left; width:780px;}
+.super_right{ float:right; width:169px;}
+.mod_sr_202{ margin-top:9px; width:169px;}
+.caption_sr_202{ background:url(http://www.51hejia.com/images/art080605/caption_sr_2024.gif) no-repeat left bottom; text-align:center; font-weight:bold; padding-top:4px; height:24px; line-height:24px;}
+.content_sr_202{ border:1px solid #ccc; border-top:0px; padding:10px; word-wrap:break-word; background-color:#f9f8f3}
+.content_sr_202 img{ margin-bottom:10px; width:137px; height:100px; border:1px solid #cecece; padding:4px;}
+.sr_ad_202_96{ width:169px; height:56px;}
+.sr_spttitle{ margin-bottom:4px; font-weight:bold; text-align:center}
+.sr_spttitle a{ color:#000;text-align:center; line-height:16px;}
+	.sr_spttitle a:visited{ color:#000;}
+	.sr_spttitle a:hover{ color:#000; text-decoration:underline;}
+.spline{ clear:both; border-top:1px dashed #cecece; height:5px; line-height:5px; margin:5px 0 0;}
+.spline_2{ clear:both; border-top:1px dashed #99cf16; height:15px; line-height:15px; margin:15px 0 0;}
+
+/**/
+li.events_more{ float:right; list-style:none outside none; font-size:12px; background:none; padding-right:0px;}
+
+/*搜索补充样式*/
+.fh_l{ margin:0px; padding:0px; height:26px; list-style:none outside none;}
+.fh_l li{ float:left; height:26px;}
+.fh_l li span{ float:left; display:block; height:22px; line-height:22px; padding:4px 10px 0; cursor:pointer;}
+.fh_l li.classAfter span{ background:url(http://www.iresearch.cn/common/images/caption_left_lable_2.gif) no-repeat right bottom;}
+.fh_l li.classBefore span{ background:url(http://www.iresearch.cn/common/images/caption_left_lable_3.gif) no-repeat -1px bottom;}
+.fh_l li.classCurrent{ background:url(http://www.iresearch.cn/common/images/caption_left_lable_4.gif) no-repeat left bottom;}
+.fh_l li.classCurrent span{ padding-right:10px; background:url(http://www.iresearch.cn/common/images/caption_left_lable_1.gif) no-repeat right bottom; padding-left:22px; font-weight:bold; color:#333;}
+.fh_l li.more_right{ float:right; background:none; height:22px; line-height:22px; padding:4px 10px 0;}
+.inner_label{ background:url(http://www.iresearch.cn/common/images/inner_label_bg.gif) no-repeat left top;}
+	.inner_label .fh_l li.classAfter span{ background:url(http://www.iresearch.cn/common/images/caption_left_lable_2_2.gif) no-repeat right bottom;}
+	.inner_label .fh_l li.classBefore span{ background:url(http://www.iresearch.cn/common/images/caption_left_lable_2_3.gif) no-repeat -1px bottom;}
+	.inner_label .fh_l li.classCurrent{ background:url(http://www.iresearch.cn/common/images/caption_left_lable_2_4.gif) no-repeat left bottom;}
+	.inner_label .fh_l li.classCurrent span{ padding-right:10px; background:url(http://www.iresearch.cn/common/images/caption_left_lable_2_1.gif) no-repeat right bottom; padding-left:22px; font-weight:bold; color:#333;}
+
+.S_Option{width:80px; padding:2px; background:#fff; border:1px solid #ccc; border-top:0; visibility:hidden; position:absolute; zIndex:9999; top:24px;}
+.S_Option a,.S_Option a:hover,.S_Option a:active{height:18px; line-height:18px; padding:3px 3px 0 3px; color:#0E3193; display:block; text-decoration:none; text-align:center;}
+.S_Option a:hover,.S_Option a:active{ background:#e5f4b0;}
+.S_Option a:visited{ color:#0E3193;}
+#keywordss{ width:108px; color:#ccc; line-height:16px;}
+#btn_sopt{ position:absolute; top:4px; cursor:pointer; width:32px; height:20px; background:url(http://www.iresearch.cn/common/images/search_drop.gif) no-repeat 0 0; }
+.flatinput{ background:#fff url(http://www.iresearch.cn/common/images/input_bg.gif) repeat-x top left ;}
+
+/*宽频标题图标*/
+.span_v{ background:url(http://www.iresearch.cn/common/images/icon_video.gif) no-repeat 50% 20%;}
+.span_ppt{ background:url(http://www.iresearch.cn/common/images/icon_ppt.gif) no-repeat 50% 20%;}
+
+/*宽频预览*/	
+.ul_preview2{ list-style:none none outside; margin:0; padding:0; clear:both;}
+	.ul_preview2 li{ height:73px; line-height:21px; margin-top:-5px;}
+		.ul_preview2 li .thumb{ width:80px; height:57px; padding:2px; border:1px solid #ccc; margin:5px 10px 10px 0; float:left;}
+		.ul_preview2 li .thumb2{ width:85px; height:60px; padding:0 4px 4px 0; margin:0 10px 10px 0; float:left; background:url(http://www.iresearch.cn/common/images/album_bg.gif) no-repeat;}
+		.ul_preview2 li .thumb3{ width:90px; height:120px; margin:5px 10px 10px 0; float:left;}
+		
+		
+.art_data {
+	PADDING-LEFT: 5px; FLOAT: left; WIDTH: 554px; COLOR: #555; LINE-HEIGHT: 36px
+}
+.art_data .date {
+	FLOAT: left; WIDTH: 50%; TEXT-ALIGN: left
+}
+.art_data .quick_nav {
+	FLOAT: right; WIDTH: 49%; TEXT-ALIGN: left
+}
+.art_data .sc {
+	FLOAT: right; WIDTH: 49%; TEXT-ALIGN: right
+}
+.art_data .quick_nav .nav_layer {
+	FLOAT: left;
+	WIDTH: 140px;
+	HEIGHT: 36px;
+	background: url(http://www.51hejia.com/images/art080605/quick_nav.gif) no-repeat right center; position:relative;
+	text-indent:6px;
+}
+.art_data .quick_nav .connav {
+	FONT-WEIGHT: bold; FLOAT: left; WIDTH: 24%; HEIGHT: 36px
+}
+
+.art_size {
+	FONT-SIZE: 12px; FLOAT: left; MARGIN-BOTTOM: 10px; WIDTH: 559px; LINE-HEIGHT: 20px; BORDER-BOTTOM: #ccc 1px dashed; HEIGHT: 25px; TEXT-ALIGN: left
+}
+.New_Guanggao {
+	 FLOAT: left; MARGIN-BOTTOM: 10px; WIDTH: 559px; LINE-HEIGHT: 30px; HEIGHT: 30px; TEXT-ALIGN: center;
+}
+.New_Guanggao span{ float:left; clear:both; line-height:28px; width:559px; TEXT-ALIGN: center;}
+.New_Guanggao span a{ font-size:12px; color:#ff6600; font-weight:normal;}
+.New_Guanggao a{ font-size:14px; font-weight:bold; color:#FF0000; text-decoration:underline;}
+.art_size .left {
+	FLOAT: left; WIDTH: 50%
+}
+.art_size .right {
+	FLOAT: right; WIDTH: 49%; margin-top:-20px;
+}
+A.sel {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 0px; OVERFLOW: hidden; WIDTH: 140px; COLOR: #333
+}
+A.sel:hover {
+	TEXT-DECORATION: none
+}
+A.sel1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; BACKGROUND: url(http://case.51hejia.com/images/article/topic/xl1.gif) no-repeat right center; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH:140px; COLOR: #333
+}
+A.sel1:hover {
+	TEXT-DECORATION: none
+}
+
+.pppp {
+	VISIBILITY: hidden;
+}
+.ppp {
+	BORDER-RIGHT: #7e9cb8 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #7e9cb8 1px solid; PADDING-LEFT: 0px; RIGHT: 0px; BACKGROUND: #fff; BORDER-LEFT: #7e9cb8 1px solid; WIDTH: 329px; BORDER-BOTTOM: #7e9cb8 1px solid; POSITION: absolute; TOP: 30px
+}
+.ppp A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 14px; PADDING-BOTTOM: 0px; WIDTH: 310px; COLOR: #333
+}
+.ppp A SPAN {
+	COLOR: #00349a
+}
+
+.pagination {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.pagination UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.pagination LI {
+	DISPLAY: inline; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: none
+}
+.pagination A {
+	BORDER-RIGHT: #9aafe5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #9aafe5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #9aafe5 1px solid; COLOR: #2e6ab1; PADDING-TOP: 0px; BORDER-BOTTOM: #9aafe5 1px solid; TEXT-DECORATION: none
+}
+.pagination A:visited {
+	BORDER-RIGHT: #9aafe5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #9aafe5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #9aafe5 1px solid; COLOR: #2e6ab1; PADDING-TOP: 0px; BORDER-BOTTOM: #9aafe5 1px solid; TEXT-DECORATION: none
+}
+.pagination A:hover {
+	BORDER-RIGHT: #2b66a5 1px solid; BORDER-TOP: #2b66a5 1px solid; BORDER-LEFT: #2b66a5 1px solid; COLOR: #000; BORDER-BOTTOM: #2b66a5 1px solid; BACKGROUND-COLOR: lightyellow
+}
+.pagination A:active {
+	BORDER-RIGHT: #2b66a5 1px solid; BORDER-TOP: #2b66a5 1px solid; BORDER-LEFT: #2b66a5 1px solid; COLOR: #000; BORDER-BOTTOM: #2b66a5 1px solid; BACKGROUND-COLOR: lightyellow
+}
+.pagination LI.currentpage {
+	BORDER-RIGHT: navy 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: navy 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; BORDER-LEFT: navy 1px solid; COLOR: #fff; PADDING-TOP: 0px; BORDER-BOTTOM: navy 1px solid; BACKGROUND-COLOR: #2e6ab1
+}
+.pagination LI.disablepage {
+	BORDER-RIGHT: #929292 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #929292 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #929292 1px solid; COLOR: #929292; PADDING-TOP: 0px; BORDER-BOTTOM: #929292 1px solid
+}
+.pagination LI.nextpage {
+	FONT-WEIGHT: bold
+}
+.art_page {
+	MARGIN-TOP: 10px; FLOAT: left; WIDTH: 559px; LINE-HEIGHT: 40px; TEXT-ALIGN: center
+}
+
+
+
+.main {width:960px; margin:0 auto;}
+.menu4 {background: url(http://www.51hejia.com/images/jiadian/title12.gif) repeat-x left top; line-height:22px; border:1px solid #ddd6cc; width:958px; float:left; position:relative; margin-bottom:7px; margin-top:7px; }
+.menu4 a {color:#000; margin-right:9px; float:left; padding-top:2px;}
+.menu4 h3 {
+	padding:2px 10px 0 10px;
+	float:left;
+	font-size:12px;
+	font-weight:normal;
+	color:#f60;
+	margin-right:10px;
+	background-image: url(http://www.51hejia.com/images/jiadian/menu1_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.menu4 h3 a {color:#f60;}
+.menu4 .more {position:absolute; right:9px; top:0;}
+.zxyzt {background: url(http://www.51hejia.com/images/jiadian/zxyzt.gif) repeat-x left top; width:697px; height:231px; float:left; padding:6px 10px 6px 6px;}
+.zxyzt1 {border:1px solid #ddd6cc; padding:10px; width:675px; float:left; background: url(http://www.51hejia.com/images/jiadian/zxyzt_bg.gif) repeat-x left bottom; height:193px;}
+.zxyzt1 .line {width:675px; height:1px; line-height:1px; float:left; border-bottom:1px solid #cecece; margin:6px 0 9px 0;}
+.jincheng {border:1px solid #ddd6cc; background-color:#fcf9f4; padding:6px; margin-top:4px; margin-bottom:4px; width:226px; float:left;}
+.zxyztleft {width:345px; float:left;}
+.zxyztleft h5 {background-color:#fff3df; width:23px; float:left; color:#f60; padding-left:7px; font-size:12px; height:64px; line-height:18px; padding-top:10px; margin-right:10px;}
+.zxyztleft h5 a {color:#f60;}
+.zxyztleft ul {float:left;}
+.zxyztleft li {line-height:17px;color:#000;}
+.zxyztleft a {color:#000;}
+.zxyztmid {width:144px; float:left;}
+.zxyztmid h5 {background-color:#fff3df; width:23px; float:left; color:#f60; padding-left:7px; font-size:12px; height:64px; line-height:18px; padding-top:10px; margin-right:10px;}
+.zxyztmid ul {float:left;}
+.zxyztmid li {line-height:17px;color:#000;}
+.zxyztmid a {color:#000;}
+.zxyztmid h5 a {color:#f60;}
+.zxyztright {width:170px; float:left;}
+.zxyztright h5 {background-color:#fff3df; width:23px; float:left; color:#f60; padding-left:7px; font-size:12px; height:64px; line-height:18px; padding-top:10px; margin-right:10px;}
+.zxyztright ul {float:left;}
+.zxyztright li {line-height:17px;color:#000;}
+.zxyztright a {color:#000;}
+.zxyztright h5 a {color:#f60;}
+
+.same_cha5 {height:22px;background: url(http://www.51hejia.com/images/jiadian/title12.gif) repeat-x left top;border:1px solid #ddd6cc; position:relative; width:240px; float:left;font-size:12px;color:#f60; padding-top:2px; text-indent:20px;}
+
+.right002 {width:242px; float:right;}
+
+#sameq1 {}
+#sameq2,#sameq3 {display:none;}
+
+.same_cha6 {height:26px;background: url(http://www.51hejia.com/images/jiadian/off_dot.gif) repeat-x left bottom;}
+.same_cha6 li{float:left; line-height:22px; cursor:pointer; text-align:center;}
+.same_cha6 .menu_off{
+	font-size:12px;
+	width:76px;
+	color:#f60;
+	height:22px;
+	padding-top:4px;
+	background: url(http://www.51hejia.com/images/jiadian/menu_off13.gif) no-repeat left top;
+}
+.same_cha6 .menu_on{
+	font-size:12px;
+	color:#f60;
+	width:76px;
+	height:22px;
+	padding-top:4px;
+	background: url(http://www.51hejia.com/images/jiadian/menu_on1.gif) no-repeat left top;
+}
+.same_cha6 .line {width:1px;height:26px;background-color:#cecece;}
+/*新增广告版块*/
+.ad540{ background:url(http://www.51hejia.com/images/zhongqiu/Zhongqiu.gif) no-repeat; width:540px; height:120px; float:left;}
+.ad540 p{ text-indent:2em; color:#fff; float:left; width:355px; margin-left:30px; margin-top:44px; line-height:normal;}
+.ad540 p a{color:#FFD800; text-decoration:none;}
+.ad540 div{ float:left; margin-left:10px; margin-top:21px;}
+.ad540 div img{ width:100px; height:80px;}
+/*新增广告版块0220*/
+.iconanli{ padding:4px 0px 3px 5px; width:98%; float:left;}
+.iconanli img{ float:left; margin-right:3px; width:66px; height:66px;}
+.iconanli p{ color:#000; margin-bottom:2px;}
+.iconanli p a{ color:#042CA5; text-decoration:underline;}

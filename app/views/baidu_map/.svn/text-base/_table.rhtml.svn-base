@@ -1,0 +1,18 @@
+<table border="0" cellspacing="3" cellpadding="2">
+		<tr>
+			<th>公司</th>
+			<th>地址</th>
+			<th>电话</th>
+			<th>纬度</th>
+			<th>经度</th>
+		</tr>
+		<% results.each do |r|%>
+		<tr>
+			<td><%= r["name"]%></td>
+			<td><%= r["addr"]%></td>
+			<td><%= r["tel"]%></td>
+			<td><%= r["lat"]%></td>
+			<td><%= r["lng"]%></td>
+		</tr>
+		<% end -%>
+	</table>

@@ -1,0 +1,7 @@
+<% @photos.each do |photo| %>
+  <li>
+  	<a href="<%= photo.image.url(:original) %>"  title="<%= photo.title %>">
+		<img src="<%= photo.image.url(:medium) %>" alt="<%= photo.title %>" />
+	</a><center><%= photo.title.split(//u)[0,11] %></center>
+  </li>
+<% end %>

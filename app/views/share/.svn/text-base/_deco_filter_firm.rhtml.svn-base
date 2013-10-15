@@ -1,0 +1,15 @@
+	<dl class="companyname">
+		<dt><%=@company.name_zh%></dt>
+		<dd>	 
+		<!--<a href="/dianping/companycomment/<%=@company.id%>/1/1" target="_blank">网友点评</a> |-->
+		<a href="/cases/company/<%=@company.id%>" target="_blank">设计案例</a> |
+		<%= link_to "施工图片", firm_photos_path(@company), :target => "_blank" %> |
+		<a href="/designers/index/<%=@company.id%>" target="_blank">设计师</a> |
+		<%= @company.budget_file_name ? link_to("查看预算", @company.budget.url, :target => "_blank") : "查看预算" %> |
+		<%= link_to "最新促销", promotion_firm_path(@company), :target => "_blank" %> |
+		<%= link_to "装修日记", firm_diaries_path(@company), :target => "_blank" %> |
+		<%= link_to "服务流程", service_firm_path(@company), :target => "_blank" %> |
+		<%= link_to "公司介绍", detail_firm_path(@company), :target => "_blank" %> |
+		<%= link_to "在建工地", firm_worksites_path(@company), :target => "_blank" %>
+		</dd>
+	</dl>

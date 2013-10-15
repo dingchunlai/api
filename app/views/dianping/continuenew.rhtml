@@ -1,0 +1,266 @@
+<script src="/javascripts/tiny_mce/tiny_mce_src.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+tinyMCE.init({
+convert_urls : false,
+editor_selector : 'mceEditor',
+language : 'zh',
+mode : 'textareas',
+plugins : "upload",
+relative_urls : false,
+theme : 'advanced',
+theme_advanced_buttons1 : 'bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect,|,image,upload,',
+theme_advanced_buttons2 : '',
+theme_advanced_buttons3 : '',
+theme_advanced_resize_horizontal : false,
+theme_advanced_resizing : true,
+theme_advanced_statusbar_location : 'bottom',
+theme_advanced_toolbar_align : 'left',
+theme_advanced_toolbar_location : 'top',
+visual : false,
+width : '500px',
+height : '300px'
+});
+//]]>
+</script>
+  <div class="ipath"><strong>您的位置：</strong><a href="/dianping">装修案例点评</a> > <a href="/dianping/dianping_list">装修案例</a> > <span>我要续写案例</span>
+  </div>
+  <div class="ileft">
+    <h1 class="t1">用户信息</h1>
+    <div class="lbox">
+       <p><img src="<%=@headimage%>"  onerror="javascript:this.src='http://member.51hejia.com/images/headimg/default.gif'"/>昵称：<span><%=@name%></span><br />
+<%if !@sex.nil?%>性别：<span><%=@sex%></span><%end%></p>
+	  <div class="clear"></div>
+	  <%r = DecoReview.get_review_by_user_flower_id(@userid)%>
+	  <ul class="li4">
+        <li class="n1">我的鲜花：<%=r[0][:flower].to_i%></li>
+        <li class="n2">我的臭鸡蛋：<%=r[0][:egg].to_i%></li>
+      </ul>
+    </div>`	1
+    <div class="rboxbot"></div>
+    <h1 class="t2">本案例点评列表<span><a href="/dianping/dianping_list" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+      <ul class="li2">
+      <%mylist = DecoReview.get_review_by_user_id(@userid)%>
+      <%mylist.each do |m|%>
+        <li class="nl"><a href="/dianping-<%=m.id%>" title="<%=h m.title%>" target="_blank"><%=h m.title%></a><br /><%=m.udate.strftime("%Y-%m-%d")%> 回应 <%if m.response_num.nil?%>0<%else%><%=m.response_num%><%end%> 鲜花 <%if m.flower_num.nil?%>0<%else%><%=m.flower_num%><%end%></li>
+      <%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <h1 class="t3">人气装修案例<span><a href="/dianping" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+    <%renqi=get_zhuangxiu_case%>
+      <ul class="li3">
+      <% renqi.each do |r|%>
+        <li><a href="/dianping-<%=r.id%>" title="<%=h r.title%>" target="_blank"><%=h r.title%></a></li>
+      <%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <<%decofirms = get_new_order_companys(1)%>
+    <h1 class="t4">装修公司排行<span><a href="/zhuangxiugongsi" target="_blank">更多>></a></span></h1>
+    <div class="lbox1">
+      <div class="derankt"><span class="n1">排名</span><span class="n2">商户</span><span class="n3">综合分</span></div>
+      <div class="clear"></div>
+      <div class="derankbox debg1">
+            <ul>
+            <%decofirms.each do |k|%>
+              <li><span class="n1"><a href="/firms-<%=k.id%>" target="_blank" title="<%=k.name_zh%>"><%=get_firm_name_abbr2(k)%></a></span><span class="n2"><%=k.praise%></span></li>
+            <%end%>
+            </ul>
+      </div>
+    </div>
+    <div class="rboxbot"></div>
+  </div>
+  <div class="iright">
+  	<div class="inputbox">
+      <h1><span class="n1"><%=@company.name_zh%></span><span class="n2">(<b>*</b>为必填选项)</span></h1>
+      <div class="sub">
+      <form id="fmid"  action="/dianping/continuenew" method="post">
+		<input type="hidden" name="id" value="<%=@companyid%>">
+		<input type="hidden" name="main_id" value="<%=@main_id%>">
+		<input type="hidden" name="complex_score" id="complex_score" value="2">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>设计：
+        <select name="design_score" id="design_score" onchange="calscore();">
+	        <option value="-1" <%if @review.design_score.to_s=="-1"%>selected<%end%> >差(-1)</option>
+	        <option value="0" <%if @review.design_score.to_s=="0"%>selected<%end%>>一般(0)</option>
+	        <option value="1" <%if @review.design_score.to_s=="1"%>selected<%end%>>好(1)</option>
+        </select>
+          预算：
+          <select name="budget_score" id="budget_score" onchange="calscore();">
+	        <option value="-1" <%if @review.budget_score.to_s=="-1"%>selected<%end%>>差(-1)</option>
+	        <option value="0" <%if @review.budget_score.to_s=="0"%>selected<%end%>>一般(0)</option>
+	        <option value="1" <%if @review.budget_score.to_s=="1"%>selected<%end%>>好(1)</option>
+          </select>
+          施工:
+          
+          <select name="construction_score" id="construction_score" onchange="calscore();">
+	        <option value="-1" <%if @review.construction_score.to_s=="-1"%>selected<%end%>>差(-1)</option>
+	        <option value="0" <%if @review.construction_score.to_s=="0"%>selected<%end%>>一般(0)</option>
+	        <option value="1" <%if @review.construction_score.to_s=="1"%>selected<%end%>>好(1)</option>
+          </select>
+          服务：
+          <select name="service_score" id="service_score" onchange="calscore();">
+	        <option value="-1" <%if @review.service_score.to_s=="-1"%>selected<%end%>>差(-1)</option>
+	        <option value="0" <%if @review.service_score.to_s=="0"%>selected<%end%>>一般(0)</option>
+	        <option value="1" <%if @review.service_score.to_s=="1"%>selected<%end%>>好(1)</option>
+          </select>
+          <strong id="tsid">总分：<%=@review.complex_score%></strong></td>
+        </tr>
+        <tr>
+          <td><div>
+          <ul>
+          <li>所属房型<span>*</span>：
+          <select name="room">
+			<option value='0'>所属房型</option>
+			<%ROOM.sort.each do |k|%>
+			<option value='<%=k[0]%>' <%if @review.room.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+			<%end%>
+		  </select></li>
+            <li>装修价格<span>*</span>：
+            <select id="priceid" name="price">
+		    <option value='0'>请选择</option>
+			<% PRICE.sort.each do |k| %>
+			<option value='<%=k[0]%>' <%if @review.price.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+			<% end %>
+			</select></li>
+            <li>装修方式<span>*</span>：
+            <select id="methodid" name="method">
+							<option value='0'>请选择</option>
+							<% MODELS.sort.each do |k| %>
+								<option value='<%=k[0]%>' <%if @review.method.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+							<% end %></select></li>
+            <li>装修风格<span>*</span>：
+            <select id="styleid" name="style">
+							<option value='0'>请选择</option>
+							<% STYLES.sort.each do |k| %>
+								<option value='<%=k[0]%>' <%if @review.style.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+							<% end %></select></li>
+            <li>装修阶段<span>*</span>：
+            <select name="stage">
+							<option value='0'>请选择</option>
+							<%STAGE.sort.each do |k|%>
+								<option value='<%=k[0]%>'><%=k[1]%></option>
+							<%end%></select></li>
+            </ul>
+            </div></td>
+        </tr>
+        <tr>
+          <td>标题<span>*</span>：
+            <input id="titleid" name="title" type="text" size="50" class="txt"/></td>
+        </tr>
+        <tr>
+          <td>评价<span>*</span>：(50-2000个字)<br />
+            <textarea name="content" cols="" rows="" id="contentid" class="mceEditor" cols="45" rows="5"></textarea></td>
+        </tr>
+        <tr>
+          <td>装修小区：&nbsp;&nbsp;<input type="text" name="area" size="50" id="areaid" class="txt" value="<%=@review.area%>"/></td>
+        </tr>
+        <tr>
+          <td>小区地址<span>*</span>：
+            <input id="addrid" type="text" name="address" size="50" id="areaid"  class="txt" value="<%=@review.address%>"/></td>
+        </tr>
+        <tr>
+          <td>联系电话<span>*</span>：
+            <input id="phoneid" type="text" name="phone" size="50" class="txt" value="<%=@review.phone%>"/></td>
+        </tr>
+        <tr>
+          <td align="center">
+          <%if user_logged_in? %>
+      		<input name="提交点评" type="button" value="提交点评" onclick="checkinfo()"/>
+      	<%else%>
+      		<input name="提交点评" type="button" value="提交点评" onclick="alert('登录后才能评论，请您先登录')"/>
+      	<%end%></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+  	</div>
+  </div>
+  <div class="clear">
+  <script language="javascript">
+	function calscore(){
+		var design_score = document.getElementById("design_score").value;
+		var budget_score = document.getElementById("budget_score").value;
+		var construction_score = document.getElementById("construction_score").value;
+		var service_score = document.getElementById("service_score").value;
+		
+		var sum = eval(design_score)+eval(budget_score)+eval(construction_score)+eval(service_score);
+				
+		document.getElementById("complex_score").value=sum;
+		
+		document.getElementById("tsid").innerHTML = "总分："+sum;
+	}
+	
+	function checkinfo(){
+		var design_score = document.getElementById("design_score").value;
+		var budget_score = document.getElementById("budget_score").value;
+		var construction_score = document.getElementById("construction_score").value;
+		var service_score = document.getElementById("service_score").value;
+		var title = document.getElementById("titleid").value.trim();
+		var content = document.getElementById("contentid").value.trim();
+		var address = document.getElementById("addrid").value.trim();
+		var phone = document.getElementById("phoneid").value.trim();
+		var sum = eval(design_score)+eval(budget_score)+eval(construction_score)+eval(service_score);
+		
+		if(sum == 4){
+			alert('最多只能选择三项好评');
+			return false;
+		}
+		if(sum == -4){
+			alert('最多只能选择三项坏评');
+			return false;
+		}
+		if(document.getElementById('priceid').value == '0'){
+			alert('请选择主打价位');
+			return false;
+		}
+		if(document.getElementById('methodid').value == '0'){
+			alert('请选择装修方式');
+			return false;
+		}
+		if(document.getElementById('styleid').value == '0'){
+			alert('请选择公司特色');
+			return false;
+		}	
+		
+		if(title.length == 0){
+			alert("请输入标题");
+			return false;
+		}
+		document.getElementById("titleid").value=title;
+		
+		//if(content.length<50 || content.length>2000){
+		//	alert("内容为50-2000个字，请检查");
+		//	return false;
+		//}
+		document.getElementById("contentid").value=content;		
+		
+		if(address.length == 0){
+			alert("请输入小区地址");
+			return false;
+		}
+		document.getElementById("addrid").value=address;		
+
+		if(phone.length == 0){
+			alert("请输入联系电话");
+			return false;
+		}
+		document.getElementById("phoneid").value=phone;		
+		
+		
+		document.getElementById("fmid").submit();
+	}
+	
+	String.prototype.trim  =  function()
+	{
+        return  this.replace(/(^\s*)|(\s*$)/g,  "");
+	}
+	<%if @message == '1'%>
+		alert("评论成功，审核后显示!");
+	<%end%>
+</script></div>
+

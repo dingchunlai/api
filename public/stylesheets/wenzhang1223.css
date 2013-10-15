@@ -1,0 +1,171 @@
+/* CSS Document */
+
+body{margin:3px 0; font-family:"宋体"; font-size:12px; color:#3f3f3f; line-height:18px;}
+html,body { height:100%;} 
+a{color:#3f3f3f;text-decoration:none;}
+a:hover {color:#f60; text-decoration:underline}
+li {list-style:none;line-height:20px;}
+img{border:0;}
+p,em,span,form,select,input,option,ol,ul,li,dd,dt,dl,h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+h3,h4 {font-size:14px;}
+.main {width:960px; margin:0 auto;}
+.ad1 {float:left; margin-bottom:12px;}
+.ad1 img {width:294px; height:85px;}
+.banner {margin:0 auto 6px auto;width:960px;}
+.banner1 {width:659px; float:left;}
+.banner1 img {width:659px; height:85px;}
+.topleft {width:659px; float:left;}
+.topright {width:294px; float:right;}
+
+.mainbanner{ width:960px; margin:0 auto 10px auto;}
+.bannerleft{ float:left; width:591px;}
+.bannerright{ float:right; width:364px;}
+.wenleft{ float:left; width:591px;}
+.wenright{ float:right; width:364px;}
+.wento1{ float:left; border:1px solid #E5E5E5; width:589px; overflow:hidden; background-color:#F9FBFA; margin-bottom:10px;}
+.wento1 h4{ background:url(http://www.51hejia.com/images/wenzhang1223/leftbackl.gif) repeat-x; height:22px; line-height:22px; color:#8B8B8B; font-size:12px; font-weight:normal; text-indent:15px;}
+.wento1 h3{ font-size:20px; font-weight:normal; color:#000; font-family:"黑体"; line-height:40px; margin-top:20px; text-align:center;}
+.wenxiangx{ float:left; clear:both; width:589px; text-indent:20px; margin-bottom:20px; height:22px; line-height:22px;}
+.wenxiangx span{ color:#C74748;}
+.wenxiangx a{ color:#000; text-decoration:none;}
+.bannerw{ float:left; width:589px; clear:both; margin-bottom:20px;}
+.bannerw img{ width:589px; height:85px;}
+.wento1 p{ line-height:24px; margin-bottom:20px; float:left; width:550px; margin-left:18px; text-indent:2em;}
+*html .wento1 p{ margin-left:9px;}
+*+html .wento1 p{ margin-left:18px;}
+.pinglun iframe{ margin-left:40px;}
+
+.art_page {
+	MARGIN-TOP: 10px; FLOAT: left; WIDTH: 589px; LINE-HEIGHT: 40px; TEXT-ALIGN: center; margin-bottom:30px; overflow:hidden; clear:both;
+}
+.pagination {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.pagination UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.pagination LI {
+	DISPLAY: inline; PADDING-BOTTOM: 1px; LIST-STYLE-TYPE: none
+}
+.pagination A {
+	BORDER-RIGHT: #9aafe5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #9aafe5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #9aafe5 1px solid; COLOR: #2e6ab1; PADDING-TOP: 0px; BORDER-BOTTOM: #9aafe5 1px solid; TEXT-DECORATION: none
+}
+.pagination A:visited {
+	BORDER-RIGHT: #9aafe5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #9aafe5 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #9aafe5 1px solid; COLOR: #2e6ab1; PADDING-TOP: 0px; BORDER-BOTTOM: #9aafe5 1px solid; TEXT-DECORATION: none
+}
+.pagination A:hover {
+	BORDER-RIGHT: #2b66a5 1px solid; BORDER-TOP: #2b66a5 1px solid; BORDER-LEFT: #2b66a5 1px solid; COLOR: #000; BORDER-BOTTOM: #2b66a5 1px solid; BACKGROUND-COLOR: lightyellow
+}
+.pagination A:active {
+	BORDER-RIGHT: #2b66a5 1px solid; BORDER-TOP: #2b66a5 1px solid; BORDER-LEFT: #2b66a5 1px solid; COLOR: #000; BORDER-BOTTOM: #2b66a5 1px solid; BACKGROUND-COLOR: lightyellow
+}
+.pagination LI.currentpage {
+	BORDER-RIGHT: navy 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: navy 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; BORDER-LEFT: navy 1px solid; COLOR: #fff; PADDING-TOP: 0px; BORDER-BOTTOM: navy 1px solid; BACKGROUND-COLOR: #2e6ab1
+}
+.pagination LI.disablepage {
+	BORDER-RIGHT: #929292 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #929292 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #929292 1px solid; COLOR: #929292; PADDING-TOP: 0px; BORDER-BOTTOM: #929292 1px solid
+}
+.pagination LI.nextpage {
+	FONT-WEIGHT: bold
+}
+.wxinwenx{ background:url(http://www.51hejia.com/images/wenzhang1223/xinwenback.gif) no-repeat; width:589px; float:left; clear:both; color:#121D3D; font-size:14px; line-height:36px; height:36px; text-indent:2em; font-weight:bold; margin-bottom:15px;}
+
+.wento1 ul{ float:left; clear:both; width:589px; margin-bottom:20px;}
+.wento1 li{ line-height:30px; height:30px; text-indent:2em; color:#264061; font-size:16px;}
+.wento1 li a{ font-size:16px; color:#264061;}
+.pinglun{ float:left; border:1px solid #E5E5E5; width:589px; overflow:hidden; border-top:none;}
+.pinglun h3{ background:url(http://www.51hejia.com/images/wenzhang1223/xinwenback.gif) no-repeat; width:589px; float:left; clear:both; color:#121D3D; font-size:14px; line-height:36px; height:36px; text-indent:2em; font-weight:bold; margin-bottom:15px;}
+
+.hejiaba{ float:left; background:url(http://www.51hejia.com/images/wenzhang1223/hejiaqingsong.gif) no-repeat; width:364px; height:225px; overflow:hidden; margin-bottom:10px; position:relative;}
+
+.hejiatabl{ position:absolute; top:95px; left:20px; float:left;}
+.hejiatabl table td input{ height:23px; border-top:1px solid #B2B2B4; border-left:1px solid #B2B2B4; border-bottom:1px solid #E5E5E5; border-right:1px solid #E5E5E5; line-height:23px;}
+.hejiatabl table td span{ color:#E90A0D;}
+.hejiatabl table td{ font-weight:bold; line-height:22px;}
+.bannerr{ float:left; clear:both;}
+
+.wenjian{ float:left; border:1px solid #E6E6E6; overflow:hidden; margin-bottom:8px; width:362px;}
+.wenjian h4{ background:url(http://www.51hejia.com/images/wenzhang1223/rightbackl.gif) repeat-x; height:32px; line-height:32px; position:relative; text-indent:1em; font-size:14px; font-weight:normal; margin-bottom:10px;}
+.wenjian h4 span{ position:absolute; right:9px; top:0px; font-size:14px; font-weight:normal;}
+.wenjian img{ margin-left:8px; float:left; margin-right:8px;}
+.wenjian ul{ float:left;}
+.wenjian ul li{ line-height:23px;}
+.wenjian ul .reddian{ background:url(http://www.51hejia.com/images/wenzhang1223/reddian.gif) no-repeat 0 40%; text-indent:1em; font-size:12px;}
+.wenjian ul .backdian{ background:url(http://www.51hejia.com/images/wenzhang1223/backdian.gif) no-repeat 0 40%; text-indent:1em; font-size:12px;}
+.wenjianbb{ float:left; clear:both; width:340px; margin-left:12px;}
+*html .wenjianbb{ margin-left:6px;}
+*+html .wenjianbb{ margin-left:12px;}
+.wenjianbb li{ position:relative;}
+.wenjianbb li span{ position:absolute; right:4px; top:0px;}
+.redline{ border-bottom:1px dashed #CCC;}
+.wenbbb{ width:215px;}
+
+.wenjianx{ float:left; border:1px solid #E6E6E6; width:362px; overflow:hidden; margin-bottom:8px;}
+.wenjianx h4{ background:url(http://www.51hejia.com/images/wenzhang1223/rightbackl.gif) repeat-x; height:32px; line-height:32px; position:relative; text-indent:1em; font-size:14px; font-weight:normal; margin-bottom:10px;}
+.wenjianx h4 span{ position:absolute; right:9px; top:0px; font-size:14px; font-weight:normal;}
+.wenjianx dl{ width:155px; float:left; margin-left:10px;}
+
+ 
+.wenjianxxx{ float:left; width:362px; border:1px solid #E6E6E6; overflow:hidden; margin-bottom:8px;}
+.wenjianxxx h4{ background:url(http://www.51hejia.com/images/wenzhang1223/rightbackl.gif) repeat-x; height:32px; line-height:32px; position:relative; text-indent:1em; font-size:14px; font-weight:normal; margin-bottom:10px; float:left; width:362px;}
+.wenjianxxx h4 span{ position:absolute; right:9px; top:0px; font-size:14px; font-weight:normal;}
+.wenjianxxx dl{ float:left; width:117px; overflow:hidden;}
+.wenjianxxx dt img{ width:107px; height:81px;}
+.wenjianxxx dd{ float:right; text-align:left; width:107px; margin-bottom:5px; overflow:hidden;}
+.wenjianxxx dt{ float:right; width:107px;}
+.wenjian img{ width:111px; height:84px;}
+
+
+.art_size {
+	FONT-SIZE: 12px; FLOAT: left; MARGIN-BOTTOM: 10px; WIDTH: 589px; LINE-HEIGHT: 20px; BORDER-BOTTOM: #ccc 1px dashed; HEIGHT: 25px; TEXT-ALIGN: left; clear:both;
+}
+.art_size .left {
+	FLOAT: left; WIDTH: 50%; text-indent:2em;
+}
+.art_size .right {
+	FLOAT: right; WIDTH: 48%; text-align:left; text-indent:50px;
+}
+.art_function{ text-align:center; height:20px; line-height:20px; width:589px; float:left; clear:both;}
+.topshubiao{ background-color:#E4E4E4;  text-align:center; font-size:12px; color:#FF0000; height:30px; line-height:30px; float:left; width:589px; }
+
+
+.luntanbox {border:1px solid #e4e4e4; float:left; width:362px; margin-bottom:6px;}
+
+.same_cha7 {width:362px; float:left;}
+.same_cha7 li{float:left; line-height:21px; cursor:pointer; text-align:center;}
+.same_cha7 .menu_off{font-size:12px;width:181px;height:21px;padding-top:2px;background: url(http://www.51hejia.com/images/wenzhang1223/menu_off_04b.gif) no-repeat left top; color:#000;}
+.same_cha7 .menu_on{font-size:12px;width:181px;height:21px;padding-top:2px;background: url(http://www.51hejia.com/images/wenzhang1223/menu_on_04b.gif) no-repeat left top; color:#ff6600;}
+.same_cha7 .top {background: url(http://www.51hejia.com/images/shouye1125/menu_on_04.gif) no-repeat left top;width:76px;height:21px;padding-top:2px;}
+.same_cha7 .tt { font-size:14px; font-weight:bold; color:#f60;}
+.same_cha7 .ten { font-size:14px; font-weight:bold; color:#000;}
+#samee1 {}
+#samee2,#samee3,#samee4,#samee5 {display:none;}
+#samef1 {}
+#samef2,#samef3,#samef4,#samef5 {display:none;}
+.paihangbox01 {width:342px; float:left; padding:2px 10px 2px 10px; margin-bottom:6px; position:relative;background: url(http://www.51hejia.com/images/shouye1125/paihang02.gif) no-repeat 11px 3px;}
+.paihangbox01 span {color:#ff5a01;}
+.paihangbox01 li {line-height:20px; text-indent:19px;}
+.paihangbox01 .more {position:absolute; top:-40px; right:9px; width:100px; text-align:right;}
+.paihangbox01 .tt {position:absolute; top:-40px; left:8px; width:100px;}
+.paihangbox01 .ttle a{ color:#000;}
+
+#art_content{ font-size:14px;}
+
+
+.artbom { padding:8px;}
+.artbomtb {border:4px solid #f5f8fd;}
+.artbomtb td {border:1px solid #c8d8f1;}
+.artbomtb .tb01 {border-bottom:0;}
+.artbomtb .tb02 {border-left:0;}
+.artbomtb .pic { padding-bottom:2px;}
+.artbomtb .pic img {width:84px; height:115px;}
+.artbomtb .pic dt,.artbomtb .pic dd {text-align:center;}
+.artbomtb .pic dt {font-weight:bold; line-height:27px;}
+.artbomtb .pic dt a {color:#000;}
+.artbomtb .cankao {font-size:14px; font-weight:bold; color:#cb0100; text-align:center; line-height:33px;}
+.artbomdes { padding:5px 90px 0 18px; color:#161616}
+.artbomdes li {text-indent:0; padding-left:0;}
+.artbomdes .des01 {padding-bottom:10px;}
+.artbombt { padding-top:9px; padding-left:18px; float:left;}
+.artbombt a {color:#d70609; text-decoration:underline;}
+.artbombt .bt {background: url(http://www.51hejia.com/images/wenzhang1223/bt_zdbj.gif) no-repeat left top; border:0; color:#fff; text-indent:17px; line-height:22px; height:22px; font-size:12px; width:111px;}

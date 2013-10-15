@@ -1,0 +1,23 @@
+<script src="http://js.51hejia.com/js/prototype.js" type="text/javascript"></script>  
+<%= render :partial => "share/deco_filter_firm" %>
+<%@type="z3"%>
+<%if !@company.nil?%>
+<%@company_id = @company.id%>
+<%end%>
+		<div class="title clearfix">
+	       <a href="/dianping/companycomment/<%=@company.id%>/1/1" <%if @type == '1'%>class="now"<%end%> >最新点评(<%=@company.comments_count ||= 0%>)</a>
+	       <a href="/dianping/companycomment/<%=@company.id%>/2/1" <%if @type == '2'%>class="now"<%end%> >精华点评(<%=@company.digest_comments_count ||= 0%>)</a>
+	       <a href="/dianping/companycomment/<%=@company.id%>/3/1" <%if @type == '3'%>class="now"<%end%> >维权投诉(<%=@company.complaint_comments_count ||= 0%>)</a>
+	    </div>
+
+        <ul class="complist blist">
+         	 <%= render :partial => "share/deco_filter_commont" %>
+      </ul>
+ 			<div class="page">
+				<%= will_paginate @commonts ,:prev_label=> '上一页',:next_label=> '下一页'%>
+			</div>
+			<a name="review"></a>
+
+		<h3>&nbsp;</h3>
+	</div>
+

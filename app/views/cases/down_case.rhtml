@@ -1,0 +1,74 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+  <head>
+    <title><%= @case_name %>--<%= @tag_id.nil? ? "全部" : query_tag_name(@tag_id) %>图片</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css" >
+      body {font-size:12px}
+      .title a {color:#000000;font-size:16px;text-decoration:none;} img{border:0 none;}
+      .title a:hover {color:#000000;font-size:16px;}
+      .impwd {background-color:#E5E5E5;margin-top:10px;padding:8px 8px 5px 3px;width:553px;text-align:left;}
+      .impwd li {display:inline;white-space:nowrap;line-height:23px;}
+      .impwd a {color:#000000;font-size:13px;text-decoration:none;}
+      .impwd a:hover {color:#FF6600;text-decoration:underline;font-size:13px;}
+    </style>
+  </head>
+  <body>
+  <%= Hejia::SharedViews.ga_code %>
+    <center>
+      <% @case = HejiaCase.find(:first, :conditions => ["ID = ? ", @case_id]) %>
+      <h2 class="title"><a href="/zhuangxiu/tuku-<%= @case_id %>.r"><%= @case_name %></a>  <a href="http://tuku.51hejia.com/zhuangxiu!screen/tuku-<%= @case_id %>.r"><img src="http://www.51hejia.com/images/photo/des08.gif" title="全屏"></a></h2>
+      <span>
+        <% case_tags = query_case_tags(@case_id) %>
+        <% num = case_tags.size-1 > 4 ? 4 : case_tags.size-1 %>
+        <div class="impwd">
+          <ul>
+            <% if case_tags %>
+              <% 0.upto(num) do |i| %>
+                <li>
+                  <a href="http://z.51hejia.com/zhuangxiuanli/" target="_blank">
+                    <%= case_tags[i].tname %>
+                  </a>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </span>
+    </center>
+    <br>
+    <% for photo in @b %>
+      <center>
+        <%
+              if photo.type_id == 5
+                t5 = "http://image.51hejia.com"
+              else
+                t5 = "http://image.51hejia.com/files/hekea/case_img/"
+              end
+              %>
+        <img src="<%= t5 %><%= photo.filepath %>" alt="<%= strip_tags(photo.description) %>装修图片">
+      </center>
+      <br>
+      <center>
+        <% tags = query_tags(photo.id) %>
+        <span>标签：
+          <% for t in tags %>
+            <a href="/anli/down_case/<%= @case_id %>/<%= t[:tag_id] %>" target="_blank"><%= query_tag_name(t[:tag_id]) %></a>
+          <% end %>
+        </span>
+        <span style="color:red;margin-left:200px;">
+          <a href="<%= t5 %><%= photo.filepath %>" style="font-size:12px;color:#ff8000;">
+            下载(请用右键另存为)
+          </a>
+        </span>
+        <p>
+          描述：
+          <% if photo.description %>
+            <%= strip_tags(photo.description) %>
+          <% end %>
+        </p>
+      </center>
+      <br>
+    <% end %>
+  </body>
+</html>

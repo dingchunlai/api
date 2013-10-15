@@ -1,0 +1,27 @@
+<%if @user_note.firm_id.to_i != 0 %>
+<div class="right1">
+	<% 
+		firm = cache_firm_by_firm_id(@user_note.firm_id) 
+		firm_city = firm.city.to_i == 11910 ? firm.city : firm.district
+	%>
+	<h2><span class="n1"><%=truncate_u(firm.name_abbr,6,"") %></span><span class="n2"></span></h2>
+	<a href="<%=gen_firm_city_path(firm.id) %>" target="_blank">
+	<div class="rbox3">
+	  <p class="pingfen">综合分：<span><%=firm.praise == nil ? "0" : firm.praise %></span>
+		性价比：<span><%=firm.budget_praise == nil ? "0" : firm.budget_praise %></span> <br />
+		设计：<span><%=firm.design_praise == nil ? "0" : firm.design_praise %></span>
+		施工：<span><%=firm.construction_praise== nil ? "0" : firm.construction_praise %></span>
+		服务：<span><%=firm.service_praise == nil ? "0" : firm.service_praise %></span>
+		</p>
+	  <ul class="infodes"><li><strong style="color:#F60;">查看公司详情</strong></li></ul>
+	  <ul class="infodes">
+	    <li>地址：<%= firm.address %></li>
+	    <li>风格：<%= firm.style ? STYLES[firm.style.to_i] : '暂无信息' %></li>
+	    <li>价位：<%= firm.price ? diff_city_price_tag_value(firm_city, firm.price) : '暂无信息' %></li>
+	    <li>方式：<%= firm.model ? MODELS[firm.model.to_i] : '暂无信息' %></li>
+	  </ul>
+		<div class="clear"></div>
+	</div>
+	</a>
+</div>
+<%end%>

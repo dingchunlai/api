@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/662/51hejia/repos/api/release/config
+END
+load_gems.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/81/51hejia/repos/api/release/config/load_gems.rb
+END
+database.example.yml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/config/database.example.yml
+END
+routes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/81/51hejia/repos/api/release/config/routes.rb
+END
+database.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/662/51hejia/repos/api/release/config/database.yml
+END
+boot.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/81/51hejia/repos/api/release/config/boot.rb
+END
+environment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/81/51hejia/repos/api/release/config/environment.rb
+END
+newrelic.yml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/81/51hejia/repos/api/release/config/newrelic.yml
+END

@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/166/51hejia/repos/api/release/app/views/admin
+END
+_admin_head_list.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/_admin_head_list.rhtml
+END
+before_publish_list.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/before_publish_list.rhtml
+END
+_admin_head.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/_admin_head.rhtml
+END
+login.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/login.rhtml
+END
+search_article.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/search_article.rhtml
+END
+_hidden_div_column.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/_hidden_div_column.rhtml
+END
+show_group.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/show_group.rhtml
+END
+share_group.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/166/51hejia/repos/api/release/app/views/admin/share_group.rhtml
+END
+_hidden_search.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/_hidden_search.rhtml
+END
+edit_content.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/edit_content.rhtml
+END
+search_case.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/search_case.rhtml
+END
+edit_group.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/edit_group.rhtml
+END
+publish_list.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/publish_list.rhtml
+END
+edit_column.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/views/admin/edit_column.rhtml
+END

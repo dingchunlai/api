@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/acts_as_readonlyable
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/acts_as_readonlyable/README
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/acts_as_readonlyable/Rakefile
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/acts_as_readonlyable/init.rb
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/acts_as_readonlyable/CHANGELOG
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/acts_as_readonlyable/MIT-LICENSE
+END

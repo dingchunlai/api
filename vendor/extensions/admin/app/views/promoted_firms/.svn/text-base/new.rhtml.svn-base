@@ -1,0 +1,56 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#open_new").click(function(){
+			$("#open_new").attr("disabled","disabled");
+			$.get("/promoted_firms/open_div",
+				 {city : $("#city").val()},
+				 function(data){
+				 	$("#open_new").removeAttr("disabled");
+				 	$("#second").html(data).show();
+					$("#firms_div").hide();
+				},"html");
+		});
+	});
+</script>
+<style type="text/css">
+	*{margin:0;padding:0;}
+	.tianjia{border:5px solid #dedede;padding:5px 0;width:640px;margin:0 auto;font-size:12px;color:#333;}
+	.tianjia h3{font-size:14px;font-weight:bold;height:30px;line-height:30px;border-bottom:1px dashed #dedede;padding:0 10px;margin-bottom:5px;}
+	.tianjia h3 a{margin-left:20px;}
+	.tianjia ul{background:#eee;padding:0 10px;}
+	.tianjia ul ul{padding:0;}
+	.tianjia li{list-style:none;}
+	.tianjia li li input{ vertical-align:middle;}
+	.tianjia li em{font-style:normal;color:red;}
+	
+</style>
+<div class="tianjia">
+	<h3>添加<a href="/promoted_firms">查看</a></h3>
+	<ul>
+		<li>
+			<li id="first">请选择：城市
+			<select id="city"  >
+              <%
+              cities = {
+                      11910 => "上海",
+                      12117 => "苏州",
+                      12301 => "宁波",
+                      12306 => "杭州",
+                      12118 => "无锡",
+                      12093 => '武汉',
+                      12122 => "南京",
+                      12173 => '青岛'
+              }
+              %>
+			<% cities.each do |k, v| %>
+				<option value='<%= k %>' ><%= v %></option>
+			<% end %>
+			</select>
+			<input type="button" id="open_new" value="新增">
+		</li>
+		<li id="second" style="display:none;"></li>
+		<li id="firms_div" style="display:none;"></li>
+	</ul>
+</div>

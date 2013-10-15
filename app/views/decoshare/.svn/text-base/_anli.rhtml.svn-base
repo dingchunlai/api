@@ -1,0 +1,87 @@
+<script>
+function link(){
+	var fengge = document.getElementById('fengge1').value;
+	var huxing = document.getElementById('huxing1').value;
+	var feiyong = document.getElementById('feiyong1').value;
+	var yongtu = document.getElementById('yongtu1').value;
+	
+	var href = "/zhuangxiuanli/";
+	if (feiyong!=''){
+		href+=feiyong+".";
+	}else{
+		href+="0.";
+	}
+	if(fengge!=''){
+
+		href+=fengge;
+		href+=".";
+
+	}else{
+		href+="0.";
+	}
+	if(yongtu!=''){
+		href+=yongtu+".";
+	}else{
+		href+="0.";
+	}
+	if(huxing!=''){
+		href+=huxing+".";
+	}else{
+		href+="0.";
+	}
+
+	href+="1.html";
+	window.open(href);
+}
+</script>
+<div id="tab-panel-211" style="display:none">
+          <ul>
+              <li>
+                 装修风格： <select name="fengge" id="fengge1">
+                    <option value="">不限</option>
+                    <option value="xiandaijianyue">现代简约</option>
+                    <option value="zhongshi">中式风格</option>
+                    <option value="oumei">欧/美式</option>
+                    <option value="hunda">混搭</option>
+                    <option value="dizhonghai">地中海</option>
+                    <option value="tianyuan">田园风格</option>
+                    <option value="qita">其他</option>
+                  </select>
+              </li>
+              <li>
+                装修户型： <select name="huxing" id="huxing1">
+                  <option value="">不限</option>
+                  <option value="xiaohu">小户型装修</option>
+                  <option value="gongyu">公寓装修</option>
+                  <option value="bieshu">别墅/复式</option>
+                </select>
+              </li >
+              <li>
+                装修预算： <select name="feiyong" id="feiyong1">
+                  <option value="">不限</option>
+                  <option value="8">8万以下</option>
+                  <option value="8_15">8-15万</option>
+                  <option value="15_30">15万-30万</option>
+                  <option value="30">30万-100万</option>
+                  <option value="100">100万以上</option>
+                </select>
+              </li >
+              <li>
+                装修用途： <select name="yongtu" id="yongtu1">
+                  <option value="">不限</option>
+                  <option value="jiufang">旧房改造</option>
+                  <option value="hunfang">婚房装修</option>
+                  <option value="danshen">单身贵族</option>
+                  <option value="sankou">三口之间</option>
+                  <option value="laoren">家有老人</option>
+                  <option value="shejishi">设计师的家</option>
+                  <option value="ertong">家有儿童</option>
+                  <option value="qita">其他</option>
+                </select>
+              </li >
+              <li>
+
+                <input type="button" name="button" id="button" value="搜索" onClick="link()"/>
+              </li>
+            </ul>
+</div>

@@ -1,0 +1,18 @@
+<div class="main_menu">
+
+  <div class="menubg">
+    <ul class="first_menu clearfix">
+      <% Api.get(55220,12,'title,url',false).each do |result| %>
+        <li><a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a></li>
+      <% end %>
+    </ul>
+    <ul class="sc_menu clearfix" id="U1">
+      <li>
+        <% Api.get(55221,12,'title,url',false).each do |result| %>
+          <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+        <% end %>
+          <%=link_to '更多>>', 'http://d.51hejia.com/zq/', :target => '_blank'%>
+      </li>
+    </ul>
+  </div>
+</div>

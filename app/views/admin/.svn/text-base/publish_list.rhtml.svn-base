@@ -1,0 +1,76 @@
+<%= render :partial => "hidden_div_column" %>
+<div id="bg" class="bg" style="display:none;"></div>
+<div class="container">
+  <%= render :partial => "admin_head_list" %>
+  <% if flash[:msg] %><p style="color: red; height: 15px;background-color:navajoWhite;margin-bottom:-8px;padding:3px;"><%= flash[:msg] %></p><% end %>
+  <form method="post" id="batch_publish">
+    <table class="tb tb2 ">
+      <tr class="partition">
+        <th colspan="17" >
+          <strong style="font-size:18px;">&nbsp;<%= get_column_name_by_column_id(@column_id) %>&nbsp;</strong>
+          栏目共有<strong style="font-size:18px;">&nbsp;<%= @total %>&nbsp;</strong>篇&nbsp;&nbsp;已发布文章
+          <span style="float:right;margin-right: 20px;">
+            <%= link_to "导出#{get_column_name_by_column_id(@column_id)}", "/admin/expert_publish_contents?column_id=#{@column_id}" %>
+          </span>
+        </th>
+      </tr>
+      <tr class="header">
+        <th>选择</th>
+        <th>图片</th>
+        <th>标题</th>
+        <th>描述</th>
+        <th>优先级</th>
+        <th>样式</th>
+        <th>创建时间</th>
+        <th>专家类型</th>
+        <th>操作</th>
+      </tr>
+      <%- if !@results.nil? -%>
+        <%- for result in @results -%>
+          <tr class="hover">
+            <td class="td25"><input type="checkbox" name="batch_publish[]" value="<%= result.id %>" class="checkbox" id="batch_publish"></td>
+            <input name="column_id" type="hidden" value="<%= @column_id %>">
+            <input name="method" type="hidden" value="c">
+            <td>
+              <img src="<%= get_image_url(result.image_url) %>" height="50" width="50">
+            </td>
+            <td><a href="<%= result.url %>" target="_blank"><%= get_style_by_text_style_id(strip_tags(result.title),result.text_style_id) %></a></td>
+            <td>
+              <%- unless result.description.nil? -%>
+                <%= strip_tags(result.description.gsub("&nbsp;", "")).gsub(" ", "").chars[0, 25] %>
+              <%- end -%>
+            </td>
+            <td><%= result.order_id %></td>
+            <td><%= get_style_name(result.text_style_id) %></td>
+            <td><%= result.entity_created_at.strftime("%Y-%m-%d") rescue ""%></td>
+            <td><%= result.person_style %></td>
+            <td style="font-size:14px;">
+              <%= link_to "编辑", { :action => "edit_content", :content_id => result.id, :column_id => @column_id },
+                { :onclick => "Modalbox.show(this.href, { title: this.title, width: 450, height: 600 }); return false;" } %>
+              <%= link_to "删除", { :action => "destory_content", :content_id => result.id, :column_id => @column_id }, :confirm => "确定删除吗？" %>
+              <%= link_to "取消", { :action => "publish", :content_id => result.id, :column_id => @column_id, :method => "c" }, :confirm => "确定取消发布吗？" %>
+            </td>
+          </tr>
+        <%- end -%>
+      <%- else -%>
+      <%- end -%>
+      <tr>
+        <td colspan="17">
+          <div class="cuspages right">
+            <div class="pages"><em>总数：<%= @total %></em>
+              <%= link_to '<', { :page => @pages.current.previous.to_i, :column_id => @column_id } if @pages.current.previous %>
+              <strong><%= pagination_links(@pages, :params => { :column_id => @column_id }, :window_size => 9) %></strong>
+              <%= link_to '>', { :page => @pages.current.next.to_i, :column_id => @column_id } if @pages.current.next%>
+            </div>
+          </div>
+          <div class="fixsel">
+            <input type="button" value="全选" onclick="checkAll('batch_publish[]')" class="btn" />
+            <input type="button" value="反选" onclick="clearAll('batch_publish[]')" class="btn" />
+            <input type="button" class="btn" value="删除" onclick="form_submit('batch_publish[]','batch_publish','/admin/batch_destory_content')"/>
+            <input type="button" class="btn" value="取消发布" onclick="form_submit('batch_publish[]','batch_publish','/admin/batch_publish')"/>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

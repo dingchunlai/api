@@ -1,0 +1,260 @@
+
+ <div class="bottom_content_left clear">
+          
+           
+<script language="javascript">
+function setFocus2(m)
+{
+selectLayer2(m);
+}
+function selectLayer2(m)
+{
+switch(m)
+{
+case 1:
+document.getElementById("y1").style.display="block";
+document.getElementById("y2").style.display="none";
+document.getElementById("y3").style.display="none";
+document.getElementById("y4").style.display="none";
+document.getElementById("y5").style.display="none";
+break;
+case 2:
+document.getElementById("y1").style.display="none";
+document.getElementById("y2").style.display="block";
+document.getElementById("y3").style.display="none";
+document.getElementById("y4").style.display="none";
+document.getElementById("y5").style.display="none";
+break;
+case 3:
+document.getElementById("y1").style.display="none";
+document.getElementById("y2").style.display="none";
+document.getElementById("y3").style.display="block";
+document.getElementById("y4").style.display="none";
+document.getElementById("y5").style.display="none";
+break;
+case 4:
+document.getElementById("y1").style.display="none";
+document.getElementById("y2").style.display="none";
+document.getElementById("y3").style.display="none";
+document.getElementById("y4").style.display="block";
+document.getElementById("y5").style.display="none";
+break;
+case 5:
+document.getElementById("y1").style.display="none";
+document.getElementById("y2").style.display="none";
+document.getElementById("y3").style.display="none";
+document.getElementById("y4").style.display="none";
+document.getElementById("y5").style.display="block";
+break;
+}
+}
+
+
+
+function setFocus1(n)
+{
+selectLayer1(n);
+}
+function selectLayer1(n)
+{
+switch(n)
+{
+case 1:
+document.getElementById("v1").style.display="block";
+document.getElementById("v2").style.display="none";
+document.getElementById("v3").style.display="none";
+break;
+case 2:
+document.getElementById("v1").style.display="none";
+document.getElementById("v2").style.display="block";
+document.getElementById("v3").style.display="none";
+break;
+case 3:
+document.getElementById("v1").style.display="none";
+document.getElementById("v2").style.display="none";
+document.getElementById("v3").style.display="block";
+}
+}
+function setFocus3(n)
+{
+selectLayer3(n);
+}
+function selectLayer3(n)
+{
+switch(n)
+{
+case 1:
+document.getElementById("g1").style.display="block";
+document.getElementById("g2").style.display="none";
+break;
+case 2:
+document.getElementById("g1").style.display="none";
+document.getElementById("g2").style.display="block";
+break;
+}
+}
+</script>   
+           <div class="bottom_2" id="y1" style="display:block;">
+           <h3><a href="#" class="now" onMouseOver="javascript:setFocus2(1)">最新案例</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(2)">最新点评</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(3)">装修活动</a> | </h3> <h3><a href="#" onMouseOver="javascript:setFocus2(4)">装修资讯</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(5)">热门标签</a>  </h3>
+               <div class="bottom_2_1">
+               <ul class=" clearfix clear">
+               		<%gettopnewcase.each do |c|%>
+                    <li><a href="/anli/<%=c.ID%>" target="_blank"><%=c.NAME%></a></li>
+                    <%end%>
+               </ul>
+               </div>
+           </div>
+           
+           <div class="bottom_2 clear" id="y2" style="display:none;">
+           <h3><a href="#"  onmouseover="javascript:setFocus2(1)">最新案例</a> | </h3><h3><a href="#" class="now" onMouseOver="javascript:setFocus2(2)">最新点评</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(3)">装修活动</a> | </h3> <h3><a href="#" onMouseOver="javascript:setFocus2(4)">装修资讯</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(5)">热门标签</a>  </h3>
+               <div class="bottom_2_1">
+               <ul class=" clearfix clear">
+               		<%getseoreviews.each do |r|%>
+                    	<li><a href="/dianping-<%=r.id%>" target="_blank"><%=r.title%></a></li>
+                    <%end%>
+                    
+               </ul>
+               </div>
+           </div>
+           
+           <div class="bottom_2 clear" id="y3" style="display:none;">
+           <h3><a href="#"  onmouseover="javascript:setFocus2(1)">最新案例</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(2)">最新点评</a> | </h3><h3><a href="#" class="now" onMouseOver="javascript:setFocus2(3)">装修活动</a> | </h3> <h3><a href="#" onMouseOver="javascript:setFocus2(4)">装修资讯</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(5)">热门标签</a>  </h3>
+               <div class="bottom_2_1">
+               <ul  class="long clearfix clear">
+               		<%getseoevents.each do |e|%>
+                    <li><a href="/events/<%=e.id%>" target="_blank"><%=h e.title%></a></li>
+                    <%end%>
+               </ul>
+               </div>
+           </div>
+           
+           <div class="bottom_2 clear" id="y4" style="display:none;">
+           <h3><a href="#"  onmouseover="javascript:setFocus2(1)">最新案例</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(2)">最新点评</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(3)">装修活动</a> | </h3> <h3><a href="#"class="now" onMouseOver="javascript:setFocus2(4)">装修资讯</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(5)">热门标签</a>  </h3>
+               <div class="bottom_2_1">
+               <ul class=" clearfix clear">
+               		<%getzhuangxiuarticle.each do |a|%>
+                    <li><a href="http://d.51hejia.com/zhuangxiu/<%=a.CREATETIME.strftime('%Y%m%d')%>/<%=a.ID%>" target="_blank"><%=h a.TITLE%></a></li>
+                    <%end%>
+               </ul>
+               </div>
+           </div>
+           
+           <div class="bottom_2 clear" id="y5" style="display:none;">
+           <h3><a href="#"  onmouseover="javascript:setFocus2(1)">最新案例</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(2)">最新点评</a> | </h3><h3><a href="#" onMouseOver="javascript:setFocus2(3)">装修活动</a> | </h3> <h3><a href="#" onMouseOver="javascript:setFocus2(4)">装修资讯</a> | </h3><h3><a href="#"class="now" onMouseOver="javascript:setFocus2(5)">热门标签</a>  </h3>
+               <div class="bottom_2_1">
+               <ul class=" clearfix clear long">
+					<% parse_xml(54009, ["title", "url", "image-url"], 100).each do |p| -%>
+						<strong id="sp<%=rand(4).to_s%>"><a href="<%=p['url']%>" target="_blank"><%=p['title']%></a></strong>
+					<% end %>
+               </ul>
+               </div>
+           </div>           
+           
+           <%cases = getcase(@company.id)%>
+           <%if cases && cases.size>0%>
+           <div class="bottom_2 clear" id="g1" style="display:block;">
+           	<h3><a href="#" class="now" onMouseOver="javascript:setFocus3(1)"><%=@company.name_abbr%>装修案例</a> | <a href="#" onMouseOver="javascript:setFocus3(2)">施工图片</a></h3>
+            	<div class="bottom_2_2">
+                	<ul>
+                		<%cases.each do |c|%>
+                    	<li><img src="http://d.51hejia.com/files/hekea/case_img/tn/<%=c.ID%>.jpg" onerror="javascript:this.src='http://www.51hejia.com/api/images/none.gif'" width=160 height=96><br/><a href="/anli/<%=c.ID%>" target="_blank"><%=c.NAME%></a></li>
+                    	<%end%>
+                    </ul>
+                </div>
+           </div>
+           
+           <div class="bottom_2 clear" id="g2" style="display:none">
+           	<h3><a href="#" onMouseOver="javascript:setFocus3(1)"><%=@company.name_abbr%>装修案例</a> | <a href="#" class="now" onMouseOver="javascript:setFocus3(2)">施工图片</a></h3>
+            	<div class="bottom_2_2">
+                	<ul>
+                		<%photos = getseofirmphoto(@company.id)%>
+                		<%if photos && photos.size>0%>
+                		<%index = 1%>
+                		<%photos.each do |photo|%>
+	                		<%if index<5%>
+	                    	<li><%= link_to image_tag(photo.image.url(:medium), :alt => photo.title), firm_slide_photos_path(@company), :title => photo.title,:target => '_blank' %><br/><a href="<%=firm_slide_photos_path(@company)%>" target="_blank"><%=photo.title%></a></li>
+	                    	<%end%>
+	                    <%index = index+1%>
+                    	<%end%>
+                    	<%end%>
+                    </ul>
+                </div>
+           </div>
+           <%end%>
+           
+           
+<div class="bottom_1" id="v1" style="display:block">
+           <h3>您可以通过以下方式寻找 <a href="#" class="now" onMouseMove="javascript:setFocus1(1)">装修公司</a> | <a href="#" onMouseMove="javascript:setFocus1(2)">装修案例</a> | <a href="#" onMouseMove="javascript:setFocus1(3)">装修公司</a></h3>
+           <ul>
+           		<li><span>公司排行</span> > <a href="/zhuangxiugongsi/0.0.0.3.0.1.html" target="_blank">口碑排行榜</a> <a href="/zhuangxiugongsi/0.0.0.2.0.1.html" target="_blank">评论排行榜</a> <a href="/zhuangxiugongsi/0.0.0.8.0.1.html" target="_blank">案例排行榜</a> <a href="/zhuangxiugongsi/0.0.0.4.0.1.html" target="_blank">设计排行榜</a> <a href="/zhuangxiugongsi/0.0.0.6.0.1.html" target="_blank">施工排行榜</a> <a href="/zhuangxiugongsi/0.0.0.7.0.1.html" target="_blank">服务排行榜</a> </li>
+           		<li><span>主打价位</span> > 
+                <% PRICE.sort.each do |k, v| %>
+					<a href="/zhuangxiugongsi-0-0-0-0-0-<%=k%>-1" target="_blank"><%=v%></a> &nbsp;
+				<% end %>           		
+           		</li>
+                <li><span>装修方式</span> > 
+                <% MODELS.sort.each do |k, v| %>
+					<a href="/zhuangxiugongsi-0-0-<%=k%>-0-0-0-1" target="_blank"><%=v%></a> &nbsp;
+				<% end %>  
+                </li>
+                <li><span>公司特色</span> > 
+                <% STYLES.sort.each do |k, v| %>
+					<a href="/zhuangxiugongsi-0-0-<%=k%>-0-0-0-1" target="_blank"><%=v%></a> &nbsp;
+				<% end %>                 
+                </li>
+           </ul>
+        </div>
+
+<div class="bottom_1" id="v2" style="display:none">
+            <h3>您可以通过以下方式寻找 <a href="#" onMouseMove="javascript:setFocus1(1)">装修公司</a> | <a href="#" class="now" onMouseMove="javascript:setFocus1(2)">装修案例</a> | <a href="#" onMouseMove="javascript:setFocus1(3)">装修公司</a></h3>
+           <ul>
+           		<li><span>装修风格</span> > 
+		        	<a href="/zhuangxiuanli/0.xiandaijianyue.0.0.1.html" target="_blank">现代简约</a>  
+		        	<a href="/zhuangxiuanli/0.zhongshi.0.0.1.html" target="_blank">中式风格</a>  
+		        	<a href="/zhuangxiuanli/0.oumei.0.0.1.html" target="_blank">欧/美式</a>  
+		        	<a href="/zhuangxiuanli/0.hunda.0.0.1.html" target="_blank">混搭</a>  
+		        	<a href="/zhuangxiuanli/0.dizhonghai.0.0.1.html" target="_blank">地中海</a>  
+		        	<a href="/zhuangxiuanli/0.tianyuan.0.0.1.html" target="_blank">田园风格</a>  
+		        	<a href="/zhuangxiuanli/0.qita.0.0.1.html" target="_blank">其他</a>
+           		</li>
+                <li><span>装修户型</span> > 
+	                <a href="/zhuangxiuanli/0.0.0.xiaohu.1.html" target="_blank">小户型装修</a> 
+					<a href="/zhuangxiuanli/0.0.0.gongyu.1.html" target="_blank">公寓装修</a> 
+					<a href="/zhuangxiuanli/0.0.0.bieshu.1.html" target="_blank">别墅/复式</a>
+                </li>
+                <li><span>装修价格</span> > 
+               		<a href="/zhuangxiuanli/5.0.0.0.1.html" target="_blank">5万以下</a> 
+		        	<a href="/zhuangxiuanli/5_8.0.0.0.1.html" target="_blank">5万-8万</a>
+		        	<a href="/zhuangxiuanli/8_12.0.0.0.1.html" target="_blank">8万-12万</a>  
+		        	<a href="/zhuangxiuanli/12_20.0.0.0.1.html" target="_blank">12万-20万</a>
+		        	<a href="/zhuangxiuanli/20_30.0.0.0.1.html" target="_blank">20万-30万</a>
+		        	<a href="/zhuangxiuanli/30.0.0.0.1.html" target="_blank">30万以上</a>
+                </li>
+                <li><span>装修用途</span> > 
+                	<a href="/zhuangxiuanli/0.0.jiufang.0.1.html" target="_blank">旧房改造</a> 
+		        	<a href="/zhuangxiuanli/0.0.hunfang.0.1.html" target="_blank">婚房装修</a> 
+		        	<a href="/zhuangxiuanli/0.0.danshen.0.1.html" target="_blank">单身贵族</a> 
+		        	<a href="/zhuangxiuanli/0.0.sankou.0.1.html" target="_blank">三口之间</a> 
+		        	<a href="/zhuangxiuanli/0.0.laoren.0.1.html" target="_blank">家有老人</a> 
+		        	<a href="/zhuangxiuanli/0.0.shejishi.0.1.html" target="_blank">设计师的家</a> 
+		        	<a href="/zhuangxiuanli/0.0.ertong.0.1.html" target="_blank">家有儿童</a> 
+		        	<a href="/zhuangxiuanli/0.0.qita.0.1.html" target="_blank">其他</a>
+                </li>
+           </ul>
+        </div>
+
+<div class="bottom_1" id="v3" style="display:none">
+            <h3>您可以通过以下方式寻找 <a href="#" onMouseMove="javascript:setFocus1(1)">装修公司</a> | <a href="#" onMouseMove="javascript:setFocus1(2)">装修案例</a> | <a href="#" class="now" onMouseMove="javascript:setFocus1(3)">装修公司</a></h3>
+           <ul>
+<!--           		<li><a href="http://z.51hejia.com/" target="_blank">找装修频道</a> > <a href="http://z.51hejia.com/zhuangxiugongsi" target="_blank">装潢公司</a> > <a href="http://z.51hejia.com/firms-<%=@company.id%>" target="_blank"><%=@company.name_zh%></a> > <a href="/dianping/companycomment/<%=@company.id%>/1/1" target="_blank">网友点评</a></li>  -->
+                <li><a href="http://z.51hejia.com/" target="_blank">找装修频道</a> > <a href="http://z.51hejia.com/zhuangxiugongsi" target="_blank">装潢公司</a> > <a href="http://z.51hejia.com/firms-<%=@company.id%>" target="_blank"><%=@company.name_zh%></a> > <a href="/cases/company/<%=@company.id%>" target="_blank">设计案例</a></li>
+                <li><a href="http://z.51hejia.com/" target="_blank">找装修频道</a> > <a href="http://z.51hejia.com/zhuangxiugongsi" target="_blank">装潢公司</a> > <a href="http://z.51hejia.com/firms-<%=@company.id%>" target="_blank"><%=@company.name_zh%></a> > <a href="/firms/<%=@company.id%>/photos" target="_blank">施工图片</a></li>
+                <li><a href="http://z.51hejia.com/" target="_blank">找装修频道</a> > <a href="http://z.51hejia.com/zhuangxiugongsi" target="_blank">装潢公司</a> > <a href="http://z.51hejia.com/firms-<%=@company.id%>" target="_blank"><%=@company.name_zh%></a> > <a href="/firms/<%=@company.id%>/worksites" target="_blank">在建工地</a></li>
+                <li><a href="http://z.51hejia.com/" target="_blank">找装修频道</a> > <a href="http://z.51hejia.com/zhuangxiugongsi" target="_blank">装潢公司</a> > <a href="http://z.51hejia.com/firms-<%=@company.id%>" target="_blank"><%=@company.name_zh%></a> > <a href="/firms/<%=@company.id%>/promotion" target="_blank">优惠活动</a></li>
+           </ul>
+        </div>     
+
+      </div>
+
+
+ 

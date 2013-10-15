@@ -1,0 +1,8 @@
+<div class="list_l_t"><h3>最近浏览公司	</h3></div>
+<div class="list_diary_ed">
+  <ul class="dianping" id="browser_history">
+	<% @browsed_firms && @browsed_firms.each do |firm| %>
+		<li class='clearfix'><p class='list_diary_ed_t'><a href='/gs-<%= firm.id %>' target='_blank'><%= truncate(firm.name_zh, 12, '') %></a></p></li>
+	<% end %>
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<div class="list_l_t"><h3>使用说明</h3></div>
+<div class="list_diary_ed">
+  <ul class="dianping">
+  	<%
+  	  help_info = CACHE.get 'zhuangxiudianping/help'
+  	  if help_info.nil?
+  	    help_info = parse_xml2("http://api.51hejia.com/rest/build/xml/54582.xml", ["title", "url", "image-url", "description"], 0,30)
+  	    CACHE.set 'zhuangxiudianping/help', help_info, 7.days
+  	  end
+  	%>
+	<% for p in help_info %>
+	<li class="clearfix"><p class="list_diary_ed_t"><a href="<%=p["url"]%>" target="_blank"><%=p['title']%></a></p></li>
+    <% end -%>
+  </ul>
+</div>

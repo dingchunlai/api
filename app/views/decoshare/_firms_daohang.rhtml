@@ -1,0 +1,43 @@
+<%
+  @decofirm = getfirm(@firm_id)
+  controller_name = controller.controller_name
+  action_name = controller.action_name
+%>
+<div class="youhuimenu">
+  <ul class="f_l">
+      <%if !@decofirm.nil?%>
+        <li><a href="<%=gen_firm_city_path(@decofirm.id)%>" id='compinfo' <%= "class='on'" if controller_name == 'firms' && action_name != 'summary' %>>公司信息</a></li>
+		  <%if @decofirm.cases_count.to_i > 0%>
+        <li><a href="<%=gen_firm_city_cases(@decofirm.id)%>" id='anlitupian' <%= "class='on'" if controller_name == 'cases' %>>案例图片</a></li>
+		  <%end%>
+	      <%if @decofirm.photos_count.to_i > 0%>
+          <li><a href="<%=gen_firm_city_photos(@decofirm.id)%>" id='tupianid' <%= "class='on'" if controller_name == 'photos' %>>施工图片</a></li>
+	      <%end%>
+	      <%if DecoFirm.get_designer_by_compay(@firm_id).size>0%>
+          <li><a href="<%=gen_firm_city_designers(@decofirm.id)%>" id='shejiid' <%= "class='on'" if controller_name == 'designers' %>>设计师</a></li>
+	      <%end%>
+	      <%youhui = get_company_new_coupon(@firm_id)%>
+	      <%if youhui && youhui.id%>
+          <li><a href="<%= gen_firm_city_event(@firm_id, youhui.id) %>" id='youhuiid' <%= "class='on'" if controller_name == 'events' && action_name == 'coupon' %>>优惠券</a></li>
+	      <%end%>
+        <% unless @firm.detail.blank? %>
+          <li><a href="<%= company_summary_path @firm_id %>" id='summary' <%= "class='on'" if controller_name == 'firms' && action_name == 'summary' %>>公司简介</a></li>
+        <% end %>
+	      <%baojia = get_new_quotation_by_company_id(@firm_id)%>
+	      <%if baojia && baojia.id%>
+          <li><a href="/quotations/<%=baojia.id%>" id='baojiaid' <%= "class='on'" if controller_name == 'events' && action_name == 'quotation' %>>报价单</a></li>
+	      <%end%>
+      <%end%>
+  </ul>
+      <% unless @promoted_event.blank? %>
+      <style type="text/css">
+      .youhui_tg{ float:right;margin-right:10px;}
+      .youhui_tg a,.youhui_tg a:hover{width:auto;background:none;display:inline;text-decoration:underline;color: red}
+      </style>
+        <div class="youhui_tg">
+        <% @promoted_event.each do |promoted| %>
+          <%= link_to promoted['title'], promoted['url'], :target => '_blank' %>
+        <% end %>
+        </div>
+      <% end %>
+</div>

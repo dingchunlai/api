@@ -1,0 +1,36 @@
+<style type="text/css" media="screen">
+  #f2 .seo_tian li.tian{
+    height:100px;width:119px;
+    overflow:hidden;
+    margin:0 5px;
+    text-align:center;
+    float:left;
+    _display:inline;
+  }
+  #f2 .sidebox_3 li.tian img{
+    width:110px;height:80px;
+  }
+</style>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+			$.ajax({
+			  url: 'http://api2.51hejia.com/api/ajax/diaries?keywords=<%=keywords%>',
+			  type: 'GET',
+        dataType: 'jsonp'
+       });
+  });
+</script>
+
+<div id="diary_wrapper"></div>
+
+<script id="diariesTemplate" type="text/x-jquery-tmpl">
+	<ul class="seo_tian clearfix <%=page_class.to_s%> ">
+	  <h3 class="title_s">${city_name}装修日记推荐</h3>
+	  {{each diaries}}
+	    <li class="tian">
+	      <a href="${url}" target="_blank"><img src="${image_url}" alt="${title}" width="112" height="80" /></a>
+				<a href="${url}" target="_blank">${title}</a>
+	    </li>
+	  {{/each}}
+	</ul>
+</script>

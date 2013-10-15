@@ -1,0 +1,346 @@
+<script src="http://js.51hejia.com/js/prototype.js" type="text/javascript"></script> 
+<script type="text/javascript" src="/javascripts/swfobject.js"></script>
+<DIV class=putcomment>
+<DIV class=compname><STRONG><a href="/firms/<%=@commont.company_id%>" target="_blank"><%=@company.name_zh%></a></STRONG></DIV>
+<DIV class=commentcontent>
+<ul class="complist dlist">
+<li class="clearfix">
+		<div class="memberinfo"> 
+			<%if @commont.userurl %>
+				<img src="<%=@commont.userurl%>" width=48 heigh=48/>
+			<%else%>
+				<img src="http://member.51hejia.com/images/headimg/default.gif" width=48 heigh=48/>	
+			<%end%>
+			<%if @commont.c9 == '1'%>
+          	<span>认证会员</span>
+          	<%end%>
+          </div>
+          <div class="li-right">
+            
+            <dl class="point">
+              <dt><%=getstar(@commont.complex_score)%></dt>
+              <dt>设计：</dt>
+              <dd><strong><%=@commont.design_score%></strong></dd>
+              <dt>预算：</dt>
+              <dd><strong><%=@commont.budget_score%></strong></dd>
+              <dt>施工：</dt>
+              <dd><strong><%=@commont.construction_score%></strong></dd>
+              <dt>服务：</dt>
+              <dd><strong><%=@commont.service_score%></strong></dd>
+            </dl>
+            <div class="compname dp"><span class="name"><%=@commont.username%> </span> | <span><%=@commont.title%></span> </div>
+            <div class="description"><%if @commont.content%><%=@commont.content.gsub("\r\n", "<br>")%><%end%></div>
+           </div>
+        </li>
+</ul>
+
+<div class="cont-bottom">
+
+<div class="butnn">
+<%if @commont.cdate%><%=@commont.cdate.strftime("%Y-%m-%d")%><%end%>   <%if @company.name_abbr && @company.name_abbr != 'NULL'%><%=@company.name_abbr%>  |<%end%>
+  <a href="#aaa" onclick="huiying()">回应<%if @commont.response_num && @commont.response_num != '0'%><%=@commont.response_num%><%end%></a> | 
+  <span id="floid_<%=@commont.id%>"><a href="#n" onclick="new Ajax.Updater('floid_<%=@commont.id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=@commont.id%>});">鲜花<%= @commont.flower_num %></a></span> | 
+  <a href="#aaa" onclick="jubao()">举报</a>
+</div>
+<ul class="qreturn">
+    <%index = 1%>  
+    <%@replys.each do |reply|%>
+	<li>
+	<%if reply.userurl %>
+		<img src="<%=reply.userurl%>" width=48 heigh=48/>
+	<%else%>
+		<img src="http://member.51hejia.com/images/headimg/default.gif" width=48 heigh=48/>	
+	<%end%>
+        <div class="cont-r">
+        	<div class="title-return"><span><%=index%>楼</span><%=reply.username%></div>
+            <p><%if reply.content%> <%=h reply.content%><%end%></p>
+            
+            <p class="time"><%=@commont.cdate.strftime("%Y-%m-%d")%> <%if current_user.USERBBSID == reply.user_id || current_user.USERNAME == 'shbh'%>
+        | (<a href="#n" onclick="deletereply('<%=reply.id%>','<%=@commont.id%>')"> 删除 </a> )
+        <%end%></p>
+        	
+        </div>
+    </li>
+    <%index = index + 1%>
+    <%end%>
+</ul>
+<a name="aaa"></a>
+<ul class="huiying">
+<li class="pic"></li>
+
+<li  class="li2"> 
+	  <%if @replytype=='2'%>
+      	<span id="tid">我的举报</span>
+      <%else%>
+      	<span id="tid">我的回应</span>
+      <%end%></li>
+<li>    
+<form action="/dianping/addreply" method="post" onsubmit="return checkinfo()">
+    <input type="hidden" name="replytype" id="rtid" <%if @replytype=='2'%>value="2"<%else%>value="1"<%end%>>
+    <input type="hidden" name="reviewid" id ="rvid" value="<%=@id%>">
+<textarea name="content" id="contentid" cols="50" rows="10"></textarea>
+        <div class=""></div>
+        <%if user_logged_in? %>
+        	<input type="submit" class="putbtn" value="发表" />
+        <%else%>
+        	<input type="button" class="putbtn" value="发表" onclick="alert('登录后才能回应，请您先登录')"/>
+        <%end%>
+</form></li>
+</ul>
+</div>
+</div>
+<% firm_city = @company.city == 11910 ? @conpany.city : @company.district %>
+<div class="clear">
+				<%if @company.state != '-99'%>
+					<ul class="quicklink">
+						<li><a href="/dianping/companycomment/<%=@company.id%>/1/1" target="_blank">网友点评</a></li>
+						<li><a href="/cases/company/<%=@company.id%>" target="_blank">设计案例</a></li>
+						<li><%= link_to "施工图片", firm_photos_path(@company), :target => "_blank" %></li>
+						<li><a href="/designers/index/<%=@company.id%>" target="_blank">设计师</a></li>
+						<li><%= @company.budget_file_name ? link_to("查看预算", @company.budget.url, :target => "_blank") : "查看预算" %></li>
+						<li><%= link_to "最新促销", promotion_firm_path(@company), :target => "_blank" %></li>
+						<li><%= link_to "装修日记", firm_diaries_path(@company), :target => "_blank" %></li>
+						<li><%= link_to "服务流程", service_firm_path(@company), :target => "_blank" %></li>
+						<li><%= link_to "公司介绍", detail_firm_path(@company), :target => "_blank" %></li>
+						<li><%= link_to "在建工地", firm_worksites_path(@company), :target => "_blank" %></li>
+					</ul>
+					<%else%>
+					<ul class="quicklink">
+						<li><a href="/dianping/companycomment/<%=@company.id%>/1/1" target="_blank">网友点评</a></li>
+						<li><a href="#n">设计案例</a></li>
+						<li><a href="#n">施工图片</a></li>
+						<li><a href="#n">设计师</a></li>
+						<li><a href="#n">查看预算</a></li>
+						<li><a href="#n">最新促销</a></li>
+						<li><a href="#n">装修日记</a></li>
+						<li><a href="#n">服务流程</a></li>
+						<li><a href="#n">公司介绍</a></li>
+						<li><a href="#n">在建工地</a></li>
+					</ul>						
+					<%end%>
+				<div class="ccontent zd dplist">
+					<div class="cconright">
+                    <div class="cconright-left"><%= @graph %></div>
+                    <ul>
+							<li class="l1"><%= @company.verysatisfied || 0 %>人满意</li>
+							<li class="l2"><%= @company.satisfied || 0 %>人还行</li>
+							<li class="l3"><%= @company.unsatisfied || 0 %>人不满意</li>
+                    </ul>
+                    </div>
+                    <div class="cconleft">
+                    	<div class="cont-title"><%=@company.name_zh%></div>
+						<%if @company.price && @company.model && @company.style%>
+						<ul class="point clear ">
+							<li><strong>特色：</strong>主打 </li>
+							<li><a href="#n"><span class="hb"><%= firm.price ? diff_city_price_tag_value(firm_city, firm.price) : '暂无信息' %></span></a></li>
+							<li><a href="#n"><span class="hb"><%= firm.model ? MODELS[firm.model.to_i] : '暂无信息' %></span></a></li>  
+							<li><a href="#n"><span class="hb"><%= firm.style ? STYLES[firm.style.to_i] : '暂无信息' %></span></a></li> 
+
+						</ul>
+						<%end%>
+						<!--
+							<li><strong>特色：</strong>主打 <a href="#"><span class="hb"> 5-8万</span></a></li>
+							<li><a href="#"><span class="hb">半包/全包</span></a></li>   
+							<li><a href="#"><span class="hb">田园/简约</span></a></li>   
+							<li><a href="#"><span class="hb">徐汇区</span></a></li>   -->
+						</ul>
+                        
+						<ul class="point clear">
+							<li><strong>总分：</strong><a href="#"><span class="hl"><%= @company.total_score.to_i  %></span></a></li>
+							<li>设计：<a href="#"><span class="hl"><%= @company.design_score.to_i  %></span></a></li>   
+							<li>性价比：<a href="#"><span class="hl"><%= @company.budget_score.to_i  %></span></a></li>   
+							<li>施工：<a href="#"><span class="hl"><%= @company.construction_score.to_i  %></span></a></li>   
+							<li>服务：<a href="#"><span class="hl"><%= @company.service_score.to_i  %></span></a></li>
+						</ul>
+                        
+                        <ul class="point clear">
+							<li>案例数量：<%= @company.cases_count.to_i  %></li>
+							<li>施工图片数量：<%= @company.photos_count.to_i  %></li>   
+							<li>设计师数量：<%= @company.designers_count.to_i  %></li>   
+							<li>在建工地：<%= @company.worksites_count.to_i  %></li>   
+						</ul>
+                        
+						<div class="clear"><strong>地址：</strong><%= @company.address %> </div>
+						<div>		
+							<% if @company.telephone %>
+								<strong>电话：</strong><%= @company.telephone %><br/> 
+							<% end %> 
+							<% if @company.business_hours %>
+							<strong>营业时间：</strong><span class="hl"><%= @company.business_hours %></span>
+							<% end %>
+						</div>
+						<div class="p5"><a href="/dianping/companycomment/<%=@company.id%>/1/1#review" target="_blank" class="icom" title="我要点评"></a> 已有 <span class="hl"><%= @company.comments_count || "-" %></span> 点评 <a href="#n" class="blue collection" onclick="window.external.addFavorite(window.location,'<%= @company.name_zh -%>');">收藏</a> </div>
+						<div class="p5"></div>
+					</div>
+					                  
+				</div>
+			</div>
+            
+            <%@commonts = getcompanyreviews2(@company.id,1,@commont.id)%>
+            <%if @commonts && @commonts.size>0%>
+            <div class="commentitle"><strong>最新点评</strong></div>
+            <div class="dp-list">
+            	<ul>
+            		<%@commonts.each do |commont|%>
+                	<li>
+                    	<span><%=getstar(commont.complex_score)%></span>
+                        <a class="na" href="#n"><%=commont.username%></a> | <a  class="ad" href="/dianping/show/<%=commont.id%>" target="_blank"><%=h commont.title%></a>
+                        <p>
+                        <%= h commont.content.gsub(/<.*?>/, '').chars[0,280]%>……[<a href="/dianping/show/<%=commont.id%>" target="_blank">详情</a>]
+                        </p>
+                    </li>
+					<%end%>
+                </ul>
+                <span class="more"><a href="/dianping/companycomment/<%=@company.id%>/1/1" target="_blank">查看公司更多点评>></a></span> 
+            </div>
+            <%end%>
+  
+<%= render :partial => "share/deco_filter_seo" %>
+   
+</DIV>
+
+
+
+
+
+<DIV class=side>
+<%cases = getcase(@company.id)%>
+<%if cases && cases.size > 0%>
+<ul class="hotrank01 clear">
+<script language="javascript">
+function setFocus5(m)
+{
+selectLayer5(m);
+}
+function selectLayer5(m)
+{
+switch(m)
+{
+case 1:
+document.getElementById("B1").style.display="block";
+document.getElementById("B2").style.display="none";
+break;
+case 2:
+document.getElementById("B1").style.display="none";
+document.getElementById("B2").style.display="block";
+break;
+}
+}
+</script>
+
+<div id="B1" style="display:block;">
+<span><a href="#" class="now" ><strong>装修案例</strong></a><a  href="javascript:setFocus5(2);" onMouseOver="javascript:setFocus5(2);" target="_self">施工图片</a></span>
+<div><ul class="imglist clearfix">
+					<%cases.each do |c|%>
+						<li><a href="/anli/<%=c.ID%>" target="_blank"><img src="http://d.51hejia.com/files/hekea/case_img/tn/<%=c.ID%>.jpg" onerror="javascript:this.src='http://www.51hejia.com/api/images/none.gif'"/></a><p><a href="/anli/<%=c.ID%>" target="_blank"><%=c.NAME%></a></p></li>
+					<%end%>
+				</ul></div>
+</div>
+<div id="B2" style="display:none;">
+<span><a href="javascript:setFocus5(1);" onMouseOver="javascript:setFocus5(1);" target="_self">装修案例</a><a href="#" class="now" ><strong>施工图片</strong></a></span>
+<div><ul class="imglist clearfix">
+					<%index = 0%>
+					<%getseofirmphoto(@company.id).each do |photo|%>
+						<%if index < 4%>
+						<li><%= link_to image_tag(photo.image.url(:medium), :alt => photo.title), firm_slide_photos_path(@company), :title => photo.title,:target => '_blank' %><p><%=photo.title%></p></li>
+						<%end%>
+						<%index = index + 1%>
+					<%end%>
+				
+				</ul></div>
+</div>
+			</ul>   
+<%end%>
+
+<ul class="hotrank01 clear">
+<script language="javascript">
+function setFocus4(m)
+{
+selectLayer4(m);
+}
+function selectLayer4(m)
+{
+switch(m)
+{
+case 1:
+document.getElementById("X1").style.display="block";
+document.getElementById("X2").style.display="none";
+break;
+case 2:
+document.getElementById("X1").style.display="none";
+document.getElementById("X2").style.display="block";
+break;
+}
+}
+</script>
+
+<div id="X1" style="display:block;">
+<span><a href="#" class="now"><strong>装修热点文章</strong></a><a href="javascript:setFocus4(2);" onMouseOver="javascript:setFocus4(2);" target="_self">热门标签</a></span>
+<div><ul>
+						<%getzhuangxiuarticle.each do |article|%>
+						<li><a href="http://d.51hejia.com/zhuangxiu/<%=article.CREATETIME.strftime('%Y%m%d')%>/<%=article.ID%>" target="_blank"><%=article.TITLE%></li>
+                        <%end%>
+					</ul></div>
+</div>
+<div id="X2" style="display:none;">
+<span><a href="javascript:setFocus4(1);" onMouseOver="javascript:setFocus4(1);" target="_self">装修热点文章</a><a href="#"class="now"><strong>热门标签</strong></a></span>
+<div>
+	<ul>
+	<% parse_xml(54009, ["title", "url", "image-url"], 100).each do |p| -%>
+		<strong id="sp<%=rand(4).to_s%>"><a href="<%=p['url']%>" target="_blank"><%=p['title']%></a></strong>
+	<% end %>
+
+	</ul></div>
+</div>
+			</ul>   
+<%= render :partial => "share/deco_filter_seo_left" %>
+<!--替换点结束-->
+		
+  </DIV>
+  
+<input type="hidden" id="flid">
+
+<SCRIPT language=javascript>
+  	function doflower(score,reviewid){
+  		if(document.getElementById('flid').value == '1'){
+  			alert('您已经送过鲜花了');
+  			return false;
+  		}
+  		new Ajax.Updater('flowerid', '/dianping/flower', {asynchronous:true, evalScripts:true, parameters:'score='+score+'&reviewid='+reviewid});
+  		document.getElementById('flid').value = '1';
+  	}
+  	function deletereply(replyid,reviewid){
+  		if(window.confirm('确定删除该回应吗')){
+  			location.href="/dianping/deletereply?replyid="+replyid+"&reviewid="+reviewid;
+  		}
+  	}
+  	function jubao(){
+  		document.getElementById("tid").innerHTML = "我的举报";
+  		document.getElementById("rtid").value=2;
+  	}
+  	function huiying(){
+  		document.getElementById("tid").innerHTML = "我的回应";
+  		document.getElementById("rtid").value=1;
+  	}
+  	function checkinfo(){
+  		content = document.getElementById("contentid").value.trim();
+  		if(content.length<10 || content.length>300){
+  			alert("字数请在10~300字内");
+  			return false;
+  		}
+  		document.getElementById("contentid").value = content;
+  		return true;
+  	}
+  	function formatcontent(){
+  		var val = document.getElementById('conid').innerHTML;
+		while(val.indexOf('\r\n')!=-1)
+		{
+			val = val.replace(new RegExp("\r\n",""),"<br>");
+		}
+  		document.getElementById('conid').innerHTML = val;
+  	}
+  	String.prototype.trim  =  function()
+	{
+        return  this.replace(/(^\s*)|(\s*$)/g,  "");
+	}
+  </SCRIPT>

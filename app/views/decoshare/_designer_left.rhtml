@@ -1,0 +1,136 @@
+  <div id="leftside">
+  <script language="JavaScript" type="text/javascript">
+function Show(id,i_id){
+        var on_img="http://js.51hejia.com/img/sdeco/close4.gif";//打开时图片
+        var off_img="http://js.51hejia.com/img/sdeco/open.gif";//隐藏时图片
+        var obj=document.getElementById('c_'+id);
+        if(obj.style.display=="none"){
+                obj.style.display="";
+        i_id.src=on_img;
+        //将子菜单Id放入Cookies
+        var curShow = readCookie('curShow');
+        if(curShow!='')
+        {
+          var arr_curShow = curShow.split(',');
+          var found = false;
+          for(i=0;i<arr_curShow.length-1;i++)
+          {
+            if(arr_curShow[i].toString()==id) {found=true;}
+          }
+          if(!found){writeCookie('curShow',curShow+','+id,12)}
+        }
+        else {
+          writeCookie('curShow',id,12)
+        }
+        //将子菜单Id放入Cookies End
+        }else{
+                obj.style.display="none";
+        i_id.src=off_img;
+        //将子菜单Id从Cookies中移除
+        var curShow = readCookie('curShow');
+        if(curShow!='')
+        {
+          var arr_curShow = curShow.split(',');
+          for(i=0;i<arr_curShow.length;i++)
+          {
+            if(arr_curShow[i].toString()==id) {arr_curShow=arr_curShow.del(i--);}
+          }
+          curShow = arr_curShow.join(',');
+          //alert(curShow);
+          writeCookie('curShow',curShow,12)
+        }
+        //将子菜单Id从Cookies中移除 End
+        }
+}
+function readCookie(name)
+{
+  var cookieValue = "";
+  var search = name + "=";
+  if(document.cookie.length > 0)
+  { 
+    offset = document.cookie.indexOf(search);
+    if (offset != -1)
+    { 
+      offset += search.length;
+      end = document.cookie.indexOf(";", offset);
+      if (end == -1) end = document.cookie.length;
+      cookieValue = unescape(document.cookie.substring(offset, end))
+    }
+  }
+  return cookieValue;
+}
+function writeCookie(name, value, hours)
+{
+  var expire = "";
+  if(hours != null)
+  {
+    expire = new Date((new Date()).getTime() + hours * 3600000);
+    expire = "; expires=" + expire.toGMTString();
+  }
+  document.cookie = name + "=" + escape(value) + expire;
+}
+Array.prototype.del=function(n) {  //n表示第几项，从0开始算起。
+//prototype为对象原型，注意这里为对象增加自定义方法的方法。
+  if(n<0)  //如果n<0，则不进行任何操作。
+    return this;
+  else
+    return this.slice(0,n).concat(this.slice(n+1,this.length));
+}
+window.onload = function a()
+{
+  var curShow = readCookie('curShow');
+  var totalShow = 5;  //自己修改一共有多少个二级分类
+  if(curShow!=''&&curShow!=null)
+  {
+    for(i=1;i<=totalShow;i++)
+    {
+      document.getElementById('c_'+i).display="none";
+    }
+    var arr_curShow;
+    arr_curShow = curShow.split(',');
+    for(i=0;i<=arr_curShow.length-1;i++)
+    {
+      if(arr_curShow[i]!=''){document.getElementById('c_'+arr_curShow[i]).style.display="";}
+    }
+  }
+}
+</script>
+    <h3>设计师</h3>
+    <%if !@decofirm.nil?%><h4><a href="/gs-<%=@decofirm.id%>" target="_blank"><%if @decofirm.name_abbr.to_s=='装饰公司'%><%=@decofirm.name_zh.chars[0,9]%><%elsif @decofirm.name_abbr.nil?%><%=@decofirm.name_zh.chars[0,9]%><%else%><%=@decofirm.name_abbr.chars[0,9]%><%end%></a></h4><%end%>
+    <%if @dsn.size>0%>
+	    <% 0.upto(@dsn.size-1) do |i| %>
+		    <h5><a style="cursor: pointer" onclick="Show(<%=i%>,img1)"><img src="http://js.51hejia.com/img/sdeco/open.gif" align="absmiddle" id="img1"/> <%=@dsn[i].DESNAME%></a></h5>
+		    <ul class="clearfix ul03" id="c_<%=i%>" <%if !@newcase.nil?&&@newcase.DESIGNERID.to_i==@dsn[i].ID.to_i%><%else%>style="display: none"<%end%>>
+		    <% c = @dsn[i].cs %>
+		    <% c.each do |s| %>
+		      <%pathurl = gen_firm_city_case_detail(@dsn[i].COMPANY,s.ID)%>
+		      <%if !@newcase.nil?&&@newcase.ID==s.ID%>
+		      	<li><a href="<%if pathurl.nil?%>/anli/<%=s.ID%><%else%><%=pathurl%><%end%>" title="<%=s.NAME%>" class="ls_current"><%=s.NAME.chars[0,7]%>(<%=s.deco.size%>)</a></li>
+		      <%else%>
+		      	<li><a href="<%if pathurl.nil?%>/anli/<%=s.ID%><%else%><%=pathurl%><%end%>" title="<%=s.NAME%>"><%=s.NAME.chars[0,7]%>(<%=s.deco.size%>)</a></li>
+		      <%end%>
+		    <%end%>
+		    </ul>
+    	<%end%>
+    <%end%>
+    <h3>我看过的案例</h3>
+    <ul class="clearfix ul01">
+      <%= render :partial => "cases/look", :object => @look_cases %>
+    </ul>
+    <h3>根据看过案例推荐</h3>
+    <ul class="clearfix ul01">
+    <%if !@tuijian.nil?%>
+	    <%@tuijian.each do |t|%>
+	      		<% casesmodel= Case.get_case_by_id(t.ID)%>
+				<%if !casesmodel.COMPANYID.nil?&&casesmodel.COMPANYID.to_i!=0%>
+	      			<%pathurl = gen_firm_city_case_detail(casesmodel.COMPANYID,casesmodel.ID)%>
+	      		<%end%>
+	      <li><a href="<%if pathurl.nil?%>/anli/<%=t.ID%><%else%><%=pathurl%><%end%>" title="<%=t.NAME%>"><%=h t.NAME.chars[0,9]%></a></li>
+	    <%end%>
+    <%end%>
+    </ul>
+    <h3>我收藏的案例</h3>
+    <ul class="clearfix ul02">
+      <%= render :partial => "cases/shoucang", :object => @fav_cases %>
+    </ul>
+  </div>

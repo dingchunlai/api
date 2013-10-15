@@ -1,0 +1,13 @@
+<% case_id = @newcase.nil? ? @case_id : @newcase.id %>
+<div class="gsl_wyly_tit">
+          <h3>网友评论</h3>
+          <span><a href="#" target="_self" title="返回顶部">返回顶部</a></span></div>
+   		<%@remarks.each do |remark|%>
+		<div class="gsl_wyly_txt">
+          <h4>
+            <label><%= remark.created_at.strftime('%Y-%m-%d %H:%M:%S')%></label>
+            	<%= remark.user_name%></h4>
+          <p><%=h remark.content%></p>
+         </div>
+		<% end %>
+<div class="pagination clear"><%=will_paginate_remote(@remarks, :update=>'remarks_div', :params => "&id=#{case_id}", :url=>"/cases/remaks_page")%></div>

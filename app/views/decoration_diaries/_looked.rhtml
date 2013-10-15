@@ -1,0 +1,47 @@
+<div class="list_l_t">
+          <h3>我最近在看的</h3>
+        </div>
+        <div class="list_lt_tab">
+          <ul>
+            <li id="list_lt_but1" class="list_lt_tabbg1" onClick="show_tab('list_lt_c','list_lt_but','list_lt_tabbg',2,1)">公司</li>
+            <li id="list_lt_but2" class="list_lt_tabbg2" onClick="show_tab('list_lt_c','list_lt_but','list_lt_tabbg',2,2)">日记</li>
+          </ul>
+        </div>
+        <div id="list_lt_c1" class="list_lt_c0">
+          <div class="list_diary_ed list_l_sjtj">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="66"><label>名称</label></td>
+                <td width="33"><label>设计</label></td>
+                <td width="33"><label>施工</label></td>
+                <td width="33"><label>服务</label></td>
+                <td><label>案例</label></td>
+              </tr>
+			  <% if !@browsed_firms.nil?%>
+              <% @browsed_firms.each do |firm|%>
+			 <tr>
+              <td><span><a href="<%=gen_firm_city_path(firm.id)%>" title="<%=firm.name_abbr%>" target="_blank"><%=truncate(firm.name_abbr,4,'')%></a></span></td>
+              <td><%=firm.design_praise%></td>
+              <td><%=firm.construction_praise%></td>
+              <td><%=firm.service_praise%></td>
+              <td><a href="<%=gen_firm_city_path(firm.id)%>" title="<%=firm.name_abbr%>" target="_blank">查看</a></td>
+            </tr>
+			<% end %>
+			<% end %>
+            </table>
+          </div>
+        </div>
+        <div id="list_lt_c2" class="list_lt_c0">
+          <div class="list_diary_ed">
+            <ul>
+            	<% if !@browsed_diaries.nil?%>
+            	<% @browsed_diaries.each do |diary|%>
+              <li>
+              <p class="list_diary_ed_t"><a href="<%= diary.url %>" target="_blank" title="<%=h diary.title%>"><%=h truncate(diary.title,10,'')%></a></p>
+              <p class="list_diary_ed_p">(<%=diary_pictures_size(diary)%>)图</p>
+            </li>
+			  <% end %>
+			  <% end %>
+            </ul>
+          </div>
+        </div>

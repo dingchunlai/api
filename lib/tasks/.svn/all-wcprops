@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/338/51hejia/repos/api/release/lib/tasks
+END
+destroy_all_analog_url.rake
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/lib/tasks/destroy_all_analog_url.rake
+END
+baidu_city_mapping.rake
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/lib/tasks/baidu_city_mapping.rake
+END
+init_analog_code_max_hits.rake
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/lib/tasks/init_analog_code_max_hits.rake
+END
+load_analog_code.rake
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/338/51hejia/repos/api/release/lib/tasks/load_analog_code.rake
+END
+gen_city_deco_story_fragment.rake
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/81/51hejia/repos/api/release/lib/tasks/gen_city_deco_story_fragment.rake
+END
+hoptoad_notifier_tasks.rake
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/lib/tasks/hoptoad_notifier_tasks.rake
+END

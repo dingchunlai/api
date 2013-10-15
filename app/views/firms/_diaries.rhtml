@@ -1,0 +1,29 @@
+
+        <% @diaries.each_with_index do |diary,index| %>
+          <li class="clearfix">
+            <div class="gsl_c1_img f_l">
+            <a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank" title="<%= diary.title %>">
+            		<img src="<%= get_diary_master_picture(diary) ? image_full_path(get_diary_master_picture(diary),'',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg' %>" />
+            </a>
+            </div>
+            <div class="gsl_c1_txt f_r">
+              <h3>
+              	<span>业主：<a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank"><%=  diary.user_name %></a></span>
+              	<a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank" title="<%= diary.title %>"><%= truncate(diary.title, 20, '') %></a>
+              </h3>
+              <p><a href="<%= generate_same_city_diary_url({:firm_id => diary.deco_firm_id , :diary_id => diary.id}) %>" target="_blank" title="<%= diary.title %>"><% if diary.decoration_diary_posts.last && diary.decoration_diary_posts.last.body.gsub(/<.*?>/, "") %><%= truncate(diary.decoration_diary_posts.last.body.gsub(/<.*?>/, ""), 170, '...')  %><% else %>查看日记详情<% end %></a></p>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="gsl_c1_yzpj">
+                <tr>
+                  <td><strong>业主评价</strong></td>
+                  <td width="265" align="center">
+                  	服务<% if diary.service_score.to_i != -1 %><img src="http://js.51hejia.com/img/sdeco/handup.gif" /> <% else %><img src="http://js.51hejia.com/img/sdeco/handdown.gif" /><% end %>
+                  	| 装修<% if diary.construction_score.to_i != -1 %><img src="http://js.51hejia.com/img/sdeco/handup.gif" /> <% else %><img src="http://js.51hejia.com/img/sdeco/handdown.gif" /><% end %>
+                  	| 设计<% if diary.design_score.to_i != -1 %><img src="http://js.51hejia.com/img/sdeco/handup.gif" /> <% else %><img src="http://js.51hejia.com/img/sdeco/handdown.gif" /><% end %>
+                  </td>
+                  <td>发布时间：<span><%= diary.created_at.strftime("%Y-%m-%d") %></span></td>
+                  <td>查看数：<span><%= diary.pv %></span></td>
+                </tr>
+              </table>
+            </div>
+          </li>
+          <% end %>

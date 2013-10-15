@@ -1,0 +1,60 @@
+<%@commonts.each do |commont|%> 
+        <li class="clearfix">
+          <div class="memberinfo"> 
+			<%if commont.userurl %>
+				<img src="<%=commont.userurl%>" width=48 heigh=48/>
+			<%else%>
+				<img src="http://member.51hejia.com/images/headimg/default.gif" width=48 heigh=48/>	
+			<%end%>
+			<%if commont.c9 == '1'%>
+          	<span>认证会员</span>
+          	<%end%> 
+          </div>
+          <div class="li-right">
+          <%if @displaycompany.nil?%>
+            <div class="about">
+            
+            <%if commont.style %>
+            <span>装修风格：
+            	<a href='#n'><%=STYLES[commont.style.to_i]%></a>
+            </span>
+            <%end%>
+            <%if commont.method %>
+            <span>
+            	装修方式：
+            	<a href='#n'><%=MODELS[commont.method.to_i]%></a>
+         	
+            </span>
+            <%end%>
+            <%if commont.price %>
+            <span>装修价位：
+            	<a href='#n'><%=PRICE[commont.price.to_i]%></a>
+            </span>
+            <%end%>
+              <div class="li-title">
+              	<a href="/firms-<%=commont.company_id%>" target="_blank"><%=get_firm_name_abbr(commont.company_id)%></a>
+              </div>
+            
+            </div>
+          <%end%>  
+            <dl class="point">
+              <dt><%=getstar(commont.complex_score)%></dt>
+              <dt>设计：</dt>
+              <dd><strong><%=commont.design_score%></strong></dd>
+              <dt>性价比：</dt>
+              <dd><strong><%=commont.budget_score%></strong></dd>
+              <dt>施工：</dt>
+              <dd><strong><%=commont.construction_score%></strong></dd>
+              <dt>服务：</dt>
+              <dd><strong><%=commont.service_score%></strong></dd>
+            </dl>
+            <div class="compname"><span class="name"><%=commont.username%> </span> <%if commont.title%>| <span><a href="/dianping-<%=commont.id%>" target="_blank"><%=h commont.title%></a></span><%end%> </div>
+            <div class="description"><%=h commont.content.gsub(/<.*?>/, '').chars[0,280]%>……[<a href="/dianping-<%=commont.id%>" target="_blank">详情</a>]</div>
+                        <div class="li-bottom"> <%if commont.cdate%><%=commont.cdate.strftime("%Y-%m-%d")%><%end%> 
+            <a href="/dianping-<%=commont.id%>" target="_blank">详情</a> | 
+            <span id="floid_<%=commont.id%>"><a href="#n" onclick="new Ajax.Updater('floid_<%=commont.id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=commont.id%>});">鲜花<%if commont.flower_num && commont.flower_num != '0'%><%=commont.flower_num%><%end%></a></span> |
+            <a href="/dianping-<%=commont.id%>" >回应<%if commont.response_num && commont.response_num != '0'%><%=commont.response_num%><%end%></a> 
+            </div>
+          </div>
+        </li>
+<%end%>

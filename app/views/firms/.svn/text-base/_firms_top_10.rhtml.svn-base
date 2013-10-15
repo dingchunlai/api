@@ -1,0 +1,47 @@
+<div class="list_l_t clear">
+  <h3>装修公司TOP10</h3>
+</div>
+<script type="text/javascript" src="http://js.51hejia.com/js/2010/tab.js"></script>
+<style type="text/css">
+  .list_diary_list0 .list_diary_toplistbg { background:url(http://js.51hejia.com/img/zxdpimg/list_13.jpg) no-repeat 5% 3px; margin-top:10px; color:#5C2B0B;}
+  .list_diary_list0 .list_diary_toplistbg td { line-height:23px;}
+  .list_diary_tab{border-bottom:1px solid #dbdbdb; color:#b8b8b8; position:relative;}
+  .list_diary_tab ul{ position:absolute; top:-40px; right:7px;}
+  .list_diary_tab li{ float:left;overflow:hidden;}
+  .list_diary_tab li a{ font-size:12px; display:block; border:1px solid #e7e7e7; height:24px; line-height:24px; margin-top:11px; padding:0 2px; _float:left;}
+  .list_diary_tabbg1 a,.list_diary_tabbg1 a:visited{ color:#f60; background:#fff;}
+  .list_diary_tabbg2 a,.list_diary_tabbg2 a:visited{ color:#ad9586;}
+  #list_diary_list2{ display:none;}
+  .stars label{margin:0px 5px;}
+</style>
+<div class="list_diary_toplist">
+  <div class="list_diary_tab">
+    <ul>
+      <li id="list_diary_but1" class="list_diary_tabbg1" onMouseover="show_tab('list_diary_list','list_diary_but','list_diary_tabbg',2,1)"><a href="#n" >口碑</a></li>
+      <li id="list_diary_but2" class="list_diary_tabbg2" onMouseover="show_tab('list_diary_list','list_diary_but','list_diary_tabbg',2,2)"><a href="#n" >点评数</a></li>
+    </ul>
+  </div>
+  <div id="list_diary_list1" class="list_diary_list0">
+    <table width="210" border="0" align="center" cellpadding="0" cellspacing="0" class="list_diary_toplistbg" <%="style='background:url()'" if @city.to_i == 11910 %>>
+      <%get_city_topten_firm(params[:city],1).each do |firm| -%>
+        <tr>
+          <td width="30" style="text-align:center"><%= image_tag "http://js.51hejia.com/img/sdeco/tuitm.gif" if firm.class == Fixnum %></td>
+          <% firm = DecoFirm.find_by_id firm if firm.class == Fixnum %>
+          <td><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank"><%=get_firm_name_abbr2(firm)%></a></td>
+          <td align="center" width="95">口碑：<span style="color:red;"><%=format("%.1f",firm.praise) %></span></td>
+        </tr>
+      <%end -%>
+    </table>
+  </div>
+  <div id="list_diary_list2" class="list_diary_list0">
+    <table width="210" border="0" align="center" cellpadding="0" cellspacing="0" class="list_diary_toplistbg">
+      <%get_city_topten_firm(params[:city],2).each do |firm| -%>
+        <tr>
+          <td width="30">&nbsp;</td>
+          <td><a href="<%=gen_firm_city_path(firm.id)%>" target="_blank"><%=get_firm_name_abbr2(firm)%></a></td>
+          <td align="right" width="95"><span style="color:red;"><%= firm.remark_only_count %></span>人点评&nbsp;&nbsp;</td>
+        </tr>
+      <%end -%>
+    </table>
+  </div>
+</div>

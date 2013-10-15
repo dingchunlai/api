@@ -1,0 +1,11 @@
+<% @firm_id = @firm.id %>
+<div class="ipath"><strong>您的位置：</strong><a href="http://z.51hejia.com">找装修频道</a> &lt; <a href="/firms">装潢公司</a> &lt; <a href="/firm-<%= @firm.id %>"><%= @firm.name_zh %></a> &lt; <span>公司简介</span></div>
+<div class="left2">
+  <%= render :partial => 'decoshare/firms_daohang' %>
+  <div class="youhuixx margin10" style="padding: 10px">
+    <%= @firm.detail %>
+  </div>
+</div>
+<%= render :partial => "share/case_photo_right"%>
+<div class="clear"></div>
+<%= increase_deco_firm_pv_image_tag @firm.id %>

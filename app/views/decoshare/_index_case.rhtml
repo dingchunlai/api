@@ -1,0 +1,139 @@
+<script>
+function link(){
+	var fengge = document.getElementById('fengge1').value;
+	var huxing = document.getElementById('huxing1').value;
+	var feiyong = document.getElementById('feiyong1').value;
+	var yongtu = document.getElementById('yongtu1').value;
+	var key = document.getElementById('name_case_id').value;
+	var href = "/zhuangxiuanli/";
+	if (feiyong!=''){
+		href+=feiyong+".";
+	}else{
+		href+="0.";
+	}
+	if(fengge!=''){
+
+		href+=fengge;
+		href+=".";
+
+	}else{
+		href+="0.";
+	}
+	if(yongtu!=''){
+		href+=yongtu+".";
+	}else{
+		href+="0.";
+	}
+	if(huxing!=''){
+		href+=huxing+".";
+	}else{
+		href+="0.";
+	}
+
+	href+="1.html";
+	if(key.length > 0)
+			href = href + '?name='+key;
+	location.href = encodeURI(href);		
+}
+</script>
+		<ul>
+            <li class="index_s_li01"><a href="javascript:setFocus3(1);" onMouseOver="javascript:setFocus3(1);" target="_self"><span><%=firms_count_all%></span>家热门公司热推</a></li>
+            <li class="index_s_li02"><a href="javascript:setFocus3(2);" onMouseOver="javascript:setFocus3(2);" target="_self"><span><%=note_count.to_i%></span>个装修经历</a></li>
+            <li class="index_s_li03 index_s_li_cur"><a href="#"><span><%=case_count%></span>多个经典案例</a></li>
+          </ul>
+          <div class="index_s_text">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+              <td colspan="5">
+              <input type="hidden" name="yongtu1" value="" id="yongtu1"/>
+                 <select name="fengge" id="fengge1">
+                    <option value="">装修风格</option>
+                    <option value="xiandaijianyue">现代简约</option>
+                    <option value="zhongshi">中式风格</option>
+                    <option value="oumei">欧/美式</option>
+                    <option value="hunda">混搭</option>
+                    <option value="dizhonghai">地中海</option>
+                    <option value="tianyuan">田园风格</option>
+                    <option value="qita">其他</option>
+                  </select>
+               <select name="huxing" id="huxing1">
+                  <option value="">装修户型</option>
+                  <option value="xiaohu">小户型装修</option>
+                  <option value="gongyu">公寓装修</option>
+                  <option value="bieshu">别墅/复式</option>
+                </select>
+                 <select name="feiyong" id="feiyong1">
+                  <option value="">装修价位</option>
+                  <%if params[:city].to_i ==12301%>
+	                  <option value="8">6万以下</option>
+	                  <option value="8_15">6-10万</option>
+	                  <option value="15_30">10-15万</option>
+	                  <option value="30">30万-50万</option>
+	                  <option value="100">50万以上</option>
+                  <%else%>
+	                  <option value="8">8万以下</option>
+	                  <option value="8_15">8-15万</option>
+	                  <option value="15_30">15万-30万</option>
+	                  <option value="30">30万-100万</option>
+	                  <option value="100">100万以上</option>
+                  <%end%>
+                </select>
+		          <input name="22" type="text" id="name_case_id" value="" />
+		          <input name="" type="button" value=" " class="index_tij" onclick="link();"/>
+          
+                  </td>
+              </tr>
+              <tr>
+                <td width="65">装修方式：</td>
+                <td colspan="4" width="570">
+                  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.jiufang.<%=params[:huxing] ||= 0%>.1.html" >旧房改造</a> 
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.hunfang.<%=params[:huxing] ||= 0%>.1.html" >婚房装修</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.danshen.<%=params[:huxing] ||= 0%>.1.html" >单身贵族</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.sankou.<%=params[:huxing] ||= 0%>.1.html" >三口之间</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.laoren.<%=params[:huxing] ||= 0%>.1.html" >家有老人</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.shejishi.<%=params[:huxing] ||= 0%>.1.html" >设计师的家</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.ertong.<%=params[:huxing] ||= 0%>.1.html" >家有儿童</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.fanxin.<%=params[:huxing] ||= 0%>.1.html" >翻新</a>
+				  <a href="/zhuangxiuanli/<%=params[:feiyong]  ||= 0%>.<%=params[:fengge] ||= 0%>.qita.<%=params[:huxing] ||= 0%>.1.html" >其他</a>
+                </td>
+              </tr>
+              <tr>
+                <td width="65">装修风格：</td>
+                <td colspan="4">
+                <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.xiandaijianyue.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">现代简约</a>  
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.zhongshi.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">中式风格</a>  
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.oumei.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">欧/美式</a>  
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.hunda.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">混搭</a>  
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.dizhonghai.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">地中海</a>  
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.tianyuan.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">田园风格</a>  
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.qita.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">其他</a> 
+                </td>
+              </tr>
+              <tr>
+                <td valign="top" width="65">装修价位：</td>
+                <td colspan="4">
+                <%if params[:city].to_i ==12301%>
+	                <a href="/zhuangxiuanli/8.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">6万以下</a> 
+				    <a href="/zhuangxiuanli/8_15.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">6-10万</a>
+				    <a href="/zhuangxiuanli/15_30.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">10-15万</a>  
+				    <a href="/zhuangxiuanli/30.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">30万-50万</a>
+				    <a href="/zhuangxiuanli/100.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">50万以上</a>
+                <%else%>
+	                <a href="/zhuangxiuanli/8.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">8万以下</a> 
+				    <a href="/zhuangxiuanli/8_15.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">8-15万</a>
+				    <a href="/zhuangxiuanli/15_30.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">15万-30万</a>  
+				    <a href="/zhuangxiuanli/30.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">30万-100万</a>
+				    <a href="/zhuangxiuanli/100.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.<%=params[:huxing] ||= 0%>.1.html">100万以上</a>
+                <%end%>
+                </td>
+              </tr>
+              <tr>
+                <td width="65">装修户型：</td>
+                <td colspan="4">
+                <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.xiaohu.1.html">小户型装修</a> 
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.gongyu.1.html">公寓装修</a> 
+			    <a href="/zhuangxiuanli/<%=params[:feiyong] ||= 0%>.<%=params[:fengge] ||= 0%>.<%=params[:yongtu] ||= 0%>.bieshu.1.html">别墅/复式</a>
+                </td>
+              </tr>
+            </table>
+          </div>

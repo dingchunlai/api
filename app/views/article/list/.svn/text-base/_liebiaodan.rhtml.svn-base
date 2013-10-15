@@ -1,0 +1,12 @@
+<div class="liebiaodan">
+    <% @results.each do |result|  %>
+    <% url, image_url = get_article_url_image_url(result.ID, result.FIRSTCATEGORY, result.CREATETIME, result.IMAGENAME) %>
+    <div class="lbdleft <%= cycle('','mar')%>">
+      <a href="<%= url %>" target="_blank" title="<%= result.TITLE %>"><img src="<%= image_url %>" border="0" style="height:90px;width:120px"/></a>
+      <h4><a href="<%= url %>" target="_blank" title="<%= result.TITLE %>"><%= truncate_char(result.TITLE, :length => 14, :omission => '' ) %></a></h4>
+      <p><%= truncate_char(result.SUMMARY.gsub("&nbsp;", ""), :length => 29, :omission => '' ) unless result.SUMMARY.nil? %>...</p>
+      <div><a href="<%= url %>" target="_blank">阅读全文</a></div>
+    </div>
+  <% end %>
+</div>
+

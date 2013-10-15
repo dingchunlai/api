@@ -1,0 +1,6 @@
+<script type="text/javascript">
+  document.write("<img src='http://api.51hejia.com/rest/analytic_zhaozhuangxiu_company_about?key="+"<%=@company_id%>" + "' width='0' height='0' />");
+  <%if !@type.nil?%>
+  document.write("<img src='http://api.51hejia.com/rest/analytics?type=<%=@type%>&key=<%=@company_id%>" + "' width='0' height='0' />");
+  <%end%>
+</script>

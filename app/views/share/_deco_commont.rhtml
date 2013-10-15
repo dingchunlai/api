@@ -1,0 +1,39 @@
+    <%@commonts.each do |commont| -%>
+    <div class="lmainbox margin10">
+      <div class="lmainboxb">
+        <div class="casett">
+          <h1><a href="/dianping-<%=commont.id%>" target="_blank"><%=commont.title%></a></h1>
+          <span><a href="#n"><%if commont.cdate%><%=commont.cdate.strftime("%Y-%m-%d")%><%end%></a> <a href="#n" class="hy">回应(<%=commont.response_num.to_i%>)</a>|<a href="#n" class="xh">鲜花(<%=commont.flower_num.to_i%>)</a> <!--|<a href="#" class="ll">浏览次数(20)</a>--></span>
+          <div class="clear"></div>
+        </div>
+        <div class="caseinfo">
+          <h3>来源：<span><%=BOLG[commont.review_type2.to_i]%></span>    昵称：<span><%=commont.username%></span></h3>
+          <ul>
+            <li><%=getstar(commont.complex_score)%></li>
+            <li>设计：<span><%=commont.design_score%></span></li>
+            <li>预算：<span><%=commont.budget_score%></span></li>
+            <li>施工：<span><%=commont.construction_score%></span></li>
+            <li>服务：<span><%=commont.service_score%></span></li>
+          </ul>
+          <div class="clear"></div>
+        </div>
+        <div class="casedes">
+          <%if commont.photourl && commont.photourl != '' %>
+          	<img src="<%=commont.photourl%>" />
+          <%end%>
+          <p><%=commont.content.gsub(/<.*?>/, '').chars[0,150]%>……[<a href="/dianping-<%=commont.id%>" target="_blank">详情</a>]</p>
+        </div>
+        <div class="rate">
+          <%firm = getfirm(commont.company_id)%>
+          <h3>设计施工：<a href="/firms-<%=firm.id%>" target="_blank"><%=get_firm_name_abbr2(firm)%></a></h3>
+          <ul>
+            <li><span>口碑评分：<%=firm.total_score.to_i%></span></li>
+            <li>案例评分：<%=firm.cases_count.to_i%></li>
+            <li>施工评分：<%=firm.construction_score.to_i%></li>
+            <li>服务评分：<%=firm.service_score.to_i%></li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <%end%>

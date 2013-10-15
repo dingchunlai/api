@@ -1,0 +1,372 @@
+<script language="JavaScript" type="text/javascript">
+  function Cookie(document, name, hours, path, domain, secure)
+  {
+    this.$document = document;
+    this.$name = name;
+    if (hours)
+      this.$expiration = new Date((new Date()).getTime() + hours*3600000);
+    else this.$expiration = null;
+    if (path) this.$path = path; else this.$path = null;
+    if (domain) this.$domain = domain; else this.$domain = null;
+    if (secure) this.$secure = true; else this.$secure = false;
+  }
+
+  function _Cookie_store()
+  {
+    var cookie = this.$name + '=' + this.$value;
+    if (this.$expiration)
+      cookie += '; expires=' + this.$expiration.toGMTString();
+    if (this.$path) cookie += '; path=' + this.$path;
+    if (this.$domain) cookie += '; domain=' + this.$domain;
+    if (this.$secure) cookie += '; secure';
+    this.$document.cookie = cookie;
+  }
+
+  function _Cookie_remove()
+  {
+    var cookie;
+    cookie = this.$name + '=';
+    if (this.$path) cookie += '; path=' + this.$path;
+    if (this.$domain) cookie += '; domain=' + this.$domain;
+    cookie += '; expires=Fri, 02-Jan-1970 00:00:00 GMT';
+    this.$document.cookie = cookie;
+  }
+
+  function _Cookie_load()
+  {
+    var allcookies = this.$document.cookie;
+    if (allcookies == "") return false;
+
+    var start = allcookies.indexOf(this.$name + '=');
+    if (start == -1) return false;
+    start += this.$name.length + 1;
+    var end = allcookies.indexOf(';', start);
+    if (end == -1) end = allcookies.length;
+    var cookieval = allcookies.substring(start, end);
+    this.$value = cookieval;
+    return true;
+  }
+
+  new Cookie();
+  Cookie.prototype.store = _Cookie_store;
+  Cookie.prototype.load = _Cookie_load;
+  Cookie.prototype.remove = _Cookie_remove;
+
+  function Set_Cookie(name, value){
+    value = escape(value);
+    var visitordata = new Cookie(document, name, 10000,'/');
+    if (!visitordata.load()) {
+      visitordata.$value = '+' + value;
+    }else{
+      visitordata.$value = visitordata.$value + '+' + value;
+    }
+    visitordata.store();
+
+  }
+
+  function Get_Cookie(name){
+    var visitordata = new Cookie(document, name, 10000,'/');
+    if(visitordata.load()){
+      return unescape(visitordata.$value);
+    }else{
+      return "";
+    }
+  }
+
+  function Del_Cookie(name, value){
+    value = escape(value);
+    var visitordata = new Cookie(document, name, 10000,'/');
+    if(visitordata.load()){
+      visitordata.$value = (visitordata.$value).replace('+'+value,'');
+      visitordata.store();
+    }
+    return true;
+  }
+
+
+  function loadAllFirmsByCookie(){
+    if(Get_Cookie('userlooknoteid') != null && Get_Cookie('userlooknoteid') != ''){
+      var userlookurls = Get_Cookie('userlooknoteurl').split('+');
+      var userlooktitles = Get_Cookie('userlooknotetitle').split('+');
+      var userlookcounts = Get_Cookie('userlooknotecount').split('+');
+      var userlookids = Get_Cookie('userlooknoteid').split('+');
+      var pro_list = new Array();
+      for(var i=1;i<userlookids.length;i++){
+        var obj = new Object();
+        obj.userlookurl = userlookurls[i];
+        obj.userlooktitle = userlooktitles[i];
+        obj.userlookcount = userlookcounts[i];
+        obj.userlookid = userlookids[i];
+        pro_list.push(obj);
+      }
+      return pro_list;
+    }
+    return new Array();
+  }
+
+  function Del_AllCookies2(userlookurl,userlooktitle,userlookcount,userlookid){
+    Del_Cookie('userlooknoteurl',userlookurl);
+    Del_Cookie('userlooknotetitle',userlooktitle);
+    Del_Cookie('userlooknotecount',userlookcount);
+    Del_Cookie('userlooknoteid',userlookid);
+  }
+
+  function getCityDomainByCookis(){
+
+    var cityValue = Get_Cookie("user_city");
+
+    if(cityValue == "11910"){
+      return "z.shanghai.51hejia.com";
+    }
+    else if(cityValue == "12117"){
+      return "z.suzhou.51hejia.com";
+    }
+    else if(cityValue == "12122"){
+      return "z.nanjing.51hejia.com";
+    }
+    else if(cityValue == "12301"){
+      return "z.ningbo.51hejia.com";
+    }
+    else if(cityValue == "12306"){
+      return "z.hangzhou.51hejia.com";
+    }
+    else if(cityValue == "12118"){
+      return "z.wuxi.51hejia.com";
+    }
+    else{
+      return "z.51hejia.com";
+    }
+  }
+
+  function getAllTypeValue(){
+    var allTypes = document.getElementsByName("allType");
+    for (var i = 0; i < allTypes.length; i++) {
+      if (allTypes[i].checked) {
+        return allTypes[i].value;
+      }
+    }
+    return "0";
+  }
+
+  function analyseUrlAndSubmit(){
+    var url = "/zhuangxiugushi";
+    var city = document.getElementById("method").selectedIndex;
+    var style = document.getElementById("style").selectedIndex;
+    var price = document.getElementById("price").selectedIndex;
+    var stage = document.getElementById("stage").value;
+    var room = document.getElementById("room1").selectedIndex;
+    var alltype = 1;
+    var title = document.getElementById("title").value.replace(/(^\s*)/g, "");
+    if(title == ""){
+      title = "0";
+    }
+    var myorder = document.getElementById("myorder").value;
+    var dianping = document.getElementById("dianping").value;
+    //alert(url + "/" + city + "-" + style + "-" + price + "-" + stage + "-" + room + "-" + alltype + "-" + title + "-" + myorder + "-" + dianping);
+
+    //window.location = url + "/" + city + "-" + style + "-" + price + "-" + stage + "-" + room + "-" + alltype + "-" + title + "-" + myorder + "-" + dianping;
+    document.getElementById('fmid').action = url + "/" + city + "-" + style + "-" + price + "-" + stage + "-" + room + "-" + alltype + "-" + title + "-" + myorder + "-" + dianping;
+    document.getElementById('fmid').submit();
+  }
+
+  function check(s){
+    if (s == '1'){
+
+      document.getElementById("myorder").value = 1;
+    }
+    if (s == '0'){
+      document.getElementById("myorder").value = 0;
+    }
+    analyseUrlAndSubmit();
+  }
+</script>
+<div class="list_width960 clearfix" id="strlist">
+  <div class="list_width960 clearfix">
+    <div class="list_width210 f_l" >
+      <div class="list_diary clearfix" id="X2" style="display:block">
+        <form action="/zhuangxiugushi" method="post" id="fmid">
+          <table width="180" border="0" align="center" cellpadding="0" cellspacing="0" class="mar_10">
+            <tr>
+              <td width="62">装修方式：</td>
+              <td width="118">
+                <select name="method" id="method" class="list_sel1">
+                  <% models_sort = params[:city].to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+                  <option value='0' <% if @method.to_i == 0 %> seleted <% end %>>不限</option>
+                  <% models_sort.sort.each do |k| %>
+                    <option value='<%= k[0] %>' <% if @method.to_s == k[0].to_s %> selected <% end %> > <%= k[1] %> </option>
+                  <% end %>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>装修风格：</td>
+              <td>
+                <select name="style" id="style" class="list_sel1">
+                  <option value='0' <% if @style.to_i == 0 %> seleted <% end %> >不限</option>
+                  <% STYLES.sort.each do |k| %>
+                    <option value='<%= k[0] %>' <% if @style.to_s == k[0].to_s %> selected <% end %> > <%= k[1] %> </option>
+                  <% end %>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>装修价位：</td>
+              <td>
+                <select name="price" size="1" id="price" class="list_sel1">
+                  <option value='0' <% if @price.to_i == 0 %> seleted <% end %>>不限</option>
+                  <% diff_city_price_tag(@city_id).each do |k| %>
+                    <option value='<%= k[0] %>' <% if @price.to_s == k[0].to_s %>selected<%end%> > <%= k[1] %> </option>
+                  <% end %>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>装修房型：</td>
+              <td>
+                <select name="room1" id="room1" class="list_sel1">
+                  <option value='0'  <% if @room.to_i == 0 %> seleted <% end %> >不限</option>
+                  <%ROOM.sort.each do |k|%>
+                    <option value='<%= k[0] %>' <% if @room.to_s == k[0].to_s %> selected <% end %> > <%= k[1] %> </option>
+                  <%end%>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="text" name="title" id="title" class="list_input1" value="<%=@title  %>"/>&nbsp;&nbsp;<input type="image" src="http://js.51hejia.com/img/zxdpimg/list_11.jpg" align="absmiddle" onClick="analyseUrlAndSubmit();"/></td>
+            <input type="hidden" name="dianping" id="dianping" value="2"/>
+            <input type="hidden" name="alltype" id="alltype" value="1"/>
+            <input type="hidden" name="stage" id="stage" value="<%= @stage %>"/>
+            <input type="hidden" name="myorder" id="myorder" value="<%= @myorder || 1 %>"/>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div class="list_l_t clearfix"><h3>快捷搜索</h3></div>
+      <div class="list_select list_select_new" >
+        <ul class="clearfix">
+          <a href="#n" onclick="changemodel(0)" class="list_select_a">装修方式(不限)</a>
+          <% models_sort = params[:city].to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+          <% models_sort.sort.each do |k, v| -%>
+            <li <%if params[:method].to_i == k%>class="on"<%end%>><a  href="<%=generate_base_tag_url('deco_note', 'method', k) %>" target='_self' ><%=v %></a></li>
+          <% end -%>
+        </ul>
+        <ul class="clearfix">
+          <a href="#n" onclick="changestyle(0)" class="list_select_a">装修风格(不限)</a>
+          <% STYLES.sort.each do |k, v| -%>
+            <li <%if params[:style].to_i == k%>class="on"<%end%>><a  href="<%=generate_base_tag_url('deco_note', 'style', k) %>" target='_self' ><%=v %></a></li>
+          <% end -%>
+        </ul>
+        <ul class="clearfix">
+          <a href="#n" onclick="changeprice(0)" class="list_select_a">主打价位(不限)</a>
+          <% diff_city_price_tag(params[:city]).each do |k, v| -%>
+            <li <%if params[:price].to_i == k%>class="on"<%end%>><a  href="<%=generate_base_tag_url('deco_note', 'price', k) %>" target='_self'><%=v %></a></li>
+          <%end -%>
+        </ul>
+        <ul class="clearfix">
+          <a href="#n" onclick="changeprice(0)" class="list_select_a">装修户型(不限)</a>
+          <% ROOM.sort.each do |k, v| -%>
+            <li <%if params[:room].to_i == k%>class="on"<%end%>><a  href="<%=generate_base_tag_url('deco_note', 'room', k) %>" target='_self' ><%=v %></a></li>
+          <%end -%>
+        </ul>
+      </div>
+
+      <div class="list_l_t clear"><h3>装修日记排行榜</h3></div>
+      <div class="list_diary_toplist">
+        <table width="200" border="0" align="center" cellpadding="0" cellspacing="0" class="list_diary_toplistbg">
+          <tr>
+            <td width="40" align="center" class="list_border1 f_000">排序</td>
+            <td class="list_border1 f_000">名称</td>
+            <td width="50" align="center" class="list_border1 f_000">浏览次数</td>
+          </tr>
+          <%topten = DecorationDiary.get_diaries_top(@city_id)%>
+          <%if topten.size>0%>
+            <%topten.each do |t|%>
+              <tr>
+                <td>&nbsp;</td>
+                <td><a href="<%=note_url(t)%>" target="_blank"><%=h t.title.chars[0,9]%></a></td>
+                <td align="center"><%=t.pv.to_i%></td>
+              </tr>
+            <%end%>
+          <%end%>
+        </table>
+      </div>
+      <div class="list_l_t">
+        <h3>我看过的装修日记</h3>
+      </div>
+      <div  class="list_diary_ed">
+        <ul>
+          <% if !@browsed_diaries.nil?%>
+            <% @browsed_diaries.each do |diary|%>
+              <li>
+                <p class="list_diary_ed_t"><a href="<%=note_url(diary)%>" target="_blank" title="<%=h diary.title%>"><%=h truncate(diary.title,10,'')%></a></p>
+                <p class="list_diary_ed_p">(<%=diary.pictures.size%>)图</p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="list_width739 f_r">
+      <div class="list_r_t">
+        <div class="list_r_tl f_l">当前搜索结果：
+          <% models_sort = params[:city].to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+          <span><%= models_sort[@method.to_i] %></span>
+          <span><%= STYLES[@style.to_i] %></span>
+          <span><% if @price && @price.to_i != 0 %><%= diff_city_price_tag_value(@city_id.to_i, @price) %><% end %></span>
+          <span><%= STAGE[@stage.to_i] %></span>
+          <span><%= ROOM[@room.to_i] %></span>
+        </div>
+        <div class="list_r_tr f_r"><ul><li>排序：</li><li <%if @myorder.to_s=='0'%>class="list_r_tr_off"<%else%>class="list_r_tr_on"<%end%>><a href="#" onclick="check(1)">最新</a></li><li <%if @myorder.to_s=='0'%>class="list_r_tr_on"<%else%>class="list_r_tr_off"<%end%>><a href="#" onclick="check(0)">精华</a></li></ul></div>
+      </div>
+      <ul class="conlist clear">
+        <% if @promoted_note %>
+          <% @promoted_note.each_with_index do |n,index|%>
+            <li class="clearfix">
+              <dl>
+                <dt><a href="<%=note_url(n)%>" target="_blank"><img src="<%=get_diary_master_picture(n) ? image_full_path(get_diary_master_picture(n),'160x120',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg'%>"></a></dt>
+                <dd class="bottom">
+                  <span><div class="r"><%= n.pv || 0 %></div>人浏览过</span>
+                  <span><div class="r"><a href="/gs-<%=n.deco_firm_id%>" target="_blank" style="color:#f60;"><%=diary_remarks_size(n)%></a></div>人点评</span>
+                  <span><strong>装潢公司：<a href="/gs-<%=n.deco_firm_id%>" target="_blank" style="text-decoration:underline;color:#f60;"><%= truncate( n.deco_firm.name_abbr,6,"")%></a></strong></span>
+                  <h4><a href="<%=note_url(n)%>" target="_blank"><%=h n.title.chars[0,13]%></a><%if n.is_good==1%> <img src="http://js.51hejia.com/img/best.gif" /><%end%></h4></dd>
+                <dd><p class="clearfix"><a href="<%=note_url(n)%>" target="_blank">
+                      <%if n.content%>
+                        <%= strip_tags(n.content).chars[0,150] %>
+                      <%end%>...[查看日记详情]
+                    </a> </p></dd>
+                <dd class="top">
+                  <span>业主：<a href="<%=note_url(n)%>" target="_blank" style="text-decoration:underline;color:#f60;"><%=n.user_name%></a></span>
+                  <span><%=n.created_at.strftime("%Y/%m/%d")%></span>
+                </dd>
+              </dl>
+            </li>
+          <% end %>
+        <% end %>
+        <%if @note %>
+          <% @note.each_with_index do |n,index|%>
+            <li class="clearfix">
+              <dl>
+                <dt><a href="<%=note_url(n)%>" target="_blank">
+                    <img src="<%=get_diary_master_picture(n) ? image_full_path(get_diary_master_picture(n),'160x120',index) : 'http://img3.51hejia.com/img/zxdpimg/zxdp_nopic.jpg'%>"></a></dt>
+                <dd class="bottom">
+                  <span><div class="r"><%= n.pv || 0 %></div>人浏览过</span>
+                  <span><div class="r"><a href="/gs-<%=n.deco_firm_id%>" target="_blank" style="color:#f60;"><%=diary_remarks_size(n)%></a></div>人点评</span>
+                  <span><strong>装潢公司：<a href="/gs-<%=n.deco_firm_id%>" target="_blank" style="text-decoration:underline;color:#f60;"><%= truncate( n.deco_firm.name_abbr,6,"")%></a></strong></span>
+                  <h4><a href="<%=note_url(n)%>" target="_blank"><%=h n.title.chars[0,13]%></a><%if n.is_good==1%> <img src="http://js.51hejia.com/img/best.gif" /><%end%></h4></dd>
+                <dd><p class="clearfix"><a href="<%=note_url(n)%>" target="_blank"><%if n.content%>
+                        <%= strip_tags(n.content).chars[0,150] %>
+                      <%end%>...[查看日记详情]</a> </p></dd>
+                <dd class="top">
+                  <span>业主：<a href="<%=note_url(n)%>" target="_blank" style="text-decoration:underline;color:#f60;"><%=n.user_name%></a></span>
+                  <span><%=n.created_at.strftime("%Y/%m/%d")%></span>
+                </dd>
+              </dl>
+            </li>
+          <%end%>
+        <%end%>
+      </ul>
+      <DIV class=pagination>
+        <%if @note %> <%= will_paginate @note, :prev_label=> "上一页", :next_label=> "下一页" %>  <% end %>
+      </DIV>
+    </div>
+  </div>

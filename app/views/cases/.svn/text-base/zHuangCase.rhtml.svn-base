@@ -1,0 +1,497 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+<%= javascript_include_tag 'jrails'%>
+  <script type="text/javascript" language="javascript">
+	$(document).ready(function(){
+      $("#remark_form").submit(function() {
+        if($("#cookie_id").val()== ""||$("#cookie_id").val().length ==0  ){
+          alert("请先登陆!");
+        }else if ($.trim($("#reamrk_content").val()).length == 0) {
+          alert("请填写内容后再发表评论.");
+        }else{
+          $("#comment").attr("disabled","disabled");
+          $.ajax({
+            type: "POST",
+            url:jQuery(this).attr('action'),
+            dataType:"json",
+            data: $(this).serialize(),	
+						error: function(data) {
+							alert("保存失败,可能是在同一个浏览器中同时编辑两篇文章造成的");	
+						},
+            success: function(data){
+              $("#remark_form")[0].reset();
+			  $("#comment").removeAttr("disabled");
+			  if(data.result != undefined &&  data.result) {
+			  	$("#token").val(data.set_token);
+				alert("您在一分钟内，不能频繁发表多次评论!");
+			  }else {
+			  	alert("留言成功");
+			  	$("#token").val(data.set_token);
+			  	$(".gsl_wyly_tit").after("<div class='gsl_wyly_txt'><h4><label>" + data.remark_created_at + "</label>" + data.remark_user_name + "</h4><p>" + data.remark_content + "</p></div>");
+			  	$("#comment").removeAttr("disabled");
+			  }
+            }
+          });
+        };
+        return false;
+      });
+      $("#login_form").submit(function() {
+        if($("#user_name").val()== ""||$("#user_name").val().length ==0  ){
+          alert("请输入用户名");
+			
+        }else if($("#password").val()== ""||$("#password").val().length ==0 ){
+          alert("请输入密码");
+        }else{
+          $("#login_submit").attr("disabled","disabled");
+          $.ajax({
+            type: "POST",
+            url:"/sessions/user_login",
+            dataType:"script",
+            data: jQuery(this).serialize(),
+            success: function(html){
+              $("#login_submit").removeAttr("disabled");
+              if(html == "error"){
+                alert("用户名或密码错误");
+                $("#password").val("");
+              }else if(html == "freeze"){
+							alert("您的帐户已暂被冻结，如有疑问可直接联系客服人员！");
+							$("#password").val("");
+				}else{
+                $("#login").css("display","none");
+                $("#cookie_id").val(html);
+                $("#user_id").val(html);
+              }
+            }
+          });
+        };
+        return false;
+      });
+    });
+</script>
+<%@company = @decofirm%>
+<%@type="z4"%>
+<%if !@company.nil?%>
+<%@firm_id = @newcase.COMPANYID%>
+ <div id="casepic" class="clearfix">
+  <script type="text/javascript">
+  function show_intro(pree,pre, n, select_n) {
+for (i = 1; i <= n; i++) {
+var intro = document.getElementById(pre + i);
+var cha = document.getElementById(pree + i);
+intro.style.display = "none";
+cha.className="menu-off";
+if (i == select_n) {
+intro.style.display = "block";
+cha.className="menu-on";
+}
+}
+}
+  </script>
+  <div class="ipath"><strong>您的位置：</strong><a href="http://z.51hejia.com">找装修频道</a> > <a href="/zhuangxiugongsi/">装修公司</a> > <%if !@decofirm.nil?%><a href="/gs-<%=@decofirm.id%>"><%=@decofirm.name_zh%></a> > <%end%><%if !@designermodel.nil?%><span><%=@designermodel.DESNAME%></span> > <%end%><span><%=@newcase.NAME%></span></div>
+  <div class="youhuixx margin10">
+  </div>
+  <%= render :partial => "decoshare/designer_left"%>
+  <div id="centerbox">
+    <div class="titbox1"><h2><%=@newcase.NAME%></h2></div>
+    <script language="javascript">
+    function killErrors() {
+      return true;
+    }
+    window.onerror = killErrors;
+  </script>
+  <script>
+function sf(){document.f.q.focus();}
+window.gbar={};(function(){var g=window.gbar,j,k;function l(a){var d=window.encodeURIComponent&&(document.forms[0].q||"").value;if(d)a.href=a.href.replace(/([?&])q=[^&]*|$/,function(h,f){return(f||"&")+"q="+encodeURIComponent(d)})}g.qs=l;function m(a,d,h,f,b,c){var i=document.getElementById(a),e=i.style;if(i){e.left=f?"auto":d+"px";e.right=f?d+"px":"auto";e.top=h+"px";e.visibility=k?"hidden":"visible";if(b){e.width=b+"px";e.height=c+"px"}else{m(j,d,h,f,i.offsetWidth,i.offsetHeight);k=k?"":a}}}g.tg=function(a){a=a||window.event;var d=0,h,f=window.navExtra,b,c=a.target||a.srcElement;a.cancelBubble=true;if(c.className!="gb3")c=c.parentNode;if(!j){b=document.createElement(Array.every||window.createPopup?"iframe":"div");b.frameBorder="0";b.src="#";j=c.parentNode.appendChild(b).id="gbs";document.onclick=g.close}a=c.getAttribute("aria-owns")||"gbi";b=c.offsetWidth;var i=c.offsetTop>20?46:24,e;do d+=c.offsetLeft||-150;while(c=c.offsetParent);if(a=="gbi")for(b=document.getElementById(a);f&&(h=f.pop());)b.insertBefore(h,b.firstChild).className="gb2";else e=d=(document.documentElement.clientWidth||document.body.clientWidth)-d-b;k!=a&&g.close();m(a,d,i,e)};g.close=function(){k&&m(k,0,0)}})();
+</script>
+    <script type="text/javascript" src="http://js.51hejia.com/js/imgplayer2.js?20091015"></script>
+    <!-- 等比缩放图片 -->
+    <script type="text/javascript">
+  var flag=false;
+  function DrawImage(ImgD){
+    var image=new Image();
+    var iwidth = 499; //定义允许宽度，当宽度大于这个值时等比例缩小
+    var iheight = 400; //定义允许高度，当高度大于这个值时等比例缩小
+    image.src=ImgD.src;
+    if(image.width>0 && image.height>0){
+      flag=true;
+      if(image.width/image.height>= iwidth/iheight){
+        if(image.width>iwidth){
+          ImgD.width=iwidth;
+          ImgD.height=(image.height*iwidth)/image.width;
+        }else{
+          ImgD.width=image.width;
+          ImgD.height=image.height;
+        }
+      }else{
+        if(image.height>iheight){
+          ImgD.height=iheight;
+          ImgD.width=(image.width*iheight)/image.height;
+        }else{
+          ImgD.width=image.width;
+          ImgD.height=image.height;
+        }
+      }
+    }
+  }
+</script>
+    <div class="articlepic clearfix">
+      <div class="artdesl">
+        <ul>
+          <li> 
+          <a href="#" onclick="new Ajax.Updater('uuu','/cases/up', {asynchronous:true, evalScripts:true, parameters:'id='+<%=@newcase.ID%>});"><img alt="顶" src="http://js.51hejia.com/img/caseimages/good.gif" title="顶" /></a></li>
+          <li id="uuu"><%= render :partial => "up"%></li>
+          <li> 
+          <a href="#" onclick="new Ajax.Updater('ddd','/cases/down', {asynchronous:true, evalScripts:true, parameters:'id='+<%=@newcase.ID%>});"><img alt="踩" src="http://js.51hejia.com/img/caseimages/bad.gif" title="踩" /></a>
+          </li>
+          <li id="ddd"><%= render :partial => "down", :object => @newcase %></li>
+          <li id="save_case">
+          <%if user_logged_in? %>
+           <a href="#" onclick="new Ajax.Updater('collection', '/collections/add', {asynchronous:true, evalScripts:true, parameters:'obj_id=<%=@newcase.ID%>&obj_type=3&obj_name=<%=@newcase.NAME%>&url= http://z.51hejia.com/gs-<%=@decofirm.id%>/cases-<%=@newcase.ID%>&photo_url=<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=@newcase.ID%>.jpg'});"><img alt="收藏本套案例" src="http://js.51hejia.com/img/caseimages/save.gif" title="收藏本套案例" /></a>
+          <%else%>
+	      	<a href="#" onclick="Divopop('Login');"><img alt="收藏本套案例" src="http://js.51hejia.com/img/caseimages/save.gif" title="收藏本套案例" /></a>
+	      <%end%>
+         <!-- <%#= render :partial => "shoucang_button", :object => @fav_info%>-->
+          </li>
+          <li> <a href="/anli/down_case/<%=@newcase.ID%>" target="_blank"> <img src="http://js.51hejia.com/img/caseimages/download.gif" alt="下载本套案例" title="下载本套案例" width="11" height="15" /> </a> </li>
+        </ul>
+      </div>
+      <%if !@taglist.nil?%>
+      <%tagcount = @taglist.size+1%>
+      <%else%>
+      <%tagcount = 1%>
+      <%end%>
+      <div class="destag" id="chromemenu1">
+        <!--<a href="//tuku/down_case/" target="_blank">下载</a>：-->
+        <ul>
+          <li><a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/<%=@newcase.ID%>" >全部(<%if !@decophoto.nil?%><%=@decophoto.size%><%else%>0<%end%>)</a></li>
+          <%if !@taglist.nil?%>
+          <%if @taglist.size>0%>
+	          <% 0.upto(@taglist.size - 1) do |i| %>
+		          <%if i<=3%>
+		          	<li><a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/<%=@newcase.ID%>/<%=@taglist[i].id%>"><%=@taglist[i].name%>(<%=@taglist[i]["count(t.photo_id)"]%>)</a></li>
+		          <%end%>
+	          <%end%>
+          <%end%>
+          <%end%>
+          <li><a href="#" rel="dropmenu1">更多>></a></li>
+        </ul>
+      </div>
+      <div id="dropmenu1" class="dropmenudiv3"> 
+      <%if !@taglist.nil?%>
+		<%if @taglist.size>0%>
+	          <% 0.upto(@taglist.size - 1) do |i| %>
+		          <%if i>3%>
+		          	<li><a href="http://tuku.51hejia.com/zhuangxiu/tuku/down_case/<%=@newcase.ID%>/<%=@taglist[i].id%>"><%=@taglist[i].name%>(<%=@taglist[i]["count(t.photo_id)"]%>)</a></li>
+		          <%end%>
+	          <%end%>
+          <%end%>
+       <%end%>
+      </div>
+      <script type="text/javascript">
+          cssdropdown.startchrome("chromemenu1")
+        </script>
+      <div class="artdesr">
+        <input type="hidden" id="imageUrl" value="<%=IMAGE_URL%>/files/hekea/case_img/20090429/img200904291240983028093.jpg"/>
+        <a href="http://tuku.51hejia.com/zhuangxiu!screen/tuku-<%= @newcase.ID%>" target="_blank" title="全屏"> <img src="http://www.51hejia.com/images/photo/des08.gif" alt="全屏" border="0"/> </a> </div>
+      <div class="pic">
+        <div class="top"></div>
+        <div class="mai">
+          <div class="up"><a id="pre_slide" title="上一张"></a></div>
+          <p align="center" id="bigpic"> <img src="<%=IMAGE_URL%>/files/hekea/case_img/20091118/img200911181258552290.jpg" id="ss_img"
+                   style="filter:blendTrans(Duration=1);" onload="javascript:DrawImage(this)"/></p>
+          <div class="down"><a id="next_slide" title="下一张"></a></div>
+          <div class="info" id="tt"></div>
+        </div>
+        <div class="bottom">
+          <div class="bpinlun">案例简介</div>
+          <div class="autonum">
+            <input type="text" name="slide_timeout" id="slide_timeout" value="10" size="2"/>
+          </div>
+          <div class="picbutton1" id="autoPlayImg">
+            <div id="Play" style="display:none;"></div>
+            <div id="Pause"></div>
+          </div>
+          <div class="brenqi">上传者：<b title="995658052@qq.com"><%if !@designermodel.nil?%><%=@designermodel.DESNAME%><%else%>美图美家<%end%></b>&nbsp;|&nbsp;人气：<%= @newcase.VIEWCOUNT %></div>
+        </div>
+      </div>
+      <script type="text/javascript" language="javascript">
+        // 幻灯片
+        var ss = new slideshow("ss"); // slideshow.play 会通过setTimeout来调用ss.loop()的方法，所以必须把把变量设为全局可见。
+        jQuery(function($) {
+          ss.prefetch = 0; ss.sizelmt = true; ss.repeat = true; ss.timeout = $('#slide_timeout').val() * 1000; ss.textid='con';
+
+          <%
+            @decophoto.each do |photo|
+              photo_url = "#{IMAGE_URL}/files/hekea/case_img/#{photo.filepath}"
+          %>
+          ss.add_slide(new slide(<%= photo_url.to_json %>, <%= photo_url.to_json %>, <%= (photo.description || '').to_json %>, '_blank'));
+          <% end %>
+
+          $.each(ss.slides, function() { this.title = this.text });
+
+          ss.pre_update_hook = function(){
+            document.getElementById("tt").innerHTML = ss.slides[ss.current].title;
+          }
+
+          ss.image = $('#ss_img').get(0);
+          if(ss.image) { ss.update(); ss.play() }
+
+          $("#Play").click(function(event) {
+            event.preventDefault();
+            var t = parseInt($('#slide_timeout').val());
+            ss.play((t < 1 || isNaN(t) ? 10 : t) * 1000);
+            $(this).hide();
+            $('#Pause').show();
+          });
+
+          $('#Pause').click(function(event) {
+            event.preventDefault();
+            ss.pause();
+            $(this).hide();
+            $('#Play').show();
+          });
+
+          $('#pre_slide').click(function(event) {
+              event.preventDefault();
+              ss.previous();
+          });
+
+          $('#next_slide').click(function(event) {
+              event.preventDefault();
+              ss.next();
+          });
+        });
+      </script>
+      <div class="ptext"><%=@newcase.INTRODUCE%></div>
+      <div class="clear"></div>
+    </div>
+    <script language="javascript">
+<!--
+//图片滚动列表
+var Speed_1 = 10; //速度(毫秒)
+var Space_1 = 20; //每次移动(px)
+var PageWidth_1 = 116 * 3; //翻页宽度
+var interval_1 = 7000; //翻页间隔
+var fill_1 = 0; //整体移位
+var MoveLock_1 = false;
+var MoveTimeObj_1;
+var MoveWay_1="right";
+var Comp_1 = 0;
+var AutoPlayObj_1=null;
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay_1(){clearInterval(AutoPlayObj_1);AutoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',interval_1)}
+function ISL_GoUp_1(){if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="left";MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);}
+function ISL_StopUp_1(){if(MoveWay_1 == "right"){return};clearInterval(MoveTimeObj_1);if((GetObj('ISL_Cont_1').scrollLeft-fill_1)%PageWidth_1!=0){Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1);CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrUp_1(){if(GetObj('ISL_Cont_1').scrollLeft<=0){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft+GetObj('List1_1').offsetWidth}
+GetObj('ISL_Cont_1').scrollLeft-=Space_1}
+function ISL_GoDown_1(){clearInterval(MoveTimeObj_1);if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="right";ISL_ScrDown_1();MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1)}
+function ISL_StopDown_1(){if(MoveWay_1 == "left"){return};clearInterval(MoveTimeObj_1);if(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0){Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollLeft%PageWidth_1+fill_1;CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrDown_1(){if(GetObj('ISL_Cont_1').scrollLeft>=GetObj('List1_1').scrollWidth){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft-GetObj('List1_1').scrollWidth}
+GetObj('ISL_Cont_1').scrollLeft+=Space_1}
+function CompScr_1(){if(Comp_1==0){MoveLock_1=false;return}
+var num,TempSpeed=Speed_1,TempSpace=Space_1;if(Math.abs(Comp_1)<PageWidth_1/2){TempSpace=Math.round(Math.abs(Comp_1/Space_1));if(TempSpace<1){TempSpace=1}}
+if(Comp_1<0){if(Comp_1<-TempSpace){Comp_1+=TempSpace;num=TempSpace}else{num=-Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollLeft-=num;setTimeout('CompScr_1()',TempSpeed)}else{if(Comp_1>TempSpace){Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollLeft+=num;setTimeout('CompScr_1()',TempSpeed)}}
+function picrun_ini(){
+GetObj("List2_1").innerHTML=GetObj("List1_1").innerHTML;
+GetObj('ISL_Cont_1').scrollLeft=fill_1>=0?fill_1:GetObj('List1_1').scrollWidth-Math.abs(fill_1);
+GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(AutoPlayObj_1)}
+GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+AutoPlay_1();
+}
+//展示滚动图片结束
+//-->
+</script>
+    <div class="aboutpic clearfix">
+      <h3>相关案例</h3>
+      <A onmouseup="ISL_StopUp_1()" class="LeftBotton" onmousedown="ISL_GoUp_1()" onmouseout="ISL_StopUp_1()" href="javascript:void(0);" target="_self"></A>
+      <div class="pcont" id="ISL_Cont_1">
+        <div class="ScrCont">
+          <div id="List1_1">
+            <!-- piclist begin -->
+            <%if !@cm_about_c.nil?&&@cm_about_c.size>0&& @cm_about_c.size==5%>
+            	<% @cm_about_c.each do |c|%>
+            	<%if !c.COMPANYID.nil?%>
+      			<%pathurl = gen_firm_city_case_detail(c.COMPANYID,c.ID)%>
+      			<%end%>
+            	<a class="pl" href="<%if pathurl.nil?%>/anli/<%=case_ids[i]%><%else%><%=pathurl%><%end%>" target="_blank"><img height="72" alt="<%=c.NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=c.ID%>.jpg"/><%=c.NAME%></a>
+            	<%end%>
+            <%elsif !@cm_about_c.nil?&&@cm_about_c.size>0 && @cm_about_c.size<5%>
+            	<% 0.upto(@cm_about_c.size - 1) do |i| %>
+            	<%if !@cm_about_c[i].COMPANYID.nil?%>
+      			<%pathurl = gen_firm_city_case_detail(@cm_about_c[i].COMPANYID,@cm_about_c[i].ID)%>
+      			<%end%>
+            	<a class="pl" href="<%if pathurl.nil?%>/anli/<%=@cm_about_c[i].ID%><%else%><%=pathurl%><%end%>" target="_blank"><img height="72" alt="<%=@cm_about_c[i].NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=@cm_about_c[i].ID%>.jpg"/><%=@cm_about_c[i].NAME%></a>
+            	<%end%>
+            	<% z = @cm_about_c_other.size-@cm_about_c.size%>
+            	<% 0.upto(@cm_about_c_other.size-1) do |i| %>
+            		<%if i<z%>
+            			<%if !@cm_about_c_other[i].COMPANYID.nil?%>
+		      			<%pathurl = gen_firm_city_case_detail(@cm_about_c_other[i].COMPANYID,@cm_about_c_other[i].ID)%>
+		      			<%end%>
+            			<a class="pl" href="<%if pathurl.nil?%>/anli/<%=@cm_about_c_other[i].ID%><%else%><%=pathurl%><%end%>" target="_blank"><img height="72" alt="<%=@cm_about_c_other[i].NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=@cm_about_c_other[i].ID%>.jpg"/><%=@cm_about_c_other[i].NAME%></a>
+            		<%end%>
+            	<%end%>
+            	
+            <%else%>
+            	<%if !@cm_about_c_other.nil?&&@cm_about_c_other.size>0%>
+	            	<% 0.upto(@cm_about_c_other.size - 1) do |i|%>
+	            	<%if !@cm_about_c_other[i].COMPANYID.nil?%>
+			      			<%pathurl = gen_firm_city_case_detail(@cm_about_c_other[i].COMPANYID,@cm_about_c_other[i].ID)%>
+			      	<%end%>
+	            	<a class="pl" href="<%if pathurl.nil?%>/anli/<%=@cm_about_c_other[i].ID%><%else%><%=pathurl%><%end%>" target="_blank"><img height="72" alt="<%=@cm_about_c_other[i].NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=@cm_about_c_other[i].ID%>.jpg"/><%=@cm_about_c_other[i].NAME%></a>
+	            	<%end%>
+	            <%end%>
+            <%end%>
+            <!-- piclist end -->
+          </div>
+          <div id="List2_1"></DIV>
+        </div>
+      </div>
+      <A onmouseup="ISL_StopDown_1()" class="RightBotton" onmousedown="ISL_GoDown_1()" onmouseout="ISL_StopDown_1()" href="javascript:void(0);" target="_self"></A> </div>
+    <SCRIPT type=text/javascript>
+<!--
+picrun_ini()
+//-->
+</SCRIPT>
+ 	<style type="text/css">
+      .pagination{float:none; text-align:right;}
+    </style>
+    <div class="gsl_wyly" id="remarks_div">
+      <%= render :partial => "remarks" %>
+    </div>
+    <div class="gsl_wyly_lyk">
+          <h3>我要评论</h3>
+          <input type="hidden" id="cookie_id" value="<%= current_user.USERBBSID if user_logged_in? %>">
+          <div id="login">
+            <%= render :partial => "decoration_diaries/login" , :locals  => { :@div_width => 570} unless user_logged_in? %>
+          </div>
+          <hr />
+		   <div>
+            <% form_for :remark , @remark , :url =>{:action=>"new_diray_remark"},:html =>{:id => "remark_form"} do %>
+              <input type="hidden"  name="remark[user_id]" id="user_id" value="<%= current_user.USERBBSID if user_logged_in? %>">
+              <input type="hidden" name="remark[resource_id]" value="<%=@caseid%>">
+			  <input type="hidden" name="token" value="<%= @token %>" id="token" />
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="gsl_wyly_qy"><textarea name="remark[content]" id="reamrk_content" cols="" rows="" style="width:550px;"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="f_l"></span><input type="submit"  id="comment" value="留言提交" class="gsl_wyly_btn f_r" />
+                  </td>
+                </tr>
+              </table>
+            <% end %>
+          </div>
+    </div>
+  </div>
+  <div id="rightside">
+    <div class="rightbox">
+      <h3>案例信息</h3>
+      <div class="righttext01">
+      <%if !@decofirm.nil?%>
+      <a href="<%=gen_firm_city_path(@decofirm.id)%>" target="_blank">
+      <%if !@designermodel.nil?%>
+        <dl class="clearfix">
+          <dt><img src="http://d.51hejia.com/files/designer/<%=@designermodel.PICURL%>" /></dt>
+          <dd>设计师：<%=@designermodel.DESNAME%></dd>
+          <dd>设计费：<%if @designermodel.to_s=="1"%>免费
+                        <%elsif  @designermodel.DESFEE.to_s=="2"%>20-50元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="3"%>50-80元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="4"%>80-120元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="5"%>120-200元/平
+                        <%elsif  @designermodel.DESFEE.to_s=="6"%>200元以上/平
+                        <%else%>
+                        <%=@designermodel.DESFEE%>
+                        <%end%></dd>
+          
+        </dl>
+      <%end%>
+        <ul>
+        <li>擅长风格：<% if !@designermodel.blank? && !@designermodel.DESSTYLE.blank? && @designermodel.DESSTYLE =~/\d/ -%>
+				          <%= (@designermodel.DESSTYLE.split(',').inject("") { |i,s|  i << "#{@style[s.strip]} "}.strip) %>
+						  <% end -%></li>
+          <li>关键字：
+          <% tagpic = Case.gecasetag(@newcase.ID)%>
+			<%for tag in tagpic%>
+          	<%=tag.TAGNAME%>
+        	<%end%>
+          </li>
+        </ul>
+        <dl class="clearfix dl01">
+          <dt>
+          		<%if !@decofirm.nil?%>
+            	<%if @decofirm.name_abbr.to_s=='装饰公司'%><%=truncate(@decofirm.name_zh,11)%><%else%><%=truncate(@decofirm.name_abbr,11)%><%end%>
+            	<%end%>
+            	<script>
+function showmenu(tag,evt){
+ var light=document.getElementById(tag);
+        var _event = evt ? evt : event; 
+	light.style.left=_event.clientX+document.body.scrollLeft+"px";
+	light.style.top=_event.clientY+document.body.scrollTop+"px";
+        light.style.display='block';
+ }
+function hidemenu(tag){
+ var light=document.getElementById(tag);
+ light.style.display='none';
+}
+</script>
+            	<%if !@decofirm.nil?%><span id="phone">
+            	<strong style="color:#F60;">查看公司详情</strong><!--onclick="insertphone()"--></span><%end%>
+            	<script>
+            		function insertphone(){
+            			document.getElementById('phone').innerHTML = "<%=@decofirm.telephone%>";
+            		}
+            	</script>
+          <div id="lightmenu" class="white_content">
+      		<div class="close"></div>
+		  </div></dt>
+          <%if !@decofirm.nil?%>
+          <dd>设计师(<%=@decofirm.designers_count.to_i%>)</dd>
+          <dd>施工照片(<%=@decofirm.photos_count.to_i%>)</dd>
+          <!--<dd>装修点评(<%#=@decofirm.comments_count.to_i%>)</dd>
+          <dd>优惠信息</dd>-->
+          <%end%>
+        </dl>
+        </a>
+        <%end%>
+      </div>
+    </div>
+    <%if !@decofirm.nil?%>
+    <div class="rightbox">
+    <% cs = DecoFirm.getcase_company(@decofirm.id)%>
+      <h3><span><a href="/cases/company/<%=@decofirm.id%>" target="_blank" title="更多">更多>></a></span>该公司其他案例</h3>
+      <div class="righttext02">
+        <ul class="clearfix">
+          <% cs.each do |c| %>
+          	<%des = Case.get_photo_photo(c.ID)%>
+          	<%if !c.COMPANYID.nil?%>
+      			<%pathurl = gen_firm_city_case_detail(c.COMPANYID,c.ID)%>
+      		<%end%>
+          	<li><a href="<%if pathurl.nil?%>/anli/<%=c.ID%><%else%><%=pathurl%><%end%>" target="_blank"><img alt="<%=c.NAME%>" src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=c.ID%>.jpg" onerror="javascript:this.src='<%if des.size>0%><%=IMAGE_URL%>/files/hekea/case_img/<%=des[0].filepath%><%else%>http://www.51hejia.com/api/images/none.gif<%end%>'"/></a></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    <%end%>
+    <%unless @promoted_events.blank?  %>
+    <div class="rightbox">
+      <h3>热门优惠信息 </h3>
+      <div class="righttext03">
+        <ul>
+          <% @promoted_events.each do |event| %>
+          <li><%= link_to event["title"].chars[0,15], event_url(event.firm_id, event.event_id), :title =>event["title"] , :target => "_blank" -%></li>
+		  <% end %>
+        </ul>
+      </div>
+    </div>
+    <%end %>
+  </div>
+</div>
+<%@company_id = @company.id%>
+<%end%>
+<%= increase_deco_firm_pv_image_tag @company_id %>

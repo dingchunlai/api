@@ -1,0 +1,52 @@
+<div class="main">
+  <div class="topmenu">
+    <h3>装修流程:</h3>
+    <ul>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081226/384466.r" target="_blank">前期准备</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081226/384477.r" target="_blank">监理公司</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081227/384521.r" target="_blank">装修公司</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384622.r" target="_blank">预算合同</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384591.r" target="_blank">逛建材城</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384617.r" target="_blank">施工交底</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384644.r" target="_blank">施工验收</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081230/384727.r" target="_blank">设备安装</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384630.r" target="_blank">核算费用</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384616.r" target="_blank">保修服务</a> > </li>
+      <li><a href="http://d.51hejia.com/zhuangxiu/20081229/384606.r" target="_blank">环境检测</a></li>
+    </ul>
+  </div>
+  <div class="sddtt1"></div>
+  <div class="sddmain">
+    <div class="sddbox">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_01.gif" /></h4>
+      <p><a onclick="$('#ybf').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="多家公司施工工地、样板房大比拼，对比参观，设计风格、施工质量，一览无遗。">多家公司施工工地、样板房大比拼，对比参观，设计风格、施工质量，一览无遗。</a></p>
+    </div>
+    <div class="sddbox">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_02.gif" /></h4>
+      <p><a onclick="$('#mfsj').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="优秀设计师免费设计，节约千元设计费。">优秀设计师免费设计，节约千元设计费。</a></p>
+    </div>
+    <div class="sddbox">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_03.gif" /></h4>
+      <p><a onclick="$('#mfshys').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="资深监理免费审核预算，压缩预算单水分。">资深监理免费审核预算，压缩预算单水分。</a></p>
+    </div>
+    <div class="sddbox">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_04.gif" /></h4>
+      <p><a onclick="$('#mflf').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="监理陪您新房验收，解决房屋问题，设计师为你提供专业设计意见，解决设计难题。">监理陪您新房验收，解决房屋问题，设计师为你提供专业设计意见，解决设计难题。</a></p>
+    </div>
+    <div class="sddbox">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_05.gif" /></h4>
+      <p><a onclick="$('#sbpgd').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="资深编辑亲自监督工地施工进程，为您装修保驾护航。">资深编辑亲自监督工地施工进程，为您装修保驾护航。</a></p>
+    </div>
+    <div class="sddbox">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_06.gif" /></h4>
+      <p><a onclick="$('#mfshtz').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="资深设计师和监理，免费审核图纸，少花冤枉钱。">资深设计师和监理，免费审核图纸，少花冤枉钱。</a></p>
+    </div>
+    <div class="sddbox1">
+      <h4><img src="http://www.51hejia.com/css/prozhuangxiu/gou_b_07.gif" /></h4>
+      <p><a onclick="$('#zhekou').showMsg({autoMiddle:true,coverBody:true,autoClose:false});" title="申请装潢公司优惠折扣，节约装修费用。">申请装潢公司优惠折扣，节约装修费用。</a></p>
+    </div>
+  </div>
+</div>
+<%= render_shared_footer %>
+<%= Hejia::SharedViews.ga_code %>
+<%= yield :html_body_end  %>

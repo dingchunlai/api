@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/81/51hejia/repos/api/release/app/views/events
+END
+show.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/app/views/events/show.rhtml
+END
+coupon.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/app/views/events/coupon.rhtml
+END
+coupon_show.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/views/events/coupon_show.rhtml
+END
+quotation.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/app/views/events/quotation.rhtml
+END
+index.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/views/events/index.rhtml
+END

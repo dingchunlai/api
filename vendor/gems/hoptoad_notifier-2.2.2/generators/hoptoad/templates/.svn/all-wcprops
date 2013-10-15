@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/generators/hoptoad/templates
+END
+hoptoad_notifier_tasks.rake
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/generators/hoptoad/templates/hoptoad_notifier_tasks.rake
+END
+capistrano_hook.rb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/generators/hoptoad/templates/capistrano_hook.rb
+END
+initializer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/generators/hoptoad/templates/initializer.rb
+END

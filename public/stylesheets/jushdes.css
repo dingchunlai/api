@@ -1,0 +1,80 @@
+/* CSS Document */
+
+body{margin:3px 0; font-family:"ËÎÌו"; font-size:12px; color:#000; line-height:18px;}
+html,body { height:100%;} 
+a{color:#1c1c1c;text-decoration:none;}
+a:hover {color:#f60; text-decoration:underline}
+li {list-style:none;line-height:18px;}
+img{border:0;}
+p,em,span,form,select,input,option,ol,ul,li,dd,dt,dl,h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+h3,h4 {font-size:14px;}
+.main {width:960px; margin:0 auto;}
+.ad1 {float:left;}
+.banner {margin:0 auto 8px auto;width:960px;}
+
+.path {background-color:#f2f2f2; margin:1px 0; line-height:35px; padding-left:9px; margin-bottom:2px; width:951px; float:left;}
+.path a {color:#000;}
+
+#left01 {width:146px;float:left;margin-right:8px;background: url(http://www.51hejia.com/images/jushang/left_bg01.gif) repeat-x left top; height:1050px;}
+#left02 {width:146px;float:left;margin-right:8px;background: url(http://www.51hejia.com/images/jushang/left_bg02.gif) repeat-x left top; height:1050px;}
+#left03 {width:146px;float:left;margin-right:8px;background: url(http://www.51hejia.com/images/jushang/left_bg03.gif) repeat-x left top; height:1050px;}
+.logo01 {width:94px;height:23px;background: url(http://www.51hejia.com/images/jushang/logo01.gif) no-repeat left top; margin:41px auto;}
+.logo02 {width:94px;height:23px;background: url(http://www.51hejia.com/images/jushang/logo02.gif) no-repeat left top; margin:41px auto;}
+.logo03 {width:94px;height:23px;background: url(http://www.51hejia.com/images/jushang/logo03.gif) no-repeat left top; margin:41px auto;}
+.menu01,.menu02,.menu03 { width:135px; margin:0 auto;}
+.menu01 li,.menu02 li,.menu03 li {display:inline; text-transform:uppercase; margin-bottom:8px; float:left;}
+.menu01 a { text-align:left; line-height:26px; padding-top:2px; width:95px; float:left; color:#000; background: url(http://www.51hejia.com/images/jushang/left_bt01.gif) no-repeat left top; padding-left:40px;}
+.menu01 a:hover {text-decoration:none;}
+.menu02 a { text-align:left; line-height:28px; padding-top:2px; width:97px; float:left; color:#000; background: url(http://www.51hejia.com/images/jushang/left_bt02.gif) no-repeat left top; padding-left:40px;}
+.menu02 a:hover {text-decoration:none;}
+.menu03 a { text-align:left; line-height:28px; padding-top:2px; width:97px; float:left; color:#000; background: url(http://www.51hejia.com/images/jushang/left_bt02.gif) no-repeat left top; padding-left:40px;}
+.menu03 a:hover {text-decoration:none;}
+
+#mid {width:561px; float:left; background-color:#f4f4f4; border:1px solid #b2b2b2;}
+#mid h2 {font-size:14px; text-align:center; line-height:40px; padding-top:2px;}
+.artinfo { border-bottom:1px dashed #6e6e6e; border-top:1px dashed #6e6e6e; padding-left:14px; width:547px; float:left;}
+.artinfo li {float:left; line-height:41px; padding-top:2px; padding-right:11px;}
+.artinfo .date { width:100px;}
+.artinfo .aut { width:102px;}
+.artinfo .source { width:85px;}
+.artinfo a {color:#000;}
+.article {padding:12px 9px 10px 9px;width:543px; float:left;}
+.article img {}
+.article p { width:510px; margin:0 auto; padding-top:13px; color:#0c263f;}
+.article img { margin:0 auto;display:block}
+.article a {color:#000;}
+.notice {font-size:14px; color:#f00; font-weight:bold; padding:19px 0 30px 14px; text-align:left;}
+.notice a {color:#f00;}
+.dfn{height:30px;text-align:center; }
+.dfn a{border:1px solid #ccc; margin:0px 5px; line-height:20px; padding:2px 5px;height:20px;background-color:#fff;}
+.dfn a:hover{ background-color:#557CA3; color:#fff}
+.guanyu {background: #f4f4f4 url(http://www.51hejia.com/images/jushang/dot01.gif) repeat-y center top; border-top:5px solid #313131; width:561px; float:left; padding-bottom:6px; border-bottom:1px solid #ccc;}
+.guanyu h3 { background-color:#e3e4e6; line-height:31px; color:#001d49; font-size:14px; border-bottom:1px solid #ccc; font-weight:normal; padding-left:10px; margin-bottom:6px;}
+.guanyu h3 span {font-weight:bold; color:#000;}
+.guanyu h3 a {color:#000;}
+.guanyu li {text-indent:22px; float:left; width:49%; line-height:22px;}
+.guanyu li a {font-size:14px;}
+.guanyu ul { width:561px; float:left;}
+.pinlun { padding:20px 14px; width:533px; float:left;}
+.pinlunbox {background-color:#fff;}
+.pinlunbox th {background-color:#eee; border:1px solid #ddd; text-align:center; }
+.pinlunbox td {text-align:center;border:1px solid #ddd; border-top:0; padding:2px 5px 2px 5px; color:#1c1c1c;}
+.pinlunbox p {text-align:left; color:#1c1c1c;}
+
+.pinlunbox1 {background-color:#fff; padding:10px;}
+.pinlunbox1 td {padding:2px 5px 2px 5px; color:#1c1c1c;}
+.pinlunbox1 th {text-align:right; font-weight:normal;}
+.pinlunbox1 th a { text-decoration:underline; color:blue;}
+.pinlunbox1 textarea {width:475px;}
+.pinlunbox1 .bt {text-align:center; padding:6px 0;}
+.pinlunbox a,.pinlunbox1 a {color:#000;}
+
+#right {width:229px; float:right; background-color:#e3e4e6; border:1px solid #b2b2b2;}
+#right h2{font-size:14px; color:#000; width:95%; margin:0 auto; border-bottom:1px solid #a3a3a3; padding:10px 0 5px 0; text-indent:15px;}
+#right ol{background:url(http://news.51hejia.com/htmlPages/affix/1193982500728images/hotbg.gif) no-repeat left top; line-height:22px; padding-left:30px; margin:10px 0 10px 10px}
+#right ol li {line-height:22px;}
+#right ul{text-align:center; padding-top:15px; padding-bottom:10px; width:229px; float:left;}
+#right ul li{ float:left; width:229px; margin:0 0 5px 0;}
+#right ul img{display:block;margin:0 auto;width:160px;height:121px;border:1px solid #ccc;padding:2px;background-color:#fff}
+#right ul span{background:url(http://news.51hejia.com/htmlPages/affix/1193982500728images/dianj.gif) no-repeat left center; padding-left:10px;}
+#right a {color:#000;}

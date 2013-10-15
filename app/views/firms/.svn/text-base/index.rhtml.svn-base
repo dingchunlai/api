@@ -1,0 +1,97 @@
+<script language='javascript'>
+var n=-1;
+var m;
+function setFocus2(m)
+{
+selectLayer2(m);
+}
+function selectLayer2(m)
+{
+switch(m)
+{
+case 1:
+document.getElementById("X1").style.display="block";
+document.getElementById("X2").style.display="none";
+break;
+
+case 2:
+document.getElementById("X1").style.display="none";
+document.getElementById("X2").style.display="block";
+break;
+}
+}
+
+function setFocus()
+{
+selectLayer();
+}
+function selectLayer()
+{
+switch(n)
+{
+case -1:
+document.getElementById("y1").style.display="block";
+document.getElementById("btn").innerHTML="收起";
+n*=-1;
+break;
+case 1:
+document.getElementById("y1").style.display="none";
+document.getElementById("btn").innerHTML="更多";
+n*=-1;
+break;
+}
+}
+
+function show0(k)
+{
+	document.getElementById('bottom'+k).style.display="block";
+	document.getElementById(k).style.border="0";
+	document.getElementById(k).style.backgroundColor="#fffdf6";
+}
+function hide0(k)
+{
+	document.getElementById('bottom'+k).style.display="none";
+	document.getElementById(k).style.borderBottom="1px solid #c3c3c3";
+	document.getElementById(k).style.backgroundColor="#ffffff";
+}
+</script>
+<script type="text/javascript" src="http://js2.51hejia.com/js/firmSearch.js"></script>
+<input type='hidden' name='city' id='cityid' value='<%=params[:city].to_i%>'>
+<input type='hidden' name='district' id='districtid' value='<%=params[:district].to_i%>'>
+<input type='hidden' name='style' id='styleid' value='<%=params[:style].to_i%>'>
+<input type='hidden' name='model' id='modelid' value='<%=params[:model].to_i%>'>
+<input type='hidden' name='price' id='priceid' value='<%=params[:price].to_i %>'>
+<input type='hidden' name='order' id='orderid' value='<%= params[:order].to_i %>'>
+<input type='hidden' name='hcase' id='hcaseid' value='<%=params[:hcase].to_i%>'>
+<input type='hidden' name='hcommont' id='hcommontid' value='<%=params[:hcommont].to_i%>'>
+<input type='hidden' name='isProduct' id='isProduct' value='<%=IS_PRODUCT.to_i%>'>
+<div class="list_width960 clearfix">
+    <div class="list_width210 f_l" >
+	  <div class="list_diary clearfix" id="X2" style="display:block">
+	  <%= render :partial => "decoshare/search_gongsi2" %>
+	</div>
+	<div>
+		<!-- 快捷搜索 -->
+		<%= render :partial => "share/quick_search" %>
+	</div>
+	<div>
+		<!-- 公司TOP10 -->
+		<%= render :partial => "firms_top_10"%>
+	</div>
+	<div>
+		<!-- 最近浏览的公司 -->
+		<%= render :partial => "looked_firms" %>
+	</div>
+	<div>
+		<!-- 使用说明 -->
+		<%= render :partial => "share/firm_help" %>
+	</div>
+	</div>
+	<div class="list_width739 f_r">
+          <%= adspace("旧#{CITIES[params[:city].to_i]}站-装修公司列表页-大旗帜1", '', '<div class="width690"></div>') if params[:city].to_i == 11910 %>
+		<% if @alone.nil?%>
+    		<%= render :partial=> "firms_list" %>
+		<% else %>
+			<%= render :partial => "gongzhuang"%>
+		<% end %>
+	</div>

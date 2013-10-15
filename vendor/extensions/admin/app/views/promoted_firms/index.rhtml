@@ -1,0 +1,55 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#open_search").click(function(){
+			$("#open_search").attr("disabled","disabled");
+			$.get("/promoted_firms/open_div",
+			 {city : $("#city").val(),search : "serach"},
+			 function(data){
+			 	$("#open_search").removeAttr("disabled");
+			 	$("#second").html(data).show();
+				$("#firms_div").hide();
+			},"html");
+		});
+		
+	});
+</script>
+<style type="text/css">
+	*{margin:0;padding:0;}
+	.chaz{border:5px solid #dedede;padding:5px 0;width:640px;margin:0 auto;font-size:12px;color:#333;}
+	.chaz h3{font-size:14px;font-weight:bold;height:30px;line-height:30px;border-bottom:1px dashed #dedede;padding:0 10px;margin-bottom:5px;}
+	.chaz h3 a{margin-left:20px;}
+	.chaz ul{background:#eee;padding:0 10px;}
+	.chaz ul ul{padding:0;}
+	.chaz li{list-style:none;}
+	.chaz li li input{ vertical-align:middle;}
+	.chaz li em{font-style:normal;color:red;}
+</style>
+<div class="chaz">
+	<h3>查找<a href="/promoted_firms/new">增加</a></h3>
+	<ul>
+		<li id="first">请选择：城市
+			<select id="city"  >
+              <%
+              cities = {
+                      11910 => "上海",
+                      12117 => "苏州",
+                      12301 => "宁波",
+                      12306 => "杭州",
+                      12118 => "无锡",
+                      12093 => '武汉',
+                      12122 => "南京",
+                      12173 => '青岛'
+              }
+              %>
+			<% cities.each do |k, v| %>
+				<option value='<%= k %>' ><%= v %></option>
+			<% end %>
+			</select>
+			<input type="button" id="open_search" value="搜索">
+		</li>
+		<li id="second" style="display:none;"></li>
+		<li id="firms_div" style="display:none;"></li>
+	</ul>
+</div>

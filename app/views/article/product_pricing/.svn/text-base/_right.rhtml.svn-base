@@ -1,0 +1,140 @@
+<div class="wenright">
+  <div class="hejiaba">
+    <div class="hejiatabl">
+      <script type="text/javascript" >
+        function pricingbox_check() {
+          var name = document.getElementById("pricing_name").value;
+          var hopeaddress = document.getElementById("pricing_hopeaddress").value;
+          var username = document.getElementById("pricing_username").value;
+          var phone = document.getElementById("pricing_phone").value;
+
+          if (name=="" || name=="例如：佳饰橱柜-常规巡航系列" || name=="请填写产品名称") {
+            alert("您要核价的产品名称不能为空");
+            return false;
+          }
+          if (hopeaddress=="" || hopeaddress=="例如：上海/北京" || hopeaddress=="请填写所在城市") {
+            alert("您所在的城市不能为空");
+            return false;
+          }
+          if (username=="" || username=="您的姓名" || username=="请填写您的姓名") {
+            alert("您的姓名不能为空");
+            return false;
+          }
+          var reg=/(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)|(^0{0,1}15[0-9]{9}$)|(^0{0,1}18[0-9]{9}$)/;
+          if (phone=="" || phone=="电话/手机号码" || phone=="请填写联系方式") {
+            alert("您的联系方式不能为空");
+            return false;
+          }
+          else if (reg.test(phone)==false)	{
+            //alert(reg.test(phone));
+            alert("请检查您输入的电话号码。");
+            return false;
+          }
+          document.pricingbox.submit()
+        }
+      </script>
+      <div class="hejiabox" style="font-weight:normal;">
+        <form id="form1" name="pricingbox" method="post" target="_blank" action="http://p.51hejia.com/pricings/create" onsubmit="return pricingbox_check();">
+          <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tr>
+              <td><span>*</span>产品名称： <br /><input type="text" name="pricing[name]" id="pricing_name" class="l1" /></td>
+              <td><span>*</span>所在城市：<br /><input type="text" name="pricing[hopeaddress]" id="pricing_hopeaddress" class="l2" /></td>
+            </tr>
+          </table>
+          <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tr>
+              <td><span>*</span>您的姓名：<br /><input type="text" name="pricing[username]" id="pricing_username" class="l3" /></td>
+              <td><span>*</span>联系方式：<br /><input type="text" name="pricing[phone]" id="pricing_phone" class="l4" /></td>
+              <td><br /><input type="submit" name="Submit" value="获取最低报价" class="bt" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="wenjian">
+    <h4>建材导购<span id="jcdg"></span></h4>
+    <% results = parse_xml("http://api.51hejia.com/rest/build/xml/46.xml", ["title", "url", "image-url", "entity-created-at"], 8) %>
+    <a href="<%= results[0]["url"] %>" target="_blank">
+      <img src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>" border="0" />
+    </a>
+    <ul class="wenbbb">
+      <% 0.upto(3) do |i| %>
+        <li class="reddian redline"><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"] %></a></li>
+      <% end %>
+    </ul>
+    <ul class="wenjianbb">
+      <% 4.upto(7) do |i| %>
+        <li class="reddian redline"><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"] %></a><span><%= results[i]["entity-created-at"].to_date.strftime("%Y年%m月%d日") %></span></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="wenjian">
+    <h4>编辑推荐<span id="bjtj"></span></h4>
+    <% results = parse_xml("http://api.51hejia.com/rest/build/xml/47.xml", ["title", "url", "image-url", "entity-created-at"], 10) %>
+    <a href="<%= results[0]["url"] %>" target="_blank">
+      <img src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>" border="0" />
+    </a>
+    <ul class="wenbbb">
+      <% 0.upto(3) do |i| %>
+        <%unless results[i].nil?%>
+          <li class="reddian redline"><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"] %></a></li>
+        <%end%>
+      <% end %>
+    </ul>
+    <ul class="wenjianbb">
+      <% 4.upto(9) do |i| %>
+        <%unless results[i].nil?%>
+          <li class="reddian redline"><a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"] %></a><span><%= results[i]["entity-created-at"].to_date.strftime("%Y年%m月%d日") %></span></li>
+        <%end%>
+      <% end %>
+    </ul>
+  </div>
+  <div class="wenjianx">
+    <h4>装修导航<span id="zxdh"></span></h4>
+    <% results = parse_xml("http://api.51hejia.com/rest/build/xml/48.xml", ["title", "url", "image-url"], 10) %>
+    <dl>
+      <dt>
+        <a href="<%= results[0]["url"] %>" target="_blank">
+          <img src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>" border="0" />
+        </a>
+      </dt>
+      <dd>
+        <ul>
+          <% 0.upto(4) do |i| %>
+            <li class="reddian">·<a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"] %></a></li>
+          <% end %>
+        </ul>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <a href="<%= results[5]["url"] %>" target="_blank">
+          <img src="<%= results[5]["image-url"] %>" alt="<%= results[5]["title"] %>" border="0" />
+        </a>
+      </dt>
+      <dd>
+        <ul>
+          <% 5.upto(9) do |i| %>
+            <li class="reddian">·<a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"] %></a></li>
+          <% end %>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+  <script src="http://forum.51hejia.com/rest/hejia_life_zx_page" Charset="UTF-8" type="text/javascript" ></script>
+  <div class="wenjianxxx">
+    <h4>精彩美图<span id="jcmt"></span></h4>
+    <% for result in parse_xml_data("http://api.51hejia.com/rest/build/xml/49.xml", ["title", "url", "image-url"], 6) %>
+      <dl>
+        <dt>
+          <a href="<%= result["url"] %>" target="_blank">
+            <img src="<%= result["image-url"] %>" alt="<%= result["title"] %>" width="120" height="90" />
+          </a>
+        </dt>
+        <dd><a href="<%= result["url"] %>" target="_blank"><%= result["title"].chars[0,8] %></a></dd>
+      </dl>
+    <% end %>
+    <div style="clear:both"></div>
+  </div>
+</div>

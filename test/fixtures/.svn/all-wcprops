@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures
+END
+product_vendors.yml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/product_vendors.yml
+END
+hejia_publish_channels.yml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_publish_channels.yml
+END
+publish_contents.yml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/publish_contents.yml
+END
+hejia_bbs_users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_bbs_users.yml
+END
+hejia_article_categories.yml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_article_categories.yml
+END
+deco_firm_branches.yml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/deco_firm_branches.yml
+END
+publish_uploads.yml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/publish_uploads.yml
+END
+hejia_tags.yml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_tags.yml
+END
+hejia_article_contents.yml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_article_contents.yml
+END
+hejia_article_cols.yml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_article_cols.yml
+END
+products.yml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/products.yml
+END
+product_images.yml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/product_images.yml
+END
+publish_columns.yml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/publish_columns.yml
+END
+hejia_articles.yml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_articles.yml
+END
+hejia_editors.yml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_editors.yml
+END
+hejia_article_articles.yml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_article_articles.yml
+END
+hejia_art_prod_links.yml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_art_prod_links.yml
+END
+publish_text_styles.yml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/publish_text_styles.yml
+END
+hejia_indices.yml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_indices.yml
+END
+hejia_companies.yml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/test/fixtures/hejia_companies.yml
+END

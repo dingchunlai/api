@@ -1,0 +1,40 @@
+<div class="hottag"></div>
+<div class="tianchong"></div>
+<div class="htotagbox">
+  <ul>
+    <li class="st1">[产品报价]</li>
+    <li class="st2">
+      <% for result in parse_xml("http://api.51hejia.com/rest/build/xml/52.xml", ["title", "url"], 9) %>
+        <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a> |
+      <% end %>
+    </li>
+    <li class="st3"><a href="http://p.51hejia.com/" target="_blank">进入频道</a></li>
+  </ul>
+  <ul>
+    <li class="st1">[装修设计]</li>
+    <li class="st2">
+      <% for result in parse_xml("http://api.51hejia.com/rest/build/xml/53.xml", ["title", "url"], 9) %>
+        <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a> |
+      <% end %>
+    </li>
+    <li class="st3"><a href="http://d.51hejia.com/">进入频道</a></li>
+  </ul>
+  <ul>
+    <li class="st1">[居尚生活]</li>
+    <li class="st2">
+      <% for result in parse_xml("http://api.51hejia.com/rest/build/xml/54.xml", ["title", "url"], 9) %>
+        <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a> |
+      <% end %>
+    </li>
+    <li class="st3"><a href="http://www.51hejia.com/jushang/" target="_blank">进入频道</a></li>
+  </ul>
+  <ul>
+    <li class="st1">[图库]</li>
+    <li class="st2">
+      <% for result in parse_xml("http://api.51hejia.com/rest/build/xml/55.xml", ["title", "url"], 9) %>
+        <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a> |
+      <% end %>
+    </li>
+    <li class="st3"><a href="http://tuku.51hejia.com">进入频道</a></li>
+  </ul>
+</div>

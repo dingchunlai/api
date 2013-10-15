@@ -1,0 +1,159 @@
+<div class="ipath"><strong>您的位置：</strong><a href="http://z.51hejia.com">找装修频道</a> > <a href="/zhuangxiugongsi">装潢公司</a> > <a href="/gs-<%=@event.firms[0].id%>"><%=@event.firms[0].name_zh%></a> > <span>优惠券</span></div>
+	<div class="left2">
+	  <div class="youhuixx margin10">
+	    <div class="youhuibox">
+	      <!-- 等比缩放图片 -->
+	<script type="text/javascript">
+	  var flag=false;
+	  function DrawImage(ImgD){
+	    var image=new Image();
+	    var iwidth = 686; //定义允许宽度，当宽度大于这个值时等比例缩小
+	    var iheight = 450; //定义允许高度，当高度大于这个值时等比例缩小
+	    image.src=ImgD.src;
+	    if(image.width>0 && image.height>0){
+	      flag=true;
+	      if(image.width/image.height>= iwidth/iheight){
+	        if(image.width>iwidth){
+	          ImgD.width=iwidth;
+	          ImgD.height=(image.height*iwidth)/image.width;
+	        }else{
+	          ImgD.width=image.width;
+	          ImgD.height=image.height;
+	        }
+	      }else{
+	        if(image.height>iheight){
+	          ImgD.height=iheight;
+	          ImgD.width=(image.width*iheight)/image.height;
+	        }else{
+	          ImgD.width=image.width;
+	          ImgD.height=image.height;
+	        }
+	      }
+	    }
+	  }
+	</script>
+
+	
+	<!--startprint1-->
+	      <div class="yhpic"><%= remove_external_links(whitelist_strip_tags(@event.summary, :tags => ["a", "A", "script", "style"], :include => false)) %></div>
+	      <!--endprint1-->
+	      <script language="javascript"> 
+	function preview(oper)
+	{
+	if (oper < 10){
+	bdhtml=window.document.body.innerHTML;//获取当前页的html代码
+	sprnstr="<!--startprint"+oper+"-->";//设置打印开始区域
+	eprnstr="<!--endprint"+oper+"-->";//设置打印结束区域
+	prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
+	prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
+	window.document.body.innerHTML=prnhtml;
+	window.print();
+	window.document.body.innerHTML=bdhtml;
+	} else {
+	window.print();
+	}
+	} 
+	var isReady = true;
+	function doSaveAs(){
+	if (document.execCommand){
+	if (isReady){document.execCommand("SaveAs");}
+	}else{
+		alert('Feature available only in Internet Exlorer 4.0 and later.');
+	}
+	}
+	</script>
+	      <div class="youhuiinfo">
+	        <div class="tool"><a href="javascript:doSaveAs()"><img src="http://js.51hejia.com/img/sdeco/baocun.gif" /></a> <a href="javascript:window.print();" ><img src="http://js.51hejia.com/img/sdeco/dayin.gif" /></a></div>
+	        <%if @event.ends_at%>
+	        <p><span>(有效期至<%=@event.ends_at.strftime("%Y-%m-%d")%>)</span></p>
+	        <%end%>
+	        <p>1.请将此优惠打印使用；<br />
+	 2.除特殊注明外，本优惠不能与其他优惠同时享受；<br />
+	 3.本优惠最终解释权归商家所有，如有疑问请与商家联系；<br />
+	4.本优惠请务必从和家网下载使用，否则无效。<br />
+	提示：此信息仅供参考，建议您在使用前进行确认。</p>
+	      </div>
+	    </div>
+	    
+	    <div class="youhuiask">
+		<%if @coupon && @coupon.size>0 %>
+	      <h4>现在有<%=@coupon.size %>份回应</h4>
+	      <% @coupon.each do |remark| %>
+		      <div class="askbox"><img src="<%= remark.HEADIMG %>" />
+		        <div class="date"><%= remark.created_at.strftime("%m-%d-%Y")  %></div>
+		        <div class="name"><%= remark.user_name %></div>
+		        <p><%= remark.content.gsub('[','<').gsub(']','>').gsub(/<.*?>/,'') %></p>
+		      </div>
+	      <% end %>
+	     <% end%> 
+	     
+	      <div class="clear">
+	      	<div class="pagination margin10">
+	  		<%= will_paginate @coupon %> 
+			</div>
+	      </div>
+	      <div class="askform">
+	      <% form_for :remark, :url => {:controller => "remarks", :action => "save"}, :html => {:method => :post} do |f| %>
+	      	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <th valign="top">评论信息</th>
+	            <td><%= f.text_area :content %></td>
+	          </tr>
+	          <tr>
+	          	<td>&nbsp;</td>
+	            <td>
+	            <%if user_logged_in? %>
+		      		<input type="submit" class="putbtn" value="发 表"/>
+		      	<%else%>
+		      		<input type="button" class="putbtn" value="发 表" onclick="Divopop('Login');"/>
+		      	<%end%>
+				<span style="color:red;"><%=flash[:error]%></span>
+				</td>
+	          </tr>
+	        </table>
+	        <input type="hidden" id="token" name="token" value="<%= @token %>" />
+	        <input type="hidden" id="event_id" name="event_id" value="<%= @event.id %>" />
+	      <% end %>
+	      
+	      
+	      <!--
+	      <form id="form2" name="form2" method="post" action="/dianping/add_youhuiquan_reply">
+	        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <th valign="top">我的回应</th>
+	            <td><textarea name="content" id="content" cols="45" rows="5"></textarea></td>
+	          </tr>
+	          <tr>
+	            <td>&nbsp;</td>
+	            <td>
+	            <%if user_logged_in? %>
+		      		<input type="submit" class="putbtn" value="发 表"/>
+		      	<%else%>
+		      		<input type="button" class="putbtn" value="发 表" onclick="Divopop('Login');"/>
+		      	<%end%>
+	          </tr>
+	        </table>
+	        <input type="hidden" name="reviewid" id="reviewid" value="<%=@event.id %>">
+	        <input type="hidden" name="replytype" id="replytype" value="1">
+	        </form>
+	       -->
+	      </div>
+	    </div>
+	    
+	  </div>
+	  </div>
+	  	<div class="right1">
+		    <%= render :partial => "decoshare/company_info" %>
+	    	<h2><span class="n1">看过该优惠券的还看过</span><span class="n2"></span></h2>
+		    <div class="rbox3">
+		    <% if @regional && @regional.size>0 %>
+		    <% @regional.each do |reg|%>
+		      <ul>
+		        <li><a href="<%=gen_firm_city_event(reg.firms[0].id,reg.id)%>" title="<%=reg.title %>" target="_blank"><%=truncate_u(reg.title,12,'...')%></a></li>
+		      </ul>
+		    <% end%>
+		     <% end %>
+		    </div>
+	  	</div>
+<div class="clear"></div>
+<%= increase_deco_firm_pv_image_tag @firm_id %>

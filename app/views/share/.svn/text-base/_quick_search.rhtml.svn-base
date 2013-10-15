@@ -1,0 +1,57 @@
+<div class="list_l_t clearfix"><h3>快捷搜索</h3></div>
+<div class="list_select list_select_new" >
+	<ul class="clearfix">
+    <a href="#n" onclick="changeprice(0)" class="list_select_a">主打价位(不限)</a>
+      <% diff_city_price_tag(params[:city]).each do |k, v| -%>
+        <li <%if params[:price].to_i == k%>class="on"<%end%>><a id="prid<%=k%>" href="#n" onclick="<%if params[:price].to_i == k%>changeprice(0)<%else%>changeprice(<%=k%>)<%end%>" ><%=v%></a></li>
+      <%end -%>
+	  <li><a href="/bieshu">别墅</a></li>
+    </ul>
+    <ul class="clearfix">
+    <a href="#n" onclick="changemodel(0)" class="list_select_a">装修方式(不限)</a>
+        <% models_sort = params[:city].to_i == 11910 ? SHANGHAI_MODELS : MODELS %>
+      	<% models_sort.sort.each do |k, v| -%>
+        <li <%if params[:model].to_i == k%>class="on"<%end%>><a id="moid<%=k%>" href="#n" onclick="<%if params[:model].to_i == k%>changemodel(0)<%else%>changemodel(<%=k%>)<%end%>" ><%=v%></a></li>
+		<% end -%>
+    </ul>
+    <ul class="clearfix">
+    <a href="#n" onclick="changestyle(0)" class="list_select_a">装修风格(不限)</a>
+        <% STYLES.sort.each do |k, v| -%>
+        <li <%if params[:style].to_i == k%>class="on"<%end%>><a id="stid<%=k%>" href="#n" onclick="<%if params[:style].to_i == k%>changestyle(0)<%else%>changestyle(<%=k%>)<%end%>" ><%=v%></a></li>
+		<% end -%>
+    </ul>
+   <ul class="clearfix">
+    <a href="#n" onclick="changedistrict(0)" class="list_select_a">城市区域(不限)</a>
+    <%if params[:city].to_i != 11910%>
+		<%cities = get_area_without_number(params[:city])%>
+	  	<%cities.each do |c|%>
+	  		<li <%if params[:district].to_i == c.TAGID%>class="on"<%end%>><a id="arid<%=c.TAGID%>" href="#n" onclick="changedistrict(<%=c.TAGID%>)" ><%=c.TAGNAME%></a></li>
+	  	<%end%>
+  	<%else%>
+  		<%cities1 = get_object_tags_by_cityvalue_and_tagvalue(11910,1)%>
+  		<%cities1.each do |c|%>
+  			<%if c.TAGID != 12749%>
+      		<li <%if params[:district].to_i == c.TAGID%>class="on"<%end%>><a id="arid<%=c.TAGID%>" href="#n" onclick="changedistrict(<%=c.TAGID%>)" ><%=c.TAGNAME%></a></li>
+      		<%end%>
+      	<%end%>
+	    <ul id="y1" style="display:none;">
+	    <%cities2 = get_object_tags_by_cityvalue_and_tagvalue(11910,2)%>
+  		<%cities2.each do |c|%>
+      		<li <%if params[:district].to_i == c.TAGID%>class="on"<%end%>><a id="arid<%=c.TAGID%>" href="#n" onclick="changedistrict(<%=c.TAGID%>)" ><%=c.TAGNAME%></a></li>
+      	<%end%>
+    	</ul>
+    <li><a id="btn" onclick="javascript:setFocus();" target="_blank">更多</a></li>
+
+    <%end%>
+    </ul>
+<UL class='clearfix hot' ><A class=list_select_a href="#n">热门搜索</A>
+  <li class='clear'><A id=moid1 href="/zhuangxiugongsi/gsl-<%=params[:city]%>-0/2-0-0-1-0-0/"><%= params[:city].to_i == 12301 ? "6万以下 + 半包" : "8万以下 + 半包" %></A></li>
+  <li class='clear'><A id=moid1 href="/zhuangxiugongsi/gsl-<%=params[:city]%>-0/2-0-0-2-0-0/"><%= params[:city].to_i == 12301 ? "6万-10万 + 半包" : "8~15万 + 半包" %></A> </LI>
+  <li class='clear'><A id=moid2 href="/zhuangxiugongsi/gsl-<%=params[:city]%>-0/3-0-0-2-0-0/"><%= params[:city].to_i == 12301 ? "全包 + 6万-10万" : "全包 + 8~15万" %></A> </LI>
+  <li class='clear'><A id=moid3 href="/zhuangxiugongsi/gsl-<%=params[:city]%>-0/2-1-0-0-0-0/">现代简约 + 半包</A> </LI>
+  <!--
+  <li><A id=moid4 href="http://z.shanghai.51hejia.com/zhuangxiugongsi/#n">浦东 + 8~15万</A> </LI>
+  <li><A id=moid4 href="http://z.shanghai.51hejia.com/zhuangxiugongsi/#n">闵行 + 8万以下</A> </LI>
+  -->
+</UL>
+</div>

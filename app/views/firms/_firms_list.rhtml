@@ -1,0 +1,38 @@
+<div class="list_r_t">
+      <div class="list_r_tr f_l list_r">
+	  <% company_sort =  Marshal.load(Marshal.dump(COMPANY_SORT_ORDERS))%>
+	  <% company_sort.sort[0][1][1] = "综合" unless @city.to_i == 11910 %>
+	  <ul style="float:left; margin-left:10px;">
+        <li>排序： </li>
+        <li><select style="vertical-align:middle;" onchange='changeorder(this.value)'>
+            <option value='0' <%if params[:order] %>selected<%end%> >请选择</option>
+			<% company_sort.sort.each do |k,v| %>
+        		<option value='<%=k %>' <%if params[:order].to_i == k%>selected<%end%> ><%= v[1] %></option>
+        	<% end %>
+        </select></li>
+      </ul>
+      </div>
+      <div class="list_r_tr f_r list_r">
+      <ul>
+        <li>排序： </li>
+		<% this_company_sort = @city.to_i == 11910 ?  company_sort.sort[1..-1] : company_sort.sort%>
+        <% this_company_sort.each do |k,v| %>
+          <li <%if params[:order].to_i == k %>class="list_r_tr_on"<%else%>class="list_r_tr_off"<% end %> onclick="changeorder(<%= k %>)" ><a href="#"><%= v[1] %></a></li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+    <div class=list_r_li>
+      <% index = 0 %>
+      <ul>
+        <% @promoted_companies.each do |firm| %>
+          <%= render :partial => 'firm_summary', :locals => {:firm => firm, :index => index, :promoted => true} %>
+          <% index += 1 %>
+        <% end %>
+        <% @companies.each do |firm| %>
+          <%= render :partial => 'firm_summary', :locals => {:firm => firm, :index => index, :promoted => false} %>
+          <% index += 1 %>
+        <% end %>
+      </ul>
+	  </div>
+	  <div class="clearfix"><%= will_paginate @companies %></div>

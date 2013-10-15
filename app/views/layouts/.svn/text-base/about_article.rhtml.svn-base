@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= @article.TITLE %>_<%= get_second_tag_name(@article.SECONDCATEGORY) %>_<%= get_first_tag_name(@article.FIRSTCATEGORY) %>_和家装修家居网</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="<%= @article.KEYWORD1 %>;<%= @article.TITLE %>"/>
+    <meta name="description" content="<%= @article.SUMMARY %>"/>
+    <link href=" http://js.51hejia.com/css/header914.css?99170917" rel="stylesheet" type="text/css" />
+    <link href="http://js.51hejia.com/css/jushdes090415.css" rel="stylesheet" type="text/css" />
+    <link href="http://js.51hejia.com/css/baoming.css" rel="stylesheet" type="text/css" />
+    <link href=" http://js.51hejia.com/css/jsheader.css" rel="stylesheet" type="text/css" />
+    <SCRIPT src="http://js.51hejia.com/js/jquery.pack.js" type="text/javascript"></SCRIPT>
+    <SCRIPT language=javascript src="http://js.51hejia.com/js/article.js"></SCRIPT>
+    <SCRIPT language=javascript src="http://www.51hejia.com/api/js/protect.js"></SCRIPT>
+    <script language="javascript">
+      function killErrors() {
+        return true;
+      }
+      window.onerror = killErrors;
+    </script>
+  </head>
+  <body>
+    <%=yield%>
+  </body>
+</html>

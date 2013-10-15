@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/lib/hoptoad_notifier/rails
+END
+controller_methods.rb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/lib/hoptoad_notifier/rails/controller_methods.rb
+END
+action_controller_catcher.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/lib/hoptoad_notifier/rails/action_controller_catcher.rb
+END
+error_lookup.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/!svn/ver/81/51hejia/repos/api/release/vendor/gems/hoptoad_notifier-2.2.2/lib/hoptoad_notifier/rails/error_lookup.rb
+END

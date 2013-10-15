@@ -1,0 +1,176 @@
+		<!--<dl class="rank">
+			
+			<dt>商户排行榜</dt>
+			
+			<dd><a href="/zhuangxiugongsi/0.0.0.2.0.1.html">评论排行榜</a></dd>
+			
+			<dd><a href="/zhuangxiugongsi/0.0.0.3.0.1.html">口碑排行榜</a></dd>
+			<dd><a href="/zhuangxiugongsi/0.0.0.8.0.1.html">案例排行榜</a></dd>
+			<dd><a href="/zhuangxiugongsi/0.0.0.4.0.1.html">设计排行榜</a></dd>
+			<dd><a href="/zhuangxiugongsi/0.0.0.6.0.1.html">施工排行榜</a></dd>
+			<dd><a href="/zhuangxiugongsi/0.0.0.7.0.1.html">服务排行榜</a></dd>
+			
+		</dl>-->
+		<ul class="rankcontent">
+			<li>
+				<div class="title">口碑排行榜</div>
+				<div class="more">
+					
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th width="15%" align="center">排名</th>
+					  <th width="61%">商户</th>
+						<th width="24%" align="center">综合分</th>
+				  </tr>
+					</thead>
+					<tbody>
+					
+					<%specialfirm = DecoFirm.getfirm(246205)%>
+					<tr>
+						<td align="center"><img src=" http://www.51hejia.com/images/zhuangxiu805/tui.jpg" width="18" height="18" alt="推广"></td>
+						<td><a href="/firms-246205" target="_blank"><%=specialfirm.name_zh%></a></td>
+						<td align="center"><%=specialfirm.praise%></td>
+					</tr>
+					<% @total.each_with_index do |firm, index| %>
+					<%if firm.id != 246205 %>
+					<tr>
+						<td align="center"><%= index + 1 %>.</td>
+						<td><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></td>
+						<td align="center"><%= firm.praise || "0" %></td>
+					</tr>
+					<%end%>
+					<% end %>
+					</tbody>
+				</table>
+
+			</li>
+			<li>
+				<div class="title">评论排行榜</div>
+				<div class="more">
+					
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th width="15%" align="center">排名</th>
+					  <th width="61%">商户</th>
+						<th width="24%" align="center">评论数量</th>
+				  </tr>
+					</thead>
+					<tbody>
+					<% @comments.each_with_index do |firm, index| %>
+					<tr>
+						<td align="center"><%= index + 1 %>.</td>
+						<td><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></td>
+						<td align="center"><%= firm.comments_count.to_i || "0" %></td>
+					</tr>
+					<% end %>
+					</tbody>
+				</table>
+
+			</li>
+			<li>
+				<div class="title">案例排行榜</div>
+				<div class="more">
+					
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th width="15%" align="center">排名</th>
+					  <th width="61%">商户</th>
+						<th width="24%" align="center">案例数量</th>
+				  </tr>
+					</thead>
+					<tbody>
+					<% @cases.each_with_index do |firm, index| %>
+					<tr>
+						<td align="center"><%= index + 1 %>.</td>
+						<td><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></td>
+						<td align="center"><%= firm.cases_count.to_i || "0" %></td>
+					</tr>
+					<% end %>
+					</tbody>
+				</table>
+
+			</li>
+			<li>
+				<div class="title">设计排行榜</div>
+				<div class="more">
+					
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th width="15%" align="center">排名</th>
+					  <th width="61%">商户</th>
+						<th width="24%" align="center">设计分</th>
+				  </tr>
+					</thead>
+					<tbody>
+					<% @design.each_with_index do |firm, index| %>
+					<tr>
+						<td align="center"><%= index + 1 %>.</td>
+						<td><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></td>
+						<td align="center"><%= firm.design_praise || "0" %></td>
+					</tr>
+					<% end %>
+					</tbody>
+				</table>
+
+			</li>
+			
+			<li>
+				<div class="title">施工排行榜</div>
+				<div class="more">
+					
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th width="15%" align="center">排名</th>
+					  <th width="61%">商户</th>
+						<th width="24%" align="center">施工分</th>
+				  </tr>
+					</thead>
+					<tbody>
+					<% @construction.each_with_index do |firm, index| %>
+					<tr>
+						<td align="center"><%= index + 1 %>.</td>
+						<td><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></td>
+						<td align="center"><%= firm.construction_praise || "0" %></td>
+					</tr>
+					<% end %>
+					</tbody>
+				</table>
+
+			</li>
+			<li>
+				<div class="title">服务排行榜</div>
+				<div class="more">
+					
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th width="15%" align="center">排名</th>
+					  <th width="61%">商户</th>
+						<th width="24%" align="center">服务分</th>
+				  </tr>
+					</thead>
+					<tbody>
+					<% @service.each_with_index do |firm, index| %>
+					<tr>
+						<td align="center"><%= index + 1 %>.</td>
+						<td><a href="/firms-<%=firm.id%>" target="_blank"><%=firm.name_zh%></a></td>
+						<td align="center"><%= firm.service_praise || "0" %></td>
+					</tr>
+					<% end %>
+					</tbody>
+				</table>
+
+			</li>
+			
+		</ul>

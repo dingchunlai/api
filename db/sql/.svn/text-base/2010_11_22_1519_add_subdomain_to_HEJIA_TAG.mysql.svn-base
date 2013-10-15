@@ -1,0 +1,7 @@
+-- 限定每一个标签的访问域名。
+SET NAMES utf8;
+use 51hejia;
+delete from HEJIA_TAG where TAGFATHERID = 14025 and TAGID in (44388,42270,42090,41661,40001,38182,37284,31792,36621,36261,31810,35745,36826);
+alter table HEJIA_TAG add column subdomain varchar(50) not null default 'www';
+update HEJIA_TAG set subdomain = 'b' where TAGFATHERID = 14025 and TAGURL = 'pinpaiku';
+update HEJIA_TAG set subdomain = 'd' where TAGFATHERID = 14025 and TAGURL = 'zhuangxiu';

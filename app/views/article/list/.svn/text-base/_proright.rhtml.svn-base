@@ -1,0 +1,261 @@
+<div class="proright">
+  <div class="daohangneironglan" style="text-align:left;">
+
+    <div class="right5">
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("#sub").click(function(){
+            if($.trim($("#names").val())==''){
+              alert("请填写称呼!");
+              return false;
+            }
+            if($("#budget").val()==''){
+              alert("请选择预算数额!");
+              return false;
+            }
+            if($.trim($("#phone").val())==''){
+              alert("请填写联系电话!");
+              return false;
+            }
+            if(isNaN($("#phone").val())){
+              alert("非法的电话号码!");
+              return false;
+            }
+            if($("#room").val()==''){
+              alert("请选择房型!");
+              return false;
+            }
+            if($.trim($("#area").val())==''){
+              alert("房型面积不能为空!");
+              return false;
+            }
+            if(isNaN($("#area").val())){
+              alert("非法的房型面积！");
+              return  false;
+            }
+            if($("#style").val()==''){
+              alert("请选择风格");
+              return false;
+            }
+              var address_value = $("#address").val() + "(来源地址：<%= request.host + request.path %>)"
+              $("#address").val(address_value);
+
+            return true;
+          });
+        })
+      </script>
+      <form action="http://<%= TAGURLS[@city_id] + "." %>zhaobiao.51hejia.com/zxinfo/add/" method="post">
+        <table cellspacing="0" cellpadding="0" border="0" width="310">
+          <tbody><tr>
+              <td align="right" width="70"><span>*</span> 风格：</td>
+              <td style="width:74px;*width:82px;"><select name="style" id="style" style="height:20px;">
+                  <option value="">请选择</option>
+                  <option value="现代简约">现代简约</option>
+                  <option value="田园风格">田园风格</option>
+                  <option value="欧美式">欧美式</option>
+                  <option value="中式风格">中式风格</option>
+                  <option value="地中海">地中海</option>
+                  <option value="混搭">混搭</option>
+                </select></td>
+              <td align="right" width="50"><span>*</span> 房型：</td>
+              <td><select name="room" id="room" style="width:74px;*width:82px;height:20px;">
+                  <option value="">请选择</option>
+                  <option value="一居室">一居室</option>
+                  <option value="二居室">二居室</option>
+                  <option value="三居室">三居室</option>
+                  <option value="四居室">四居室</option>
+                  <option value="复式">复式</option>
+                  <option value="别墅">别墅</option>
+                </select></td>
+            </tr>
+            <tr>
+              <td align="right"><span>*</span> 面积：</td>
+              <td style="font-weight: bold; font-family: tahoma; font-size: 14px;"><input type="text" name="area" id="area" style="width:40px;">
+                m<sup>2</sup></td>
+              <td align="right" width="50"><span>*</span> 预算：</td>
+              <td align="left"><select name="budget" id="budget" style="width:74px;*width:82px;height:20px;">
+                  <option value="">请选择</option>
+                  <option value="8万以下">8万以下</option>
+                  <option value="8-15万">8-15万</option>
+                  <option value="15-30万">15-30万</option>
+                  <option value="30万以上">30万以上</option>
+                </select></td>
+            </tr>
+            <tr>
+              <td align="right"><span>*</span> 称呼：</td>
+              <td align="left"><input type="text" name="name" id="names" style="width:70px;*width:77px;" /></td>
+              <td align="right"><span>*</span> 电话：</td>
+              <td align="left"><input type="text" name="phone" id="phone" style="width:70px;*width:77px;" /></td>
+            </tr>
+
+            <tr>
+              <td align="right"> 地址：</td>
+              <td colspan="3"><input type="text" name="address" id="address" style="width:198px;*width:212px;" /></td>
+            </tr>
+            <tr>
+              <td align="right">装修需求：</td>
+              <td colspan="3"><input type="text" name="bak" id="bak" style="width:198px;*width:212px;" /></td>
+            </tr>
+            <tr>
+              <td align="right">指定公司：</td>
+              <td colspan="3"><input type="text" id="name_zh" name="name_zh" style="width:198px;*width:212px;color:#ccc;" value="最多填写3家公司,用空格间隔公司名" onfocus="this.value=''" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= hidden_field_tag :from_type,1 %>
+        <%= hidden_field_tag :from_id,"" %>
+        <script type="text/javascript">
+          var timestamp = (new Date()).valueOf();
+          var url = document.domain+'?from_id='+timestamp;
+          $("#from_id").val(url);
+        </script>
+        <input type="submit" class="form_btn" id="sub" value="" onclick="_gaq.push(['_trackEvent','效果', '免费招标',$('#from_id').val(), 1]);" />
+      </form>
+    </div>
+
+
+    <h3>建材导购</h3>
+    <% results = parse_xml("http://api.51hejia.com/rest/build/xml/54271.xml", ["title", "url", "image-url", "entity-created-at"], 8) %>
+    <div class="right1" style="float:left;width:294px;">
+      <a href="<%= results[0]["url"] %>" target="_blank">
+        <img src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>" border="0" />
+      </a>
+      <% 0.upto(3) do |i| %>
+        <li>·<a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"].chars[0,13] %></a></li>
+      <% end %>
+      <ul style="width:300px">
+        <% 4.upto(7) do |i| %>
+          <li>·<a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"].chars[0,17] %></a><span><%= results[i]["entity-created-at"].to_date.strftime("%Y-%m-%d") %></span></li>
+        <% end %>
+      </ul>
+    </div>
+    <h3>空间搭配</h3>
+    <% results = parse_xml("http://api.51hejia.com/rest/build/xml/55268.xml", ["title", "url", "image-url", "entity-created-at"], 10) %>
+    <div class="right1" style="float:left;width:294px;">
+      <%unless results[0].nil?%>
+        <a href="<%= results[0]["url"] %>" target="_blank">
+          <img src="<%= results[0]["image-url"] %>" alt="<%= results[0]["title"] %>" border="0" />
+        </a>
+      <%end%>
+      <% 0.upto(3) do |i| %>
+        <%unless results[i].nil?%>
+          <li>·<a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"].chars[0,12] %></a></li>
+        <%end%>
+      <% end %>
+      <ul style="width:300px">
+        <% 4.upto(9) do |i| %>
+          <%unless results[i].nil?%>
+            <li>·<a href="<%= results[i]["url"] %>" target="_blank" title="<%= results[i]["title"] %>"><%= results[i]["title"].chars[0,17] %></a><span><%= results[i]["entity-created-at"].to_date.strftime("%Y-%m-%d") %></span></li>
+          <%end%>
+        <% end %>
+      </ul>
+    </div>
+
+    <!--
+    <h3><%#=@city_name%>网友装修日记</h3>
+    <div class="right2">
+<%# @like_diaries.each do |diary| %>
+        <dl>
+          <dt><a href="<%#= generate_diary_url(diary)%>" target="_blank"><img src="<%#=image_full_path(get_diary_master_picture(diary),'112x80')%>" width="180" height="80" alt="<%#=diary.title%>" /></a></dt>
+          <dd><%#=link_to diary.title, generate_diary_url(diary),:target=>"_blank" %></dd>
+        </dl>
+<%# end %>
+    </div>
+    -->
+
+    <h3>装修资讯</h3>
+    <% results = HejiaArticle.search(42234, 7) %>
+    <div class="right3">
+      <dl>
+        <% url, image_url = get_article_url_image_url(results[0].ID, results[0].FIRSTCATEGORY, results[0].CREATETIME, results[0].IMAGENAME) %>
+        <dt><a href="<%= url %>" target="_blank" title="<%= results[0].TITLE %>"><img src="<%= image_url %>" border="0" /></a></dt>
+      </dl>
+      <dl>
+        <% url, image_url = get_article_url_image_url(results[1].ID, results[1].FIRSTCATEGORY, results[1].CREATETIME, results[1].IMAGENAME) %>
+        <dt><a href="<%= url %>" target="_blank" title="<%= results[1].TITLE %>"><img src="<%= image_url %>" border="0" /></a></dt>
+      </dl>
+      <ul>
+        <% results[2..99].each do |result| %>
+          <% url, image_url = get_article_url_image_url(result.ID, result.FIRSTCATEGORY, result.CREATETIME, result.IMAGENAME) %>
+          <li>·<a href="<%=url%>" title="<%= result.TITLE %>"><%= result.TITLE %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <h3>家居时尚</h3>
+    <% results = parse_xml("http://api.51hejia.com/rest/build/xml/55267.xml", ["title", "url", "image-url"], 10) %>
+    <div class="right3">
+      <dl>
+        <dt><a href="<%= results[0]["url"] %>" target="_blank" title="<%= results[0]["title"] %>"><img src="<%= results[0]["image-url"] %>" border="0" /></a></dt>
+        <dd>
+          <ul>
+            <li>·<a href="<%= results[0]["url"] %>" title="<%= results[0]["title"] %>"><%= results[0]["title"].chars[0,10] %></a></li>
+          </ul>
+        </dd>
+        <dd>
+          <ul>
+            <% 2.upto(5) do |i| %>
+              <li>·<a href="<%= results[i]["url"] %>" title="<%= results[i]["title"] %>"><%= results[i]["title"].chars[0,10] %></a></li>
+            <% end %>
+          </ul>
+        </dd>
+      </dl>
+      <dl>
+        <dt><a href="<%= results[1]["url"] %>" target="_blank" title="<%= results[1]["title"] %>"><img src="<%= results[1]["image-url"] %>" border="0" /></a></dt>
+        <dd>
+          <ul>
+            <li>·<a href="<%= results[1]["url"] %>" title="<%= results[1]["title"] %>"><%= results[1]["title"].chars[0,10] %></a></li>
+          </ul>
+        </dd>
+        <dd>
+          <ul>
+            <% 6.upto(9) do |i| %>
+              <li>·<a href="<%= results[i]["url"] %>" title="<%= results[i]["title"] %>"><%= results[i]["title"].chars[0,10] %></a></li>
+            <% end %>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+
+    <h3>美图美家</h3>
+    <div class="right2">
+      <% for result in parse_xml("http://api.51hejia.com/rest/build/xml/54108.xml", ["title", "url", "image-url"], 6)[0..5] %>
+        <dl>
+          <dt>
+            <a href="<%= result["url"] %>" target="_blank">
+              <img src="<%= result["image-url"] %>" alt="<%= result["title"] %>" width="120" height="90" />
+            </a>
+          </dt>
+          <dd><a href="<%= result["url"] %>" target="_blank"><%= result["title"].chars[0,8] %></a></dd>
+        </dl>
+      <% end %>
+    </div>
+
+    <div style="width: 292px;" class="luntanbox">
+      <div style="width: 292px;" class="same_cha7">
+        <ul>
+          <li class="menu_on" onmouseover="show_intro('s','samef',2,1);" style="width: 146px;" id="s1"><a title="俱乐部top" target="_blank" href="http://bbs.51hejia.com/">俱乐部top</a></li>
+          <li class="menu_off" onmouseover="show_intro('s','samef',2,2);" style="width: 146px;" id="s2"><a title="专家问答top" target="_blank" href="http://bbs.51hejia.com">专家问答top</a></li>
+        </ul>
+      </div>
+      <div id="samef1" style="display: block;">
+        <div style="width: 272px;" class="paihangbox01">
+          <ul>
+            <%BbsTopic.recent_topics(10).each do |topic|%>
+              <li><%=link_to "<span>·#{ul(topic.title, 18)}</span>", topic.url, :target => "_blank"%></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+      <div id="samef2" style="display: none;"><div style="width: 272px;" class="paihangbox01">
+          <ul>
+            <% AskZhidaoTopic.recent_topics(10).each do |topic| %>
+              <li><%= link_to "<span>·#{ul(topic.title, 18)}</span>", topic.url, :target => "_blank" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

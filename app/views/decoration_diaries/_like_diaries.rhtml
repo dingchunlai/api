@@ -1,0 +1,14 @@
+<% like_diaries = get_like_diaries(@diary)%>
+<div class="list_l_t">
+          <h3>相似网友装修日记</h3>
+        </div>
+        <div class="list_diary_ed">
+          <ul>
+            <% like_diaries.each do |diary|%>
+            <li>
+              <p class="list_diary_ed_t"><a href="<%= diary.url %>" target="_blank" title="<%=h diary.title%>"><%=h truncate(diary.title,10,'')%></a></p>
+              <p class="list_diary_ed_p">(<%=diary_pictures_size(diary)%>)图</p>
+            </li>
+     		<% end %>
+          </ul>
+</div>

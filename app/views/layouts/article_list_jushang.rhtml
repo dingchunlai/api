@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= get_first_tag_name(@tag_id) %>_和家网</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="厨房装修，室内装修效果图，卧室装修，店面装修，家庭装修效果图，小户型装修，阁楼装修，客厅装修效果图，客厅装修，卫生间装修，别墅装修,办公室装修，家庭装修图，装修图库，店铺装修，网吧装修"/>
+    <meta name="descritpion" content="服装店装修，小户型装修图，新房装修，餐厅装修，酒店装修，二手房装修，欧式装修，小户型装修效果图，书房装修，电视墙装修，中式装修，影楼装修，厨房装修，效果图，复式装修，家具装修，时尚装修"/>
+    <link href=" http://js.51hejia.com/css/jsheader.css?3824932" rel="stylesheet" type="text/css" />
+    <link href=" http://js.51hejia.com/css/baoming.css" rel="stylesheet" type="text/css" />
+    <link href=" http://js.51hejia.com/css/zhanshi0310.css?20091022" rel="stylesheet" type="text/css"/>
+    <link href=" http://js.51hejia.com/css/wenzhang1223.css" rel="stylesheet" type="text/css"/>
+    <SCRIPT src="http://js.51hejia.com/js/jquery.pack.js" type="text/javascript"></SCRIPT>
+    <script type="text/javascript" src="http://js.51hejia.com/js/cha.js"></script>
+    <script type="text/javascript" src="http://js.51hejia.com/js/article.js"></script>
+    <style type="text/css">
+      a{color:#3f3f3f;text-decoration:none;}
+      a:hover {color:#f60; text-decoration:underline}
+      li {list-style:none;line-height:20px;}
+      img{border:0;}
+      p,em,span,form,select,input,option,ol,ul,li,dd,dt,dl,h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+      h3,h4 {font-size:14px;}
+      .hejia {width:303px; float:left; margin-bottom:6px;}
+      .hejiatt {background: url(http://www.51hejia.com/images/shouye1125/hejia_tt.gif) no-repeat left top; height:26px; line-height:26px; text-indent:15px;}
+      .hejiabox {width:295px; float:left; height:108px; padding:0;}
+      .hejiabox .l1 {width:142px;}
+      .hejiabox .l2 {width:113px;}
+      .hejiabox .l3 {width:97px;}
+      .hejiabox .l4 {width:73px;}
+      .hejiabox .bt {background: url(http://www.51hejia.com/images/shouye1125/bt01.gif) no-repeat left top; width:88px; height:29px; line-height:29px; text-align:center; font-size:12px; color:#fff; border:0;}
+      .hejiabox td {font-size:13px;padding:0 5px;}
+      .hejiabox td input {margin-top:3px;}
+      .hejiabox span {color:#f00;}
+    </style>
+    <script type="text/javascript">
+      function page(page){
+        var format = document.getElementById("format").value;
+        var first_tag_url = document.getElementById("first_tag_url").value;
+        var tag_id = document.getElementById("tag_id").value;
+        var tag_type = document.getElementById("tag_type").value;
+        var date = document.getElementById("date").value;
+        var url = ""
+        if(first_tag_url==""){
+          url = "/articleList/"+tag_type+"/"+tag_id+"/"+format+"/"+page
+        }
+        if(date==""&&first_tag_url!=""){
+          url = "/"+first_tag_url+"/articleList/"+tag_type+"/"+tag_id+"/"+format+"/"+page
+        }
+        if(date!=""&&first_tag_url==""){
+          url = "/articleList/"+tag_type+"/"+tag_id+"/"+date+"/"+format+"/"+page
+        }
+        if(date!=""&&first_tag_url!=""){
+          url = "/"+first_tag_url+"/articleList/"+tag_type+"/"+tag_id+"/"+date+"/"+format+"/"+page
+        }
+        window.open(url,"_self")
+      }
+      function onKeypress(e){
+        var isie = (document.all) ? true : false;
+        var key;
+        if(isie){
+            key = window.event.keyCode;
+        }else{
+            key = e.which;
+          }
+        if(key==13){
+          var page1 = document.getElementById("page1").value;
+          var page2 = document.getElementById("page2").value;
+          var patrn=/^[0-9]{1,200}$/;
+          var total_pages = document.getElementById("total_pages").value;
+          if(page1 != "" && parseInt(page1) > 0 && parseInt(page1) <= total_pages && patrn.test(page1)){
+            page(page1);
+          }else{
+            if(page2 != "" && parseInt(page2) > 0 && parseInt(page2) <= total_pages && patrn.test(page2)){
+              page(page2);
+            }
+          }
+        }
+      }
+    </script>
+    <script language="javascript">
+      function killErrors() {
+        return true;
+      }
+      window.onerror = killErrors;
+    </script>
+  </head>
+  <body>
+    <%=yield%>
+  </body>
+</html>

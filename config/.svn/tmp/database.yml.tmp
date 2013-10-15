@@ -1,0 +1,190 @@
+realtime: &realtime
+  adapter: mysql
+  username: 51hejia
+  password: ruby
+  host: 192.168.0.2
+  encoding: utf8
+
+dev: &dev
+  adapter: mysql
+  username: 51hejia
+  password: ruby
+  host: 192.168.0.13
+  encoding: utf8
+
+staging_test: &staging_test
+  adapter: mysql
+  username: 51hejia
+  password: ruby
+  host: 192.168.0.2
+  encoding: utf8
+  
+base: &base
+  <<: *realtime
+
+# development environment
+development: &development
+  <<: *base
+  database: 51hejia
+
+index_development:
+  <<: *development
+  database: 51hejia_index
+
+product_development:
+  <<: *development
+  database: 51hejia_product
+
+product2_development:
+  <<: *development
+  database: product
+
+forum_development:
+  <<: *development
+  database: 51hejia_forum
+
+# staging environment
+staging: &staging
+  <<: *staging_test
+  database: 51hejia
+
+index_staging:
+  <<: *staging
+  database: 51hejia_index
+
+product_staging:
+  <<: *staging
+  database: 51hejia_product
+
+product2_staging:
+  <<: *staging
+  database: product
+
+forum_staging:
+  <<: *staging
+  database: 51hejia_forum
+
+# rehearsal =============================
+rehearsal:
+  adapter: mysql
+  database: 51hejia
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+  read_only_51hejia:
+      adapter: mysql
+      database: 51hejia
+      username: hejiasql
+      password: sql2009
+      host: 192.168.1.250
+      encoding: utf8
+
+index_rehearsal:
+  adapter: mysql
+  database: 51hejia_index
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+  read_only_51hejia_index:
+      adapter: mysql
+      database: 51hejia_index
+      username: hejiasql
+      password: sql2009
+      host: 192.168.1.250
+      encoding: utf8
+
+product_rehearsal:
+  adapter: mysql
+  database: 51hejia_product
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+  read_only_51hejia_product:
+      adapter: mysql
+      database: 51hejia_product
+      username: hejiasql
+      password: sql2009
+      host: 192.168.1.250
+      encoding: utf8
+
+product2_rehearsal:
+  adapter: mysql
+  database: product
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+
+forum_rehearsal:
+  adapter: mysql
+  database: 51hejia_forum
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8 
+
+
+#production ============================
+production:
+  adapter: mysql
+  database: 51hejia
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+  read_only_51hejia:
+      adapter: mysql
+      database: 51hejia
+      username: hejiasql
+      password: sql2009
+      host: 192.168.1.14
+      encoding: utf8
+
+index_production:
+  adapter: mysql
+  database: 51hejia_index
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+  read_only_51hejia_index:
+      adapter: mysql
+      database: 51hejia_index
+      username: hejiasql
+      password: sql2009
+      host: 192.168.1.14
+      encoding: utf8
+
+product_production:
+  adapter: mysql
+  database: 51hejia_product
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+  read_only_51hejia_product:
+      adapter: mysql
+      database: 51hejia_product
+      username: hejiasql
+      password: sql2009
+      host: 192.168.1.14
+      encoding: utf8
+
+product2_production:
+  adapter: mysql
+  database: product
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8
+
+forum_production:
+  adapter: mysql
+  database: 51hejia_forum
+  username: 51hejia
+  password: hejiasql
+  host: 192.168.1.13
+  encoding: utf8 

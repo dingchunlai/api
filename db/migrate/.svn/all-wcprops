@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/81/51hejia/repos/api/release/db/migrate
+END
+117_create_hejia_tags.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/117_create_hejia_tags.rb
+END
+122_create_hejia_article_cols.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/122_create_hejia_article_cols.rb
+END
+112_create_publish_columns.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/112_create_publish_columns.rb
+END
+127_create_products.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/127_create_products.rb
+END
+125_create_hejia_articles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/125_create_hejia_articles.rb
+END
+124_create_hejia_article_articles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/124_create_hejia_article_articles.rb
+END
+129_create_product_images.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/129_create_product_images.rb
+END
+120_create_hejia_companies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/120_create_hejia_companies.rb
+END
+113_create_publish_text_styles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/113_create_publish_text_styles.rb
+END
+126_create_hejia_art_prod_links.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/126_create_hejia_art_prod_links.rb
+END
+131_create_hejia_visit_records.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/131_create_hejia_visit_records.rb
+END
+119_create_hejia_editors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/119_create_hejia_editors.rb
+END
+116_create_hejia_indices.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/116_create_hejia_indices.rb
+END
+114_create_publish_contents.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/114_create_publish_contents.rb
+END
+133_create_publish_column_groups.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/133_create_publish_column_groups.rb
+END
+130_create_hejia_bbs_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/130_create_hejia_bbs_users.rb
+END
+118_create_hejia_publish_channels.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/118_create_hejia_publish_channels.rb
+END
+123_create_hejia_article_categories.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/123_create_hejia_article_categories.rb
+END
+132_create_radmin_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/132_create_radmin_users.rb
+END
+115_create_publish_uploads.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/115_create_publish_uploads.rb
+END
+121_create_hejia_article_contents.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/81/51hejia/repos/api/release/db/migrate/121_create_hejia_article_contents.rb
+END

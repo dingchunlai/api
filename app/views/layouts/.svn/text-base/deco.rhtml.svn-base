@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= page_title || "找装修频道" %></title>
+    <meta name="keywords" content="<%=page_keywords%>">
+      <meta name="description" CONTENT="<%=page_description%>">
+        <%  today_number=Time.now.strftime('%Y%m%d') %>
+        <%if (controller.controller_name == 'index' && controller.action_name != 'index3') || (controller.controller_name == 'firms' && controller.action_name == 'index') || (controller.controller_name == 'note')  || (controller.controller_name == 'deco')%>
+          <link href="http://js.51hejia.com/css/zxdpcss.css?<%= today_number %> " rel="stylesheet" type="text/css" />
+        <%else%>
+          <%if (controller.controller_name == 'firms' && (%w[index show summary].include?(controller.action_name))) || (controller.controller_name == 'dianping' && controller.action_name != 'companycomment') || controller.controller_name == 'index' || controller.controller_name == 'events' || controller.controller_name == 'designers' ||(controller.controller_name == 'cases' && controller.action_name == 'zHuangCase')%>
+            <link href="http://js.51hejia.com/css/sdeco.css?<%=today_number%>9" rel="stylesheet" type="text/css" />
+          <%elsif controller.controller_name == 'dianping' || (controller.controller_name == 'firms' && controller.action_name == 'show')%>
+            <link href="http://js.51hejia.com/css/findfit1.css?<%=today_number%>" rel="stylesheet" type="text/css" />
+          <%elsif controller.controller_name == 'firms' && controller.action_name == 'index'%>
+            <link href="http://js.51hejia.com/css/findfit2.css?<%=today_number%>" rel="stylesheet" type="text/css" />
+          <%elsif controller.controller_name == 'cases' && controller.action_name == 'show' || controller.action_name == 'company' || controller.action_name == 'list' || controller.controller_name == 'photos' && controller.action_name == 'index' %>
+            <link href="http://js.51hejia.com/css/sdeco.css?<%=today_number%>9" rel="stylesheet" type="text/css" />
+          <%else%>
+          <%end%>
+          <script type="text/javascript" src="http://js.51hejia.com/js/chrome.js"></script>
+          <link href="http://js.51hejia.com/css/zxdpcss.css?<%= today_number %>1" rel="stylesheet" type="text/css" />
+        <%end%>
+
+
+
+        <%= yield :head -%>
+
+        </head>
+        <body>
+          <%= render :partial => 'shared/internal_analytics' %>
+          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            var pageTracker = _gat._getTracker("<%=@city_code%>");
+            pageTracker._addOrganic("baidu", "kw");
+            pageTracker._addOrganic("baidu", "word");
+            pageTracker._addOrganic("soso", "w");
+            pageTracker._addOrganic("3721", "name");
+            pageTracker._addOrganic("yodao", "q");
+            pageTracker._addOrganic("vnet", "kw");
+            pageTracker._addOrganic("sogou", "query");
+            pageTracker._trackPageview();
+
+<% if controller.controller_name == 'firms' && controller.action_name == "show" %>
+    pageTracker._addTrans("51HEJIA-FIRM-<%=@firm.id%>","<%=get_city_name(@firm.city).TAGNAME if get_city_name(@firm.city) %>/<%=get_district_name(@firm.district).TAGNAME if get_district_name(@firm.district) %>","1","0","0","<%=get_city_name(@firm.city).TAGNAME if get_city_name(@firm.city) %>","<%=get_district_name(@firm.district).TAGNAME if get_district_name(@firm.district) %>","CHINA");
+    pageTracker._addItem("51HEJIA-FIRM-<%=@firm.id%>","<%=@firm.id%>","<%=@firm.name_zh%>","<%=@firm.name_abbr%>","1","1");
+    pageTracker._trackTrans();
+<% end %>
+
+  pageTracker = _gat._getTracker("UA-12518263-2");
+  pageTracker._addOrganic("baidu", "kw");
+  pageTracker._addOrganic("baidu", "word");
+  pageTracker._addOrganic("soso", "w");
+  pageTracker._addOrganic("3721", "name");
+  pageTracker._addOrganic("yodao", "q");
+  pageTracker._addOrganic("vnet", "kw");
+  pageTracker._addOrganic("sogou", "query");
+  pageTracker._trackPageview();
+          </script>
+          <% if controller.controller_name != 'firms' %>
+            <script type="text/javascript" src="http://js.51hejia.com/js/open_div.js"></script>
+          <% end %>
+          <SCRIPT src="http://js.51hejia.com/js/zxdp0111.js" type=text/javascript></SCRIPT>
+          <div id="Loading" style="display:none" ondblclick="this.style.display='none'"></div>
+              <!--small_header-->
+
+              <script type="text/javascript" src="http://js.51hejia.com/js/history.js"></script>
+            <script language="javascript">
+              function myhejia(){
+                if (Get_Cookie("ind_id").length > 0)
+                  location.href="http://member.51hejia.com/member/userinfo";
+                else
+                  Divopop('Login');
+              }
+
+              function reg(){
+                url = "http://member.51hejia.com/member/reg?forward="+location.href;
+                location.href = url;
+              }
+            </script>
+            <%if controller.action_name != 'index' && controller.controller_name != 'index'%>
+              <% if  controller.action_name != "show" && controller.controller_name != "firms" %>
+              <% elsif controller.controller_name != "decoration_diaries" %>
+              <% else %>
+                <script src="http://js.51hejia.com/javascripts/prototype.js" type="text/javascript"></script>
+                <script src="http://js.51hejia.com/javascripts/effects.js" type="text/javascript"></script>
+                <script src="http://js.51hejia.com/javascripts/dragdrop.js" type="text/javascript"></script>
+                <script src="http://js.51hejia.com/javascripts/controls.js" type="text/javascript"></script>
+                <script src="http://js.51hejia.com/javascripts/application.js" type="text/javascript"></script>
+              <% end %>
+            <%end%>
+            <%= render_shared_header :without_ga => true %>
+            <% if controller.controller_name == 'cases' && controller.action_name == 'list' && params[:city].to_i == 11910 %>
+              <%=adspace("#{CITIES[params[:city].to_i]}站-案例图片首页-通栏1", '', '<div class="width960"></div>')%>
+            <%elsif controller.controller_name == 'note' && controller.action_name == 'list' && params[:city].to_i == 11910%>
+              <%=adspace("#{CITIES[params[:city].to_i]}站-装修日记首页-通栏1", '', '<div class="width960"></div>')%>
+            <%elsif controller.controller_name == 'firms' && controller.action_name == 'index' && params[:city].to_i == 11910%>
+              <%=adspace("#{CITIES[params[:city].to_i]}站-装修公司列表页-通栏1", '', '<div class="width960"></div>')%>
+            <% else %>
+              <div class="list_width960">
+                <%=adspace("#{@ad_space_base}-通栏1")%>
+              </div>
+            <%end%>
+            <div class="list_width960 list_logo_bg clearfix">
+              <div class="list_logo f_l">
+                <h1><a href="http://z.51hejia.com/"><img src="http://js.51hejia.com/img/zxdpimg/list_1.jpg" alt="和家装修点评" border="0" /></a></h1>
+
+                <script type="text/javascript" src="http://js.51hejia.com/js/chrome.js"></script>
+                <div class="city"><B id='citid1217'><%if params[:city].to_i > 0%><%=CITIES[params[:city].to_i]%><%end%></B><span id="city010"> <a rel="dropmenu012">[切换城市]</a>
+                    <div id="dropmenu012" class="citydiv">
+                      <a href="http://z.shanghai.51hejia.com/" target="_self" >上海</a>
+                      <a href="http://z.suzhou.51hejia.com/" target="_self" >苏州</a>
+                      <a href="http://z.ningbo.51hejia.com/" target="_self" >宁波</a>
+                      <a href="http://z.hangzhou.51hejia.com/" target="_self" >杭州</a>
+                      <a href="http://z.wuxi.51hejia.com/" target="_self" >无锡</a>
+                    </div>
+                    <script type="text/javascript">
+                      cssdropdown.startchrome("city010")
+                    </script>
+                  </span>
+                </div>
+              </div>
+
+              <div class="list_logo_r f_r">
+                <ul class="clearfix">
+                  <li ><a href="#" ><span><%= has_many_hejia_bbs_user_export_number %></span>个专家在线问答</a></li>
+                  <li><a href="#" >发表<span><%= has_many_decoration_diaries_number %></span>个装修日记</a></li>
+                  <li class="border_none"><a href="#" ><span><%= has_many_net_friend_remarks_number %></span>位网友点评<span><%= has_many_deco_firm_number %></span>家装修公司</a></li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="list_width960 list_nav_bg ">
+              <div class="list_nav">
+                <ul>
+                  <li><a href="/" id="sy" class="list_nav_cur">点评首页</a></li>
+                  <li><a href="/zhuangxiugongsi/" id="gs">装修公司列表</a></li>
+                  <li><a href="/zhuangxiugushi/" id="zxgs">装修日记</a></li>
+                  <li><a href="/zhuangxiuanli/" id="tp">案例图片</a></li>
+                  <% if @user_city_code.to_i == 11910 %>
+                    <li><a href="/top/" id="top">排行榜</a></li>
+                  <% end %>
+                  <li><a href="/coupon" id="coupon">优惠劵</a></li>
+                </ul>
+              </div>
+              <%if controller.controller_name == 'index' && controller.action_name != 'index3'%>
+                <%= render :partial => "decoshare/index_tuiguang" %></div>
+            <%else%>
+
+              <div class="list_search">
+                <div class="list_search_l f_l">
+                  <form name="form1" >
+                    <div class="list_search_s f_l">
+                      <select name="adcode" id="adcode" onChange="show11()" style="margin-top:0;">
+                        <option value="装修公司" selected>装修公司</option>
+                        <option value="装修案例">装修案例</option>
+                        <option value="装修日记">装修日记</option>
+                      </select>
+                    </div>
+                    <div id="Layer1" style="display:" class="f_l">
+                      <select name="11" size="1" id="cityid1003" onchange='selectyusuan(this.value);'>
+                        <%CITIES.sort.each do |k,v|%>
+                          <option value="<%=k%>" <%if params[:city].to_i == k%>selected<%end%>><%=v%></option>
+                        <%end%>
+                      </select>
+                      <select name="12" size="1" id="money1003">
+                        <option value='0'>选择预算</option>
+                        <% diff_city_price_tag(@user_city_code).each do |k, v| %>
+                          <option value="<%= k %>" <%if params[:price].to_i == k%> selected <% end %> ><%= v %> </option>
+                        <%end%>
+                      </select>
+                      <input name="13" type="text" id='keyword1103' size="17" value=""/>
+                      <input name="" type="button" value=" " class="list_search_btn" onclick="seachfirm();" />
+                    </div>
+                    <div id="Layer2" style="display:none" class="f_l">
+                      <select name="fengge" id="fengge1003">
+                        <option value="0">装修风格</option>
+                        <option value="xiandaijianyue" <%if params[:fengge] == 'xiandaijianyue'%>selected<%end%>>现代简约</option>
+                        <option value="zhongshi" <%if params[:fengge] == 'zhongshi'%>selected<%end%>>中式风格</option>
+                        <option value="oumei" <%if params[:fengge] == 'oumei'%>selected<%end%>>欧/美式</option>
+                        <option value="hunda" <%if params[:fengge] == 'hunda'%>selected<%end%>>混搭</option>
+                        <option value="dizhonghai" <%if params[:fengge] == 'dizhonghai'%>selected<%end%>>地中海</option>
+                        <option value="tianyuan" <%if params[:fengge] == 'tianyuan'%>selected<%end%>>田园风格</option>
+                        <option value="qita" <%if params[:fengge] == 'qita'%>selected<%end%>>其他</option>
+                      </select>
+                      <select name="huxing" id="huxing1003">
+                        <option value="0">装修户型</option>
+                        <option value="xiaohu" <%if params[:huxing] == 'xiaohu'%>selected<%end%>>小户型装修</option>
+                        <option value="gongyu" <%if params[:huxing] == 'gongyu'%>selected<%end%>>公寓装修</option>
+                        <option value="bieshu" <%if params[:huxing] == 'bieshu'%>selected<%end%>>别墅/复式</option>
+                      </select>
+                      <input name="22" size="17" type="text" id="nameid1003" value=""/>
+                      <input name="" type="button" value=" " class="list_search_btn" onclick="seachcase();"/>
+                    </div>
+                    <div id="Layer3" style="display:none" class="f_l">
+                      <select name="room" id="room">
+                        <option value="0">装修房型</option>
+                        <%ROOM.sort.each do |k|%>
+                          <option value='<%=k[0]%>' <%if @room.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+                        <%end%>
+                      </select>
+                      <select name="stage" id="stage">
+                        <option value="0">装修阶段</option>
+                        <%STAGE.sort.each do |k|%>
+                          <option value='<%=k[0]%>' <%if @stage.to_s==k[0].to_s%>selected<%end%>><%=k[1]%></option>
+                        <%end%>
+                      </select>
+                      <input name="22" size="17" type="text" id="zhuangxiugushiname" value=""/>
+                      <input name="" type="button" value=" " class="list_search_btn" onclick="seachgushi();"/>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="list_search_r f_l"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <% hot_search_arry =  parse_xml(AREA_PROMOTED['热搜公司推广'][TAGURLS[params[:city].to_i]], ["title", "url", "image-url","description","text-style-id"], nil) %>
+                      <% if params[:city].to_i == 11910 %>
+                        <td width="90" style="color:red;">热搜公司：<%= link_to get_style_by_text_style_id(hot_search_arry.first['title'],hot_search_arry.first["text-style-id"]), hot_search_arry.first["url"], :title => (hot_search_arry.first["description"] && hot_search_arry.first['description'].chars[0, 25]), :target => "_blank" %></td>
+                        <% hot_search_arry.shift %>
+                      <% else %>
+                        <td width="60" style="color:red;">热搜公司：</td>
+                      <% end %>
+                      <td><% if params[:city].to_i == 11910 %><div style="width:280px; overflow:hidden;"><%else%><div style="width:300px; overflow:hidden;"><%end%>
+                            <div id="cont_m_5" style="float:left;">
+                              <%hot_search_arry.each do |p| -%>
+                                <%= link_to get_style_by_text_style_id(p['title'],p["text-style-id"]), p["url"], :title => (p["description"] && p['description'].chars[0, 25]), :target => "_blank" -%>
+                              <% end -%>
+                            </div>
+                          </div></td>
+                    </tr>
+                  </table>
+                  <script type="text/javascript" src="http://js.51hejia.com/js/txt_auto.js"></script>
+                </div>
+              </div>
+            </div>
+          <%end%>
+          <script type="text/JavaScript">
+            function selectyusuan(cid){
+              if(cid == '12301'){
+                var tarr = new Array();
+<%diff_city_price_tag(12301).each do |k,v|%>
+        tarr[<%=k - 1%>] = '<%=v%>';
+<%end%>
+    }else{
+      var tarr = new Array();
+<%diff_city_price_tag(11910).each do |k,v|%>
+        tarr[<%=k - 1%>] = '<%=v%>';
+<%end%>
+    }
+    var sel = document.getElementById('money1003');
+    var ops = sel.options;
+    for(var i = 0;i < 5;i++){
+      ops[i+1].text = tarr[i];
+    }
+  }
+  function changetitle(titleid){
+    document.getElementById('sy').className = '';
+    document.getElementById('gs').className = '';
+    document.getElementById('zxgs').className = '';
+    document.getElementById('tp').className = '';
+<% if @user_city_code.to_i == 11910 %>
+      document.getElementById('top').className = '';
+<% end %>
+    document.getElementById('coupon').className = '';
+    document.getElementById(titleid).className = 'list_nav_cur';
+  }
+<%if controller.controller_name == 'firms'|| (controller.controller_name == 'designers' && controller.action_name == 'show') %>
+    changetitle('gs');
+<%elsif controller.controller_name == 'cases'%>
+    changetitle('tp');
+<%elsif controller.controller_name == 'top' %>
+    changetitle('top');
+<%elsif controller.controller_name == 'coupon' %>
+    changetitle('coupon');
+<%end%>
+
+
+  function seachfirm(){
+    var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+    var city = document.getElementById("cityid1003").options[cityindex].value;
+    var moneyindex = document.getElementById("money1003").options.selectedIndex;
+    var money = document.getElementById("money1003").options[moneyindex].value;
+    var key = document.getElementById("keyword1103").value;
+
+    var url = gen_city_domain_firm() +'/zhuangxiugongsi/gsl-';
+    url = url + city + '-0/';
+    url = url + '0-0-0-';
+    url = url + money + '-0-0/';
+    if(key.length > 0)
+      url = url + '?keyword='+key;
+    location.href = encodeURI(url);
+  }
+
+  function seachcase(){
+    var fengge = document.getElementById('fengge1003').value;
+    var huxing = document.getElementById('huxing1003').value;
+    var key = document.getElementById('nameid1003').value;
+    var url = "/zhuangxiuanli/0."+fengge+".0."+huxing+".1.html";
+    if(key.length > 0)
+      url = url + '?name='+key;
+    location.href = encodeURI(url);
+  }
+
+  function seachgushi(){
+    var stage = document.getElementById("stage").value;
+    var room = document.getElementById("room").value;
+    var key = document.getElementById('zhuangxiugushiname').value;
+    if(key.length > 0){
+
+    }else{
+      key=0;
+    }
+
+    var url = "/zhuangxiugushi/0-0-0-"+ stage + "-" + room +"-1-"+key+"-1-2";
+    location.href = encodeURI(url);
+  }
+
+  function show11() {
+    if (document.getElementById("adcode").value=="装修公司")
+    {
+      document.getElementById("Layer1").style.display="";
+      document.getElementById("Layer2").style.display="none";
+      document.getElementById("Layer3").style.display="none";
+    }
+    else if (document.getElementById("adcode").value=="装修案例") {
+      document.getElementById("Layer1").style.display="none";
+      document.getElementById("Layer2").style.display="";
+      document.getElementById("Layer3").style.display="none";
+    }
+    else if (document.getElementById("adcode").value=="装修日记") {
+      document.getElementById("Layer1").style.display="none";
+      document.getElementById("Layer2").style.display="none";
+      document.getElementById("Layer3").style.display="";
+    }
+
+  }
+
+  function gen_city_domain_firm(){
+<%if IS_PRODUCT.to_i == 1%>
+      var cityindex = document.getElementById("cityid1003").options.selectedIndex;
+      var city = document.getElementById("cityid1003").options[cityindex].value;
+      if(city == '11910')
+        return "http://z.shanghai.51hejia.com";
+      else if (city == '12117')
+        return "http://z.suzhou.51hejia.com";
+      else if (city == '12122')
+        return "http://z.nanjing.51hejia.com";
+      else if (city == '12301')
+        return "http://z.ningbo.51hejia.com";
+      else if (city == '12306')
+        return "http://z.hangzhou.51hejia.com";
+      else if (city == '12118')
+        return "http://z.wuxi.51hejia.com";
+      else
+        return "http://z.51hejia.com";
+<%else%>
+      return '';
+<%end%>
+  }
+          </script>
+          <div id="show_login" style="display:none">
+            <SCRIPT LANGUAGE="JavaScript" Src="http://js.51hejia.com/js/show_login2.js?99301137"></SCRIPT>
+            <iframe name="hideiframe_loginout" width="0" height="0" style="display: none;"></iframe>
+          </div>
+          <div id="Login" style="display:none;border:0">
+            <a href="#guanbi" title="关闭" class="Divopop-nonenei"><img src="http://www.51hejia.com/css/newback/images/x.png" alt="关闭" /></a>
+            <iframe id="dengluiframe" style="width:222px;height:224px;border:0;overflow:hidden" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="content">
+            <%if controller.controller_name != 'index' && !(controller.controller_name == 'firms' && (controller.action_name == 'index' || controller.action_name == 'indexnew2' || controller.action_name == 'indexnew4' || controller.action_name == 'show' || controller.action_name == 'summary' || controller.action_name == 'gongzhuang' || controller.action_name == 'bieshu')) && controller.controller_name != 'dianping' && controller.controller_name != 'events'%>
+              <%if controller.controller_name == 'cases' && controller.action_name == 'show' || controller.action_name == 'company' || controller.action_name == 'list' || controller.controller_name == 'photos' && controller.action_name == 'index' || controller.controller_name == 'designers' && controller.action_name == 'show' ||(controller.controller_name == 'cases' && controller.action_name == 'zHuangCase')%>
+              <%elsif controller.controller_name == 'decoration_diaries'%>
+              <%else%>
+                <div class="nav"><strong>您的位置：</strong><%= location %></div>
+              <%end%>
+            <%end%>
+            <div class="main service">
+              <%= yield %>
+            </div>
+          </div>
+
+          </div>
+          </div>
+          <% if controller.controller_name != "decoration_diaries" && controller.action_name != "index" %>
+            <%if @city_id.to_i > 0%>
+              <div style="clear: both; float: none;width:960px; padding:3px 10px;" class="clearfix">
+                <%=hejia_ext_links(TAGURLS[@city_id.to_i], "友情链接:")%>
+              </div>
+            <%end%>
+          <% end %>
+          <%=
+          show_firm = controller.controller_name == 'firms' && controller.action_name == 'show'
+          tracking_id = case request.subdomains.join('.')
+          when 'z.ningbo'
+            show_firm && '860021-2026110201' || '860021-2026110204'
+          when 'z.suzhou'
+            show_firm && '860021-2026110401' || '860021-2026110404'
+          when 'z.wuxi'
+            show_firm && '860021-2026110501' || '860021-2026110504'
+          when 'z.hangzhou'
+            show_firm && '860021-2026110301' || '860021-2026110304'
+          else
+            show_firm && '860021-2026110101' || '860021-2026110104'
+          end
+          render_shared_footer :tracking_id => tracking_id
+        %>
+          </div>
+          </div></div>
+          <input type=hidden value="<%=@re_url%>">
+          <%= yield :html_body_end  %>
+        </body>
+        </html>

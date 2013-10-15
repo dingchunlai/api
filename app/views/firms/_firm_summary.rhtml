@@ -1,0 +1,69 @@
+<%
+order = params[:order].to_i
+firm_url     = gen_firm_city_path firm.id
+dianping_url = firm_url
+
+firm_name    = get_list_firm_name_abbr2 firm
+firm_address = firm.address2.blank? ? '暂无信息' : truncate(firm.address2, 25, '')
+firm_praise = firm.praise
+firm_price   = firm.price.to_i != 0 ? diff_city_price_tag_value(params[:city] , firm.price.to_i) : '暂无信息'
+firm_deco    = firm.model.to_i != 0 ? MODELS[firm.model.to_i] : '暂无信息'
+%>
+<script type="text/javascript">
+  function cns_li_hover(obj,ClassName){ obj.className=ClassName; }
+</script>
+<style type="text/css">
+        .list_r_lizjgd{background:url(http://img1.51hejia.com/img/zxdpimg/zjgd.gif) -3px -14px no-repeat;width:200px;height:43px;padding-bottom:2px;margin-left:10px;float:left;}
+		.list_r_lizjgd span{float:left;margin:28px 0 0 75px; color:#3f2601;}
+		.list_r_lizjgd span em{color:#f60;font-style:normal;}
+		.list_r_li .title{margin:28px 0 10px 0;float:left;}
+		.list_r_li .piclist{clear:both;}
+        </style>
+<li class="list_r_li_data01" onmouseover="cns_li_hover(this,'list_r_li_data02')" onmouseout="cns_li_hover(this, 'list_r_li_data01')">
+  <%= link_to '', firm_url, :target => '_blank', :title => firm_name, :class => 'list_rli_a', :onfocus => 'this.blur()' %>
+  <div></div>
+  <ul class="num f_r">
+    <li><%= content_tag :span, firm.design_praise,       :class => (order == 2 ? 'red' : nil) %></li>
+    <li><%= content_tag :span, firm.construction_praise, :class => (order == 3 ? 'red' : nil) %></li>
+    <li><%= content_tag :span, firm.service_praise,      :class => (order == 4 ? 'red' : nil) %></li>
+  </ul>
+  <strong><% if promoted %><img src="http://js.51hejia.com/img/sdeco/tuitm.gif">&nbsp;&nbsp;<% end %><%= firm_name -%></strong>
+
+  <p class=txt>&nbsp;&nbsp;<span>口碑：&nbsp;</span><span class="red"><%=format("%.1f",firm_praise) %></span></p>
+  <p class="textarea clearfix"><span class="span_1"><strong>公司地址：</strong><%= firm_address %></span><span><strong>主打价位</strong> <%= firm_price %></span><span><strong>装修方式</strong> <%= firm_deco %></span></p>
+  <ul class="clearfix sale">
+    <li class="first">
+      <span class="red"><strong>优惠信息</strong></span>
+    </li>
+    <%
+    events = firm.api_events
+    if events.blank?
+    %>
+      <li><span><%= '暂无优惠信息' %></span></li>
+    <%
+    else
+      events.each do |event|
+      %>
+        <li><span><%= truncate(event.title, 35, '') %></span></li>
+      <%
+      end
+    end
+  %>
+  </ul>
+  <p class="title"><span><strong>经典案例</strong>案例：<span class="red"><%= firm.decoration_diaries.size %></span></span>
+  <%= %Q'<span>&nbsp;&nbsp;设计师：</span><span class="red">#{firm.designers_count}</span>' if firm.designers_count && firm.designers_count > 0 %>
+  <%= %Q'<span>&nbsp;&nbsp;点评：</span><span class="red">#{firm.remark_only_count}</span>' %>
+  <%= %Q'<div class="list_r_lizjgd"><span> ：<em>#{firm.factories.size}</em></span></div>' if firm.factories && firm.factories.size > 0%></p>
+  <ul class="piclist clearfix">
+    <% showed_notes = 0 %>
+    <% firm.cache_5_diary_master_images.each_with_index do |diary,index| %>
+      <%if get_diary_master_picture(diary) %>
+        <li <% if showed_notes == 0 %> class="first" <% end %>><a href="<%=dianping_url%>" target="_blank"><img src="<%= image_full_path(get_diary_master_picture(diary), '120x90', index) %>" alt="<%=diary.title%>" /></a></li>
+        <% showed_notes += 1 %>
+      <% end %>
+    <% end %>
+    <% if showed_notes == 0 %>
+      <div class="nopic"></div>
+    <% end %>
+  </ul>
+</li>

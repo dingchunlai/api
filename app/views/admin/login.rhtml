@@ -1,0 +1,70 @@
+<%= render :partial => "hidden_div_column" %>
+<div class="container">
+  <%= render :partial => "admin_head" %>
+  <% if flash[:msg] %><p style="color: red; height: 15px;background-color:navajoWhite;padding:3px;"><%= flash[:msg] %></p><% end %>
+  <form action="/admin/batch_delete_publish_columns" method="post" id="batch_delete_publish_columns">
+    <table class="tb tb2 ">
+      <tr><th colspan="17" class="partition">共有<strong style="font-size:20px;">&nbsp;<%= @total %>&nbsp;</strong>项栏目组</th></tr>
+      <tr class="header">
+        <th>栏目组</th>
+        <th>更新时间</th>
+        <th>操作</th>
+      </tr>
+      <%- unless @groups.nil? -%>
+        <%- for result in @groups -%>
+          <tr class="hover">
+            <% names = query_shared_name(result.public_ids) %>
+            <td>
+              <%= result.id %> --
+              <a href="/admin/show_group?group_id=<%= result.id %>" style="font-size:15px;" class="tooltipa">
+                <%= result.name %>
+                <span>(已共享--><strong><%= names %></strong>)</span>
+              </a>
+              (栏目<strong><%= PublishColumn.count :conditions => "group_id = #{result.id} and is_del = #{false}" %></strong>)
+            </td>
+            <td><%= result.updated_at.strftime("%Y-%m-%d") %></td>
+            <td style="font-size:14px;">
+              <a href="/admin/show_group?group_id=<%= result.id %>" class="tooltipa">栏目列表</a>
+              <%= link_to "编辑", { :action => "edit_group", :group_id => result.id },
+                { :onclick => "Modalbox.show(this.href, { width: 400, height: 300 }); return false;" } %>
+              <%= link_to "删除", { :action => "destory_group", :group_id => result.id }, :confirm => "确定删除吗？" %>
+              <%= link_to "共享<span>(已共享--><strong>#{names}</strong>)</span>", { :action => "share_group", :group_id => result.id },
+                  { :onclick => "Modalbox.show(this.href, { title: this.title, width: 700, height: 400 }); return false;", :class => "tooltipa" } %>
+            </td>
+          </tr>
+        <%- end -%>
+      <%- else -%>
+      <%- end -%>
+      <tr class="hover" style="background:#F1B9FD none repeat scroll 0 0;font-size:15px;">
+        <td style="font-size:15px;font-weight:700;">以下是共享栏目</td>
+      </tr>
+      <%- unless @public_groups.nil? -%>
+        <%- for result in @public_groups -%>
+          <tr class="hover">
+            <td>
+              <%= result.id %> --
+              <%= link_to result.name, "/admin/show_group?group_id=#{result.id}", :style => "font-size:15px;" %>
+              (栏目<strong><%= PublishColumn.count :conditions => "group_id = #{result.id} and is_del = #{false}" %></strong>) <-- 
+              <%= RadminUser.find(result.editor_id).rname rescue "[无此用户]"%>共享
+            </td>
+            <td><%= result.updated_at.strftime("%Y-%m-%d") %></td>
+            <td>
+            </td>
+          </tr>
+        <%- end -%>
+      <%- else -%>
+      <%- end -%>
+      <tr>
+        <td colspan="17">
+          <div class="cuspages right">
+            <div class="pages"><em>总数：<%= @total %></em>
+              <%= link_to '<', { :page => @pages.current.previous.to_i } if @pages.current.previous %>
+              <strong><%= pagination_links(@pages, :window_size => 9) %></strong>
+              <%= link_to '>', { :page => @pages.current.next.to_i } if @pages.current.next%>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

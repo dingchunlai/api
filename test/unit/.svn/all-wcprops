@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/81/51hejia/repos/api/release/test/unit
+END
+product_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/81/51hejia/repos/api/release/test/unit/product_test.rb
+END
+hejia_article_col_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_article_col_test.rb
+END
+hejia_article_category_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_article_category_test.rb
+END
+product_image_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/test/unit/product_image_test.rb
+END
+publish_column_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/test/unit/publish_column_test.rb
+END
+hejia_article_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_article_test.rb
+END
+hejia_article_article_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_article_article_test.rb
+END
+hejia_editor_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_editor_test.rb
+END
+hejia_art_prod_link_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_art_prod_link_test.rb
+END
+publish_text_style_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/test/unit/publish_text_style_test.rb
+END
+product_vendor_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/test/unit/product_vendor_test.rb
+END
+hejia_publish_channel_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_publish_channel_test.rb
+END
+publish_content_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/test/unit/publish_content_test.rb
+END
+hejia_bbs_user_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_bbs_user_test.rb
+END
+deco_firm_branch_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/test/unit/deco_firm_branch_test.rb
+END
+hejia_company_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_company_test.rb
+END
+hejia_index_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_index_test.rb
+END
+publish_upload_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/test/unit/publish_upload_test.rb
+END
+hejia_tag_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_tag_test.rb
+END
+hejia_article_content_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/test/unit/hejia_article_content_test.rb
+END

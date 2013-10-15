@@ -1,0 +1,39 @@
+<% @designers.each do |designer| %>
+  <li class="clearfix">
+    <div class="gsl_c2_img f_l"><a href="/gs-<%= designer.COMPANY %>/designers/<%=designer.ID %>" target="_blank" title="设计师"><img src="http://d.51hejia.com/files/designer/<%= designer.PICURL %>" alt="装修日记" /></a></div>
+    <div class="gsl_c2_txt f_r">
+      <h3><a href="/gs-<%= designer.COMPANY %>/designers/<%=designer.ID %>" target="_blank" title="设计师：<%= designer.DESNAME %>">设计师：<%= designer.DESNAME %></a></h3>
+      <span>设计费：
+  			<%if designer.to_s=="1"%>
+  				免费
+            <%elsif  designer.DESFEE.to_s == "2"%>
+            	20-50元/平
+            <%elsif  designer.DESFEE.to_s == "3"%>
+            	50-80元/平
+            <%elsif  designer.DESFEE.to_s == "4"%>
+            	80-120元/平
+            <%elsif  designer.DESFEE.to_s == "5"%>
+            	120-200元/平
+                <%elsif  designer.DESFEE.to_s == "6"%>
+            	200元以上/平
+            <%else%>
+            	<%= @designers[0].DESFEE %>
+            <%end%>
+      </span> 
+      <span>擅长风格：
+      	<% 
+      	unless designer.DESSTYLE.blank?
+      		designer.DESSTYLE.split(',').each do |style| 
+      	%>
+      		<a href="#" target="_blank" title="<%= STYLES[style.to_i] %>"><%= STYLES[style.to_i] %></a>
+      	<% 
+      		end
+      	end
+      	 %>
+      </span>
+      <span>从业年限：
+        <%if DECO_DESAGE[designer.DESAGE.to_i] %><%= DECO_DESAGE[designer.DESAGE.to_i] %><% else %>暂无信息<% end %>
+      	</span>
+      </div>
+  </li>
+<% end %>  

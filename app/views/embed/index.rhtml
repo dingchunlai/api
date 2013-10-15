@@ -1,0 +1,75 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+<%= javascript_include_tag 'jrails'%>
+<style type="text/css">
+* { margin:0; padding:0; }
+.f_l { float:left; }
+.f_r { float:right; }
+img { border:none; }
+li { list-style:none; }
+.clearfix { zoom:1; }
+.clearfix:after { content: '\20'; display: block; clear: both; }
+.zxdpn_box { background:url(http://js.51hejia.com/img/zxdpimg/zxdpn_ifbg.gif) no-repeat; width:950px; height:887px; overflow:hidden;margin:0 auto;}
+.zxdpn_l { width:658px; }
+.zxdpn_l_zxrj { height:529px; overflow:hidden; }
+.zxdpn_l_zxrj h3 { width:101px; height:32px; line-height:32px; text-align:center; font-size:14px; font-weight:bold; color:#fff; margin-left:27px; }
+.zxdpn_l_zxrj ul { padding:0 10px; overflow:hidden; }
+.zxdpn_l_zxrj li { position:relative; color:#666; border-top:1px solid #d2d2d2; padding:20px 0 32px 0; margin-top:-1px; }
+.zxdpn_l_zxrj li h4 { width:333px; height:30px; margin-right:150px; _display:inline; line-height:30px; overflow:hidden; float:right; }
+.zxdpn_l_zxrj li h4 a, .zxdpn_l_zxrj li h4 a:hover { font-size:14px; font-weight:bold; color:#896f54; }
+.zxdpn_l_zxrj li h4 a { text-decoration:none; }
+.zxdpn_l_zxrj li h4 a:hover { text-decoration:underline; }
+.zxdpn_l_zxrj li p { width:483px; float:right; font-size:12px; height:80px; line-height:20px; overflow:hidden; text-indent:2em; }
+.zxdpn_l_zxrj li p a{color:#666;text-decoration:none;}
+.zxdpn_l_zxrj li p a:hover{color:#f60;text-decoration:underline;}
+.zxdpn_l_zxrjimg { width:139px; height:106px; padding:2px; border:1px solid #d2d2d2; background:#fff; }
+.zxdpn_l_zxrjimg a,.zxdpn_l_zxrjimg img {display:block;width:139px; height:106px; }
+.zxdpn_l_yez { position:absolute; top:20px; right:0; height:30px; line-height:30px; font-size:12px; }
+.zxdpn_l_yez a, .zxdpn_l_yez a:hover { color:#f60; }
+.zxdpn_l_pinj { position:absolute; bottom:10px; left:155px; font-size:12px; }
+.zxdpn_l_pinj img { vertical-align:middle; }
+.zxdpn_l_shij { position:absolute; bottom:10px; right:0; font-size:12px; }
+.zxdpn_l_shij span { color:#f60; }
+.zxdpn_l_zjgd { margin-top:16px; height:342px; overflow:hidden; }
+.zxdpn_l_zjgd h3 { width:148px; height:50px; line-height:50px; text-align:center; font-size:14px; font-weight:bold; color:#ff6b0c; margin-left:16px; }
+.zxdpn_l_zjgd table { margin:0 auto; border-left:1px solid #d2d2d2; border-top:1px solid #d2d2d2; }
+.zxdpn_l_zjgd td { font-size:12px; color:#666; text-align:center; border-right:1px solid #d2d2d2; border-bottom:1px solid #d2d2d2; height:30px; line-height:30px; }
+.zxdpn_l_zjgdtit td { background:#fffdde; font-weight:bold; color:#8d6d54; }
+.zxdpn_r { width:287px; }
+.zxdpn_sjs { height:352px; overflow:hidden; position:relative; }
+.zxdpn_sjs h3 { width:82px; height:32px; line-height:32px; text-align:center; font-size:14px; font-weight:bold; color:#fff; margin-left:25px; }
+.zxdpn_sjs ul { padding:0 10px; overflow:hidden; }
+.zxdpn_sjs li { border-bottom:1px solid #d2d2d2; padding:15px 0; }
+.zxdpn_sjs li h4 { width:114px; height:34px; line-height:34px; overflow:hidden; float:right; font-size:14px; }
+.zxdpn_sjs li h4 a, .zxdpn_sjs li h4 a:hover { font-size:14px; font-weight:bold; color:#896f54; }
+.zxdpn_sjs li h4 a { text-decoration:none; }
+.zxdpn_sjs li h4 a:hover { text-decoration:underline; }
+.zxdpn_sjs li span { display:block; width:114px; height:24px; line-height:24px; overflow:hidden; float:right; font-size:12px; color:#666; }
+.zxdpn_sjs li span a, .zxdpn_sjs li span a:hover { color:#666; }
+.zxdpn_sjsimg { width:143px; height:110px; border:1px solid #d2d2d2; }
+.zxdpn_sjsimg img { width:143px; height:110px; }
+.zxdpn_wyly { margin-top:11px; height:524px; overflow:hidden; position:relative; }
+.zxdpn_wyly h3 { width:82px; height:32px; line-height:32px; text-align:center; font-size:14px; font-weight:bold; color:#333; margin-left:30px; }
+.zxdpn_wyly ul { padding:0 3px; }
+.zxdpn_wyly li { border-bottom:1px solid #d2d2d2; padding:1px 0; }
+.zxdpn_wyly h4 { font-size:12px; font-weight:normal; color:#666; height:16px; line-height:16px; background:#d7d2ce; padding:4px 10px; }
+.zxdpn_wyly img { vertical-align:middle; }
+.zxdpn_wyly p { font-size:12px; color:#666; margin:5px 10px; height:60px; line-height:20px; overflow:hidden; text-indent:2em; }
+.zxdpn_rjdz { margin:0 10px; font-size:12px; color:#666;height:42px; line-height:14px;overflow:hidden; }
+.zxdpn_rjdz a, .zxdpn_rjdz a:hover { color:#f60; }
+.zxdpn_lysj { margin:0 10px; font-size:12px; color:#666; text-align:right; }
+.pagination { padding:3px 0; font-size:12px; position:absolute; bottom:5px; right:10px; }
+.pagination a, .pagination a:visited { border:1px solid #dedede; padding:2px 6px; color:#999; text-decoration:none; }
+</style>
+
+
+<div class="zxdpn_box">
+	<div class="zxdpn_l f_l">
+		<div><%= render :partial => 'diaries' %></div>
+		<div><%= render :partial => 'factories' %></div>
+	</div>
+	<div class="zxdpn_r f_r">
+		<div id="designers_div"><%= render :partial => 'designers' %></div>
+		<div id="remark_div"><%= render :partial => 'remark' %></div>
+	</div> 	
+</div>

@@ -1,0 +1,66 @@
+<%@company = @decofirm%>
+<%@type="z4"%>
+<%if !@company.nil?%>
+<%@company_id = @company.id%>
+<%end%>
+		<div class="designertitle"><strong>设计师</strong><strong>代表作品</strong></div>
+		<%for d in @designer%>
+		<div class="designer">
+			<div class="infodesigner">
+				<img src="http://d.51hejia.com/files/designer/<%=d.PICURL%>" alt="" width="145" height="110"/>
+				<p>
+					设 计 师：<%=d.DESNAME%> <br />
+					设计费： <%if d.to_s=="1"%>免费
+                        <%elsif  d.DESFEE.to_s=="2"%>20-50元/平
+                        <%elsif  d.DESFEE.to_s=="3"%>50-80元/平
+                        <%elsif  d.DESFEE.to_s=="4"%>80-120元/平
+                        <%elsif  d.DESFEE.to_s=="5"%>120-200元/平
+                        <%elsif  d.DESFEE.to_s=="6"%>200元以上/平
+                        <%else%>
+                        <%=d.DESFEE%>
+                        <%end%> <br />
+					从业年限： <%if d.DESAGE.to_s=="1"%>1年
+                        <%elsif  d.DESAGE.to_s=="2"%>2-3年
+                        <%elsif  d.DESAGE.to_s=="3"%>3-5年
+                        <%elsif  d.DESAGE.to_s=="4"%>5-8年
+                        <%elsif  d.DESAGE.to_s=="5"%>8年以上
+                        <%else%>
+                        <%=d.DESAGE%>
+                        <%end%> <br />
+                        <%if !d.DESSTYLE.nil?%>
+					擅长风格：
+							<%d.DESSTYLE = d.DESSTYLE.gsub(/<.*?>/, '')%> 
+							<% if d.DESSTYLE =~/\d/ -%>
+
+				          <%= (d.DESSTYLE.split(',').inject("") { |i,s|  i << "#{@style[s.strip]} "}.strip) unless d.DESSTYLE.blank?%>
+						  <% else -%>
+					      <% d.DESSTYLE -%>
+						  <% end -%><br/>
+					<%end%>
+					所属公司： <%if @decofirm.name_abbr.to_s=='装饰公司'%><%=truncate(@decofirm.name_zh,18)%><%else%><%=truncate(@decofirm.name_abbr,18)%><%end%> <br />
+					设计理念： <%=truncate(d.DESRESUME,50)%>
+				</p>
+			</div>
+			<ul class="caselist">
+				<%for dc in d.cslist%>
+				<li>
+					<a href="/anli/<%=dc.ID%>" target="_blank"><img src="<%=IMAGE_URL%>/files/hekea/case_img/tn/<%=dc.ID%>.jpg" alt="" height="105" width="145"/><strong><%=truncate(dc.NAME,12)%></strong></a>
+					<%for tag in dc.tags%>
+		            		<%if tag.TAGFATHERID.to_s=='4348'%>
+		            			<span>装修风格：<%=tag.TAGNAME%></span>
+		            		<%elsif tag.TAGFATHERID.to_s=='4349'%>
+		            			<span>预&nbsp;&nbsp;&nbsp;&nbsp;算：<%=tag.TAGNAME%></span>
+		            		<%elsif tag.TAGFATHERID.to_s=='4352'%>
+		            			<span>用&nbsp;&nbsp;&nbsp;&nbsp;途：<%=tag.TAGNAME%></span>
+		            		<%else%>
+		            		<%end%>
+		            	<%end%>
+						<%if dc.ischeck==1%><span>认&nbsp;&nbsp;&nbsp;&nbsp;证：<span class="cer"></span></span><%end%>
+				</li>
+				<%end%>
+			</ul>
+		</div>
+		<%end%>
+		<div class="page">
+			<%= will_paginate @designer,:prev_label=> "上一页",:next_label=> "下一页" %>
+		</div>

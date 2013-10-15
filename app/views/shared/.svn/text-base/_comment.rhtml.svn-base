@@ -1,0 +1,21 @@
+<div class="pinlun clearfix" style="padding:0 80px;">
+  <!--<form action="" method="post">
+    <div class="title">
+      登入名: <input name="用户名" type="text" />
+      密码: <input name="密码" type="text" />
+      <input type="submit" class="dengru" value="登入" />
+      <input type="submit" class="dengru" value="注册" />
+      <input name="" type="checkbox" class="checkbox" value="" />匿名发布（无需注册）
+    </div>
+
+    <textarea name="" cols="" rows=""></textarea>
+    <p class="formbottom"><a href="#" target="_blank">发表评论</a></p>
+  </form>
+  <ul>
+    <li><a href="#" class="name" target="_blank">小鸭子</a> 发表于 08-11 08:56 <a href="#" target="_blank">哪张照片有紫边啊？谁说它是紫边王？ ...</a></li>
+    <li><a href="#" class="name" target="_blank">小鸭子</a> 发表于 08-11 08:56 <a href="#" target="_blank">哪张照片有紫边啊？谁说它是紫边王？ ...</a></li>
+    <li><a href="#" class="name" target="_blank">小鸭子</a> 发表于 08-11 08:56 <a href="#" target="_blank">哪张照片有紫边啊？谁说它是紫边王？ ...</a></li>
+  </ul>
+  <p class="clear more">共有<span>5</span>条消息 | <a href="#" target="_blank">查看全部</a></p>-->
+  <iframe style="margin-top:5px" frameborder="0" width="100%" height="<%= comment_height %>" scrolling="auto" src="http://wenba.51hejia.com/rest/reply?aid=1&tid=1&eid=<%= @article.ID %>"></iframe>
+</div>

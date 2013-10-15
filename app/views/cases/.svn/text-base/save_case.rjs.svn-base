@@ -1,0 +1,11 @@
+# TODO Operate on the page object
+if @method == "save"
+  page.alert("收藏成功")
+end
+if @method == "delete"
+  page.alert("取消成功")
+end
+if @method == "savefull"
+  page.alert("您的收藏达到10套上线不能再收藏了，请先登陆。")
+end
+page.replace_html 'save_case', :partial => 'shoucang_button', :object => @fav_info

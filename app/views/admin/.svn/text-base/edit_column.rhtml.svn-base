@@ -1,0 +1,42 @@
+<form action="/admin/update_column" method="post">
+  <table class="tb tb2 nobdb">
+    <tbody>
+      <tr>
+        <th class="partition" colspan="15">编辑栏目</th>
+      </tr>
+      <tr>
+        <td colspan="2" align="left" class="td27">栏目名称:</td>
+      </tr>
+      <tr class="noborder">
+        <td align="left" class="vtop rowform">
+          <input class="required" name="column[name]" size="50" value="<%= @column.name %>">
+          <input name="column_id" size="50" value="<%= @column.id %>" type="hidden">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="left" class="td27">栏目组:</td>
+      </tr>
+      <tr class="noborder">
+        <td align="left" class="vtop rowform">
+          <%- groups = PublishColumnGroup.find(:all, :conditions => ["editor_id = ? and is_del = ?", session[:editor_id], false]) -%>
+          <%= select("column", "group_id", groups.collect { |p| [ p.name, p.id ] }) %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="tb tb2 nobdb">
+    <tbody>
+      <tr>
+        <td align="left" class="td27">描述:</td>
+      </tr>
+      <tr>
+        <td align="left" class="td27">
+          <span class="vtop">
+            <textarea class="tarea" id="rulesnew2" name="column[description]" rows="5" cols="80"><%= @column.description %></textarea>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="submit" value="编辑" class="btn" >
+</form>

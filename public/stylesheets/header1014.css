@@ -1,0 +1,258 @@
+ {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+BODY {
+	FONT-SIZE: 12px; MARGIN: 0px auto; COLOR: #000; LINE-HEIGHT: 20px; FONT-FAMILY: "??"
+}
+BODY {
+	TEXT-ALIGN: center
+}
+.Div_center {
+	MARGIN: 0px auto; WIDTH: 960px; BACKGROUND-COLOR: #fff
+}
+DIV {
+	TEXT-ALIGN: left
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px auto; COLOR: #000; LINE-HEIGHT: 170%; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+HTML {
+	HEIGHT: 100%
+}
+BODY {
+	HEIGHT: 100%
+}
+A {
+	TEXT-DECORATION: none
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+.clear {
+	CLEAR: both
+}
+.Top_title {
+	MARGIN: 8px auto 0px; OVERFLOW: hidden; WIDTH: 960px; BORDER-BOTTOM: #bfbfbf 1px solid; POSITION: relative; background-color:#fff;
+}
+.Top_title UL {
+	FLOAT: left; MARGIN-LEFT: 10px; HEIGHT: 47px
+}
+.Top_Navtion LI {
+	DISPLAY: inline; FONT-SIZE: 14px; LINE-HEIGHT: 47px
+}
+.Top_Navtion LI A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(http://www.51hejia.com/images/Images1014/GrayLine.gif) no-repeat 0px 40%; PADDING-BOTTOM: 5px; COLOR: #7f7f7f; PADDING-TOP: 5px
+}
+.Top_Navtion .Linew A {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #7f7f7f
+}
+.Top_Navtion .RedNavZhong A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: #f20000; PADDING-BOTTOM: 5px; COLOR: #fff; PADDING-TOP: 5px
+}
+.Top_title IMG {
+	FLOAT: left
+}
+.Top_title SPAN IMG {
+	MARGIN-TOP: 11px
+}
+.Top_Anniu {
+	RIGHT: 7px; FLOAT: right; LINE-HEIGHT: 47px
+}
+.Top_Anniu IMG {
+	MARGIN-TOP: 13px; MARGIN-RIGHT: 5px
+}
+.Top_Anniu SPAN {
+	FLOAT: left
+}
+.Top_Navtion LI A:hover {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: #f20000; PADDING-BOTTOM: 5px; COLOR: #fff; PADDING-TOP: 5px
+}
+.Pindao {
+	MARGIN-TOP: 5px; HEIGHT: 40px; color:#575757;
+}
+.Pindao LI {
+	DISPLAY: inline; FLOAT: left; HEIGHT: 40px
+}
+.Pindao LI A {
+	COLOR: #575757; display:inline; padding-right:16px;
+}
+.Pindao LI A:hover {
+	COLOR: #ff6600
+}
+.Pindao .line {
+	WIDTH: 2px; MARGIN-RIGHT: 16px; HEIGHT: 40px; BACKGROUND-COLOR: #ececec
+}
+.Pindao .Red {
+	COLOR: #d8403f
+}
+.Top_title A {
+	COLOR: #545454
+}
+.Top_title Selected A {
+	FONT-WEIGHT: bold; COLOR: #fc0404
+}
+.Top_title .Top_Reg A {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #fc0404
+}
+.Top_title #Top_Reg A {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #fc0404
+}
+#logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 160px; PADDING-TOP: 0px; HEIGHT: 30px
+}
+#SH {
+	FLOAT: left
+}
+#SH {
+	MARGIN-TOP: 4px; WIDTH: 36px; MARGIN-RIGHT: 7px
+}
+#slidetabsmenu {
+	MARGIN-TOP: 4px; FONT-SIZE: 12px; FLOAT: left; MARGIN-BOTTOM: 0px; OVERFLOW: hidden; WIDTH: 420px; LINE-HEIGHT: normal; HEIGHT: 30px
+}
+#slidetabsmenu LI {
+	DISPLAY: inline
+}
+#slidetabsmenu A {
+	BORDER-RIGHT: #dadfe2 1px solid; BORDER-TOP: #dadfe2 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; BORDER-LEFT: #dadfe2 1px solid; WIDTH: 66px; COLOR: #000000; MARGIN-RIGHT: 2px; PADDING-TOP: 7px; BORDER-BOTTOM: #dadfe2 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#slidetabsmenu A:hover {
+	FLOAT: left; WIDTH: 66px; COLOR: #fff; BACKGROUND-COLOR: #e60000
+}
+#slidetabsmenu .current A {
+	FLOAT: left; WIDTH: 66px; COLOR: #fff; BACKGROUND-COLOR: #e60000; TEXT-ALIGN: center
+}
+#slidetabsmenu .current1 A {
+	FLOAT: left; WIDTH: 66px; COLOR: #fd0003; TEXT-ALIGN: center
+}
+.Gray_Line {
+	BACKGROUND-IMAGE: url(http://www.51hejia.com/images/Common/Lin_Gray1.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 34px
+}
+#hdsearch {
+	MARGIN-TOP: 4px; PADDING-LEFT: 7px; FLOAT: left; COLOR: #333; LINE-HEIGHT: 22px
+}
+#hdsearch INPUT {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #cecece 1px solid; PADDING-LEFT: 2px; MARGIN: 0px 0px 0px 2px; BORDER-LEFT: #cecece 1px solid; WIDTH: 130px; LINE-HEIGHT: 16px; BORDER-BOTTOM: #cecece 1px solid; HEIGHT: 18px
+}
+#hdsearch SELECT {
+	BORDER-RIGHT: #cecece 1px solid; BORDER-TOP: #cecece 1px solid; FONT-SIZE: 12px; OVERFLOW: hidden; BORDER-LEFT: #cecece 1px solid; WIDTH: 50px; LINE-HEIGHT: 16px; BORDER-BOTTOM: #cecece 1px solid; HEIGHT: 20px! important
+}
+#hdsearch IMG {
+	MARGIN-RIGHT: 0px
+}
+.Top_Line {
+	BACKGROUND-IMAGE: url(http://www.51hejia.com/images/Common/Top_Line.gif); MARGIN-BOTTOM: 4px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 50px
+}
+#hdnav {
+	PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; WIDTH: 955px; COLOR: #cccccc; PADDING-TOP: 5px
+}
+#hdnav A {
+	COLOR: #535353
+}
+#hdnav A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+#hdnav UL {
+	FLOAT: left; MARGIN-RIGHT: 4px
+}
+#hdnav LI {
+	LINE-HEIGHT: 19px
+}
+#hdnav .pin {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 14px
+}
+.Hdnav_1 {
+	COLOR: #535353
+}
+.C_M A {
+	COLOR: #525252
+}
+#hdnav .A_Hove {
+	COLOR: #ff6600
+}
+.A_Hove {
+	COLOR: #ff6600
+}
+#Login .denglu {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; RIGHT: 55px; POSITION: absolute; TOP: 4px
+}
+#Login .denglu A {
+	COLOR: #f60; TEXT-DECORATION: underline
+}
+#Login {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN-TOP: -135px; Z-INDEX: 100; BACKGROUND: #fff; LEFT: 50%; MARGIN-LEFT: -100px; BORDER-LEFT: #ccc 1px solid; WIDTH: 220px; COLOR: #000; BORDER-BOTTOM: #ccc 1px solid; POSITION: absolute; TOP: 50%
+}
+#Login H4 SPAN {
+	BACKGROUND: url(http://www.51hejia.com/css/newback/images/titlebg1.gif) no-repeat left center; FLOAT: left; TEXT-INDENT: 20px; LINE-HEIGHT: 26px
+}
+#zhuce H4 SPAN {
+	BACKGROUND: url(http://www.51hejia.com/css/newback/images/titlebg1.gif) no-repeat left center; FLOAT: left; TEXT-INDENT: 20px; LINE-HEIGHT: 26px
+}
+#Login H4 A {
+	MARGIN-TOP: 6px; FLOAT: right; MARGIN-RIGHT: 10px
+}
+#zhuce H4 A {
+	MARGIN-TOP: 6px; FLOAT: right; MARGIN-RIGHT: 10px
+}
+#Login H4 SPAN A {
+	FLOAT: none; MARGIN: 0px 0px 0px 5px
+}
+#Login FIELDSET {
+	MARGIN: 10px 0px
+}
+#Login LEGEND STRONG {
+	DISPLAY: block; FONT-SIZE: 14px; BACKGROUND: url(http://www.51hejia.com/css/newback/images/btbg.gif) no-repeat 32% 0px; COLOR: #000; LINE-HEIGHT: 40px; TEXT-ALIGN: center
+}
+#Login FIELDSET P {
+	MARGIN: 10px 0px; TEXT-ALIGN: center
+}
+#Login LABEL {
+	DISPLAY: block; FONT-SIZE: 12px; MARGIN: 5px 0px
+}
+#Login FIELDSET DIV {
+	MARGIN-LEFT: 30px
+}
+A.Divopop-nonenei {
+	DISPLAY: block; Z-INDEX: 9999; RIGHT: 20px; POSITION: absolute; TOP: 6px
+}
+.Pho_Right {
+	FLOAT: right; MARGIN-RIGHT: 2px
+}
+.Pho_Right IMG {
+	WIDTH: 232px; HEIGHT: 41px
+}
+.Top_Reg {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #fc0404
+}
+#show_login {
+	FLOAT: left
+}
+.font_link_s2 A {
+	COLOR: #333
+}
+#footer { background-color:#fff;}
+#footer A {
+	COLOR: #333
+}
+#footer SPAN A {
+	COLOR: #333
+}
+#footer TABLE {
+	COLOR: #333
+}
+.citypath { font-weight:bold; width:960px; margin:0 auto; background-color:#fff;}
+.citypath ul {width:100%; float:left;}
+.citypath a {font-weight:normal;}
+.citypath li {float:left; line-height:24px; padding-left:14px;}
+.citypath span {color:#f00;}

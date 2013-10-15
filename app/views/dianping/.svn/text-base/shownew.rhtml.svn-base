@@ -1,0 +1,248 @@
+<%= javascript_include_tag :defaults %> 
+<%@type="z1"%>
+<%if !@company.nil?%>
+<%@company_id = @company.id%>
+<%end%>
+  <div class="ipath"><strong>您的位置：</strong><a href="/dianping">装修案例点评</a> > <a href="/dianping/dianping_list">装修案例</a> > <%if !@company.nil?%><a href="/firms-<%=@company.id%>"><%=@company.name_zh%></a> <%end%>> <span><%=@reviewlist[0].title%></span>
+  	<%if !@userid.nil?&&@userid.to_i==@review.user_id.to_i%>
+  	  &nbsp;&nbsp;<input type="button" name="button" id="button" value="我要续写案例" class="bt" onclick="javascript:window.open('/dianping/continuenew/<%=@main_id%>');"/>
+  	<%else%>
+	  	<div>
+	  	<%if @nextdianping.size>0%><a href="/dianping-<%if @nextdianping[0].id==@reviewlist[0].id%><%=@first.id%><%else%><%=@nextdianping[0].id%><%end%>">下一个案例</a><%end%>
+	  	<%if !@company.nil?%>&nbsp;&nbsp;<a href="/dianping/companycomment/<%=@company.id%>/1/1">该公司更多案例</a><%end%>
+	  	</div>
+    <%end%>
+  </div>
+  <div class="ileft">
+    <h1 class="t1">本案例信息</h1>
+    <div class="lbox">
+      <ul class="li1">
+        <li>所属小区：<span><%=@reviewlist[0].area%></span></li>
+        <li>所属房型：<span>
+        <%ROOM.sort.each do |k|%>
+			<%if @reviewlist[0].room.to_s==k[0].to_s%><%=k[1]%><%end%>
+		<%end%>
+        </span></li>
+        <li>装修预算：<span>
+			<% PRICE.sort.each do |k| %>
+				<%if @reviewlist[0].price.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+		</span></li>
+        <li>装修风格：<span>
+        <% STYLES.sort.each do |k| %>
+			<%if @reviewlist[0].style.to_s==k[0].to_s%><%=k[1]%><%end%>
+		<% end %>
+        </span></li>
+        <li>装修方式：<span>
+			<% MODELS.sort.each do |k| %>
+				<%if @reviewlist[0].method.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+		</span></li>
+        <%if !@company.nil?%><li class="nl">装修公司：<span><%=@company.name_zh%></span></li><%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <h1 class="t2">本案例点评列表<span><a href="/dianping/dianping_list" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+      <ul class="li2">
+      <%@mylist.each do |m|%>
+        <li class="nl"><a href="/dianping-<%=m.id%>" title="<%=h m.title%>" target="_blank"><%=h m.title%></a><br /><%=m.udate.strftime("%Y-%m-%d")%> 回应 <%=m.response_num.to_i%> 鲜花 <%=m.flower_num.to_i%></li>
+      <%end%>
+      </ul>
+    </div>
+    <%if !@company.nil?%>
+    <% companycase = DecoReview.get_review_by_company_id(@company.id)%>
+    <div class="rboxbot"></div>
+    <h1 class="t2">该公司更多案例<span><%if !@company.nil?%>&nbsp;&nbsp;<a href="/dianping/companycomment/<%=@company.id%>/1/1">更多>></a></a><%end%></span></h1>
+    <div class="lbox">
+      <ul class="li2">
+      <%companycase.each do |m|%>
+        <li class="nl"><a href="/dianping-<%=m.id%>" title="<%=h m.title%>" target="_blank"><%=h m.title%></a><br /><%=m.udate.strftime("%Y-%m-%d")%> 回应 <%=m.response_num.to_i%> 鲜花 <%=m.flower_num.to_i%></li>
+      <%end%>
+      </ul>
+    </div>
+    <%end%>
+    <div class="rboxbot"></div>
+    <h1 class="t3">人气装修案例<span><a href="/dianping" target="_blank">更多>></a></span></h1>
+    <div class="lbox">
+    <%renqi=get_zhuangxiu_case%>
+      <ul class="li3">
+      <% renqi.each do |r|%>
+        <li><a href="/dianping-<%=r.id%>" title="<%=h r.title%>" target="_blank"><%=h r.title%></a></li>
+      <%end%>
+      </ul>
+    </div>
+    <div class="rboxbot"></div>
+    <%decofirms = get_new_order_companys(1)%>
+    <h1 class="t4">装修公司排行<span><a href="/zhuangxiugongsi" target="_blank">更多>></a></span></h1>
+    <div class="lbox1">
+      <div class="derankt"><span class="n1">排名</span><span class="n2">商户</span><span class="n3">综合分</span></div>
+      <div class="clear"></div>
+      <div class="derankbox debg1">
+            <ul>
+            <%decofirms.each do |k|%>
+              <li><span class="n1"><a href="/firms-<%=k.id%>" target="_blank" title="<%=k.name_zh%>"><%=get_firm_name_abbr2(k)%></a></span><span class="n2"><%=k.praise%></span></li>
+            <%end%>
+            </ul>
+      </div>
+    </div>
+    <div class="rboxbot"></div>
+  </div>
+  <div class="iright">
+    <div class="irighttop">
+      <div class="casett1">
+          <h1><%=@reviewlist[0].title%></h1>
+          <ul>
+            <li>
+            	<%if @reviewlist[0].design_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if @reviewlist[0].budget_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if @reviewlist[0].construction_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            	<%if @reviewlist[0].service_score.to_i==1%><img src="http://js.51hejia.com/img/sdeco/xing.gif" /><%end%>
+            </li>
+            
+            <li>设计：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if @reviewlist[0].design_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+			<!--<%=@reviewlist[0].design_score%>--></span></li>
+            <li>预算：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if @reviewlist[0].budget_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            <!--<%=@reviewlist[0].budget_score%>--></span></li>
+            <li>施工：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if @reviewlist[0].construction_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            <!--<%=@reviewlist[0].construction_score%>--></span></li>
+            <li>服务：<span>
+            <% GOOD.sort.each do |k| %>
+				<%if @reviewlist[0].service_score.to_s==k[0].to_s%><%=k[1]%><%end%>
+			<% end %>
+            <!--<%=@reviewlist[0].service_score%>--></span></li>
+          </ul>
+          <div class="clear"></div>
+      </div>
+        <div class="caseinfo1">
+          <h3>案例类别：<span><%BOLG.sort.each do |k|%><%if @review.review_type2.to_s==k[0].to_s%><%=k[1]%><%end%><%end%></span>  昵称：<span><%=@reviewlist[0].username%></span></h3>
+          <div class="info"><a class="hy">回应(<%=@reviewlist[0].response_num.to_i%>)</a>|<span id="floidfirst_<%=@reviewlist[0].id%>"><a  onclick="new Ajax.Updater('floidfirst_<%=@reviewlist[0].id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=@reviewlist[0].id%>});" class="xh">鲜花(<%=@reviewlist[0].flower_num.to_i%>)</a></span><!--|<a href="#" class="ll">浏览次数(20)</a>--></div>
+        </div>
+    </div>
+    <div class="article">
+      <div class="articledes">
+      <%=@reviewlist[0].content%>
+   	<div class="pagination margin10">
+		<ul>
+			<!--<%= will_paginate @reviewlist,:prev_label=> "上一页",:next_label=> "下一页" %>-->
+			<li class="disablepage"><%if !@prev.nil?&&@prev.size>0%><a href="/dianping-<%=@prev[0].id%>">上一页</a><%else%>上一页<%end%></li>
+			<% 1.upto(@list.size) do |i| %>
+				<li <%if @list[i-1].id.to_i ==@reviewlist[0].id.to_i%>class="currentpage"<%end%>> 
+				<%if @list[i-1].id.to_i ==@reviewlist[0].id.to_i%><%= i %><%else%><a href="/dianping-<%=@list[i-1].id%>"><%= i %></a><%end%>
+				</li>
+			<%end%>
+			<li class="nextpage"><%if !@nextcase.nil?&&@nextcase.size>0%><a href="/dianping-<%=@nextcase[0].id%>">下一页</a><%else%>下一页<%end%></li>
+		</ul>
+	</div>
+<div class="clear"></div>
+		<div class="select"><%if !@prev.nil?&&@prev.size>0%><a href="/dianping-<%=@prev[0].id%>" class="prev">上一篇：<%=@prev[0].title%><%end%></a><%if !@nextcase.nil?&&@nextcase.size>0%><a href="/dianping-<%=@nextcase[0].id%>" class="next">下一篇：<%=@nextcase[0].title%></a><%end%></div>
+        <div class="clear"></div>
+        <div class="artinfo">
+          <ul>
+            <li><table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+    <img src="http://js.51hejia.com/img/sdeco/j1.gif" width="23" height="<%if @reviewlist[0].flower_num.to_i+@reviewlist[0].egg.to_i==0%>0<%else%><%=(@reviewlist[0].flower_num.to_i/(@reviewlist[0].flower_num.to_i+@reviewlist[0].egg.to_i))*50%><%end%>" />
+    </td>
+  </tr>
+</table>
+<span id="floid_<%=@reviewlist[0].id%>"><a href="#n" onclick="new Ajax.Updater('floid_<%=@reviewlist[0].id%>', '/dianping/flower2', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=@reviewlist[0].id%>});" class="xh">鲜花(<%if @reviewlist[0].flower_num.nil?%>0<%else%><%=@reviewlist[0].flower_num%><%end%>)</a></span></li>
+<li><table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+    <img src="http://js.51hejia.com/img/sdeco/j2.gif" width="23" height="<%if @reviewlist[0].flower_num.to_i+@reviewlist[0].egg.to_i==0%>0<%else%><%=(@reviewlist[0].egg.to_i/(@reviewlist[0].flower_num.to_i+@reviewlist[0].egg.to_i))*50%><%end%>" />
+    </td>
+  </tr>
+</table>
+<span id="egg_<%=@reviewlist[0].id%>"><a href="#n" onclick="new Ajax.Updater('egg_<%=@reviewlist[0].id%>', '/dianping/badegg', {asynchronous:true, evalScripts:true, parameters:'reviewid='+<%=@reviewlist[0].id%>});" class="jd">臭鸡蛋(<%if @reviewlist[0].egg.nil?%>0<%else%><%=@reviewlist[0].egg%><%end%>)</a></span>
+</li>
+<li class="hui" id="st1" onclick="k('t1')"><a class="hy" onFocus="blur()">我要回应</a></li>
+          </ul>
+        </div>
+        <div class="kzx"><a href="/firms-<%=@reviewlist[0].company_id%>" target="_blank"><img src="http://js.51hejia.com/img/sdeco/bt02.gif" width="149" height="50" /></a></div>
+      <script language="javascript" type="text/javascript">
+      function checkinfo(){
+      var content = document.getElementById("mycontentid").value;
+      	if(content.length>2000||content.length<10){
+      		alert("内容为10-2000个字，请检查");
+      		return false;
+      	}
+      	return true;
+      }
+	function w(vd)
+	{
+	  var ob=document.getElementById(vd);
+	  if(ob.style.display=="block" || ob.style.display=="")
+	  {
+	     ob.style.display="none";
+	     var ob2=document.getElementById('s'+vd);
+	  }
+	  else
+	  {
+	    ob.style.display="block";
+	    var ob2=document.getElementById('s'+vd);
+	  }
+	}
+	function k(vd)
+	{
+	  var ob=document.getElementById(vd);  
+	  if(ob.style.display=="block")
+	  {
+	     ob.style.display="none";
+	     var ob2=document.getElementById('s'+vd);
+	  }
+	  else
+	  {
+	    ob.style.display="block";
+	    var ob2=document.getElementById('s'+vd);
+	  }
+	}
+
+</script>
+<div id="t1" class="hiddenform">
+  <form action="/dianping/addreplynew" method="post" onsubmit="return checkinfo()">
+    <input type="hidden" name="replytype" id="rtid" value="1">
+    <input type="hidden" name="reviewid" id ="rvid" value="<%=@reviewlist[0].id%>">
+	<textarea name="content" id="mycontentid" class="txt"></textarea>
+	        <div class=""></div>
+	        
+	     <%if user_logged_in? %>
+      		<input type="submit" class="putbtn" value="发表"/>
+      	<%else%>
+      		<input type="button" class="putbtn" value="发表" onclick="Divopop('Login');"/>
+      	<%end%>
+	        	
+	        
+	</form>
+</div>
+      </div>
+      <div class="huiyinbox">
+      <%decoreply = DecoReply.getreplies(@reviewlist[0].id,1)%>
+      <%replycount = DecoReply.getrepliescount(@reviewlist[0].id,1)%>
+      <h3><span class="n1">看完这案例有何感觉？已有<strong><%=replycount.to_i%></strong>人回应</span><!--<span class="n2"><a href="#" target="_blank"><strong>查看全部>></strong></a></span>--></h3>
+      <%decoreply.each do |rs|%>
+      <div class="huibox">
+      	<%if rs.userurl %>
+        	<img src="<%=rs.userurl%>" width="34" height="34" />
+        <%else%>
+			<img src="http://member.51hejia.com/images/headimg/default.gif" width=26 heigh=26/>	
+		<%end%>
+        <h4><span class="n1"><%=rs.username%></span><span class="n2"><%=rs.udate.strftime("%Y年-%m-%d")%></span></h4>
+        <p><%=h rs.content%></p>
+      </div>
+      <%end%>
+    </div>
+    </div>
+    
+  </div>
+  <div class="clear"></div>
+

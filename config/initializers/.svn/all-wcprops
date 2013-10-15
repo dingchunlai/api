@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/81/51hejia/repos/api/release/config/initializers
+END
+engines.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/engines.rb
+END
+constants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/constants.rb
+END
+dictionaries.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/dictionaries.rb
+END
+hoptoad_notifier.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/hoptoad_notifier.rb
+END
+will_paginate.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/will_paginate.rb
+END
+hejia.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/hejia.rb
+END
+rails_defaults.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/rails_defaults.rb
+END
+geokit.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/geokit.rb
+END
+cache.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/config/initializers/cache.rb
+END

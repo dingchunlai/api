@@ -1,0 +1,57 @@
+
+	
+<%@company = @firm%>
+<%@decofirm = @firm%>
+<%@firm_id = @decofirm.id%>
+<%@type="z6"%>
+<div class="ipath"><strong>您的位置：</strong><a href="http://z.51hejia.com">找装修频道</a> > <a href="/firms">装潢公司</a> > <a href="/firm-<%=@decofirm.id%>"><%=@decofirm.name_zh%></a> > <span>施工图片</span></div>
+<div class="left2">
+  <div class="youhuixx margin10">
+    <%=render :partial => 'decoshare/firms_daohang'%>
+    <div class="sdtt margin10">
+    <h4>共有<b><%=@photos.total_entries%></b>套<%=@decofirm.name_zh%>的施工图片</h4>
+    <%p = params[:page].to_i%>
+    <div class="fenye">第 <%if p==0%>1<%else%><%=p%><%end%> 页  
+    <%if @photos.total_entries && @photos.total_entries>24%>
+	    <a href="<%if !@photos.previous_page.nil?%>/firms/<%=@decofirm.id%>/photos?page=<%= @photos.previous_page%><%else%>#<%end%>"><<上一页</a>  
+	    <a href="<%if !@photos.next_page.nil?%>/firms/<%=@decofirm.id%>/photos?page=<%= @photos.next_page%><%else%>#<%end%>">下一页>></a>
+    <%end%>
+    </div>
+    </div>
+	
+	<script src="http://js.51hejia.com/js/prototype.js" type="text/javascript"></script>
+<script src="http://js.51hejia.com/js/picscriptaculous.js?load=effects" type="text/javascript"></script>
+<script src="http://js.51hejia.com/js/piclightbox.js" type="text/javascript"></script>
+    <div class="fuckcaselist1 clearfix">
+      <ul>
+      <%if !@photos.nil?&&@photos.size>0%>
+		<%for c in @photos%>
+	
+		
+		
+		
+		<li><a href="<%=c.image.url(:original)%>" rel="lightbox[plants]" title="<%=c.title%>">
+			<img src="<%=c.image.url(:medium)%>" alt="<%=c.title%>"/></a>
+			
+		
+      	<%end%>
+      <%end%>
+      </ul>
+    </div>
+  </div>
+  <div class="pagination margin10">
+<ul>
+<%= will_paginate @photos,:prev_label=> "上一页",:next_label=> "下一页" %>
+</ul>
+</div>
+  </div>
+  <%= render :partial => "share/case_photo_right"%>
+  <div class="clear"></div>
+  <script type="text/javascript">
+  	document.getElementById('gs').className = 'list_nav_cur';
+  	document.getElementById('sy').className = '';
+  </script>
+<%if !@company.nil?%>
+<%@company_id = @company.id%>
+<%end%>
+<%= increase_deco_firm_pv_image_tag @company_id %>

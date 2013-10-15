@@ -1,0 +1,205 @@
+<div class="sidelist clearfix" >
+  <% if CITIES.keys.include?(@city_id.to_i) && ["zhuangxiu", "jushang","diban"].include?(@first_tag_url) %>
+    <%= render :partial => "/shared/jushang_cases", :locals=>{:page_class=>"sidebox_3"}%>
+  <% end %>
+  <div class="margin10">
+    <%=adspace("#{@article_type}-文章终端页-宽幅1") do
+      adspace("装修资讯-文章终端页-宽幅1")
+    end%>
+  </div>
+<%#*<ul class="sidebox_1">%>
+<%#=adspace("#{@article_type}-文章终端页-文字链1",'','<li></li>') do
+adspace("装修资讯-文章终端页-文字链1",'','<li></li>')
+end%>
+<%#=adspace("#{@article_type}-文章终端页-文字链2",'','<li></li>') do
+adspace("装修资讯-文章终端页-文字链2",'','<li></li>')
+end%>
+<%#=adspace("#{@article_type}-文章终端页-文字链3",'','<li></li>') do
+adspace("装修资讯-文章终端页-文字链3",'','<li></li>')
+end%>
+<%#*</ul>%>
+  <!--XXX相似网友日记-->
+  <% if CITIES.keys.include?(@city_id.to_i) %>
+    <style type="text/css">
+      .diary_list ul {width:100%;}
+      .diary_list li {width:118px;float:left;height:100px;margin:5px;_display:inline;overflow:hidden;text-align:center;}
+    </style>
+
+		<script type="text/javascript" charset="utf-8">
+		  $(document).ready(function() {
+					$.ajax({
+					  url: 'http://api2.51hejia.com/api/ajax/diaries?keywords=<%= keywords_in_url(@article.KEYWORD1) %>',
+					  type: 'GET',
+		        dataType: 'jsonp'
+		       });
+		  });
+		</script>
+
+		<div id="diary_wrapper">
+
+		</div>
+
+		<script id="diariesTemplate" type="text/x-jquery-tmpl">
+			<ul class="seo_tian clearfix <%= page_class%> ">
+    <div class="sidebox_n02" style="padding-bottom:10px;">
+      <h3>${city_name}装修日记推荐</h3>
+      <div class="diary_list">
+        <ul class="clearfix">
+          {{each diaries}}
+            <li class="tian">
+              <a href="${url}" target="_blank"><img src="${image_url}" alt="${title}" width="112" height="80"></a><br/>
+              <a href="${url}" target="_blank">${title}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+		</script>
+		
+  <% elsif !CITIES.keys.include?(@city_id.to_i) && @first_tag_url == "zhuangxiu" %>
+    <ul class="sidebox_3" >
+      <h3>装修美家推荐</h3>
+      <% @zhuangxiu_diaries.each do |r| %>
+        <li class="clearfix">
+          <a href="<%= r["url"] %>" target="_blank"><img src="<%= r["image-url"] %>" alt="<%= r["title"] %>"/></a>
+          <div class="listright">
+            <a href="<%= r["url"] %>" target="_blank" title="<%= r["title"] %>"><h4><%= r["title"] %></h4></a>
+            <p><%= truncate_u(r["description"], 42, "...") %>[<a href="<%= r["url"] %>" target="_blank">详细</a>]</p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <form id="form1" method="post" action="http://tag.51hejia.com/list/search" target="_blank">
+    <input  name="tag_keyword" type="text" />
+    <a onclick="document.getElementById('form1').submit()"><img src="http://www.51hejia.com/images/zhuangxiu1023/f2_btn.gif" alt=""/></a>
+  </form>
+
+  <div class="sidebox_n01">
+    <ul>
+      <li class="sidebox_n01_city">
+        <span>
+          <%Api.get(55227,5,'title,url,text_style_id').each do |api|%><a title="<%=api['title']%>" <%='class="sidebox_n01_citycur"' if api['text_style_id'].to_i==2%> target="_blank" href="<%=api['url']%>"><%=api['title']%></a><%end%>
+          <!-- <a class="sidebox_n01_citycur" title="无锡" target="_blank" href="#">无锡</a> -->
+        </span></li>
+      <li class="sidebox_n01_qt"><a title="装修知识宝典" target="_blank" href="<%=Api.get(55228,1,'url')[0]['url']%>">装修知识宝典</a></li>
+      <li class="sidebox_n01_qt"><a title="装修遗憾大全" target="_blank" href="<%=Api.get(55229,1,'url')[0]['url']%>">装修遗憾大全</a></li>
+      <li class="sidebox_n01_qt"><a title="如何选装潢公司" target="_blank" href="<%=Api.get(55230,1,'url')[0]['url']%>">如何选装潢公司</a></li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    $(function(){
+      $(".sidebox_n04_waik ul:gt(0)").hide();
+      $(".sidebox_n04_waik ul:first").addClass("active")
+      $(".sidebox_n04_waik ul").mouseover(
+      function(){
+        $(this).addClass("active")
+        .siblings().removeClass("active");
+        $(".sidebox_n04_waik ul").eq($(this).index())
+        .siblings().fadeOut().end().fadeIn();
+      }
+    )
+
+      function switchImages() {
+        var nextLi = $(".sidebox_n04_waik ul.active").next();
+        (nextLi.size() < 1 ? $(".sidebox_n04_waik ul:eq(0)") : nextLi).mouseover();
+      }
+
+      setInterval(switchImages, 5000);
+    })
+  </script>
+
+  <div class="sidebox_n04 sidebox_6">
+    <h3>装修优惠促销</h3>
+    <div class="sidebox_n04_waik">
+      <%i = 1%>
+      <%='<ul>'%>
+      <%Api.get(55241,20,'title,url,description',false).each do |api|%>
+        <li>
+          [<%=api['title']%>]
+          <%=api['description']%>
+        </li>
+        <%='</ul>' if i % 4 == 0%>
+        <%='<ul>' if i % 4 == 0 && i != 16%>
+        <%i += 1%>
+      <%end%>
+    </div>
+  </div>
+
+  <ul class="sidebox_6">
+    <h3><a href="http://www.51hejia.com/huodong" target="_blank" style="color:white">品牌优惠促销</a></h3>
+    <%SalesPromotionEvent.unexpired_events(6).each do |event|%>
+      <li>
+        <%=link_to event.subject, "http://www.51hejia.com/huodong/#{event.id}", :title => event.subject, :target => '_blank'%>
+      </li>
+    <%end%>
+  </ul>
+
+  <ul class="sidebox_6">
+    <h3>品牌导购测评</h3>
+    <%HejiaArticle.daogou_pingce_articles(10).each do |a|%>
+      <li><%=link_to a.TITLE, article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY), :target => '_blank'%></li>
+    <%end%>
+  </ul>
+
+  <script type="text/javascript">
+    $(function(){
+      $(".sidebox_n03_cont ul:gt(0)").hide();
+      $("#sidebox_n03_tab span:first").addClass("active");
+      $("#sidebox_n03_tab span").mouseover(
+      function(){
+        $(this).addClass("active")
+        .siblings().removeClass("active");
+        $(".sidebox_n03_cont ul").eq($(this).index())
+        .siblings().hide().end().show();
+      }
+    )
+    }
+  )
+  </script>
+  <div class="sidebox_n03 sidebox_6">
+    <h3>一周关注TOP10</h3>
+    <div id="sidebox_n03_tab" class="clearfix">
+      <span>户型</span> <span>房间</span> <span>风格</span> <span>预算</span>
+    </div>
+
+    <div class="sidebox_n03_cont">
+      <ul>
+        <%HejiaArticle.articles(10, 42225, 'hot').each do |a|%>
+          <li><%=link_to a.TITLE, article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY), :target => '_blank'%></li>
+        <%end%>
+      </ul>
+
+      <ul>
+        <%HejiaArticle.articles(10, 42241, 'hot').each do |a|%>
+          <li><%=link_to a.TITLE, article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY), :target => '_blank'%></li>
+        <%end%>
+      </ul>
+
+      <ul>
+        <%HejiaArticle.articles(10, 42233, 'hot').each do |a|%>
+          <li><%=link_to a.TITLE, article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY), :target => '_blank'%></li>
+        <%end%>
+      </ul>
+
+      <ul>
+        <%HejiaArticle.articles(10, 42229, 'hot').each do |a|%>
+          <li><%=link_to a.TITLE, article_link(a.ID, a.CREATETIME, a.FIRSTCATEGORY), :target => '_blank'%></li>
+        <%end%>
+      </ul>
+
+    </div>
+  </div>
+
+  <ul class="sidebox_5">
+    <h3>热门专区</h3>
+    <li>
+      <% results = parse_xml_data("http://api.51hejia.com/rest/build/xml/54136.xml", ["title", "url"]) %>
+      <% for result in results %>
+        <a href="<%= result["url"] %>" target="_blank"><%= result["title"] %></a>
+      <% end %>
+    </li>
+  </ul>
+
+</div>

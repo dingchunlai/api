@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/698/51hejia/repos/api/release/app/controllers
+END
+embed_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/embed_controller.rb
+END
+collections_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/collections_controller.rb
+END
+user_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/698/51hejia/repos/api/release/app/controllers/user_controller.rb
+END
+baidu_map_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/baidu_map_controller.rb
+END
+article_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/article_controller.rb
+END
+designers_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/designers_controller.rb
+END
+demo_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/demo_controller.rb
+END
+_generate.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/_generate.rb
+END
+decoration_diaries_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/decoration_diaries_controller.rb
+END
+statistics_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/statistics_controller.rb
+END
+cases_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/cases_controller.rb
+END
+pictures_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/pictures_controller.rb
+END
+application.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/application.rb
+END
+remarks_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/remarks_controller.rb
+END
+events_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/events_controller.rb
+END
+sessions_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/182/51hejia/repos/api/release/app/controllers/sessions_controller.rb
+END
+vedio_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/vedio_controller.rb
+END
+_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/_user.rb
+END
+gas_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/gas_controller.rb
+END
+photos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/photos_controller.rb
+END
+rest_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/rest_controller.rb
+END
+check_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/check_controller.rb
+END
+analog_codes_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/127/51hejia/repos/api/release/app/controllers/analog_codes_controller.rb
+END
+firms_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/firms_controller.rb
+END
+diaries_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/diaries_controller.rb
+END
+common_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/common_controller.rb
+END
+admin_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/624/51hejia/repos/api/release/app/controllers/admin_controller.rb
+END
+dianping_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/dianping_controller.rb
+END
+ranking_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/ranking_controller.rb
+END
+worksites_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/worksites_controller.rb
+END
+cache_cleaner_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/cache_cleaner_controller.rb
+END
+top_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/top_controller.rb
+END
+theme_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/theme_controller.rb
+END
+coupon_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/coupon_controller.rb
+END
+note_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/note_controller.rb
+END
+index_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/index_controller.rb
+END
+api_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/api_controller.rb
+END
+deco_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/deco_controller.rb
+END
+stat_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/81/51hejia/repos/api/release/app/controllers/stat_controller.rb
+END

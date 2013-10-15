@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/test/config
+END
+newrelic.yml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/test/config/newrelic.yml
+END
+test_control.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/!svn/ver/81/51hejia/repos/api/release/vendor/plugins/newrelic_rpm/test/config/test_control.rb
+END
